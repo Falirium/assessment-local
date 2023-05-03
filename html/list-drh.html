@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+    layout:decorate="~{/layouts/layout.html}">
+
+<head>
+
+    <title>DRH</title>
+</head>
+
+<body>
+
+    <!-- CONTAINER -->
+    <div class="main-container target-container container-fluid" layout:fragment="page-content">
+        <!-- PAGE-HEADER -->
+        <div class="page-header">
+            <h1 class="page-title">DRH</h1>
+            <div>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="javascript:void(0)">Consultant BCP</a></li>
+                    <li class="breadcrumb-item"><a href="javascript:void(0)">Employé</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">DRH</li>
+                </ol>
+            </div>
+        </div>
+        <!-- PAGE-HEADER END -->
+
+        <!-- ROW-1  -->
+        <div class="row row-sm">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Liste des collaborateurs DRH</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="">
+                            <a th:href="@{/employee/drh/add}" class="btn btn-primary mb-4" role="button"
+                                aria-pressed="true"><i class="fe fe-plus-circle me-2"></i>Ajouter un nouveau compte DRH</a>
+                            <table class="table table-bordered border-bottom" id="tbs2">
+                                <thead>
+                                    <tr>
+                                        <th class="wd-auto border-bottom-0">Id</th>
+                                        <th class="wd-auto border-bottom-0">Matricule</th>
+                                        <th class="wd-auto border-bottom-0">Prénom</th>
+                                        <th class="wd-auto border-bottom-0">Nom</th>
+                                        <th class="wd-auto border-bottom-0">BPR</th>
+                                        
+                                        <th class="wd-auto border-bottom-0">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ROW-1 END -->
+
+
+
+    </div>
+    <!-- CONTAINER CLOSED -->
+
+    <!-- SCRIPT -->
+    <th:block layout:fragment="script">
+        <!-- BACK-TO-TOP -->
+        <a href="#top" id="back-to-top"><i class="fa fa-angle-up"></i></a>
+
+
+        <!-- JQUERY JS -->
+        <script th:src="@{/assets/js/jquery.min.js}"></script>
+
+        <!-- BOOTSTRAP JS -->
+        <script th:src="@{/assets/plugins/bootstrap/js/popper.min.js}"></script>
+        <script th:src="@{/assets/plugins/bootstrap/js/bootstrap.min.js}"></script>
+
+        <!-- AUTHORIZE -->
+        <script th:src="@{/assets/custom-js/authorize.js}"></script>
+
+        <!-- UPDATE HEADER -->
+        <script th:src="@{/assets/custom-js/updateheader.js}"></script>
+
+        <!-- INPUT MASK JS-->
+        <script th:src="@{/assets/plugins/input-mask/jquery.mask.min.js}"></script>
+
+        <!-- SPARKLINE JS-->
+        <script th:src="@{/assets/js/jquery.sparkline.min.js}"></script>
+
+        <!-- SIDE-MENU JS -->
+        <script th:src="@{/assets/plugins/sidemenu/sidemenu.js}"></script>
+
+        <!-- TypeHead js -->
+        <script th:src="@{/assets/plugins/bootstrap5-typehead/autocomplete.js}"></script>
+        <script th:src="@{/assets/js/typehead.js}"></script>
+
+        <!-- INTERNAL SELECT2 JS -->
+        <script th:src="@{/assets/plugins/select2/select2.full.min.js}"></script>
+
+        <!-- DATA TABLE JS-->
+        <script th:src="@{/assets/plugins/datatable/js/jquery.dataTables.min.js}"></script>
+        <script th:src="@{/assets/plugins/datatable/js/dataTables.bootstrap5.js}"></script>
+        <script th:src="@{/assets/plugins/datatable/js/dataTables.buttons.min.js}"></script>
+        <script th:src="@{/assets/plugins/datatable/js/buttons.bootstrap5.min.js}"></script>
+        <script th:src="@{/assets/plugins/datatable/js/jszip.min.js}"></script>
+        <script th:src="@{/assets/plugins/datatable/pdfmake/pdfmake.min.js}"></script>
+        <script th:src="@{/assets/plugins/datatable/pdfmake/vfs_fonts.js}"></script>
+        <script th:src="@{/assets/plugins/datatable/js/buttons.html5.min.js}"></script>
+        <script th:src="@{/assets/plugins/datatable/js/buttons.print.min.js}"></script>
+        <script th:src="@{/assets/plugins/datatable/js/buttons.colVis.min.js}"></script>
+        <script th:src="@{/assets/plugins/datatable/dataTables.responsive.min.js}"></script>
+        <script th:src="@{/assets/plugins/datatable/responsive.bootstrap5.min.js}"></script>
+        <script th:src="@{/assets/js/table-data.js}"></script>
+
+        <!-- SIDEBAR JS -->
+        <script th:src="@{/assets/plugins/sidebar/sidebar.js}"></script>
+
+        <!-- Perfect SCROLLBAR JS-->
+        <script th:src="@{/assets/plugins/p-scroll/perfect-scrollbar.js}"></script>
+        <script th:src="@{/assets/plugins/p-scroll/pscroll.js}"></script>
+        <script th:src="@{/assets/plugins/p-scroll/pscroll-1.js}"></script>
+
+        <!-- INTERNAL Edit-Table JS
+        <script th:src="@{/assets/plugins/edit-table/bst-edittable.js}"></script>
+        <script th:src="@{/assets/plugins/edit-table/edit-table.js}"></script> -->
+
+        <!-- Color Theme js -->
+        <script th:src="@{/assets/js/themeColors.js}"></script>
+
+        <!-- Sticky js -->
+        <script th:src="@{/assets/js/sticky.js}"></script>
+
+        <!-- CUSTOM JS -->
+        <script th:src="@{/assets/js/custom.js}"></script>
+
+        <!-- LIST ASSESSMENTS -->
+        <script th:src="@{/assets/custom-js/list-drh.js}"></script>
+
+    </th:block>
+
+    <!-- END SCRIPT -->
+
+
+
+
+</body>
+
+</html>

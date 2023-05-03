@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+    layout:decorate="~{/layouts/layout.html}">
+
+<head>
+
+    <title>Assessment</title>
+
+
+</head>
+
+<body>
+
+    <!-- CONTAINER -->
+    <div class="main-container target-container container-fluid" layout:fragment="page-content">
+
+        <!-- PAGE-HEADER -->
+        <div class="page-header">
+            <h1 class="page-title">Assessment</h1>
+            <div>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a id="breadcrumb-text" href="javascript:void(0)">Consultant BCP</a></li>
+                    <li class="breadcrumb-item"><a href="javascript:void(0)">Assessment</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Création d'assessment</li>
+                </ol>
+            </div>
+        </div>
+        <!-- PAGE-HEADER END -->
+
+
+
+
+        <!-- ROW-2 -->
+        <div class="row">
+
+            <!-- IMPORT EXCEL FILE + CATEGORIES CREATION -->
+            <div class="col-md-12 col-xl-12 ">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">Tableau des résultats</h4>
+
+                    </div>
+                    <div class="card-body">
+
+                        <div class="row">
+                            <div class="col-sm-4 col-xl-4 col-md-4 col-lg-4">
+                                <div class="card overflow-hidden">
+                                    <div class="card-body text-center">
+                                        <h6 class=""><span class="text-danger"><i
+                                                    class="fe fe-file-text mx-2 fs-20 text-danger-shadow"></i></span>Évaluations
+                                            Vierges</h6>
+                                        <h3 id="total-blank-evaluation" class="text-dark counter mt-0 mb-3 number-font">
+                                            2,897</h3>
+                                        <div class="progress h-2 mt-0 mb-2">
+                                            <div id="progress-bar-blank"
+                                                class="progress-bar progress-bar-striped  bg-danger" style="width: 50%;"
+                                                role="progressbar"></div>
+                                        </div>
+                                        <!-- <div class="row mt-4">
+                                            
+                                            <div class="col text-center"> <span class="text-muted">Total</span>
+                                                <h4 id="blank-eva-total" class="fw-normal mt-2 mb-0 number-font1">1,069</h4>
+                                            </div>
+                                        </div> -->
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-4 col-xl-4 col-md-4 col-lg-4">
+                                <div class="card overflow-hidden">
+                                    <div class="card-body text-center">
+                                        <h6 class=""><span class="text-warning"><i
+                                                    class="fe fe-file-text mx-2 fs-20 text-warning-shadow"></i></span>Évaluations
+                                            En Cours</h6>
+                                        <h3 id="total-inprogress-evaluation"
+                                            class="text-dark counter mt-0 mb-3 number-font">2,897</h3>
+                                        <div class="progress h-2 mt-0 mb-2">
+                                            <div id="progress-bar-inprogress"
+                                                class="progress-bar progress-bar-striped  bg-warning"
+                                                style="width: 50%;" role="progressbar"></div>
+                                        </div>
+                                        <!-- <div class="row mt-4">
+                                            
+                                            <div class="col text-center"> <span class="text-muted">Total</span>
+                                                <h4 id="blank-eva-total" class="fw-normal mt-2 mb-0 number-font1">1,069</h4>
+                                            </div>
+                                        </div> -->
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-4 col-xl-4 col-md-4 col-lg-4">
+                                <div class="card overflow-hidden">
+                                    <div class="card-body text-center">
+                                        <h6 class=""><span class="text-success"><i
+                                                    class="fe fe-file-text mx-2 fs-20 text-success-shadow"></i></span>Évaluations
+                                            Complétées</h6>
+                                        <h3 id="total-completed-evaluation"
+                                            class="text-dark counter mt-0 mb-3 number-font">2,897</h3>
+                                        <div class="progress h-2 mt-0 mb-2">
+                                            <div id="progress-bar-completed"
+                                                class="progress-bar progress-bar-striped  bg-success"
+                                                style="width: 50%;" role="progressbar"></div>
+                                        </div>
+                                        <!-- <div class="row mt-4">
+                                            
+                                            <div class="col text-center"> <span class="text-muted">Total</span>
+                                                <h4 id="blank-eva-total" class="fw-normal mt-2 mb-0 number-font1">1,069</h4>
+                                            </div>
+                                        </div> -->
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                        <div class="row d-flex justify-content-center">
+                            <div class="col-sm-6 col-md-6 col-lg-6 col-xl-3">
+                                <div class="card bg-primary img-card box-primary-shadow">
+                                    <div class="card-body">
+                                        <div class="d-flex">
+                                            <div class="text-white">
+                                                <h2 id="total-fiches" class="mb-0 number-font">7,865</h2>
+                                                <p class="text-white mb-0">Total des Fiches </p>
+                                            </div>
+                                            <div class="ms-auto"> <i
+                                                    class="fe fe-layers text-white fs-30 me-2 mt-2"></i> </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="text-end col-sm-12 d-flex flex-row-reverse justify-content-center">
+
+                                <!-- <button id="btn-assessment-inform" type="button" class="btn btn-icon me-4  btn-primary">
+                                    <i class="fe fe-navigation"></i> Informer les managers </button> -->
+
+                                    <button id="btn-assessment-sus" type="button" class="btn btn-icon me-4  btn-warning">
+                                        <i class="fe fe-pause-circle"></i> Suspendre la campagne </button>
+
+                                <button id="btn-assessment-terminate" type="button" class="btn btn-icon me-4  btn-danger">
+                                    <i class="fe fe-x"></i> Terminer la campagne </button>
+
+                            </div>
+                        </div>
+
+
+
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- CATEGORIZATION  -->
+        <div class="col-md-12 col-xl-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">Liste des fiches d'évaluations</h4>
+                </div>
+                <div class="card-body">
+
+                    <div class="table-responsive">
+                        <table class="table table-bordered text-nowrap border-bottom" id="tb4">
+
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+        <!-- MODAL ALERT MESSAGE -->
+        <div class="modal fade" id="modaldemo5" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered text-center" role="document">
+                <div class="modal-content tx-size-sm">
+                    <div class="modal-body text-center p-4 pb-5">
+                        <button aria-label="Close" class="btn-close position-absolute" data-bs-dismiss="modal"><span
+                                aria-hidden="true">&times;</span></button>
+                        <i class="icon icon-close fs-70 text-danger lh-1 my-5 d-inline-block"></i>
+                        <h4 id="modal-error-header" class="text-danger">Attention: vous êtes sûr de vouloir supprimer
+                            cette entrée!</h4>
+                        <p id="modal-error-content" class="mg-b-20 text-start px-3 mg-x-20">Après avoir appuyé sur le bouton "oui", vous
+                            ne récupérerez pas ces
+                            informations.</p><button aria-label="Close" id="confirm-delete-category"
+                            class="btn btn-danger pd-x-25" data-bs-dismiss="modal">Oui</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- MODAL WARNING MESSAGE -->
+        <div class="modal fade" id="warning" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered text-center" role="document">
+                <div class="modal-content tx-size-sm">
+                    <div class="modal-body text-center p-4 pb-5">
+                        <button aria-label="Close" class="btn-close position-absolute" data-bs-dismiss="modal"><span
+                                aria-hidden="true">&times;</span></button>
+                        <i class="icon icon-close fs-70 text-warning lh-1 my-5 d-inline-block"></i>
+                        <h4 id="modal-warning-header" class="text-warning">Attention: vous êtes sûr de vouloir supprimer
+                            cette entrée!</h4>
+                        <p id="modal-warning-content" class="mg-b-20 text-start px-3 mg-x-20">Après avoir appuyé sur le bouton "oui",
+                            vous
+                            ne récupérerez pas ces
+                            informations.</p><button aria-label="Close" id="" class="btn btn-warning pd-x-25"
+                            data-bs-dismiss="modal">Oui</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- MODAL SUCCESS MESSAGE -->
+        <div class="modal fade" id="success" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered text-center " role="document">
+                <div class="modal-content tx-size-sm">
+                    <div class="modal-body text-center p-4 pb-5">
+                        <button aria-label="Close" class="btn-close position-absolute" data-bs-dismiss="modal"><span
+                                aria-hidden="true">&times;</span></button>
+                        <i class="icon icon-check fs-70 text-success lh-1 my-5 d-inline-block"></i>
+                        <h4 id="modal-success-header" class="text-success tx-semibold">Complété!</h4>
+                        <p id="modal-success-content" class="mg-b-20 text-start px-3 mg-x-20">La liste des compétences a été sauvegardée
+                            avec succès. .</p><button aria-label="Close" class="btn btn-success pd-x-25"
+                            data-bs-dismiss="modal">Continue</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- MODAL INFO MESSAGE -->
+        <div class="modal fade" id="info" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered text-center " role="document">
+                <div class="modal-content tx-size-sm">
+                    <div class="modal-body text-center p-4 pb-5">
+                        <button aria-label="Close" class="btn-close position-absolute" data-bs-dismiss="modal"><span
+                                aria-hidden="true">&times;</span></button>
+                        <i class="icon icon-clock fs-70 text-primary lh-1 my-5 d-inline-block"></i>
+                        <h4 id="modal-info-header" class="text-primary tx-semibold">Complété!</h4>
+                        <p id="modal-info-content" class="mg-b-20 text-start px-3 mg-x-20">La liste des compétences a été sauvegardée
+                            avec succès. .</p><button aria-label="Close" class="btn btn-primary pd-x-25"
+                            data-bs-dismiss="modal">Continue</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- MODAL CONFIRM -->
+        <div class="modal fade" id="confirm" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered text-center modal-xl modal-dialog-scrollable" role="document">
+                <div class="modal-content tx-size-sm">
+                    <div class="modal-body text-center p-4 pb-5">
+                        <button aria-label="Close" class="btn-close position-absolute" data-bs-dismiss="modal"><span
+                                aria-hidden="true">&times;</span></button>
+                        <i class="fe fe-alert-circle fs-70 text-warning lh-1 my-5 d-inline-block"></i>
+                        <h4 id="modal-confirm-header" class="text-warning">Attention: vous êtes sûr de vouloir supprimer
+                            cette entrée!</h4>
+                        <p id="modal-confirm-content" class="mg-b-20 mg-x-20 p-4">Après avoir appuyé sur le bouton "oui",
+                            vous
+                            ne récupérerez pas ces
+                            informations.</p>
+                        <button id="confirm-yes-btn" class="btn btn-warning pd-x-25"
+                            data-bs-dismiss="modal">Oui</button>
+                        <button aria-label="Close" class="btn btn-primary pd-x-25"
+                            data-bs-dismiss="modal">Fermer</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- MODAL LOADING MESSAGE -->
+        <div class="modal fade" id="loading" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered text-center " role="document">
+                <div class="modal-content tx-size-sm">
+                    <div class="dimmer active">
+                        <div class="spinner1">
+                            <div class="double-bounce1"></div>
+                            <div class="double-bounce2"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ROW-1 END -->
+
+
+
+
+    <!-- SCRIPT -->
+    <th:block layout:fragment="script">
+
+
+
+        <!-- BACK-TO-TOP -->
+        <a href="#top" id="back-to-top"><i class="fa fa-angle-up"></i></a>
+
+        <!-- JQUERY JS -->
+        <script th:src="@{/assets/js/jquery.min.js}"></script>
+
+        <!-- BOOTSTRAP JS -->
+        <script th:src="@{/assets/plugins/bootstrap/js/popper.min.js}"></script>
+        <script th:src="@{/assets/plugins/bootstrap/js/bootstrap.min.js}"></script>
+
+        <!-- AUTHORIZE -->
+        <script th:src="@{/assets/custom-js/authorize.js}"></script>
+
+        <!-- UPDATE HEADER -->
+        <script th:src="@{/assets/custom-js/updateheader.js}"></script>
+
+
+
+
+        <!-- INPUT MASK JS-->
+        <script th:src="@{/assets/plugins/input-mask/jquery.mask.min.js}"></script>
+
+        <!-- SIDE-MENU JS-->
+        <script th:src="@{/assets/plugins/sidemenu/sidemenu.js}"></script>
+
+        <!-- TypeHead js -->
+        <script th:src="@{/assets/plugins/bootstrap5-typehead/autocomplete.js}"></script>
+        <script th:src="@{/assets/js/typehead.js}"></script>
+
+        <!-- SIDEBAR JS -->
+        <!-- <script th:src="@{/assets/plugins/sidebar/sidebar.js}"></script> -->
+
+        <!-- DATA TABLE JS -->
+        <script th:src="@{/assets/plugins/datatable/js/jquery.dataTables.min.js}"></script>
+        <script th:src="@{/assets/plugins/datatable/js/dataTables.bootstrap5.js}"></script>
+        <script th:src="@{/assets/plugins/datatable/js/dataTables.buttons.min.js}"></script>
+        <script th:src="@{/assets/plugins/datatable/js/buttons.bootstrap5.min.js}"></script>
+        <script th:src="@{/assets/plugins/datatable/js/jszip.min.js}"></script>
+        <script th:src="@{/assets/plugins/datatable/pdfmake/pdfmake.min.js}"></script>
+        <script th:src="@{/assets/plugins/datatable/pdfmake/vfs_fonts.js}"></script>
+        <script th:src="@{/assets/plugins/datatable/js/buttons.html5.min.js}"></script>
+        <script th:src="@{/assets/plugins/datatable/js/buttons.print.min.js}"></script>
+        <script th:src="@{/assets/plugins/datatable/js/buttons.colVis.min.js}"></script>
+        <script th:src="@{/assets/plugins/datatable/dataTables.responsive.min.js}"></script>
+        <script th:src="@{/assets/plugins/datatable/responsive.bootstrap5.min.js}"></script>
+        <script th:src="@{/assets/js/table-data.js}"></script>
+
+        <!-- Perfect SCROLLBAR JS-->
+        <script th:src="@{/assets/plugins/p-scroll/perfect-scrollbar.js}"></script>
+        <script th:src="@{/assets/plugins/p-scroll/pscroll.js}"></script>
+        <script th:src="@{/assets/plugins/p-scroll/pscroll-1.js}"></script>
+
+
+        <!-- Color Theme js -->
+        <script th:src="@{/assets/js/themeColors.js}"></script>
+
+        <!-- Sticky js -->
+        <script th:src="@{/assets/js/sticky.js}"></script>
+
+
+
+        <!-- FORM WIZARD JS-->
+        <script th:src="@{/assets/plugins/formwizard/jquery.smartWizard.js}"></script>
+        <script th:src="@{/assets/plugins/formwizard/fromwizard.js}"></script>
+
+        <!-- FILE UPLOADES JS -->
+        <script th:src="@{/assets/plugins/fileuploads/js/fileupload.js}"></script>
+        <script th:src="@{/assets/plugins/fileuploads/js/file-upload.js}"></script>
+
+        <!-- INTERNAL File-Uploads Js-->
+        <script th:src="@{/assets/plugins/fancyuploder/jquery.ui.widget.js}"></script>
+        <script th:src="@{/assets/plugins/fancyuploder/jquery.fileupload.js}"></script>
+        <script th:src="@{/assets/plugins/fancyuploder/jquery.iframe-transport.js}"></script>
+        <script th:src="@{/assets/plugins/fancyuploder/jquery.fancy-fileupload.js}"></script>
+        <script th:src="@{/assets/plugins/fancyuploder/fancy-uploader.js}"></script>
+
+        <!-- MULTI SELECT JS-->
+        <script th:src="@{/assets/plugins/multipleselect/multiple-select.js}"></script>
+        <script th:src="@{/assets/plugins/multipleselect/multi-select.js}"></script>
+
+        <!-- SELECT2 JS -->
+        <script th:src="@{/assets/plugins/select2/select2.full.min.js}"></script>
+        <script th:src="@{/assets/js/select2.js}"></script>
+
+        <!-- EXCELJS -->
+        <script th:src="@{/assets/plugins/exceljs/exceljs.min.js}"></script>
+
+        <!-- CUSTOM JS -->
+        <script th:src="@{/assets/js/custom.js}"></script>
+
+
+        <!-- ASSESSMENT RESULT JS -->
+        <script th:src="@{/assets/custom-js/assessment-result.js}"></script>
+
+
+
+
+
+
+
+    </th:block>
+    <!-- END SCRIPT -->

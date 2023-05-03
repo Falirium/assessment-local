@@ -1,0 +1,61 @@
+.modal-is-activated > *:not(.modal) {
+    -webkit-filter: blur(5px);
+    -moz-filter: blur(5px);
+    -o-filter: blur(5px);
+    -ms-filter: blur(5px);
+    filter: blur(5px);
+}
+
+/* SPECIFIC FOR DATATABLE COLUMNS */
+
+.info-light-cell {
+   
+    background: #d0e2f7 !important;
+    border-color: #d0e2f7
+}
+
+.success-light-cell {
+   
+    background: #a6efe4 !important;
+    border-color: #a6efe4;
+}
+
+.danger-light-cell {
+    
+    background: #f8ccd3 !important;
+    border-color: #f8ccd3;
+}
+.warning-light-cell {
+
+    background: #f8e8c6 !important;
+    border-color: #f8e8c6;
+}
+
+.default-light-cell {
+
+    background: #e9e9f1 !important;
+    border-color: #e9e9f1;
+}
+
+.bg-error {
+    background: linear-gradient(to right, #e67900 0%, #00A2E6 100%) !important;
+}
+
+.edit-effect {
+    animation-name: editing;
+    animation-duration: 1s;
+    animation-iteration-count: 2;
+    /* animation-direction: alternate;  */
+}
+
+@keyframes editing {
+    25% {
+        background-color: #e67b0098;
+    }
+    50% {
+        background-color: #ffffff;
+    }
+    75% {
+        background-color: #e67b0098;
+    }
+}

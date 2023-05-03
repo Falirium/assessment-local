@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+    layout:decorate="~{/layouts/layout.html}">
+
+<head>
+
+    <title>Assessment</title>
+</head>
+
+<body>
+
+    <!-- CONTAINER -->
+    <div class="main-container target-container container-fluid" layout:fragment="page-content">
+
+        <!-- PAGE-HEADER -->
+        <div class="page-header">
+            <h1 class="page-title">Fiche d'évaluation</h1>
+            <div>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="javascript:void(0)">Emploi</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Fiche d'évaluation</li>
+                </ol>
+            </div>
+        </div>
+        <!-- PAGE-HEADER END -->
+
+        <!-- ROW-1 -->
+        <div class="row">
+            <div class="col-md-12 col-xl-12">
+                <div class="card">
+                    <!-- <div class="card-header">
+                        <h4 class="card-title col-sm-6"></h4>
+                    </div> -->
+                    <div class="card-body">
+                        <div class="example">
+                            <dl class="row">
+                                <dt class="col-sm-2">Emploi ciblé :</dt>
+                                <dd id="emploi-cible-text" class="col-sm-4">Agent Commercial</dd>
+
+                                <dt class="col-sm-3">Date d'évaluation :</dt>
+                                <dd id="date-eva-text" class="col-sm-3"></dd>
+
+                                <dt class="col-sm-3">Matricule Evaluateur :</dt>
+                                <dd id="mat-eva-text" class="col-sm-3">112XXXX-XX</dd>
+
+                                <dt class="col-sm-3">Matricule Collaborateur :</dt>
+                                <dd id="mat-collaborateur-text" class="col-sm-3">112XXXX-XX</dd>
+
+                            </dl>
+                        </div>
+                        <div class="row mt-5 sticky" data-sticky-wrap="true">
+
+                            <div class="col-sm-4 col-md-4 col-lg-4 col-xl-4">
+                                <div class="card bg-danger img-card box-danger-shadow">
+                                    <div class="card-body">
+                                        <div class="d-flex">
+                                            <div class="text-white">
+                                                <h2 id="sous-pts" class="mb-0 number-font">0</h2>
+                                                <p class="text-white mb-0">Sous-points</p>
+                                            </div>
+                                            <div class="ms-auto"> <i
+                                                    class="fe fe-minus-circle text-white fs-30 me-2 mt-2"></i> </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4 col-md-4 col-lg-4 col-xl-4">
+                                <div class="card bg-primary img-card box-primary-shadow">
+                                    <div class="card-body">
+                                        <div class="d-flex">
+                                            <div class="text-white">
+                                                <h2 id="score" class="mb-0 number-font">0 %</h2>
+                                                <p class="text-white mb-0">Total score</p>
+                                            </div>
+                                            <div class="ms-auto"> <i class="fe fe-award text-white fs-30 me-2 mt-2"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4 col-md-4 col-lg-4 col-xl-4">
+                                <div class="card bg-success img-card box-success-shadow">
+                                    <div class="card-body">
+                                        <div class="d-flex">
+                                            <div class="text-white">
+                                                <h2 id="sur-pts" class="mb-0 number-font">0</h2>
+                                                <p class="text-white mb-0">Sur-points</p>
+                                            </div>
+                                            <div class="ms-auto"> <i
+                                                    class="fe fe-plus-circle text-white fs-30 me-2 mt-2"></i> </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- ROW-1 END -->
+
+        <!-- ROW-2 -->
+        <div class="row">
+            <div class="col-md-12 col-xl-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title col-sm-6">Résponsabilitées</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table border table-bordered mb-0">
+                                <thead>
+                                    <tr>
+                                        <th class="w-auto">Catégorie</th>
+                                        <th class="w-80">Résponsabilitée</th>
+                                        <th class="w-auto">Non</th>
+                                        <th class="w-auto">Oui</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="res-table-body">
+                                    <!--  -->
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- ROW-2 END -->
+
+        <!-- ROW-3 -->
+        <div class="row">
+            <div class="col-md-12 col-xl-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title col-sm-6"> Exigences spécifiques de l'emploi </h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table border table-bordered mb-0">
+                                <thead>
+                                    <tr>
+                                        
+                                        <th class="w-80">Exigence</th>
+                                        <th class="w-10">Non</th>
+                                        <th class="w-10">Oui</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="exi-table-body">
+                                    
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- ROW-3 END -->
+
+        <!-- ROW-4 -->
+        <div class="row">
+            <div class="col-md-12 col-xl-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title col-sm-6">Marqueurs de séniorité</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table border table-bordered mb-0">
+                                <thead>
+                                    <tr>
+                                        
+                                        <th class="w-80">Marqueur</th>
+                                        <th class="w-10">Non</th>
+                                        <th class="w-10">Oui</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="marq-table-body">
+                                    
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- ROW-4 END -->
+
+        <!-- ROW-5 -->
+        <div class="row">
+            <div class="col-md-12 col-xl-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title col-sm-6">Compétences requises</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table border table-bordered  mb-0">
+                                <thead>
+                                    <tr>
+                                        
+                                        <th class="w-auto">Catégorie</th>
+                                        <th class="w-auto">Compétence</th>
+                                        <th class="w-auto">Niveau Requis</th>
+                                        <th class="">E</th>
+                                        <th class="">M</th>
+                                        <th class="">A</th>
+                                        <th class="">X</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="comp-table-body">
+                                    
+                                    
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- ROW-5 END -->
+
+        <!-- INPUT MODAL -->
+        <div class="modal fade" id="input-modal">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content modal-content-demo">
+                    <div class="modal-header">
+                        <h6 class="modal-title">Télecharger une matrice de compétence</h6>
+                        <button class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="mb-3">
+                                <label for="input-file" class="col-form-label">Importez le fichier Excel qui
+                                    contient la matrice des compétences</label>
+                                <input class="form-control" id="input-file" type="file" accept=".xlsx">
+                            </div>
+
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn ripple btn-success" type="button">Enregistrer</button>
+                        <button class="btn ripple btn-danger" data-bs-dismiss="modal" type="button">Fermer</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- MODAL ALERT MESSAGE -->
+        <div class="modal fade" id="modaldemo5" data-bs-backdrop="static">
+            <div class="modal-dialog modal-dialog-centered text-center" role="document">
+                <div class="modal-content tx-size-sm">
+                    <div class="modal-body text-center p-4 pb-5">
+                        <button aria-label="Close" class="btn-close position-absolute" data-bs-dismiss="modal"><span
+                                aria-hidden="true">&times;</span></button>
+                        <i class="icon icon-close fs-70 text-danger lh-1 my-5 d-inline-block"></i>
+                        <h4 class="text-danger">Attention: vous êtes sûr de vouloir supprimer cette entrée!</h4>
+                        <p class="mg-b-20 text-start px-3 mg-x-20">Après avoir appuyé sur le bouton "oui", vous ne récupérerez pas ces
+                            informations.</p><button aria-label="Close" id="confirm-delete-niveau"
+                            class="btn btn-danger pd-x-25" data-bs-dismiss="modal">Oui</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- MODAL WARNING MESSAGE -->
+        <div class="modal fade" id="warning">
+            <div class="modal-dialog modal-dialog-centered text-center" role="document">
+                <div class="modal-content tx-size-sm">
+                    <div class="modal-body text-center p-4 pb-5">
+                        <button aria-label="Close" class="btn-close position-absolute" data-bs-dismiss="modal"><span
+                                aria-hidden="true">&times;</span></button>
+                        <i class="fe fe-alert-circle fs-70 text-warning lh-1 my-5 d-inline-block"></i>
+                        <h4 class="text-warning">Avertissement: Vous ne pouvez pas ajouter une nouvelle liste de
+                            compétences sans sauvegarder la liste sur la table !</h4>
+                        <p class="mg-b-20 text-start px-3 mg-x-20">Cliquez sur le bouton "Enregistrer" pour sauvegarder la liste.</p>
+                        <button aria-label="Close" id="confirm-save-niveau" class="btn btn-warning pd-x-25"
+                            data-bs-dismiss="modal">Enregistrer</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- MODAL SUCCESS MESSAGE -->
+        <div class="modal fade" id="success">
+            <div class="modal-dialog modal-dialog-centered text-center " role="document">
+                <div class="modal-content tx-size-sm">
+                    <div class="modal-body text-center p-4 pb-5">
+                        <button aria-label="Close" class="btn-close position-absolute" data-bs-dismiss="modal"><span
+                                aria-hidden="true">&times;</span></button>
+                        <i class="icon icon-check fs-70 text-success lh-1 my-5 d-inline-block"></i>
+                        <h4 class="text-success tx-semibold">Complété!</h4>
+                        <p class="mg-b-20 text-start px-3 mg-x-20">La liste des compétences a été sauvegardée avec succès. .</p><button
+                            aria-label="Close" class="btn btn-success pd-x-25" data-bs-dismiss="modal">Continue</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- MODAL LOADING MESSAGE -->
+        <div class="modal fade" id="loading" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered text-center " role="document">
+                <div class="modal-content tx-size-sm">
+                    <div class="dimmer active">
+                        <div class="spinner1">
+                            <div class="double-bounce1"></div>
+                            <div class="double-bounce2"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- CONTAINER CLOSED -->
+
+
+
+
+
+
+    <!-- SCRIPT -->
+    <th:block layout:fragment="script">
+
+        <!-- BACK-TO-TOP -->
+        <a href="#top" id="back-to-top"><i class="fa fa-angle-up"></i></a>
+
+        <!-- JQUERY JS -->
+        <script th:src="@{/assets/js/jquery.min.js}"></script>
+        
+        <!-- AUTHORIZE -->
+        <script th:src="@{/assets/custom-js/authorize.js}"></script>
+
+        <!-- UPDATE HEADER -->
+        <script th:src="@{/assets/custom-js/updateheader.js}"></script>
+        <script th:src="@{/assets/js/jquery-ui.min.js}"></script>
+
+        <!-- BOOTSTRAP JS -->
+        <script th:src="@{/assets/plugins/bootstrap/js/popper.min.js}"></script>
+        <script th:src="@{/assets/plugins/bootstrap/js/bootstrap.min.js}"></script>
+
+
+
+        <!-- INPUT MASK JS-->
+        <script th:src="@{/assets/plugins/input-mask/jquery.mask.min.js}"></script>
+
+        <!-- SPARKLINE JS-->
+        <script th:src="@{/assets/js/jquery.sparkline.min.js}"></script>
+
+        <!-- SIDE-MENU JS -->
+        <script th:src="@{/assets/plugins/sidemenu/sidemenu.js}"></script>
+
+        <!-- TypeHead js -->
+        <script th:src="@{/assets/plugins/bootstrap5-typehead/autocomplete.js}"></script>
+        <script th:src="@{/assets/js/typehead.js}"></script>
+
+        <!-- INTERNAL SELECT2 JS -->
+        <script th:src="@{/assets/plugins/select2/select2.full.min.js}"></script>
+
+        <!-- DATA TABLE JS-->
+        <script th:src="@{/assets/plugins/datatable/js/jquery.dataTables.min.js}"></script>
+        <script th:src="@{/assets/plugins/datatable/js/dataTables.bootstrap5.js}"></script>
+        <script th:src="@{/assets/plugins/datatable/js/dataTables.buttons.min.js}"></script>
+        <script th:src="@{/assets/plugins/datatable/js/buttons.bootstrap5.min.js}"></script>
+        <script th:src="@{/assets/plugins/datatable/js/jszip.min.js}"></script>
+        <script th:src="@{/assets/plugins/datatable/pdfmake/pdfmake.min.js}"></script>
+        <script th:src="@{/assets/plugins/datatable/pdfmake/vfs_fonts.js}"></script>
+        <script th:src="@{/assets/plugins/datatable/js/buttons.html5.min.js}"></script>
+        <script th:src="@{/assets/plugins/datatable/js/buttons.print.min.js}"></script>
+        <script th:src="@{/assets/plugins/datatable/js/buttons.colVis.min.js}"></script>
+        <script th:src="@{/assets/plugins/datatable/dataTables.responsive.min.js}"></script>
+        <script th:src="@{/assets/plugins/datatable/responsive.bootstrap5.min.js}"></script>
+        <script th:src="@{/assets/js/table-data.js}"></script>
+
+        <!-- SIDEBAR JS -->
+        <script th:src="@{/assets/plugins/sidebar/sidebar.js}"></script>
+
+        <!-- Perfect SCROLLBAR JS-->
+        <script th:src="@{/assets/plugins/p-scroll/perfect-scrollbar.js}"></script>
+        <script th:src="@{/assets/plugins/p-scroll/pscroll.js}"></script>
+        <script th:src="@{/assets/plugins/p-scroll/pscroll-1.js}"></script>
+
+        <!-- INTERNAL Edit-Table JS -->
+        <script th:src="@{/assets/plugins/edit-table/bst-edittable.js}"></script>
+        <script th:src="@{/assets/plugins/edit-table/edit-table.js}"></script>
+
+        <!-- Color Theme js -->
+        <script th:src="@{/assets/js/themeColors.js}"></script>
+
+        <!-- Sticky js -->
+        <script th:src="@{/assets/js/sticky.js}"></script>
+
+
+        <!-- CUSTOM JS -->
+        <script th:src="@{/assets/js/custom.js}"></script>
+
+
+        <!-- EXCELJS -->
+        <script th:src="@{/assets/plugins/exceljs/exceljs.min.js}"></script>
+
+        <!-- FICHE PREVIEW -->
+        <script th:src="@{/assets/custom-js/fiche-preview.js}"></script>
+
+
+
+
+    </th:block>
+
+    <!-- END SCRIPT -->

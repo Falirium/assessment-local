@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+    layout:decorate="~{/layouts/layout.html}">
+
+<head>
+
+    <title>Assessment</title>
+
+    <!--- PREASSESSMENT CSS -->
+    <link th:href="@{/assets/custom-css/preassessment.css}" rel="stylesheet" />
+</head>
+
+<body>
+
+    <!-- CONTAINER -->
+    <div class="main-container target-container container-fluid" layout:fragment="page-content">
+
+        <!-- PAGE-HEADER -->
+        <div class="page-header">
+            <h1 class="page-title">Assessment</h1>
+            <div>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a id="breadcrumb-text" href="javascript:void(0)">Consultant BCP</a></li>
+                    <li class="breadcrumb-item"><a href="javascript:void(0)">Assessment</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Création d'assessment</li>
+                </ol>
+            </div>
+        </div>
+        <!-- PAGE-HEADER END -->
+
+
+        <!-- ROW 1 -->
+        <div class="row">
+            <!-- Progress bar -->
+            <div class="progressbar">
+
+                <div class="progress" id="progress"></div>
+
+                <div class="progress-step progress-step-active" data-title=""></div>
+                <div class="progress-step" data-title=""></div>
+                <div class="progress-step" data-title=""></div>
+                <div class="progress-step" data-title=""></div>
+                <div class="progress-step" data-title=""></div>
+                <div class="progress-step" data-title=""></div>
+
+            </div>
+        </div>
+
+        <!-- ROW-2 -->
+        <div class="row">
+
+            <!-- INFORMATIONS DE BASE -->
+            <div class="col-md-12 col-xl-12 form-step form-step-active">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title col-sm-6">Informations d'assessment</h4>
+                    </div>
+                    <div class="card-body">
+                        <form id="assessment-form">
+                            <div class="">
+                                <div class="form-group assessment-property-container">
+                                    <label for="input-name_campagne" class="form-label">Nom de la campagne <span
+                                            class="text-red">*</span></label>
+                                    <input type="text" class="form-control" id="input-name-campagne"
+                                        placeholder="Nom du projet + date de lancement" autocomplete="">
+                                </div>
+                                <div class="form-group assessment-property-container">
+                                    <label for="input-regions-campagne" class="form-label">Filiale / BPR ciblée <span
+                                            class="text-red">*</span></label>
+                                    <select multiple="multiple" class="form-control select2" id="input-regions-campagne"
+                                        data-width="100%">
+                                        <option value="bp_tanger_tetouan">B.P de Tanger-Tétouan</option>
+                                        <option value="bp_rabat_kenitra">B.P de Rabat-Kénitra</option>
+                                        <option value="bp_ouajda">B.P d'Oujda</option>
+                                        <option value="bp_nador_houceima">B.P de Nador-Al Hoceima</option>
+                                        <option value="bp_kech_mellal">B.P de Marrakech-Béni Mellal</option>
+                                        <option value="bp_laayoune">B.P de Laayoune</option>
+                                        <option value="bp_fes_meknes">B.P de Fès-Meknès</option>
+                                        <option value="bp_sud">B.P du Centre-Sud</option>
+                                        <option value="bp_casa">B. de Casablanca</option>
+
+                                    </select>
+
+
+                                </div>
+
+                                <div class="form-group assessment-property-container">
+                                    <label for="input-started-date" class="form-label">Assessment commence à <span
+                                            class="text-red">*</span></label>
+                                    <input type="date" class="form-control" id="input-started-date"
+                                        placeholder="Enter email" autocomplete="">
+                                    <div id="started-date-error" class="invalid-feedback">
+
+                                    </div>
+                                </div>
+                                <div class="form-group assessment-property-container">
+                                    <label for="input-finishes-date" class="form-label">Assessment se termine à
+                                        <span class="text-red">*</span></label>
+                                    <input type="date" class="form-control" id="input-finishes-date"
+                                        placeholder="Enter email" autocomplete="username">
+                                    <div id="finishes-date-error" class="invalid-feedback">
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </form>
+                        <div class="text-end col-sm-12 d-flex justify-content-around  my-5">
+                            <button id="btn-next-info-assessment" type="button"
+                                class="btn btn-primary-light btn-next"></i>Suivant<i class="fe fe-arrow-right ms-2"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <!-- IMPORT EXCEL FILE + CATEGORIES CREATION -->
+            <div class="col-md-12 col-xl-12 form-step ">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">Configuration des catégories</h4>
+                    </div>
+                    <div class="card-body" id="file-form">
+
+                        <div class="population-container">
+
+                            <div class="form-group mb-5">
+
+                                <label for="assessment-excel-file" class="form-label mt-0"><strong>1.</strong> Importer
+                                    le fichier Excel qui
+                                    contient la liste des employés
+                                    et d'autres informations.</label>
+                                <small class="fw-bold fst-italic text-danger">** Important ** Vérifiez que le modèle que
+                                    vous utilisez
+                                    est conforme au fichier suggéré par le développeur.</small>
+                                <input id="assessment-excel-file" class="form-control mt-2" type="file" accept=".xlsx">
+                            </div>
+
+
+                            <div class="table-responsive mt-2">
+                                <table class="table table-bordered text-nowrap border-bottom" id="tb1">
+                                    <!-- <thead id="assessment-population-thead">
+    
+                                    </thead>
+                                    <tbody id="assessment-population-tbody">
+    
+    
+                                    </tbody> -->
+                                </table>
+                            </div>
+                        </div>
+
+                        <hr>
+
+                        <table class="table border text-nowrap text-md-nowrap table-bordered mb-0">
+                            <thead id="category-table-header">
+                                <tr>
+                                    <th class="w-auto">Nom</th>
+
+                                    <th class="w-20">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="category-table-body">
+
+                            </tbody>
+                        </table>
+
+                        <div class="mt-4 mb-0 text-dark">
+                            <label for="" class="form-label mt-0"><strong>2.</strong> Créez vos catégories qui seront
+                                utilisées pour classer
+                                la population de cette évaluation. </label>
+
+                            <small class="fw-bold fst-italic text-danger">** Important ** Essayez d'utiliser une bonne
+                                combinaison de critères afin d'obtenir des groupes distincts.</small>
+                        </div>
+                        <div id="category-container">
+
+                            <div class="form-group">
+                                <label for="name-categorie" class="form-label">Nom de la catégorie</label>
+                                <select type="text" class="form-control select2" id="name-categorie"
+                                    placeholder="Eg: Cat 1, ..." data-width="100%"></select>
+                            </div>
+                            <div class="form-group">
+                                <label for="type-assessment-categorie" class="form-label">Contenue de
+                                    l'évaluation</label>
+
+                                <select multiple="multiple" class="form-control form-select select2"
+                                    id="evaluation-content" data-width="100%">
+                                    <option value="responsabilites">Responsabilités - Finalités</option>
+                                    <option value="exigences">Exigences spécifiques de l’emploi</option>
+                                    <option value="marqueurs">Marqueurs de séniorité</option>
+                                    <option value="competences-dc">Compétences requises - Domaines de connaissance
+                                    </option>
+                                    <option value="competences-sf">Compétences requises - Savoir-faire</option>
+                                    <option value="competences-se">Compétences requises - Savoir-être</option>
+
+                                </select>
+
+                            </div>
+
+                            <div class="criterias-container">
+                                <div class="criteria-container">
+
+                                    <div class="form-group">
+                                        <label for="name-categorie" class="form-label">Choisissez un critière de
+                                            classification</label>
+                                        <select class="form-control select2 form-select select-criteria"
+                                            data-placeholder="------ Sélectionnez une option ------"
+                                            id="select-classification" data-width="100%">
+                                        </select>
+                                    </div>
+                                    <div class="form-row input-criteria" id="value-criteria-container">
+
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                        </div>
+                        <div class="row my-5">
+                            <div class="col-sm-4 m-auto text-center">
+                                <button id="btn-add-criteria" type="button" class="btn btn-icon me-2  btn-success"> <i
+                                        class="fe fe-plus"></i> Ajouter un
+                                    critère</button>
+                            </div>
+                            <div class="col-sm-4 m-auto text-center">
+                                <button id="btn-save-category" type="button" class="btn btn-icon me-2  btn-primary">
+                                    <i class="fe fe-database"></i> Sauvegarder la catégorie</button>
+                            </div>
+                            <div class="col-sm-4 m-auto text-center">
+                                <button id="btn-categorize" type="button" class="btn btn-icon me-2  btn-purple">
+                                    <i class="fe fe-check-circle"></i> Classifier la population</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="text-end col-sm-12 d-flex justify-content-around  my-5">
+                        <button type="button" class="btn btn-outline-primary btn-prev"><i class="fe fe-arrow-left me-2"></i>Précédent</button>
+                        <button type="button" class="btn btn-primary-light btn-next"
+                            id="btn-suivant-category-section">Suivant<i class="fe fe-arrow-right ms-2"></i></button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CATEGORIZATION  -->
+        <div class="col-md-12 col-xl-12 form-step " id="categorization">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">Catégorisation de la population cible</h4>
+                </div>
+                <div class="card-body">
+
+
+                    <div class="table-responsive mt-2">
+                        <table class="table table-bordered text-nowrap border-bottom" id="tb2">
+
+                        </table>
+                    </div>
+                    <div class="text-end col-sm-12 d-flex justify-content-around  my-5">
+                        <button type="button" class="btn btn-outline-primary btn-prev"><i class="fe fe-arrow-left me-2"></i>Précédent</button>
+                        <button type="button" class="btn btn-primary-light btn-next">Suivant<i class="fe fe-arrow-right ms-2"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- EMPLOIS CIBLES -->
+        <div class="col-md-12 col-xl-12 form-step ">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">Emplois cibles</h4>
+                </div>
+                <div class="card-body">
+                    <div class="form-group">
+                        <label for="assessment-excel-file" class="form-label mt-0 fst-italic text-danger">La liste
+                            d'emplois ci-dessous provient du fichier Excel.</label>
+                        <div class="btn-list emploi-cible-list">
+
+                        </div>
+                    </div>
+
+                    <div class="text-end col-sm-12 d-flex justify-content-around  my-5">
+                        <button type="button" class="btn btn-outline-primary btn-prev"><i class="fe fe-arrow-left me-2"></i>Précédent</button>
+                        <button type="button" class="btn btn-primary-light btn-next">Suivant<i class="fe fe-arrow-right ms-2"></i></button>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- LANCH / SAVE PHASE -->
+        <div class="col-md-12 col-xl-12 form-step ">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title col-sm-6">Actions</h4>
+                    <div class="text-end col-sm-6 d-flex flex-row-reverse justify-content-start">
+
+                        <button id="btn-assessment-lanch" type="button" class="btn btn-icon ml-4  btn-success">
+                            <i class="fe fe-send"></i> Lancer </button>
+
+                        <button id="btn-assessment-save" type="button" class="btn btn-icon me-4  btn-purple">
+                            <i class="fe fe-database"></i> Sauvegarder </button>
+
+                    </div>
+                </div>
+                <div class="card-body">
+
+
+                    <div class="text-end col-sm-12 d-flex justify-content-around  my-5">
+
+                        <button type="button" class="btn btn-outline-primary btn-prev"><i class="fe fe-arrow-left me-2"></i>Précédent</button>
+
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+        <!-- MODAL ALERT MESSAGE -->
+        <div class="modal fade" id="modaldemo5" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered text-center" role="document">
+                <div class="modal-content tx-size-sm">
+                    <div class="modal-body text-center p-4 pb-5">
+                        <button aria-label="Close" class="btn-close position-absolute" data-bs-dismiss="modal"><span
+                                aria-hidden="true">&times;</span></button>
+                        <i class="icon icon-close fs-70 text-danger lh-1 my-5 d-inline-block"></i>
+                        <h4 id="modal-error-header" class="text-danger">Attention: vous êtes sûr de vouloir supprimer
+                            cette entrée!</h4>
+                        <p id="modal-error-content" class="mg-b-20 text-start px-3 mg-x-20">Après avoir appuyé sur le bouton "oui", vous
+                            ne récupérerez pas ces
+                            informations.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- MODAL WARNING MESSAGE -->
+        <div class="modal fade" id="warning" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered text-center" role="document">
+                <div class="modal-content tx-size-sm">
+                    <div class="modal-body text-center p-4 pb-5">
+                        <button aria-label="Close" class="btn-close position-absolute" data-bs-dismiss="modal"><span
+                                aria-hidden="true">&times;</span></button>
+                        <i class="icon icon-close fs-70 text-warning lh-1 my-5 d-inline-block"></i>
+                        <h4 id="modal-warning-header" class="text-warning">Attention: vous êtes sûr de vouloir supprimer
+                            cette entrée!</h4>
+                        <p id="modal-warning-content" class="mg-b-20 text-start px-3 mg-x-20">Après avoir appuyé sur le bouton "oui",
+                            vous
+                            ne récupérerez pas ces
+                            informations.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- MODAL SUCCESS MESSAGE -->
+        <div class="modal fade" id="success" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered text-center " role="document">
+                <div class="modal-content tx-size-sm">
+                    <div class="modal-body text-center p-4 pb-5">
+                        <button aria-label="Close" class="btn-close position-absolute" data-bs-dismiss="modal"><span
+                                aria-hidden="true">&times;</span></button>
+                        <i class="icon icon-check fs-70 text-success lh-1 my-5 d-inline-block"></i>
+                        <h4 id="modal-success-header" class="text-success tx-semibold">Complété!</h4>
+                        <p id="modal-success-content" class="mg-b-20 text-start px-3 mg-x-20">La liste des compétences a été sauvegardée
+                            avec succès. .</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- MODAL LOADING MESSAGE -->
+        <div class="modal fade" id="loading" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered text-center " role="document">
+                <div class="modal-content tx-size-sm">
+                    <div class="dimmer active">
+                        <div class="spinner1">
+                            <div class="double-bounce1"></div>
+                            <div class="double-bounce2"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- MODAL INFO MESSAGE -->
+        <div class="modal fade" id="info" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered text-center " role="document">
+                <div class="modal-content tx-size-sm">
+                    <div class="modal-body text-center p-4 pb-5">
+                        <button aria-label="Close" class="btn-close position-absolute" data-bs-dismiss="modal"><span
+                                aria-hidden="true">&times;</span></button>
+                        <i class="icon icon-clock fs-70 text-primary lh-1 my-5 d-inline-block"></i>
+                        <h4 id="modal-info-header" class="text-primary tx-semibold">Complété!</h4>
+                        <p id="modal-info-content" class="mg-b-20 text-start px-3 mg-x-20">La liste des compétences a été sauvegardée
+                            avec succès. .</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- MODAL CONFIRM -->
+        <div class="modal fade" id="confirm" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered text-center" role="document">
+                <div class="modal-content tx-size-sm">
+                    <div class="modal-body text-center p-4 pb-5">
+                        <button aria-label="Close" class="btn-close position-absolute" data-bs-dismiss="modal"><span
+                                aria-hidden="true">&times;</span></button>
+                        <i class="fe fe-alert-circle fs-70 text-warning lh-1 my-5 d-inline-block"></i>
+                        <h4 id="modal-confirm-header" class="text-warning">Attention: vous êtes sûr de vouloir supprimer
+                            cette entrée!</h4>
+                        <p id="modal-confirm-content" class="mg-b-20 text-start px-3 mg-x-20">Après avoir appuyé sur le bouton "oui",
+                            vous
+                            ne récupérerez pas ces
+                            informations.</p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ROW-1 END -->
+
+
+
+
+    <!-- SCRIPT -->
+    <th:block layout:fragment="script">
+
+
+
+        <!-- BACK-TO-TOP -->
+        <a href="#top" id="back-to-top"><i class="fa fa-angle-up"></i></a>
+
+        <!-- JQUERY JS -->
+        <script th:src="@{/assets/js/jquery.min.js}"></script>
+        
+        
+
+        <!-- BOOTSTRAP JS -->
+        <script th:src="@{/assets/plugins/bootstrap/js/popper.min.js}"></script>
+        <script th:src="@{/assets/plugins/bootstrap/js/bootstrap.min.js}"></script>
+
+
+        <!-- AUTHORIZE -->
+        <script th:src="@{/assets/custom-js/authorize.js}"></script>
+
+        <!-- UPDATE HEADER -->
+        <script th:src="@{/assets/custom-js/updateheader.js}"></script>
+
+        <!-- INPUT MASK JS-->
+        <script th:src="@{/assets/plugins/input-mask/jquery.mask.min.js}"></script>
+
+        <!-- SIDE-MENU JS-->
+        <script th:src="@{/assets/plugins/sidemenu/sidemenu.js}"></script>
+
+        <!-- TypeHead js -->
+        <script th:src="@{/assets/plugins/bootstrap5-typehead/autocomplete.js}"></script>
+        <script th:src="@{/assets/js/typehead.js}"></script>
+
+        <!-- SIDEBAR JS -->
+        <!-- <script th:src="@{/assets/plugins/sidebar/sidebar.js}"></script> -->
+
+        <!-- DATA TABLE JS -->
+        <script th:src="@{/assets/plugins/datatable/js/jquery.dataTables.min.js}"></script>
+        <script th:src="@{/assets/plugins/datatable/js/dataTables.bootstrap5.js}"></script>
+        <script th:src="@{/assets/plugins/datatable/js/dataTables.buttons.min.js}"></script>
+        <script th:src="@{/assets/plugins/datatable/js/buttons.bootstrap5.min.js}"></script>
+        <script th:src="@{/assets/plugins/datatable/js/jszip.min.js}"></script>
+        <script th:src="@{/assets/plugins/datatable/pdfmake/pdfmake.min.js}"></script>
+        <script th:src="@{/assets/plugins/datatable/pdfmake/vfs_fonts.js}"></script>
+        <script th:src="@{/assets/plugins/datatable/js/buttons.html5.min.js}"></script>
+        <script th:src="@{/assets/plugins/datatable/js/buttons.print.min.js}"></script>
+        <script th:src="@{/assets/plugins/datatable/js/buttons.colVis.min.js}"></script>
+        <script th:src="@{/assets/plugins/datatable/dataTables.responsive.min.js}"></script>
+        <script th:src="@{/assets/plugins/datatable/responsive.bootstrap5.min.js}"></script>
+        <script th:src="@{/assets/js/table-data.js}"></script>
+
+        <!-- Perfect SCROLLBAR JS-->
+        <!-- <script th:src="@{/assets/plugins/p-scroll/perfect-scrollbar.js}"></script>
+        <script th:src="@{/assets/plugins/p-scroll/pscroll.js}"></script>
+        <script th:src="@{/assets/plugins/p-scroll/pscroll-1.js}"></script> -->
+
+
+        <!-- Color Theme js -->
+        <script th:src="@{/assets/js/themeColors.js}"></script>
+
+        <!-- Sticky js -->
+        <script th:src="@{/assets/js/sticky.js}"></script>
+
+
+        <!-- CUSTOM JS -->
+        <!-- <script th:src="@{/assets/js/custom.js}"></script> -->
+
+
+        <!-- FORM WIZARD JS-->
+        <script th:src="@{/assets/plugins/formwizard/jquery.smartWizard.js}"></script>
+        <script th:src="@{/assets/plugins/formwizard/fromwizard.js}"></script>
+
+        <!-- FILE UPLOADES JS -->
+        <script th:src="@{/assets/plugins/fileuploads/js/fileupload.js}"></script>
+        <script th:src="@{/assets/plugins/fileuploads/js/file-upload.js}"></script>
+
+        <!-- INTERNAL File-Uploads Js-->
+        <script th:src="@{/assets/plugins/fancyuploder/jquery.ui.widget.js}"></script>
+        <script th:src="@{/assets/plugins/fancyuploder/jquery.fileupload.js}"></script>
+        <script th:src="@{/assets/plugins/fancyuploder/jquery.iframe-transport.js}"></script>
+        <script th:src="@{/assets/plugins/fancyuploder/jquery.fancy-fileupload.js}"></script>
+        <script th:src="@{/assets/plugins/fancyuploder/fancy-uploader.js}"></script>
+
+        <!-- MULTI SELECT JS-->
+        <script th:src="@{/assets/plugins/multipleselect/multiple-select.js}"></script>
+        <script th:src="@{/assets/plugins/multipleselect/multi-select.js}"></script>
+
+        <!-- SELECT2 JS -->
+        <script th:src="@{/assets/plugins/select2/select2.full.min.js}"></script>
+        <script th:src="@{/assets/js/select2.js}"></script>
+
+        <!-- EXCELJS -->
+        <script th:src="@{/assets/plugins/exceljs/exceljs.min.js}"></script>
+
+        <!-- CUSTOM JS -->
+        <script th:src="@{/assets/js/custom.js}"></script>
+
+
+        <!-- PREASSESSMENT -->
+        <script th:src="@{/assets/custom-js/preassessment.js}"></script>
+
+        <!-- EDIT - ASSESSMENT -->
+        <script th:src="@{/assets/custom-js/edit-assessment.js}"></script>
+
+        <!-- PROGRESS_BAR JS -->
+        <script th:src="@{/assets/custom-js/progress-step.js}"></script>
+
+
+
+
+
+    </th:block>
+    <!-- END SCRIPT -->

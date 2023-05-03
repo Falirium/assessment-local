@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+    layout:decorate="~{/layouts/layout2.html}">
+
+<head>
+
+    <title>Manager</title>
+</head>
+
+<body>
+
+    <!-- PAGE CONTENT -->
+    <div class="page" layout:fragment="page-content">
+        <div class="page-content error-page error2 text-white">
+            <div class="container text-center">
+                <div class="error-template">
+                    <h1 class="display-1 mb-2">ERREUR</h1>
+                    <h5 class="error-details">
+                        Désolé, une erreur s'est produite, la page demandée n'a pas été trouvée !
+                    </h5>
+                    <div class="text-center">
+                        <a id="homepage-link" class="btn btn-secondary mt-5 mb-5" th:href="@{/assessment/list}"> <i class="fa fa-long-arrow-left"></i> Retour à la page d'accueil </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- PAGE CONTENTCLOSED -->
+
+
+
+
+
+
+    <!-- SCRIPT -->
+    <th:block layout:fragment="script">
+
+        <!-- BACK-TO-TOP -->
+        <a href="#top" id="back-to-top"><i class="fa fa-angle-up"></i></a>
+
+        <!-- JQUERY JS -->
+        <script th:src="@{/assets/js/jquery.min.js}"></script>
+
+
+
+        <!-- BOOTSTRAP JS -->
+        <script th:src="@{/assets/plugins/bootstrap/js/popper.min.js}"></script>
+        <script th:src="@{/assets/plugins/bootstrap/js/bootstrap.min.js}"></script>
+
+
+        <!-- AUTHORIZE -->
+        <script th:src="@{/assets/custom-js/authorize.js}"></script>
+
+
+        <!-- Perfect SCROLLBAR JS-->
+        <script th:src="@{/assets/plugins/p-scroll/perfect-scrollbar.js}"></script>
+        <script th:src="@{/assets/plugins/p-scroll/pscroll.js}"></script>
+        <script th:src="@{/assets/plugins/p-scroll/pscroll-1.js}"></script>
+
+        
+
+        <!-- Color Theme js -->
+        <script th:src="@{/assets/js/themeColors.js}"></script>
+
+        <!-- Sticky js -->
+        <script th:src="@{/assets/js/sticky.js}"></script>
+
+
+        <!-- CUSTOM JS -->
+        <script th:src="@{/assets/js/custom.js}"></script>
+
+        <!-- 404 -->
+        <script th:src="@{/assets/js/error.js}"></script>
+
+
+    </th:block>
+
+    <!-- END SCRIPT -->

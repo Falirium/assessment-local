@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+    layout:decorate="~{/layouts/layout.html}">
+
+<head>
+
+    <title>Manager - Evaluation</title>
+</head>
+
+<body>
+
+    <!-- CONTAINER -->
+    <div class="main-container target-container container-fluid" layout:fragment="page-content">
+        <!-- PAGE-HEADER -->
+        <div class="page-header">
+            <h1 class="page-title">Fiche d'évaluation</h1>
+            <div>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="javascript:void(0)" id="breadcrumb-text">Manager</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Fiches d'évaluations</li>
+                </ol>
+            </div>
+        </div>
+        <!-- PAGE-HEADER END -->
+
+        <!-- ROW-1  -->
+        <div class="row row-sm">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Liste des fiches d'évaluations</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered text-nowrap border-bottom" id="tb1">
+                               
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ROW-1 END -->
+
+        <!-- MODAL ALERT MESSAGE -->
+        <div class="modal fade" id="modaldemo5" data-bs-backdrop="static">
+            <div class="modal-dialog modal-dialog-centered text-center" role="document">
+                <div class="modal-content tx-size-sm">
+                    <div class="modal-body text-center p-4 pb-5">
+                        <button type="button" aria-label="Close" class="btn-close position-absolute" data-bs-dismiss="modal"><span
+                                aria-hidden="true">&times;</span></button>
+                        <i class="icon icon-close fs-70 text-danger lh-1 my-5 d-inline-block"></i>
+                        <h4 id="modal-error-header" class="text-danger">Attention: vous êtes sûr de vouloir supprimer
+                            cette entrée!</h4>
+                        <p id="modal-error-content" class="mg-b-20 text-start px-3 mg-x-20">Après avoir appuyé sur le bouton "oui", vous
+                            ne récupérerez pas ces
+                            informations.</p><button aria-label="Close" id="confirm-delete-category"
+                            class="btn btn-danger pd-x-25" data-bs-dismiss="modal">Oui</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- MODAL WARNING MESSAGE -->
+        <div class="modal fade" id="warning" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered text-center" role="document">
+                <div class="modal-content tx-size-sm">
+                    <div class="modal-body text-center p-4 pb-5">
+                        <button aria-label="Close" class="btn-close position-absolute" data-bs-dismiss="modal"><span
+                                aria-hidden="true">&times;</span></button>
+                        <i class="icon icon-close fs-70 text-warning lh-1 my-5 d-inline-block"></i>
+                        <h4 id="modal-warning-header" class="text-warning">Attention: vous êtes sûr de vouloir supprimer
+                            cette entrée!</h4>
+                        <p id="modal-warning-content" class="mg-b-20 text-start px-3 mg-x-20">Après avoir appuyé sur le bouton "oui",
+                            vous
+                            ne récupérerez pas ces
+                            informations.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- MODAL SUCCESS MESSAGE -->
+        <div class="modal fade" id="success" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered text-center " role="document">
+                <div class="modal-content tx-size-sm">
+                    <div class="modal-body text-center p-4 pb-5">
+                        <button aria-label="Close" class="btn-close position-absolute" data-bs-dismiss="modal"><span
+                                aria-hidden="true">&times;</span></button>
+                        <i class="icon icon-check fs-70 text-success lh-1 my-5 d-inline-block"></i>
+                        <h4 id="modal-success-header" class="text-success tx-semibold">Complété!</h4>
+                        <p id="modal-success-content" class="mg-b-20 text-start px-3 mg-x-20">La liste des compétences a été sauvegardée
+                            avec succès. .</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- MODAL INFO MESSAGE -->
+        <div class="modal fade" id="info" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered text-center " role="document">
+                <div class="modal-content tx-size-sm">
+                    <div class="modal-body text-center p-4 pb-5">
+                        <button aria-label="Close" class="btn-close position-absolute" data-bs-dismiss="modal"><span
+                                aria-hidden="true">&times;</span></button>
+                        <i class="icon icon-clock fs-70 text-primary lh-1 my-5 d-inline-block"></i>
+                        <h4 id="modal-info-header" class="text-primary tx-semibold">Complété!</h4>
+                        <p id="modal-info-content" class="mg-b-20 text-start px-3 mg-x-20">La liste des compétences a été sauvegardée
+                            avec succès. .</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- MODAL CONFIRM -->
+        <div class="modal fade" id="confirm" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered text-center" role="document">
+                <div class="modal-content tx-size-sm">
+                    <div class="modal-body text-center p-4 pb-5">
+                        <button aria-label="Close" class="btn-close position-absolute" data-bs-dismiss="modal"><span
+                                aria-hidden="true">&times;</span></button>
+                        <i class="fe fe-alert-circle fs-70 text-warning lh-1 my-5 d-inline-block"></i>
+                        <h4 id="modal-confirm-header" class="text-warning">Attention: vous êtes sûr de vouloir supprimer
+                            cette entrée!</h4>
+                        <p id="modal-confirm-content" class="mg-b-20 text-start px-3 mg-x-20">Après avoir appuyé sur le bouton "oui",
+                            vous
+                            ne récupérerez pas ces
+                            informations.</p>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- MODAL LOADING MESSAGE -->
+        <div class="modal fade" id="loading" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered text-center " role="document">
+                <div class="modal-content tx-size-sm">
+                    <div class="dimmer active">
+                        <div class="spinner1">
+                            <div class="double-bounce1"></div>
+                            <div class="double-bounce2"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+    <!-- CONTAINER CLOSED -->
+
+    <!-- SCRIPT -->
+    <th:block layout:fragment="script">
+        <!-- BACK-TO-TOP -->
+        <a href="#top" id="back-to-top"><i class="fa fa-angle-up"></i></a>
+
+        <!-- JQUERY JS -->
+        <script th:src="@{/assets/js/jquery.min.js}"></script>
+
+
+        
+
+
+        <!-- BOOTSTRAP JS -->
+        <script th:src="@{/assets/plugins/bootstrap/js/popper.min.js}"></script>
+        <script th:src="@{/assets/plugins/bootstrap/js/bootstrap.min.js}"></script>
+
+
+        <!-- AUTHORIZE -->
+        <script th:src="@{/assets/custom-js/authorize.js}"></script>
+
+        <!-- UPDATE HEADER -->
+        <script th:src="@{/assets/custom-js/updateheader.js}"></script>
+        
+
+        <!-- INPUT MASK JS-->
+        <script th:src="@{/assets/plugins/input-mask/jquery.mask.min.js}"></script>
+
+        <!-- SPARKLINE JS-->
+        <script th:src="@{/assets/js/jquery.sparkline.min.js}"></script>
+
+        <!-- SIDE-MENU JS -->
+        <script th:src="@{/assets/plugins/sidemenu/sidemenu.js}"></script>
+
+        <!-- TypeHead js -->
+        <script th:src="@{/assets/plugins/bootstrap5-typehead/autocomplete.js}"></script>
+        <script th:src="@{/assets/js/typehead.js}"></script>
+
+        <!-- INTERNAL SELECT2 JS -->
+        <script th:src="@{/assets/plugins/select2/select2.full.min.js}"></script>
+
+        <!-- DATA TABLE JS-->
+        <script th:src="@{/assets/plugins/datatable/js/jquery.dataTables.min.js}"></script>
+        <script th:src="@{/assets/plugins/datatable/js/dataTables.bootstrap5.js}"></script>
+        <script th:src="@{/assets/plugins/datatable/js/dataTables.buttons.min.js}"></script>
+        <script th:src="@{/assets/plugins/datatable/js/buttons.bootstrap5.min.js}"></script>
+        <script th:src="@{/assets/plugins/datatable/js/jszip.min.js}"></script>
+        <script th:src="@{/assets/plugins/datatable/pdfmake/pdfmake.min.js}"></script>
+        <script th:src="@{/assets/plugins/datatable/pdfmake/vfs_fonts.js}"></script>
+        <script th:src="@{/assets/plugins/datatable/js/buttons.html5.min.js}"></script>
+        <script th:src="@{/assets/plugins/datatable/js/buttons.print.min.js}"></script>
+        <script th:src="@{/assets/plugins/datatable/js/buttons.colVis.min.js}"></script>
+        <script th:src="@{/assets/plugins/datatable/dataTables.responsive.min.js}"></script>
+        <script th:src="@{/assets/plugins/datatable/responsive.bootstrap5.min.js}"></script>
+        <script th:src="@{/assets/js/table-data.js}"></script>
+
+        <!-- SIDEBAR JS -->
+        <script th:src="@{/assets/plugins/sidebar/sidebar.js}"></script>
+
+        <!-- Perfect SCROLLBAR JS-->
+        <script th:src="@{/assets/plugins/p-scroll/perfect-scrollbar.js}"></script>
+        <script th:src="@{/assets/plugins/p-scroll/pscroll.js}"></script>
+        <script th:src="@{/assets/plugins/p-scroll/pscroll-1.js}"></script>
+
+        <!-- INTERNAL Edit-Table JS
+        <script th:src="@{/assets/plugins/edit-table/bst-edittable.js}"></script>
+        <script th:src="@{/assets/plugins/edit-table/edit-table.js}"></script> -->
+
+        <!-- Color Theme js -->
+        <script th:src="@{/assets/js/themeColors.js}"></script>
+
+        <!-- Sticky js -->
+        <script th:src="@{/assets/js/sticky.js}"></script>
+
+        <!-- CUSTOM JS -->
+        <script th:src="@{/assets/js/custom.js}"></script>
+
+
+        <!-- LISTS FICHES -->
+        <script th:src="@{/assets/custom-js/list-fiches.js}"></script>
+
+    </th:block>
+
+    <!-- END SCRIPT -->
+
+
+
+
+</body>
+
+</html>

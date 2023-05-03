@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+    layout:decorate="~{/layouts/layout.html}">
+
+<head>
+
+    <title>Manager</title>
+</head>
+
+<body>
+
+    <!-- CONTAINER -->
+    <div class="main-container target-container container-fluid" layout:fragment="page-content">
+
+        <!-- PAGE-HEADER -->
+        <div class="page-header">
+            <h1 class="page-title">Manager</h1>
+            <div>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a id="breadcrumb-text" href="javascript:void(0)">Consultant BCP</a></li>
+                    <li class="breadcrumb-item"><a href="javascript:void(0)">Emplyée</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Manager</li>
+                </ol>
+            </div>
+        </div>
+        <!-- PAGE-HEADER END -->
+
+        <!-- ROW-1 -->
+        <div class="row">
+            <div class="col-xl-4">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">Editer mot de passe</div>
+                    </div>
+                    <div class="card-body">
+                        <div class="text-center chat-image mb-5">
+                            <div class="avatar avatar-xxl chat-profile mb-3 brround">
+                                <a class="" href="#"><img alt="avatar" th:src="@{/assets/images/users/7.jpg}"
+                                        class="brround"></a>
+                            </div>
+                            <div class="main-chat-msg-name">
+                                <a href="profile.html">
+                                    <h5 id="drh-name" class="mb-1 text-dark fw-semibold">Admin DRH</h5>
+                                </a>
+                                <p class="text-muted mt-0 mb-0 pt-0 fs-13">Consultant RH BPR</p>
+                            </div>
+                        </div>
+                        <div class="form-group text-center">
+                            <!-- <label class="form-label">Current Password</label> -->
+                            <!-- <div class="wrap-input100 validate-input input-group" id="Password-toggle">
+                                <a href="javascript:void(0)" class="input-group-text bg-white text-muted">
+                                    <i class="zmdi zmdi-eye text-muted" aria-hidden="true"></i>
+                                </a>
+                                <input class="input100 form-control" type="password" placeholder="Current Password" autocomplete="current-password">
+                            </div> -->
+                            <a id="generate-pwd-btn" href="javascript:void(0)" class="btn btn-primary"><i
+                                class="fe fe-edit-2 me-2"></i>Générer un mot de
+                            passe fort</a>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Nouveau mot de passe</label>
+                            <div class="wrap-input100 validate-input input-group" id="Password-toggle1">
+                                <a href="javascript:void(0)" class="input-group-text bg-white text-muted">
+                                    <i class="zmdi zmdi-eye text-muted" aria-hidden="true"></i>
+                                </a>
+                                <input class="input100 form-control" id="pwd-input" type="password"
+                                    placeholder="Nouveau mot de passe" autocomplete="new-password">
+                                <div class="invalid-feedback">
+                                    Les mots de passe que vous avez saisis ne sont pas identiques.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Confirmer le mot de passe</label>
+                            <div class="wrap-input100 validate-input input-group" id="Password-toggle2">
+                                <a href="javascript:void(0)" class="input-group-text bg-white text-muted">
+                                    <i class="zmdi zmdi-eye text-muted" aria-hidden="true"></i>
+                                </a>
+                                <input class="input100 form-control" id="confirm-pwd-input" type="password"
+                                    placeholder="Confirmer le mot de passe" autocomplete="new-password">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer text-end">
+                        <a id="update-pwd-btn" href="javascript:void(0)" class="btn btn-success"><i
+                            class="fe fe-refresh-cw me-2"></i>Définir le mot-de-passe</a>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="col-xl-8">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Edit le profile</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-12">
+                                <div class="form-group">
+                                    <label for="first-name-drh-input">Prénom</label>
+                                    <input type="text" class="drh-full-name form-control" id="first-name-drh-input"
+                                        placeholder="Ex : Abdo">
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-12">
+                                <div class="form-group">
+                                    <label for="last-name-drh-input">Nom</label>
+                                    <input type="text" class="drh-full-name form-control" id="last-name-drh-input"
+                                        placeholder="Ex : Dialo">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6 col-md-12">
+                                <div class="form-group">
+                                    <label for="mat-drh-input">Matricule</label>
+                                    <input type="text" class="form-control" id="mat-drh-input"
+                                        placeholder="Ex : 22123223">
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-12">
+                                <div class="form-group">
+                                    <label for="email-drh-input">Adresse E-mail </label>
+                                    <input type="email" class="form-control" id="email-drh-input"
+                                        placeholder="xxxxxx@cpm.co.ma">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-lg-6 col-md-12">
+                                <div class="form-group">
+                                    <label for="phone-drh-input">Numéro de telephone</label>
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <span class="input-group-text" id="basic-addon1">+212</span>
+                                            <input id="phone-drh-input" type="text" class="form-control"
+                                                placeholder="0-00-00-00-00" aria-label="Username"
+                                                aria-describedby="basic-addon1">
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                            <div class="col-lg-6 col-md-12">
+                                <div class="form-group">
+                                    <label for="bpr-drh-input">BPR </label>
+                                    <select class="form-control form-select select2" id="bpr-drh-input"
+                                        data-width="100%">
+                                        <option value="0">Choisissez une BPR dans la liste :</option>
+                                        <option value="bp_tanger_tetouan">B.P de Tanger-Tétouan</option>
+                                        <option value="bp_rabat_kenitra">B.P de Rabat-Kénitra</option>
+                                        <option value="bp_ouajda">B.P d'Oujda</option>
+                                        <option value="bp_nador_houceima">B.P de Nador-Al Hoceima</option>
+                                        <option value="bp_kech_mellal">B.P de Marrakech-Béni Mellal</option>
+                                        <option value="bp_laayoune">B.P de Laayoune</option>
+                                        <option value="bp_fes_meknes">B.P de Fès-Meknès</option>
+                                        <option value="bp_sud">B.P du Centre-Sud</option>
+
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+                        <div class="form-group">
+                            <label for="direction-drh-input">Direction </label>
+                            <input type="text" class="form-control" id="direction-drh-input"
+                                placeholder="Dans quelle direction travaille-t-il/elle ?">
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="code-drh-input">Le code de matriculation :</label>
+
+                            <div class="input-group">
+                                <span class="input-group-text" for="code-prefix-drh-input">Commence par :</span>
+
+                                <select multiple="multiple" id="code-prefix-drh-input" class="form-control select2 "
+                                    placeholder="La matriculation des collaborateurs de ce BPR commence par ?"
+                                    name="prefix">
+
+                                </select>
+
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="input-group">
+                                <span class="input-group-text" for="code-suffix-drh-input">Se termine par :</span>
+
+                                <select multiple="multiple" id="code-suffix-drh-input" class="form-control select2 "
+                                    placeholder="La matriculation des collaborateurs de ce BPR se termine par ?"
+                                    name="suffix">
+                                    <option value="10">10</option>
+                                    <option value="11">11</option>
+                                    <option value="12">12</option>
+                                    <option value="13">13</option>
+                                </select>
+                            </div>
+                        </div>
+
+
+
+
+
+
+
+                    </div>
+                    <div class="card-footer text-end">
+                        <a id="save-btn" href="javascript:void(0)" class="btn btn-success my-1">Sauvegarder</a>
+                        <a id="reset-btn" href="javascript:void(0)" class="btn btn-primary my-1">Réinitialiser</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">Supprimer le compte</div>
+                    </div>
+                    <div class="card-body">
+                        <p>Its Advisable for you to request your data to be sent to your Email.</p>
+                        <label class="custom-control custom-checkbox mb-0">
+                            <input type="checkbox" class="custom-control-input" name="example-checkbox1" value="option1"
+                                checked>
+                            <span class="custom-control-label">Yes, Send my data to my Email.</span>
+                        </label>
+                    </div>
+                    <div class="card-footer text-end">
+                        <a href="javascript:void(0)" class="btn btn-primary my-1">Désactiver</a>
+                        <a href="javascript:void(0)" class="btn btn-danger my-1">Supprimer le compte</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ROW-1 END -->
+
+
+
+        <!-- MODAL DELETE MESSAGE -->
+        <div class="modal fade" id="modaldemo5" data-bs-backdrop="static">
+            <div class="modal-dialog modal-dialog-centered text-center" role="document">
+                <div class="modal-content tx-size-sm">
+                    <div class="modal-body text-center p-4 pb-5">
+                        <button aria-label="Close" class="btn-close position-absolute" data-bs-dismiss="modal"><span
+                                aria-hidden="true">&times;</span></button>
+                        <i class="icon icon-close fs-70 text-danger lh-1 my-5 d-inline-block"></i>
+                        <h4 id="modal-error-header" class="text-danger">Attention: vous êtes sûr de vouloir supprimer
+                            cette entrée!</h4>
+                        <p id="modal-error-content" class="mg-b-20 text-start px-3 mg-x-20">Après avoir appuyé sur le
+                            bouton "oui", vous
+                            ne récupérerez pas ces
+                            informations.</p><button aria-label="Close" id="confirm-delete-btn"
+                            class="btn btn-danger pd-x-25" data-bs-dismiss="modal">Oui</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- MODAL WARNING MESSAGE -->
+        <div class="modal fade" id="warning" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered text-center" role="document">
+                <div class="modal-content tx-size-sm">
+                    <div class="modal-body text-center p-4 pb-5">
+                        <button aria-label="Close" class="btn-close position-absolute" data-bs-dismiss="modal"><span
+                                aria-hidden="true">&times;</span></button>
+                        <i class="icon icon-close fs-70 text-warning lh-1 my-5 d-inline-block"></i>
+                        <h4 id="modal-warning-header" class="text-warning">Attention: vous êtes sûr de vouloir supprimer
+                            cette entrée!</h4>
+                        <p id="modal-warning-content" class="mg-b-20 text-start px-3 mg-x-20">Après avoir appuyé sur le
+                            bouton "oui",
+                            vous
+                            ne récupérerez pas ces
+                            informations.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- MODAL SUCCESS MESSAGE -->
+        <div class="modal fade" id="success" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered text-center " role="document">
+                <div class="modal-content tx-size-sm">
+                    <div class="modal-body text-center p-4 pb-5">
+                        <button aria-label="Close" class="btn-close position-absolute" data-bs-dismiss="modal"><span
+                                aria-hidden="true">&times;</span></button>
+                        <i class="icon icon-check fs-70 text-success lh-1 my-5 d-inline-block"></i>
+                        <h4 id="modal-success-header" class="text-success tx-semibold">Complété!</h4>
+                        <p id="modal-success-content" class="mg-b-20 text-start px-3 mg-x-20">La liste des compétences a
+                            été sauvegardée
+                            avec succès. .</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- MODAL INFO MESSAGE -->
+        <div class="modal fade" id="info" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered text-center " role="document">
+                <div class="modal-content tx-size-sm">
+                    <div class="modal-body text-center p-4 pb-5">
+                        <button aria-label="Close" class="btn-close position-absolute" data-bs-dismiss="modal"><span
+                                aria-hidden="true">&times;</span></button>
+                        <i class="icon icon-clock fs-70 text-primary lh-1 my-5 d-inline-block"></i>
+                        <h4 id="modal-info-header" class="text-primary tx-semibold">Complété!</h4>
+                        <p id="modal-info-content" class="mg-b-20 text-start px-3 mg-x-20">La liste des compétences a
+                            été sauvegardée
+                            avec succès. .</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- MODAL CONFIRM -->
+        <div class="modal fade" id="confirm" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered text-center" role="document">
+                <div class="modal-content tx-size-sm">
+                    <div class="modal-body text-center p-4 pb-5">
+                        <button aria-label="Close" class="btn-close position-absolute" data-bs-dismiss="modal"><span
+                                aria-hidden="true">&times;</span></button>
+                        <i class="fe fe-alert-circle fs-70 text-warning lh-1 my-5 d-inline-block"></i>
+                        <h4 id="modal-confirm-header" class="text-warning">Attention: vous êtes sûr de vouloir supprimer
+                            cette entrée!</h4>
+                        <p id="modal-confirm-content" class="mg-b-20 text-start px-3 mg-x-20">Après avoir appuyé sur le
+                            bouton "oui",
+                            vous
+                            ne récupérerez pas ces
+                            informations.</p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- MODAL LOADING MESSAGE -->
+        <div class="modal fade" id="loading" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered text-center " role="document">
+                <div class="modal-content tx-size-sm">
+                    <div class="dimmer active">
+                        <div class="spinner1">
+                            <div class="double-bounce1"></div>
+                            <div class="double-bounce2"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+    <!-- CONTAINER CLOSED -->
+
+
+
+
+
+
+    <!-- SCRIPT -->
+    <th:block layout:fragment="script">
+
+        <!-- BACK-TO-TOP -->
+        <a href="#top" id="back-to-top"><i class="fa fa-angle-up"></i></a>
+
+        <!-- JQUERY JS -->
+        <script th:src="@{/assets/js/jquery.min.js}"></script>
+
+
+
+        <!-- BOOTSTRAP JS -->
+        <script th:src="@{/assets/plugins/bootstrap/js/popper.min.js}"></script>
+        <script th:src="@{/assets/plugins/bootstrap/js/bootstrap.min.js}"></script>
+
+
+        <!-- AUTHORIZE -->
+        <script th:src="@{/assets/custom-js/authorize.js}"></script>
+
+        <!-- UPDATE HEADER -->
+        <script th:src="@{/assets/custom-js/updateheader.js}"></script>
+        <script th:src="@{/assets/js/jquery-ui.min.js}"></script>
+
+        <!-- INPUT MASK JS-->
+        <script th:src="@{/assets/plugins/input-mask/jquery.mask.min.js}"></script>
+
+        <!-- SPARKLINE JS-->
+        <script th:src="@{/assets/js/jquery.sparkline.min.js}"></script>
+
+        <!-- SIDE-MENU JS -->
+        <script th:src="@{/assets/plugins/sidemenu/sidemenu.js}"></script>
+
+        <!-- TypeHead js -->
+        <script th:src="@{/assets/plugins/bootstrap5-typehead/autocomplete.js}"></script>
+        <script th:src="@{/assets/js/typehead.js}"></script>
+
+        <!-- INTERNAL SELECT2 JS -->
+        <script th:src="@{/assets/plugins/select2/select2.full.min.js}"></script>
+
+        <!-- DATA TABLE JS-->
+        <script th:src="@{/assets/plugins/datatable/js/jquery.dataTables.min.js}"></script>
+        <script th:src="@{/assets/plugins/datatable/js/dataTables.bootstrap5.js}"></script>
+        <script th:src="@{/assets/plugins/datatable/js/dataTables.buttons.min.js}"></script>
+        <script th:src="@{/assets/plugins/datatable/js/buttons.bootstrap5.min.js}"></script>
+        <script th:src="@{/assets/plugins/datatable/js/jszip.min.js}"></script>
+        <script th:src="@{/assets/plugins/datatable/pdfmake/pdfmake.min.js}"></script>
+        <script th:src="@{/assets/plugins/datatable/pdfmake/vfs_fonts.js}"></script>
+        <script th:src="@{/assets/plugins/datatable/js/buttons.html5.min.js}"></script>
+        <script th:src="@{/assets/plugins/datatable/js/buttons.print.min.js}"></script>
+        <script th:src="@{/assets/plugins/datatable/js/buttons.colVis.min.js}"></script>
+        <script th:src="@{/assets/plugins/datatable/dataTables.responsive.min.js}"></script>
+        <script th:src="@{/assets/plugins/datatable/responsive.bootstrap5.min.js}"></script>
+        <script th:src="@{/assets/js/table-data.js}"></script>
+
+        <!-- SIDEBAR JS -->
+        <script th:src="@{/assets/plugins/sidebar/sidebar.js}"></script>
+
+        <!-- SHOW PASSWORD JS -->
+        <script th:src="@{/assets/js/show-password.min.js}"></script>
+
+        <!-- Perfect SCROLLBAR JS-->
+        <script th:src="@{/assets/plugins/p-scroll/perfect-scrollbar.js}"></script>
+        <script th:src="@{/assets/plugins/p-scroll/pscroll.js}"></script>
+        <script th:src="@{/assets/plugins/p-scroll/pscroll-1.js}"></script>
+
+        <!-- INTERNAL Edit-Table JS -->
+        <script th:src="@{/assets/plugins/edit-table/bst-edittable.js}"></script>
+        <script th:src="@{/assets/plugins/edit-table/edit-table.js}"></script>
+
+        <!-- Color Theme js -->
+        <script th:src="@{/assets/js/themeColors.js}"></script>
+
+        <!-- Sticky js -->
+        <script th:src="@{/assets/js/sticky.js}"></script>
+
+
+        <!-- CUSTOM JS -->
+        <script th:src="@{/assets/js/custom.js}"></script>
+
+
+        <!-- ADD DRH -->
+        <script th:src="@{/assets/custom-js/add-drh.js}"></script>
+
+
+
+
+    </th:block>
+
+    <!-- END SCRIPT -->

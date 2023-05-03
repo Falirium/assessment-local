@@ -1,0 +1,419 @@
+<!doctype html>
+<html lang="en" dir="ltr" style="background-color: white;">
+
+<head>
+
+    <!-- META DATA -->
+    <meta charset="UTF-8">
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=0'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Platforme d'assessment au profit de BCP">
+    <meta name="author" content="Falirium">
+    <meta name="keywords"
+        content="admin,admin dashboard,admin panel,admin template,bootstrap,clean,dashboard,flat,jquery,modern,responsive,premium admin templates,responsive admin,ui,ui kit.">
+
+    <!-- FAVICON -->
+    <link rel="shortcut icon" type="image/x-icon" th:href="@{/assets/images/brand/favicon.ico}" />
+
+
+    <!-- TITLE -->
+    <title layout:title-pattern="$LAYOUT_TITLE - $CONTENT_TITLE">Outil Assessment</title>
+
+    <!-- BOOTSTRAP CSS -->
+    <link id="style" th:href="@{/assets/plugins/bootstrap/css/bootstrap.min.css}" rel="stylesheet" />
+
+    <!-- STYLE CSS -->
+    <link th:href="@{/assets/css/style.css}" rel="stylesheet" />
+    <link th:href="@{/assets/css/dark-style.css}" rel="stylesheet" />
+    <link th:href="@{/assets/css/transparent-style.css}" rel="stylesheet">
+    <link th:href="@{/assets/css/skin-modes.css}" rel="stylesheet" />
+
+    <!--- FONT-ICONS CSS -->
+    <link th:href="@{/assets/css/icons.css}" rel="stylesheet" />
+
+
+
+    <!-- COLOR SKIN CSS -->
+    <link id="theme" rel="stylesheet" type="text/css" media="all" th:href="@{/assets/colors/color1.css}" />
+
+    <!-- CUSTOM CSS -->
+    <link th:href="@{/assets/custom-css/authentification.css}" rel="stylesheet" />
+
+    <!--- PREASSESSMENT CSS -->
+    <link th:href="@{/assets/custom-css/preassessment.css}" rel="stylesheet" />
+
+</head>
+
+<body class="app sidebar-mini ltr ">
+
+    <!-- BACKGROUND-IMAGE -->
+    <div class="">
+
+        <!-- GLOABAL LOADER -->
+        <div id="global-loader">
+            <img th:src="@{/assets/images/loader.svg}" class="loader-img" alt="Loader">
+        </div>
+        <!-- /GLOABAL LOADER -->
+
+        <!-- PAGE -->
+        <div class="page">
+            <div class="">
+
+                <!-- CONTAINER OPEN -->
+                <div class="col  mx-auto mt-7">
+                    <div class="text-center">
+                        <a href="index.html"><img th:src="@{/assets/images/brand/e-logo.png}" class="header-brand-img"
+                                alt="" style="width: 18%;"></a>
+                    </div>
+                </div>
+
+                <div class="container-login100">
+                    <div class="wrap-login100 p-6">
+                        <form class="login100-form validate-form">
+                            <span class="login100-form-title pb-5">
+                                Connexion
+                            </span>
+                            <div class="panel panel-primary">
+                                <div class="tab-menu-heading">
+                                    <div class="tabs-menu1">
+                                        <!-- Tabs -->
+                                        <ul class="nav panel-tabs">
+                                            <li class="mx-0"><a href="#tab5" class="active"
+                                                    data-bs-toggle="tab">Cons. BCP</a></li>
+                                            <li class="mx-0"><a href="#tab6" data-bs-toggle="tab">Cons. BPR</a></li>
+                                            <li class="mx-0"><a href="#tab7" data-bs-toggle="tab">Manager</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="panel-body tabs-menu-body p-0 pt-5">
+                                    <div class="tab-content">
+                                        <div class="tab-pane active" id="tab5">
+                                            <div class="wrap-input100 validate-input input-group"
+                                                data-bs-validate="Valid email is required: ex@abc.xyz">
+                                                <a href="javascript:void(0)"
+                                                    class="input-group-text bg-white text-muted">
+                                                    <i class="zmdi zmdi-email text-muted" aria-hidden="true"></i>
+                                                </a>
+                                                <input 
+                                                    class="input100 matricule-input border-start-0 form-control ms-0" type="text"
+                                                    placeholder="Matricule Consultant BCP">
+                                                <div id="username-error" class="invalid-feedback">
+
+                                                </div>
+                                            </div>
+                                            <div class="wrap-input100 validate-input input-group" id="Password-toggle">
+                                                <a href="javascript:void(0)"
+                                                    class="input-group-text bg-white text-muted">
+                                                    <i class="zmdi zmdi-eye text-muted" aria-hidden="true"></i>
+                                                </a>
+                                                <input  class="input100 pwd-input border-start-0 form-control ms-0"
+                                                    type="password" placeholder="Password">
+                                                <div id="fpassword-error" class="invalid-feedback">
+
+                                                </div>
+                                            </div>
+                                            <div class="text-end pt-4">
+                                                <p class="mb-0"><a href="forgot-password.html"
+                                                        class="text-primary ms-1">Mot de passe oublié ?</a></p>
+                                            </div>
+                                            <div class="container-login100-form-btn">
+                                                <a id="cnx-btn" class="login100-form-btn btn-primary">
+                                                    Se connecter
+                                                </a>
+                                            </div>
+                                            <div class="text-center pt-3">
+                                                <p class="text-dark mb-0">Vous avez des problèmes ? <a href="#"
+                                                        class="text-primary ms-1">Contactez-nous </a></p>
+                                            </div>
+                                            <!-- <label class="login-social-icon"><span>Login with Social</span></label>
+                                            <div class="d-flex justify-content-center">
+                                                <a href="javascript:void(0)">
+                                                    <div class="social-login me-4 text-center">
+                                                        <i class="fa fa-google"></i>
+                                                    </div>
+                                                </a>
+                                                <a href="javascript:void(0)">
+                                                    <div class="social-login me-4 text-center">
+                                                        <i class="fa fa-facebook"></i>
+                                                    </div>
+                                                </a>
+                                                <a href="javascript:void(0)">
+                                                    <div class="social-login text-center">
+                                                        <i class="fa fa-twitter"></i>
+                                                    </div>
+                                                </a>
+                                            </div> -->
+                                        </div>
+
+                                        <div class="tab-pane " id="tab6">
+                                            <div class="wrap-input100 validate-input input-group"
+                                                data-bs-validate="Valid email is required: ex@abc.xyz">
+                                                <a href="javascript:void(0)"
+                                                    class="input-group-text bg-white text-muted">
+                                                    <i class="zmdi zmdi-email text-muted" aria-hidden="true"></i>
+                                                </a>
+                                                <input 
+                                                    class="input100 matricule-input border-start-0 form-control ms-0" type="text"
+                                                    placeholder="Matricule Consultant BPR">
+                                                <div id="username-error" class="invalid-feedback">
+
+                                                </div>
+                                            </div>
+                                            <div class="wrap-input100 validate-input input-group" id="Password-toggle1">
+                                                <a href="javascript:void(0)"
+                                                    class="input-group-text bg-white text-muted">
+                                                    <i class="zmdi zmdi-eye text-muted" aria-hidden="true"></i>
+                                                </a>
+                                                <input  class="input100 pwd-input border-start-0 form-control ms-0"
+                                                    type="password" placeholder="Password">
+                                                <div id="fpassword-error" class="invalid-feedback">
+
+                                                </div>
+                                            </div>
+                                            <div class="text-end pt-4">
+                                                <p class="mb-0"><a href="forgot-password.html"
+                                                        class="text-primary ms-1">Mot de passe oublié ?</a></p>
+                                            </div>
+                                            <div class="container-login100-form-btn">
+                                                <a id="cnx-btn-bpr" class="login100-form-btn btn-primary">
+                                                    Se connecter
+                                                </a>
+                                            </div>
+                                            <div class="text-center pt-3">
+                                                <p class="text-dark mb-0">Vous avez des problèmes ? <a href="#"
+                                                        class="text-primary ms-1">Contactez-nous </a></p>
+                                            </div>
+                                            <!-- <label class="login-social-icon"><span>Login with Social</span></label>
+                                            <div class="d-flex justify-content-center">
+                                                <a href="javascript:void(0)">
+                                                    <div class="social-login me-4 text-center">
+                                                        <i class="fa fa-google"></i>
+                                                    </div>
+                                                </a>
+                                                <a href="javascript:void(0)">
+                                                    <div class="social-login me-4 text-center">
+                                                        <i class="fa fa-facebook"></i>
+                                                    </div>
+                                                </a>
+                                                <a href="javascript:void(0)">
+                                                    <div class="social-login text-center">
+                                                        <i class="fa fa-twitter"></i>
+                                                    </div>
+                                                </a>
+                                            </div> -->
+                                        </div>
+
+                                        <div class="tab-pane " id="tab7">
+                                            <div class="wrap-input100 validate-input input-group"
+                                                data-bs-validate="Valid email is required: ex@abc.xyz">
+                                                <a href="javascript:void(0)"
+                                                    class="input-group-text bg-white text-muted">
+                                                    <i class="zmdi zmdi-email text-muted" aria-hidden="true"></i>
+                                                </a>
+                                                <input 
+                                                    class="input100 matricule-input border-start-0 form-control ms-0" type="text"
+                                                    placeholder="Matricule Manager">
+                                                <div id="username-error" class="invalid-feedback">
+
+                                                </div>
+                                            </div>
+                                            <div class="wrap-input100 validate-input input-group" id="Password-toggle2">
+                                                <a href="javascript:void(0)"
+                                                    class="input-group-text bg-white text-muted">
+                                                    <i class="zmdi zmdi-eye text-muted" aria-hidden="true"></i>
+                                                </a>
+                                                <input  class="input100 pwd-input border-start-0 form-control ms-0"
+                                                    type="password" placeholder="Password">
+                                                <div id="fpassword-error" class="invalid-feedback">
+
+                                                </div>
+                                            </div>
+                                            <div class="text-end pt-4">
+                                                <p class="mb-0"><a href="forgot-password.html"
+                                                        class="text-primary ms-1">Mot de passe oublié ?</a></p>
+                                            </div>
+                                            <div class="container-login100-form-btn">
+                                                <a id="cnx-btn-manager" class="login100-form-btn btn-primary">
+                                                    Se connecter
+                                                </a>
+                                            </div>
+                                            <div class="text-center pt-3">
+                                                <p class="text-dark mb-0">Vous avez des problèmes ? <a href="#"
+                                                        class="text-primary ms-1">Contactez-nous </a></p>
+                                            </div>
+                                            <!-- <label class="login-social-icon"><span>Login with Social</span></label>
+                                            <div class="d-flex justify-content-center">
+                                                <a href="javascript:void(0)">
+                                                    <div class="social-login me-4 text-center">
+                                                        <i class="fa fa-google"></i>
+                                                    </div>
+                                                </a>
+                                                <a href="javascript:void(0)">
+                                                    <div class="social-login me-4 text-center">
+                                                        <i class="fa fa-facebook"></i>
+                                                    </div>
+                                                </a>
+                                                <a href="javascript:void(0)">
+                                                    <div class="social-login text-center">
+                                                        <i class="fa fa-twitter"></i>
+                                                    </div>
+                                                </a>
+                                            </div> -->
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+                <!-- CONTAINER CLOSED -->
+
+                <!-- MODAL ALERT MESSAGE -->
+                <div class="modal fade" id="modaldemo5" data-bs-backdrop="static">
+                    <div class="modal-dialog modal-dialog-centered text-center" role="document">
+                        <div class="modal-content tx-size-sm">
+                            <div class="modal-body text-center p-4 pb-5">
+                                <button aria-label="Close" class="btn-close position-absolute"
+                                    data-bs-dismiss="modal"><span aria-hidden="true">&times;</span></button>
+                                <i class="icon icon-close fs-70 text-danger lh-1 my-5 d-inline-block"></i>
+                                <h4 id="modal-error-header" class="text-danger">Attention: vous êtes sûr de vouloir
+                                    supprimer
+                                    cette entrée!</h4>
+                                <p id="modal-error-content" class="mg-b-20 text-start px-3 mg-x-20">Après avoir appuyé
+                                    sur le bouton
+                                    "oui", vous
+                                    ne récupérerez pas ces
+                                    informations.</p><button aria-label="Close" id="confirm-delete-category"
+                                    class="btn btn-danger pd-x-25" data-bs-dismiss="modal">Oui</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- MODAL WARNING MESSAGE -->
+                <div class="modal fade" id="warning">
+                    <div class="modal-dialog modal-dialog-centered text-center" role="document">
+                        <div class="modal-content tx-size-sm">
+                            <div class="modal-body text-center p-4 pb-5">
+                                <button aria-label="Close" class="btn-close position-absolute"
+                                    data-bs-dismiss="modal"><span aria-hidden="true">&times;</span></button>
+                                <i class="icon icon-close fs-70 text-warning lh-1 my-5 d-inline-block"></i>
+                                <h4 id="modal-warning-header" class="text-warning">Attention: vous êtes sûr de vouloir
+                                    supprimer
+                                    cette entrée!</h4>
+                                <p id="modal-warning-content" class="mg-b-20 text-start px-3 mg-x-20">Après avoir appuyé
+                                    sur le bouton
+                                    "oui",
+                                    vous
+                                    ne récupérerez pas ces
+                                    informations.</p><button aria-label="Close" id="" class="btn btn-warning pd-x-25"
+                                    data-bs-dismiss="modal">Oui</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- MODAL SUCCESS MESSAGE -->
+                <div class="modal fade" id="success">
+                    <div class="modal-dialog modal-dialog-centered text-center " role="document">
+                        <div class="modal-content tx-size-sm">
+                            <div class="modal-body text-center p-4 pb-5">
+                                <button aria-label="Close" class="btn-close position-absolute"
+                                    data-bs-dismiss="modal"><span aria-hidden="true">&times;</span></button>
+                                <i class="icon icon-check fs-70 text-success lh-1 my-5 d-inline-block"></i>
+                                <h4 id="modal-success-header" class="text-success tx-semibold">Complété!</h4>
+                                <p id="modal-success-content" class="mg-b-20 text-start px-3 mg-x-20">La liste des
+                                    compétences a été
+                                    sauvegardée
+                                    avec succès. .</p><button aria-label="Close" class="btn btn-success pd-x-25"
+                                    data-bs-dismiss="modal">Continue</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- MODAL INFO MESSAGE -->
+                <div class="modal fade" id="info">
+                    <div class="modal-dialog modal-dialog-centered text-center " role="document">
+                        <div class="modal-content tx-size-sm">
+                            <div class="modal-body text-center p-4 pb-5">
+                                <button aria-label="Close" class="btn-close position-absolute"
+                                    data-bs-dismiss="modal"><span aria-hidden="true">&times;</span></button>
+                                <i class="icon icon-clock fs-70 text-primary lh-1 my-5 d-inline-block"></i>
+                                <h4 id="modal-info-header" class="text-primary tx-semibold">Complété!</h4>
+                                <p id="modal-info-content" class="mg-b-20 text-start px-3 mg-x-20">La liste des
+                                    compétences a été
+                                    sauvegardée
+                                    avec succès. .</p><button aria-label="Close" class="btn btn-primary pd-x-25"
+                                    data-bs-dismiss="modal">Continue</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- MODAL CONFIRM -->
+                <div class="modal fade" id="confirm">
+                    <div class="modal-dialog modal-dialog-centered text-center" role="document">
+                        <div class="modal-content tx-size-sm">
+                            <div class="modal-body text-center p-4 pb-5">
+                                <button aria-label="Close" class="btn-close position-absolute"
+                                    data-bs-dismiss="modal"><span aria-hidden="true">&times;</span></button>
+                                <i class="fe fe-alert-circle fs-70 text-warning lh-1 my-5 d-inline-block"></i>
+                                <h4 id="modal-confirm-header" class="text-warning">Attention: vous êtes sûr de vouloir
+                                    supprimer
+                                    cette entrée!</h4>
+                                <p id="modal-confirm-content" class="mg-b-20 text-start px-3 mg-x-20">Après avoir appuyé
+                                    sur le bouton
+                                    "oui",
+                                    vous
+                                    ne récupérerez pas ces
+                                    informations.</p>
+                                <button id="confirm-yes-btn" class="btn btn-warning pd-x-25"
+                                    data-bs-dismiss="modal">Oui</button>
+                                <button aria-label="Close" class="btn btn-primary pd-x-25"
+                                    data-bs-dismiss="modal">Fermer</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End PAGE -->
+
+    </div>
+    <!-- BACKGROUND-IMAGE CLOSED -->
+
+    <!-- JQUERY JS -->
+    <script th:src="@{/assets/js/jquery.min.js}"></script>
+
+    <!-- BOOTSTRAP JS -->
+    <script th:src="@{/assets/plugins/bootstrap/js/popper.min.js}"></script>
+    <script th:src="@{/assets/plugins/bootstrap/js/bootstrap.min.js}"></script>
+
+    <!-- SHOW PASSWORD JS -->
+    <script th:src="@{/assets/js/show-password.min.js}"></script>
+
+    <!-- GENERATE OTP JS -->
+    <script th:src="@{/assets/js/generate-otp.js}"></script>
+
+    <!-- Perfect SCROLLBAR JS-->
+    <script th:src="@{/assets/plugins/p-scroll/perfect-scrollbar.js}"></script>
+
+    <!-- Color Theme js -->
+    <script th:src="@{/assets/js/themeColors.js}"></script>
+
+    <!-- CUSTOM JS -->
+    <script th:src="@{/assets/js/custom.js}"></script>
+
+    <!-- AUTHENTIFICATION JS -->
+    <script th:src="@{/assets/custom-js/authentification.js}"></script>
+
+    <!-- PROGRESS_BAR JS -->
+    <script th:src="@{/assets/custom-js/progress-step.js}"></script>
+
+</body>
+
+</html>
