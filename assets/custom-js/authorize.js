@@ -15,11 +15,11 @@ if (localStorage.getItem("user") === null) {
     // SET DEFAULT HOMEPAGE
     let user = (localStorage.getItem("user") === "admin") ? ("admin") : ( JSON.parse(localStorage.getItem("user")) ) ;
     if (user.type === "drh") {
-        defaultHomePage = "assessment/list";
+        defaultHomePage = "./list-assessments.html";
     } else if (user.type === "1" || user.type === "2") {
-        defaultHomePage = "evaluation/list";
+        defaultHomePage = "./list-fiches.html";
     } else {
-        defaultHomePage = "assessment/list";
+        defaultHomePage = "./list-assessments.html";
     }
 
     // STEP 1 : GET THE LIST OF AUTHORIZED URLS
@@ -73,7 +73,7 @@ if (localStorage.getItem("user") === null) {
             // REDIRECT TO EVALUATION LIST PAGE
             setTimeout(function () {
                 currentUrl = window.location.href;
-                window.location.href = extractDomain(currentUrl) + defaultHomePage;
+                window.location.href = './login.html';
             }, 1000);
         })
 

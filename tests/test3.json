@@ -1,5 +1,5 @@
 {
-    "assessmentId": "12KKJJSJZOKQ",
+    "assessmentId" : "11KKJJSJZOKQ",
     "name": "IMAD 2024",
     "targetedDirection": [
         "bp_tanger_tetouan",
@@ -376,71 +376,35 @@
             "topDirection": ""
         }
     ],
-    "users": [
+    "users" : [
         {
-            "firstName": "Carlos CC",
-            "lastName": "AMINE",
-            "matricule": "1111",
-            "topDirection": "bp_tanger_tetouan",
-            "direction": null,
-            "role": "drh",
-            "phoneNumber": "+212undefined",
-            "workEmail": null,
-            "affectationCode": null,
-            "hashedPwd": "xx",
-            "idDrh": 125,
-            "tag": "bp_tanger_tetouan",
-            "codePrefix": [
-                64,
-                65
-            ],
-            "codeSuffix": []
+            "matricule": "admin",
+            "password": "admin",
+            "role" : "admin"
         },
         {
-            "firstName": "Ghannam",
-            "lastName": "Sanae",
-            "matricule": "12332",
-            "topDirection": "bp_tanger_tetouan",
-            "direction": null,
-            "role": "admin",
-            "phoneNumber": "+212undefined",
-            "workEmail": null,
-            "affectationCode": null,
-            "hashedPwd": "xx"
-            
+            "matricule": "xx",
+            "password": "xx",
+            "role" : "drh"
         },
         {
-            "firstName": "FF",
-            "lastName": "jj",
-            "matricule": "88",
-            "topDirection": "bp_tanger_tetouan",
-            "direction": null,
-            "role": "manager-1",
-            "phoneNumber": "+212undefined",
-            "workEmail": null,
-            "affectationCode": null,
-            "hashedPwd": "xx"
+            "matricule": "xxx",
+            "password": "xxx",
+            "role" : "manager-1"
         },
         {
-            "firstName": "FF",
-            "lastName": "jj",
-            "matricule": "88",
-            "topDirection": "bp_tanger_tetouan",
-            "direction": null,
-            "role": "manager-2",
-            "phoneNumber": "+212",
-            "workEmail": null,
-            "affectationCode": null,
-            "hashedPwd": "xx"
+
+            "matricule": "aaa",
+            "password": "aaa",
+            "role" : "manager-2"
         }
     ],
     "fichesEvaluations": [
         {
-            "ficheEvaluationId": "23",
-            "score": "",
-            "sousPoints": "",
-            "status": "NE0",
-            "surPoints": "",
+            "ficheEvaluationId" : "23",
+            "score": "0.3",
+            "sousPoints": "1",
+            "surPoints": "2",
             "re_manager1" : null,
             "re_manager2" : null,
             "sectionCompDc" : 0,
@@ -449,8 +413,9 @@
             "sectionExi" : 0,
             "sectionMarq" : 0,
             "sectionRes" : 0,
+            "status" : "NE0",
             "createdAt": "2023-05-04T08:24:17.284Z",
-            "evaluatedAt": "2023-05-04T11:24:17.285Z",
+            "evaluatedAt" : "2023-05-04T13:24:17.285Z",
             "dateEvaluation": "2023-05-04T00:00:00.000Z",
             "evaluateurOne": {
                 "firstName": "Fabrizio",
@@ -515,10 +480,10 @@
             }
         },
         {
-            "ficheEvaluationId": "24",
-            "score": "",
-            "sousPoints": "",
-            "surPoints": "",
+            "ficheEvaluationId" : "24",
+            "score": "0.3",
+            "sousPoints": "1",
+            "surPoints": "1",
             "re_manager1" : null,
             "re_manager2" : null,
             "sectionCompDc" : 0,
@@ -527,9 +492,8 @@
             "sectionExi" : 0,
             "sectionMarq" : 0,
             "sectionRes" : 0,
-            "status": "E0",
             "createdAt": "2023-05-04T08:24:17.284Z",
-            "evaluatedAt": "2023-05-04T12:24:17.285Z",
+            "evaluatedAt" : "2023-05-04T13:24:17.285Z",
             "dateEvaluation": "2023-05-04T00:00:00.000Z",
             "evaluateurOne": {
                 "firstName": "Fabrizio",
@@ -591,10 +555,10 @@
             }
         },
         {
-            "ficheEvaluationId": "25",
-            "score": "",
-            "sousPoints": "",
-            "surPoints": "",
+            "ficheEvaluationId" : "25",
+            "score": "0.3",
+            "sousPoints": "1",
+            "surPoints": "1",
             "re_manager1" : null,
             "re_manager2" : null,
             "sectionCompDc" : 0,
@@ -603,9 +567,8 @@
             "sectionExi" : 0,
             "sectionMarq" : 0,
             "sectionRes" : 0,
-            "status": "NE1",
             "createdAt": "2023-05-04T08:24:17.285Z",
-            "evaluatedAt": "2023-05-04T13:24:17.285Z",
+            "evaluatedAt" : "2023-05-04T13:24:17.285Z",
             "dateEvaluation": "2023-05-04T00:00:00.000Z",
             "evaluateurOne": {
                 "firstName": "Chritian",

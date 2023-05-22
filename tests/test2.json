@@ -1,0 +1,673 @@
+{
+    "assessmentId" : "12KKJJSJZOKQ",
+    "name": "IMAD 2024",
+    "targetedDirection": [
+        "bp_tanger_tetouan",
+        "bp_rabat_kenitra",
+        "bp_ouajda"
+    ],
+    "status": "LANCHED",
+    "startedAt": "2023-05-04",
+    "finishesAt": "2023-05-23",
+    "targetEmplois": [
+        {
+            "intitule": "agent commercial",
+            "level": 1
+        },
+        {
+            "intitule": "agent commercial",
+            "level": 3
+        },
+        {
+            "intitule": "agent commercial",
+            "level": 2
+        }
+    ],
+    "assessmentCategories": [
+        {
+            "categorie": {
+                "name": "cat 1"
+            },
+            "criterias": [
+                {
+                    "name": "Ancienneté CPM (année)",
+                    "min": "",
+                    "max": "4"
+                }
+            ]
+        },
+        {
+            "categorie": {
+                "name": "cat 2"
+            },
+            "criterias": [
+                {
+                    "name": "Ancienneté CPM (année)",
+                    "min": "5",
+                    "max": ""
+                }
+            ]
+        }
+    ],
+    "collaborateurs": [
+        {
+            "firstName": "FARFAOUA",
+            "lastName": "AMINE",
+            "matricule": 121663,
+            "role": "RESP. ADMIN.",
+            "direction": 6411111,
+            "topDirection": "",
+            "affectationCode": 6411111,
+            "managerOne": {
+                "firstName": "Fabrizio",
+                "lastName": "Romano",
+                "matricule": 111623,
+                "role": "",
+                "direction": "",
+                "topDirection": "",
+                "manager": {
+                    "firstName": "Benganzi",
+                    "lastName": "Fatima",
+                    "matricule": 123617,
+                    "role": "",
+                    "direction": "",
+                    "topDirection": ""
+                }
+            }
+        },
+        {
+            "firstName": "NCHO",
+            "lastName": "JEAN CARLOS",
+            "matricule": 121324,
+            "role": "RESP. ADMIN.",
+            "direction": 6522222,
+            "topDirection": "",
+            "affectationCode": 6522222,
+            "managerOne": {
+                "firstName": "Fabrizio",
+                "lastName": "Romano",
+                "matricule": 111623,
+                "role": "",
+                "direction": "",
+                "topDirection": "",
+                "manager": {
+                    "firstName": "Benganzi",
+                    "lastName": "Fatima",
+                    "matricule": 123617,
+                    "role": "",
+                    "direction": "",
+                    "topDirection": ""
+                }
+            }
+        },
+        {
+            "firstName": "SANAE",
+            "lastName": "GHANAM",
+            "matricule": 121698,
+            "role": "RESP. ADMIN.",
+            "direction": 6426272,
+            "topDirection": "",
+            "affectationCode": 6426272,
+            "managerOne": {
+                "firstName": "Chritian",
+                "lastName": "Dakar",
+                "matricule": 111325,
+                "role": "",
+                "direction": "",
+                "topDirection": "",
+                "manager": {
+                    "firstName": "Benganzi",
+                    "lastName": "Fatima",
+                    "matricule": 123617,
+                    "role": "",
+                    "direction": "",
+                    "topDirection": ""
+                }
+            }
+        },
+        {
+            "firstName": "ILHAM",
+            "lastName": "SHAHIN",
+            "matricule": 121526,
+            "role": "RESP. ADMIN.",
+            "direction": 5726273,
+            "topDirection": "",
+            "affectationCode": 5726273,
+            "managerOne": {
+                "firstName": "Hamri",
+                "lastName": "Ahmed",
+                "matricule": 111998,
+                "role": "",
+                "direction": "",
+                "topDirection": "",
+                "manager": {
+                    "firstName": "Abdul",
+                    "lastName": "Saad",
+                    "matricule": 122120,
+                    "role": "",
+                    "direction": "",
+                    "topDirection": ""
+                }
+            }
+        },
+        {
+            "firstName": "DRISS",
+            "lastName": "BOUSOUFA",
+            "matricule": 121117,
+            "role": "RESP. ADMIN.",
+            "direction": 8276274,
+            "topDirection": "",
+            "affectationCode": 8276274,
+            "managerOne": {
+                "firstName": "Amina",
+                "lastName": "Skalli",
+                "matricule": 111227,
+                "role": "",
+                "direction": "",
+                "topDirection": "",
+                "manager": {
+                    "firstName": "Ali",
+                    "lastName": "Dialo",
+                    "matricule": 132121,
+                    "role": "",
+                    "direction": "",
+                    "topDirection": ""
+                }
+            }
+        },
+        {
+            "firstName": "Mohamed",
+            "lastName": "Hamini",
+            "matricule": 121611,
+            "role": "RESP. ADMIN.",
+            "direction": 8126211,
+            "topDirection": "",
+            "affectationCode": 8126211,
+            "managerOne": {
+                "firstName": "Amina",
+                "lastName": "Skalli",
+                "matricule": 111227,
+                "role": "",
+                "direction": "",
+                "topDirection": "",
+                "manager": {
+                    "firstName": "Ali",
+                    "lastName": "Dialo",
+                    "matricule": 132121,
+                    "role": "",
+                    "direction": "",
+                    "topDirection": ""
+                }
+            }
+        },
+        {
+            "firstName": "Christian",
+            "lastName": "Kolo",
+            "matricule": 121982,
+            "role": "RESP. ADMIN.",
+            "direction": 8126212,
+            "topDirection": "",
+            "affectationCode": 8126212,
+            "managerOne": {
+                "firstName": "Fabrizio",
+                "lastName": "Romano",
+                "matricule": 111623,
+                "role": "",
+                "direction": "",
+                "topDirection": "",
+                "manager": {
+                    "firstName": "Fatima",
+                    "lastName": "benganzi",
+                    "matricule": 111623,
+                    "role": "",
+                    "direction": "",
+                    "topDirection": ""
+                }
+            }
+        },
+        {
+            "firstName": "Anchiloti",
+            "lastName": "Ahmed",
+            "matricule": 121330,
+            "role": "RESP. ADMIN.",
+            "direction": 8326213,
+            "topDirection": "",
+            "affectationCode": 8326213,
+            "managerOne": {
+                "firstName": "Amina",
+                "lastName": "Skalli",
+                "matricule": 111227,
+                "role": "",
+                "direction": "",
+                "topDirection": "",
+                "manager": {
+                    "firstName": "Ali",
+                    "lastName": "Dialo",
+                    "matricule": 132121,
+                    "role": "",
+                    "direction": "",
+                    "topDirection": ""
+                }
+            }
+        },
+        {
+            "firstName": "Karim",
+            "lastName": "Benzema",
+            "matricule": 121112,
+            "role": "RESP. ADMIN.",
+            "direction": 8226214,
+            "topDirection": "",
+            "affectationCode": 8226214,
+            "managerOne": {
+                "firstName": "Fabrizio",
+                "lastName": "Romano",
+                "matricule": 111623,
+                "role": "",
+                "direction": "",
+                "topDirection": "",
+                "manager": {
+                    "firstName": "Fatima",
+                    "lastName": "benganzi",
+                    "matricule": 111623,
+                    "role": "",
+                    "direction": "",
+                    "topDirection": ""
+                }
+            }
+        }
+    ],
+    "managers1": [
+        {
+            "firstName": "Fabrizio",
+            "lastName": "Romano",
+            "matricule": 111623,
+            "role": "",
+            "direction": "",
+            "topDirection": "",
+            "manager": {
+                "firstName": "Benganzi",
+                "lastName": "Fatima",
+                "matricule": 123617,
+                "role": "",
+                "direction": "",
+                "topDirection": ""
+            }
+        },
+        {
+            "firstName": "Chritian",
+            "lastName": "Dakar",
+            "matricule": 111325,
+            "role": "",
+            "direction": "",
+            "topDirection": "",
+            "manager": {
+                "firstName": "Benganzi",
+                "lastName": "Fatima",
+                "matricule": 123617,
+                "role": "",
+                "direction": "",
+                "topDirection": ""
+            }
+        },
+        {
+            "firstName": "Hamri",
+            "lastName": "Ahmed",
+            "matricule": 111998,
+            "role": "",
+            "direction": "",
+            "topDirection": "",
+            "manager": {
+                "firstName": "Abdul",
+                "lastName": "Saad",
+                "matricule": 122120,
+                "role": "",
+                "direction": "",
+                "topDirection": ""
+            }
+        },
+        {
+            "firstName": "Amina",
+            "lastName": "Skalli",
+            "matricule": 111227,
+            "role": "",
+            "direction": "",
+            "topDirection": "",
+            "manager": {
+                "firstName": "Ali",
+                "lastName": "Dialo",
+                "matricule": 132121,
+                "role": "",
+                "direction": "",
+                "topDirection": ""
+            }
+        }
+    ],
+    "managers2": [
+        {
+            "firstName": "Benganzi",
+            "lastName": "Fatima",
+            "matricule": 123617,
+            "role": "",
+            "direction": "",
+            "topDirection": ""
+        },
+        {
+            "firstName": "Abdul",
+            "lastName": "Saad",
+            "matricule": 122120,
+            "role": "",
+            "direction": "",
+            "topDirection": ""
+        },
+        {
+            "firstName": "Ali",
+            "lastName": "Dialo",
+            "matricule": 132121,
+            "role": "",
+            "direction": "",
+            "topDirection": ""
+        },
+        {
+            "firstName": "Fatima",
+            "lastName": "benganzi",
+            "matricule": 111623,
+            "role": "",
+            "direction": "",
+            "topDirection": ""
+        }
+    ],
+    "users": [
+        {
+            "firstName": "Carlos CC",
+            "lastName": "AMINE",
+            "matricule": "1111",
+            "topDirection": "bp_tanger_tetouan",
+            "direction": null,
+            "role": "drh",
+            "phoneNumber": "+212undefined",
+            "workEmail": null,
+            "affectationCode": null,
+            "hashedPwd": "xx",
+            "idDrh": 125,
+            "tag": "bp_tanger_tetouan",
+            "codePrefix": [
+                64,
+                65
+            ],
+            "codeSuffix": []
+        },
+        {
+            "firstName": "Ghannam",
+            "lastName": "Sanae",
+            "matricule": "12332",
+            "topDirection": "bp_tanger_tetouan",
+            "direction": null,
+            "role": "admin",
+            "phoneNumber": "+212undefined",
+            "workEmail": null,
+            "affectationCode": null,
+            "hashedPwd": "xx"
+            
+        },
+        {
+            "firstName": "FF",
+            "lastName": "jj",
+            "matricule": "88",
+            "topDirection": "bp_tanger_tetouan",
+            "direction": null,
+            "role": "manager-1",
+            "phoneNumber": "+212undefined",
+            "workEmail": null,
+            "affectationCode": null,
+            "hashedPwd": "xx"
+        },
+        {
+            "firstName": "FF",
+            "lastName": "jj",
+            "matricule": "88",
+            "topDirection": "bp_tanger_tetouan",
+            "direction": null,
+            "role": "manager-2",
+            "phoneNumber": "+212",
+            "workEmail": null,
+            "affectationCode": null,
+            "hashedPwd": "xx"
+        }
+    ],
+    "fichesEvaluations": [
+        {
+            "ficheEvaluationId" : "23",
+            "score": "0.2",
+            "sousPoints": "1",
+            "surPoints": "2",
+            "re_manager1" : null,
+            "re_manager2" : null,
+            "sectionCompDc" : 0,
+            "sectionCompSe" : 0,
+            "sectionCompSf" : 0,
+            "sectionExi" : 0,
+            "sectionMarq" : 0,
+            "sectionRes" : 0,
+            "status" : "NE1",
+            "createdAt": "2023-05-04T08:24:17.284Z",
+            "evaluatedAt" : "2023-05-04T13:24:17.285Z",
+            "dateEvaluation": "2023-05-04T00:00:00.000Z",
+            "evaluateurOne": {
+                "firstName": "Fabrizio",
+                "lastName": "Romano",
+                "matricule": 111623,
+                "role": "",
+                "direction": "",
+                "topDirection": "",
+                "manager": {
+                    "firstName": "Benganzi",
+                    "lastName": "Fatima",
+                    "matricule": 123617,
+                    "role": "",
+                    "direction": "",
+                    "topDirection": ""
+                }
+            },
+            "evaluateurTwo": {
+                "firstName": "Benganzi",
+                "lastName": "Fatima",
+                "matricule": 123617,
+                "role": "",
+                "direction": "",
+                "topDirection": ""
+            },
+            "collaborateur": {
+                "firstName": "FARFAOUA",
+                "lastName": "AMINE",
+                "matricule": 121663,
+                "role": "RESP. ADMIN.",
+                "direction": 6411111,
+                "topDirection": "",
+                "affectationCode": 6411111,
+                "managerOne": {
+                    "firstName": "Fabrizio",
+                    "lastName": "Romano",
+                    "matricule": 111623,
+                    "role": "",
+                    "direction": "",
+                    "topDirection": "",
+                    "manager": {
+                        "firstName": "Benganzi",
+                        "lastName": "Fatima",
+                        "matricule": 123617,
+                        "role": "",
+                        "direction": "",
+                        "topDirection": ""
+                    }
+                }
+            },
+            "ficheContent": [
+                "responsabilites",
+                "exigences",
+                "marqueurs",
+                "competences-dc",
+                "competences-sf",
+                "competences-se"
+            ],
+            "emploi": {
+                "intitule": "agent commercial",
+                "level": "1"
+            }
+        },
+        {
+            "ficheEvaluationId" : "24",
+            "score": "0.2",
+            "sousPoints": "1",
+            "surPoints": "1",
+            "re_manager1" : null,
+            "re_manager2" : null,
+            "sectionCompDc" : 0,
+            "sectionCompSe" : 0,
+            "sectionCompSf" : 0,
+            "sectionExi" : 0,
+            "sectionMarq" : 0,
+            "sectionRes" : 0,
+            "status" : "NE1",
+            "createdAt": "2023-05-04T08:24:17.284Z",
+            "evaluatedAt" : "2023-05-04T13:24:17.285Z",
+            "dateEvaluation": "2023-05-04T00:00:00.000Z",
+            "evaluateurOne": {
+                "firstName": "Fabrizio",
+                "lastName": "Romano",
+                "matricule": 111623,
+                "role": "",
+                "direction": "",
+                "topDirection": "",
+                "manager": {
+                    "firstName": "Benganzi",
+                    "lastName": "Fatima",
+                    "matricule": 123617,
+                    "role": "",
+                    "direction": "",
+                    "topDirection": ""
+                }
+            },
+            "evaluateurTwo": {
+                "firstName": "Benganzi",
+                "lastName": "Fatima",
+                "matricule": 123617,
+                "role": "",
+                "direction": "",
+                "topDirection": ""
+            },
+            "collaborateur": {
+                "firstName": "NCHO",
+                "lastName": "JEAN CARLOS",
+                "matricule": 121324,
+                "role": "RESP. ADMIN.",
+                "direction": 6522222,
+                "topDirection": "",
+                "affectationCode": 6522222,
+                "managerOne": {
+                    "firstName": "Fabrizio",
+                    "lastName": "Romano",
+                    "matricule": 111623,
+                    "role": "",
+                    "direction": "",
+                    "topDirection": "",
+                    "manager": {
+                        "firstName": "Benganzi",
+                        "lastName": "Fatima",
+                        "matricule": 123617,
+                        "role": "",
+                        "direction": "",
+                        "topDirection": ""
+                    }
+                }
+            },
+            "ficheContent": [
+                "competences-dc",
+                "competences-sf",
+                "competences-se"
+            ],
+            "emploi": {
+                "intitule": "agent commercial",
+                "level": "3"
+            }
+        },
+        {
+            "ficheEvaluationId" : "25",
+            "score": "0.2",
+            "sousPoints": "1",
+            "surPoints": "1",
+            "re_manager1" : null,
+            "re_manager2" : null,
+            "sectionCompDc" : 0,
+            "sectionCompSe" : 0,
+            "sectionCompSf" : 0,
+            "sectionExi" : 0,
+            "sectionMarq" : 0,
+            "sectionRes" : 0,
+            "status" : "E1",
+            "evaluatedAt" : "2023-05-04T13:24:17.285Z",
+            "createdAt": "2023-05-04T08:24:17.285Z",
+            "dateEvaluation": "2023-05-04T00:00:00.000Z",
+            "evaluateurOne": {
+                "firstName": "Chritian",
+                "lastName": "Dakar",
+                "matricule": 111325,
+                "role": "",
+                "direction": "",
+                "topDirection": "",
+                "manager": {
+                    "firstName": "Benganzi",
+                    "lastName": "Fatima",
+                    "matricule": 123617,
+                    "role": "",
+                    "direction": "",
+                    "topDirection": ""
+                }
+            },
+            "evaluateurTwo": {
+                "firstName": "Benganzi",
+                "lastName": "Fatima",
+                "matricule": 123617,
+                "role": "",
+                "direction": "",
+                "topDirection": ""
+            },
+            "collaborateur": {
+                "firstName": "SANAE",
+                "lastName": "GHANAM",
+                "matricule": 121698,
+                "role": "RESP. ADMIN.",
+                "direction": 6426272,
+                "topDirection": "",
+                "affectationCode": 6426272,
+                "managerOne": {
+                    "firstName": "Chritian",
+                    "lastName": "Dakar",
+                    "matricule": 111325,
+                    "role": "",
+                    "direction": "",
+                    "topDirection": "",
+                    "manager": {
+                        "firstName": "Benganzi",
+                        "lastName": "Fatima",
+                        "matricule": 123617,
+                        "role": "",
+                        "direction": "",
+                        "topDirection": ""
+                    }
+                }
+            },
+            "ficheContent": [
+                "responsabilites",
+                "exigences",
+                "marqueurs",
+                "competences-dc",
+                "competences-sf",
+                "competences-se"
+            ],
+            "emploi": {
+                "intitule": "agent commercial",
+                "level": "1"
+            }
+        }
+    ]
+}

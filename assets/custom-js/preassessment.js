@@ -130,7 +130,7 @@ $(function () {
     // EVENT LISTENER WHEN WE SAVE AN ASSESSMENT
     $("#btn-assessment-lanch").one('click', function (e) {
 
-    
+
         // ADD LODAER TO BTN
         addLoaderToBtn("#btn-assessment-lanch");
 
@@ -224,7 +224,7 @@ $(function () {
     // EVENT LISTENER TO SAVE THE ASSESSMENT 
     $("#btn-assessment-save").one('click', function (e) {
 
-        
+
 
         // ADD LOADER TO BTN
         addLoaderToBtn("#btn-assessment-save");
@@ -296,7 +296,7 @@ $(function () {
 
                 // DELETE LOADER TO BTN
                 deleteLoaderToBtn("#btn-assessment-save");
-                
+
                 // REMOVE ANY ASSESSMENT-ID
                 removeAssessmentFromStorage();
 
@@ -668,9 +668,9 @@ inputFileUploader.addEventListener('change', (e) => {
             });
 
         }
-        
 
-        
+
+
 
 
         classificationColumns = getClassificationColumn(excelData[0]);
@@ -2228,7 +2228,7 @@ function generateCollaborateur(arr) {
         "role": arr[indexOfRole],
         "direction": arr[indexOfDirection],
         "topDirection": "",
-        "affectationCode" : arr[indexOfCodeAffectation],
+        "affectationCode": arr[indexOfCodeAffectation],
         "managerOne": generateManager1(arr)
     }
 
@@ -2277,11 +2277,13 @@ function generateFicheEvaluation(arr) {
 
 
     let ficheJson = {
+        "id" : generateID(),
         "score": "",
         "sousPoints": "",
         "surPoints": "",
         "createdAt": new Date(),
         "dateEvaluation": new Date(requestBodyAssessment.startedAt),
+        "status": "NE0",
         "evaluateurOne": generateManager1(arr),
         "evaluateurTwo": generateManager2(arr),
         "collaborateur": generateCollaborateur(arr),
@@ -2382,16 +2384,16 @@ function generatePasswordsForManagers(manager1Arr, manager2Arr) {
     let managers2 = [];
 
     if (manager1Arr.length != 0 && manager2Arr.length != 0) {
-        
+
         manager1Arr.map((e, i) => {
             let pwd = generateStrongPwd();
             e.hashedPwd = pwd;
 
             managers1.push({
-                "firstName" : e.firstName,
-                "lastName" : e.llastName,
-                "matricule" : e.matricule,
-                "hashedPwd" : pwd
+                "firstName": e.firstName,
+                "lastName": e.llastName,
+                "matricule": e.matricule,
+                "hashedPwd": pwd
             });
         })
 
@@ -2400,21 +2402,27 @@ function generatePasswordsForManagers(manager1Arr, manager2Arr) {
             e.hashedPwd = pwd;
 
             managers2.push({
-                "firstName" : e.firstName,
-                "lastName" : e.llastName,
-                "matricule" : e.matricule,
-                "hashedPwd" : pwd
+                "firstName": e.firstName,
+                "lastName": e.llastName,
+                "matricule": e.matricule,
+                "hashedPwd": pwd
             });
         })
 
     }
 
     return {
-        "managers1" : managers1,
-        "managers2" : managers2
+        "managers1": managers1,
+        "managers2": managers2
     }
 }
 
 function generateStrongPwd() {
     return Math.random().toString(36).slice(-10);
+}
+
+function generateID() {
+    const timestamp = new Date().getTime();
+    const randomNum = Math.floor(Math.random() * 1000000);
+    return `fiche-${timestamp}-${randomNum}`;
 }

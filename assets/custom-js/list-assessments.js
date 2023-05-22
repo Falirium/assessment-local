@@ -13,43 +13,46 @@ let assessmentDatatable;
 
 
 let listAssessments;
+let bpr;
 
-// INITIALIZATION 
+let assessment_ID = "";
+const idb_config = "assessments_config";
+const idb_result = "assessments_results";
+let users = [];
 
+// INITIALIZATION
+intializeDB()
+    .then((data) => {
 
-// END INITIALIZATION
+        assessment_ID = data.assessmentId;
 
-// GET LIST OF ASSESSMENTS
-getListOfTempAssessments().then((data) => {
+        users = data.users;
+        bpr = data.targetedDirection;
 
+        // TRANSFROM DATA TO PAGE VARIABLES FORMAT
 
+        // STEP 1 : TO LIST ASSESSMENT FORMAT
+        listAssessments = transformToPageFormat(data);
 
-    // APPEND THE TEMP RESULTS TO  TEMP OF ASSESSMENTS  FIRST
-    listAssessments = data;
-    console.log(listAssessments);
-
-
-}).then((data) => {
-
-    getListOfAssessments().then((temp) => {
-
+        // SET USER
         let user = (localStorage.getItem("user") === "admin") ? "admin" : JSON.parse(localStorage.getItem("user"));
 
         console.log(user);
+        console.log(listAssessments);
 
         // UPDATE BREADCRUMB
         updateBreadcrumb(user);
 
-        // APPEND THE PUBLISHED LIST OF ASSESSMENTS
-        listAssessments.push(...temp);
-
+        // CONFIGURE DATATABLE
         let dataSet = []
         let col = []
 
         // CHECK IF WE ARE IN DRH SESSION
         if (user.type === "drh") {
-            listAssessments = filterAssessmentsByBpr(listAssessments, user.data.topDirection);
+            console.log(bpr);
+            // listAssessments = filterAssessmentsByBpr(listAssessments, bpr);
 
+            console.log(listAssessments);
             dataSet = getAssessmentsDataFromJson(listAssessments, true);
             col = getAssessmentColumnFromJson(listAssessments[0], authorizedCol);
 
@@ -146,15 +149,22 @@ getListOfTempAssessments().then((data) => {
                 // REDIRECT TO THE ASSESSMENT PAGE 
                 // let url = buildURL("evaluation/evaluate", urlParams);
                 let currentUrl = window.location.href;
+                window.location.href = './assesment-result.html';
 
-                window.location.href = extractDomain(currentUrl) + "assessment/" + assessment.id;
+                // window.location.href = extractDomain(currentUrl) + "assessment/" + assessment.id;
                 // console.log(extractDomain(currentUrl) + "assessment/add");
                 // console.log(localStorage.getItem("assessmentId"));
             }
         })
 
+
+
+
     })
-})
+
+// END INITIALISATION
+
+
 
 function buildURL(prefix, params) {
 
@@ -252,6 +262,7 @@ function getAssessmentColumnFromJson(json, authorizedCol) {
 }
 
 function getAssessmentsDataFromJson(arrJson, isDrh = false) {
+    console.log(arrJson);
     let finalArr = [];
     arrJson.map((e, i) => {
         console.log(i);
@@ -550,4 +561,70 @@ function updateBreadcrumb(user) {
 
     }
 
+}
+
+async function intializeDB() {
+    return getAllDataFromDB(idb_config)
+        .then((result) => {
+            let assessmentData = result.files[0];
+            console.log(assessmentData);
+            return assessmentData;
+        })
+}
+
+async function getAllDataFromDB(dbName) {
+    return new Promise((resolve, reject) => {
+        const request = indexedDB.open(dbName);
+        const result = {};
+
+        request.onerror = (event) => {
+            console.error(`Error while retrieving all data from ${dbName} database: ${event.target.error}`);
+            reject(null);
+        };
+
+        request.onsuccess = (event) => {
+            const db = event.target.result;
+            const tx = db.transaction(db.objectStoreNames, 'readonly');
+            tx.onerror = (event) => {
+                console.error(`Error while retrieving all data from ${dbName} database: ${event.target.error}`);
+                reject(null);
+            };
+
+            tx.oncomplete = (event) => {
+                console.log(`Retrieved all data from ${dbName} database:`, result);
+                resolve(result);
+            };
+
+            Array.from(db.objectStoreNames).forEach((storeName) => {
+                const store = tx.objectStore(storeName);
+                const storeRequest = store.getAll();
+                storeRequest.onsuccess = (event) => {
+                    const storeResult = event.target.result;
+                    result[storeName] = storeResult;
+                };
+                storeRequest.onerror = (event) => {
+                    console.error(`Error while retrieving all data from ${storeName} store: ${event.target.error}`);
+                    reject(null);
+                };
+            });
+        };
+    });
+}
+
+function transformToPageFormat(assessmentJson) {
+    return [
+        {
+            "assessmentCategories": assessmentJson.assessmentCategories,
+            "emplois": assessmentJson.targetEmplois,
+            "finishesAt": assessmentJson.finishesAt,
+            "id": assessmentJson.assessmentId,
+            "listOfCollaborateurs": assessmentJson.collaborateurs,
+            "listOfManagersOne": assessmentJson.managers1,
+            "listOfManagersTwo": assessmentJson.managers2,
+            "name": assessmentJson.name,
+            "startedAt": assessmentJson.startedAt,
+            "status": assessmentJson.status,
+            "targetedDirection": assessmentJson.targetedDirection
+        }
+    ]
 }

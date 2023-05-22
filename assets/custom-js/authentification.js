@@ -2,6 +2,20 @@
 let matricule;
 let password;
 
+let assessment_ID = "";
+const idb_config = "assessments_config";
+const idb_result = "assessments_results";
+let users = [];
+
+// INITIALIZATION
+intializeDB()
+    .then((data) => {
+        assessment_ID = data.assessmentId;
+        users = data.users;
+    })
+
+// END INITIALISATION
+
 $(".matricule-input").change(function (e) {
     matricule = e.target.value;
 
@@ -37,7 +51,8 @@ $("#cnx-btn").click(function () {
 
         // REDIRECT TO HOMEPAGE
         let currentUrl = window.location.href;
-        window.location.replace(extractDomain(currentUrl) + "assessment/list");
+        // window.location.replace(extractDomain(currentUrl) + "assessment/list");
+        console.log("SUCCESS CONNECTION ADMIN")
 
     }
 
@@ -55,108 +70,76 @@ $("#cnx-btn-bpr").click(function () {
         "pwd": password
     }
     console.log(authObj);
-    validateMatricule(authObj).then((authRes) => {
 
+    let resultAuth = validateMatricule(authObj);
 
+    console.log(resultAuth);
 
-        if (authRes.code === 404) {
+    if (resultAuth.status && resultAuth.user.role === "drh") {
 
-            console.log("error 2");
+        // SET AUTHORIZATION
+        let auth = {
+            "regex": [
+                '(list-assessments|assesment-result|fiche-evaluation)\\\.html',
 
-            // SHOW ERROR MODAL
-            showModal("error", "Échec", "L'authentification a échoué, car la matrice et/ou les données sont incorrectes. Veuillez réessayer avec des informations d'identification valides.", "");
+            ],
+            "sections": {
+                "hide": [
 
-
-        } else if (authRes.auth == true) {
-
-            // SET AUTHORIZATION
-            let auth = {
-                "regex": [
-                    '\\/(evaluation|assessment)\\/(.*|list)',
-
+                    {
+                        "name": "emploi",
+                        "id": "#emploi"
+                    },
+                    {
+                        "name": "pv",
+                        "id": "#pv"
+                    },
+                    {
+                        "name": "drh",
+                        "id": "#drh"
+                    },
+                    {
+                        "name": "manager",
+                        "id": "#manager"
+                    },
+                    {
+                        "name": "add assessment",
+                        "id": "#btn-add-assessment"
+                    }
                 ],
-                "sections": {
-                    "hide": [
+                "show": [
+                    {
+                        "type": "anchor",
+                        "name": "dashboard",
+                        "id": "#dashboard",
+                        "link": "/assessment/list"
+                    }
+                ]
+            }
+        };
+        localStorage.setItem("auth", JSON.stringify(auth));
 
-                        {
-                            "name": "emploi",
-                            "id": "#emploi"
-                        },
-                        {
-                            "name": "pv",
-                            "id": "#pv"
-                        },
-                        {
-                            "name": "drh",
-                            "id": "#drh"
-                        },
-                        {
-                            "name": "manager",
-                            "id": "#manager"
-                        },
-                        {
-                            "name" : "add assessment",
-                            "id" : "#btn-add-assessment"
-                        }
-                    ],
-                    "show": [
-                        {
-                            "type": "anchor",
-                            "name": "dashboard",
-                            "id": "#dashboard",
-                            "link": "/assessment/list"
-                        }
-                    ]
-                }
-            };
-
-            localStorage.setItem("auth", JSON.stringify(auth));
-
-
-            getDrhInfo(authObj.matricule).then((drh) => {
-
-                // SET USER INFO
-                let user = {
-                    "type": "drh",
-                    "data": authRes.dthUser
-                };
-
-
-                localStorage.setItem("user", JSON.stringify(user));
-            }).then((next) => {
-
-                // REDIRECT TO HOMEPAGE
-                let currentUrl = window.location.href;
-                window.location.replace(extractDomain(currentUrl) + "assessment/list");
-                console.log("redirected");
-
-            }).catch((error) => {
-
-                console.log(error);
-
-                // SHOW ERROR MODAL
-                showModal("error", "Échec", "Un problème interne a interrompu le processus. Veuillez actualiser la page et réessayer.", "");
-            })
-
-
-
-
-        } else if (isValid == false) {
-
-            console.log("error 2");
-
-            // SHOW ERROR MODAL
-            showModal("error", "Échec", "L'authentification a échoué, car la matrice et/ou les données sont incorrectes. Veuillez réessayer avec des informations d'identification valides.", "");
-
+        let userData = {
+            
         }
 
+        // SET USER INFO
+        let user = {
+            "type": "drh",
+            "data": resultAuth.user
+        };
+        localStorage.setItem("user", JSON.stringify(user));
 
 
-    }).catch((error) => {
+        // REDIRECT TO HOMEPAGE
+        window.location.href = './list-assessments.html';
+        console.log("SUCCESS CONNECTION BPR");
+    } else {
 
         // SHOW ERROR MODAL
         showModal("error", "Échec", "L'authentification a échoué, car la matrice et/ou les données sont incorrectes. Veuillez réessayer avec des informations d'identification valides.", "");
-    });
+    }
+
 
 
 })
@@ -171,113 +154,124 @@ $("#cnx-btn-manager").click(function () {
         "pwd": password
     }
 
-    console.log(authObj);
-    validateMatricule(authObj).then((authRes) => {
+    // console.log(authObj);
+    let resultAuth = validateMatricule(authObj);
 
-        // CHECK RESPONSE
-        if (authRes.hasOwnProperty("code") || authRes.auth === false) {
-            showModal("error", "Erreur", "L'authentification a échoué. Veuillez entrer une combinaison correcte du nom d'utilisateur et du mot de passe.");
-        } else {
-            
-            // SET AUTHORIZATION
-            let auth = {
-                "regex": [
-                    '\\/(evaluation)\\/(evaluate|list)\\?*',
+    let roleAuth = resultAuth.user.role;
+    if (resultAuth.status && roleAuth.includes("manager")) {
 
+        // SET AUTHORIZATION
+        let auth = {
+            "regex": [
+                '\\/(evaluation)\\/(evaluate|list)\\?*',
+
+            ],
+            "sections": {
+                "hide": [
+                    {
+                        "name": "assessment",
+                        "id": "#assessment"
+
+                    },
+                    {
+                        "name": "emploi",
+                        "id": "#emploi"
+                    },
+                    {
+                        "name": "pv",
+                        "id": "#pv"
+                    }
                 ],
-                "sections": {
-                    "hide": [
-                        {
-                            "name": "assessment",
-                            "id": "#assessment"
-
-                        },
-                        {
-                            "name": "emploi",
-                            "id": "#emploi"
-                        },
-                        {
-                            "name": "pv",
-                            "id": "#pv"
-                        }
-                    ],
-                    "show": [
-                        {
-                            "type": "anchor",
-                            "name": "dashboard",
-                            "id": "#dashboard",
-                            "link": "/evaluation/list"
-                        }
-                    ]
-                }
+                "show": [
+                    {
+                        "type": "anchor",
+                        "name": "dashboard",
+                        "id": "#dashboard",
+                        "link": "/evaluation/list"
+                    }
+                ]
             }
-            console.log(auth);
+        }
+        console.log(auth);
 
-            let manager = null;
 
-            if (authRes.type === "1") {
-                manager = authRes.managerOneUser;
-                showModal("success", "Welcome :" + manager.firstName, "Vous avez été connecté avec succès");
+        let manager = resultAuth.user;
 
-                // SAVE MANAGER MATRICULE
-                let user = {
-                    "type": "1",
-                    "data" : manager
+        let managerType = resultAuth.user.role;
 
-                }
+        if (getSecondPart(managerType, '-') === "1") {
 
-                localStorage.setItem("user", JSON.stringify(user));
+            // manager = authRes.managerOneUser;
+            showModal("success", "Welcome :" + manager.matricule, "Vous avez été connecté avec succès");
 
-                // CHANGE BREADCRUMB TEXT TO MANAGER N+1
-                auth.sections.show.push(
-                    {
-                        "type": "text",
-                        "name": "breadcrumb",
-                        "id": "#breadcrumb-text",
-                        "text": "Manager N+1"
-                    }
-                );
-            } else if (authRes.type === "2") {
-                manager = authRes.managerTwoUser;
-                showModal("success", "Welcome :" + manager.firstName, "Vous avez été connecté avec succès");
+            // SAVE MANAGER MATRICULE
+            let user = {
+                "type": "1",
+                "data": manager
 
-                
-                // SAVE MANAGER MATRICULE
-                let user = {
-                    "type": "2",
-                    "data" : manager
-
-                }
-
-                localStorage.setItem("user", JSON.stringify(user));
-
-                // // REDIRECT TO HOMEPAGE
-                let currentUrl = window.location.href;
-                window.location.replace(extractDomain(currentUrl) + "evaluation/list");
-
-                console.log("redirected");
-
-                // CHANGE BREADCRUMB TEXT TO MANAGER N+1
-                auth.sections.show.push(
-                    {
-                        "type": "text",
-                        "name": "breadcrumb",
-                        "id": "#breadcrumb-text",
-                        "text": "Manager N+2"
-                    }
-                );
             }
 
-            localStorage.setItem("auth", JSON.stringify(auth));
-            // console.log(localStorage.getItem("user"));
+            localStorage.setItem("user", JSON.stringify(user));
 
+            console.log("SUCCESS CONNECTION MANAGER N+1")
+
+
+            // CHANGE BREADCRUMB TEXT TO MANAGER N+1
+            auth.sections.show.push(
+                {
+                    "type": "text",
+                    "name": "breadcrumb",
+                    "id": "#breadcrumb-text",
+                    "text": "Manager N+1"
+                }
+            );
+        } else if (getSecondPart(managerType, '-') === "2") {
+
+            // manager = authRes.managerTwoUser;
+            showModal("success", "Welcome :" + manager.matricule, "Vous avez été connecté avec succès");
+
+
+            // SAVE MANAGER MATRICULE
+            let user = {
+                "type": "2",
+                "data": manager
+
+            }
+
+            localStorage.setItem("user", JSON.stringify(user));
 
             // // REDIRECT TO HOMEPAGE
             let currentUrl = window.location.href;
-            window.location.replace(extractDomain(currentUrl) + "evaluation/list");
-            console.log("redirected");
+            // window.location.replace(extractDomain(currentUrl) + "evaluation/list");
+            console.log("SUCCESS CONNECTION MANAGER N+2")
+
+
+            // CHANGE BREADCRUMB TEXT TO MANAGER N+1
+            auth.sections.show.push(
+                {
+                    "type": "text",
+                    "name": "breadcrumb",
+                    "id": "#breadcrumb-text",
+                    "text": "Manager N+2"
+                }
+            );
         }
-    })
+
+        localStorage.setItem("auth", JSON.stringify(auth));
+        // console.log(localStorage.getItem("user"));
+
+
+        // // REDIRECT TO HOMEPAGE
+        window.location.href = './list-assessments.html';
+
+
+
+    } else {
+        showModal("error", "Erreur", "L'authentification a échoué. Veuillez entrer une combinaison correcte du nom d'utilisateur et du mot de passe.");
+
+    }
+
+
 
     // authenticate(matricule).then((manager) => {
     //     // console.log(manager, password);
@@ -446,26 +440,65 @@ async function validateMatriculeManagerOne(matricule) {
         })
 }
 
-async function validateMatricule(json) {
-    let url1 = "http://localhost:8080/preassessment/api/v1/employee/auth";
+function validateMatricule(json) {
 
-    return fetch(url1, {
-        method: 'POST',
-        headers: {
-            // Content-Type may need to be completely **omitted**
-            // or you may need something
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(json) // This is your file object
-    }).then(response => response.json())
-        .then((success) => {
-            console.log(success);
-            return success;
-        }).catch((error) => {
-            console.error(error);
-            console.log("error 1");
-            return error;
-        })
+    for (let i = 0; i < users.length; i++) {
+        const user = users[i];
+        console.log(user, json);
+        if (user.matricule === json.matricule && user.hashedPwd === json.pwd) {
+            return {
+                "status": true,
+                "user": user
+            }
+        }
+    }
+
+    return {
+        "status": false,
+        "user": null
+    }
+
+
+
+}
+
+function getAllDataFromDB(dbName) {
+    return new Promise((resolve, reject) => {
+        const request = indexedDB.open(dbName);
+        const result = {};
+
+        request.onerror = (event) => {
+            console.error(`Error while retrieving all data from ${dbName} database: ${event.target.error}`);
+            reject(null);
+        };
+
+        request.onsuccess = (event) => {
+            const db = event.target.result;
+            const tx = db.transaction(db.objectStoreNames, 'readonly');
+            tx.onerror = (event) => {
+                console.error(`Error while retrieving all data from ${dbName} database: ${event.target.error}`);
+                reject(null);
+            };
+
+            tx.oncomplete = (event) => {
+                console.log(`Retrieved all data from ${dbName} database:`, result);
+                resolve(result);
+            };
+
+            Array.from(db.objectStoreNames).forEach((storeName) => {
+                const store = tx.objectStore(storeName);
+                const storeRequest = store.getAll();
+                storeRequest.onsuccess = (event) => {
+                    const storeResult = event.target.result;
+                    result[storeName] = storeResult;
+                };
+                storeRequest.onerror = (event) => {
+                    console.error(`Error while retrieving all data from ${storeName} store: ${event.target.error}`);
+                    reject(null);
+                };
+            });
+        };
+    });
 }
 
 async function validateMatriculeManagerOne(json) {
@@ -607,3 +640,17 @@ function showModal(type, header, content, action) {
 
 }
 
+async function intializeDB() {
+    return getAllDataFromDB(idb_config)
+        .then((result) => {
+            let assessmentData = result.files[0];
+            // console.log(assessmentData);
+            return assessmentData;
+        })
+}
+
+
+function getSecondPart(str, delimiter) {
+    const parts = str.split(delimiter);
+    return parts[1] || '';
+}

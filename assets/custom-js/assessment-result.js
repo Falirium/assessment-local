@@ -8,219 +8,239 @@ console.log(idParam);
 
 let authorizedCol = ["id", "collaborateur", "code affectation", "evaluateurOne", "evaluateurTwo", "emploi", "niveau", "Score", "% Res", "% Exi", "% Marq", "% D.C", "% S.E", "% S.F", "status"];
 
-
+let assessment_ID = "";
+const idb_config = "assessments_config";
+const idb_result = "assessments_results";
+let users = [];
 let assessmentJson;
 
 // INITIALIZATION
+intializeDB()
+    .then((data) => {
+
+        assessment_ID = data.assessmentId;
+        let fiches = data.fichesEvaluations;
+
+        assessmentJson = data;
+        console.log(assessmentJson, fiches);
+
+        if (fiches.hasOwnProperty("status")) {
+            if (fiches.status === 500) {
+                showModal("error", "Échec", fiches.error, "", {
+                    "text": "Revenir à l'acceuil",
+                    "color": "danger",
+                    "id": "dqz1"
+                }, function () {
+
+                    //  REDIRECT TO THE ASSESSMENT PAGE
+                    redirectTo("assessment/list", 1000);
+                });
+            }
+        }
+        fichesArrJson = fiches;
+
+        // FILTER LIST OF FICHE EVALUATION BASED ON THE CONNECTED DRH
+        let user = (localStorage.getItem("user") != "admin") ? JSON.parse(localStorage.getItem("user")) : ("admin");
+
+
+        // UPDATE BREADCRUMB
+        updateBreadcrumb(user);
+
+        if (user.type === "drh") {
+
+            // REMOVE SUSPEND AND TERMINATE BTNS
+            removeElements(["#btn-assessment-terminate", "#btn-assessment-sus"]);
+
+            fichesArrJson = filterCollorateursByBpr(fiches, user.data.codePrefix, user.data.codeSuffix);
+
+            
+            
+
+        }
+
+        // GET ASSESSMENTJSON FROM FICHE EVALUATION
+        // assessmentJson = fiches[0].associatedAssessment;
+
+        // COUNT HOLDS A JSON THAT CONTAINS : total, blank, inProgress, completed 
+        let count = iterateOverEvaluations(fichesArrJson);
+        console.log(count);
+
+        // DISPLAY THE RESULTS
+        displayBlankEvaluations(count.blank, count.total);
+        displayInProgressEvaluations(count.inProgress, count.total);
+        displayCompletedEvaluations(count.completed, count.total);
+        displayTotalFiches(count.total);
+
+        // CHECK ASSESSMENT STATUS
+        if (assessmentJson.status === "SUSPENDED") {
+
+            // CHANGE THE CONTENT OF SUSPEND BTN
+            $("#btn-assessment-sus").addClass("btn-info").removeClass("btn-warning").html('<i class="fe fe-play me-2"></i>Reprendre l\'assessment');
+
+        } else if (assessmentJson.status === "ENDED") {
+
+            // DISABLES BTNS
+            $("#btn-assessment-sus").addClass("disabled")
+            $("#btn-assessment-terminate").addClass("disabled")
+            $("#btn-assessment-inform").addClass("disabled")
+
+        }
+
+
+        // DISPLAY THE LIST OF FICHES
+        let dataSet = [];
+        let col = [];
+
+        dataSet = getFichesDataFromJson(fichesArrJson);
+        col = getFichesColumnFromJson(fichesArrJson[0], authorizedCol);
+
+
+        // INITIALIZE DATATABLE
+
+
+        // COSTUMIZE THE FILE NAME 
+        let fileTitle = assessmentJson.name + "_At_" + new Date().toISOString().split("T")[0];
+        if (user.type === "drh") {
+            fileTitle = user.data.tag + "_" + fileTitle;
+        } else {
+            fileTitle = "BCP" + "_" + fileTitle;
+        }
+
+
+        ficheDatatable = $("#tb4").DataTable({
+            data: dataSet,
+            columns: col,
+            columnDefs: [
+                { "width": "6%", "targets": 3 },
+                { "className": "success-light-cell", "targets": 10 },
+                { "className": "default-light-cell ", "targets": [11, 12, 13, 14, 15, 16] }
+
+            ],
+            autoWidth: false,
+            ordering: false,
+            dom: 'Bfrtip',
+            buttons: [
+
+                {
+                    extend: 'excelHtml5',
+                    title: fileTitle,
+                    text: "Télécharger les données sous Excel",
+                    exportOptions: {
+                        columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
+                    },
+                    autoFilter: true,
+                    sheetName: assessmentJson.name
+                }
+            ]
+        })
+
+        // ADD EVENT LISTENER ON VIEW BTN
+        $(".view-btn").click(function (e) {
+
+            let aElement;
+            if (e.target.tagName === "SPAN") {
+                aElement = e.target.parentElement;
+            } else {
+                aElement = e.target;
+            }
+
+            let ficheEvaluationId = $(aElement).parents("td").siblings().slice(0, 1).text();
+            console.log(ficheEvaluationId);
+
+            let ficheFromArr = getFicheInfoFromArr(ficheEvaluationId).fiche;
+
+
+            // CHECK IF THE FICHE IS ALREADY EVALUATED BY THE SAM MANAGER
+
+
+
+
+            // GET THE ASSOCIATED FIHCE D EVALUATION
+            let fiche = ficheFromArr;
+            console.log(fiche);
+
+            //SAVE FICHE OBJECT ON LOCAL SESSION
+            localStorage.setItem("ficheEvaluation", JSON.stringify(fiche));
+
+            // REDIRECT TO THE FICHE PAGE : /evaluation/evaluate?.....
+
+            let emploiName = encodeURIComponent(fiche.emploi.intitule);
+            let emploiLevel = fiche.emploi.level;
+
+            let doesResponsabilitesExist = false;
+            let doesMarqueursExist = false;
+            let doesExigencesExist = false;
+            let doesCompetencesDcExist = false;
+            let doesCompetencesSeExist = false;
+            let doesCompetencesSfExist = false;
+
+
+            //GET THE CATEGORY ASSESSMENT_CONTENT PROPERTY
+            fiche.ficheContent.map((e, i) => {
+                switch (e) {
+                    case "responsabilites":
+                        doesResponsabilitesExist = true;
+                        break;
+
+                    case "exigences":
+                        doesExigencesExist = true;
+                        break;
+
+                    case "marqueurs":
+                        doesMarqueursExist = true;
+                        break;
+
+                    case "competences-dc":
+                        doesCompetencesDcExist = true;
+                        break;
+
+                    case "competences-sf":
+                        doesCompetencesSfExist = true;
+                        break;
+
+                    case "competences-se":
+                        doesCompetencesSeExist = true;
+                        break;
+
+
+                }
+            })
+
+            // BUILD URL 
+            let urlParams = {
+                "eName": emploiName,
+                "level": emploiLevel,
+                "marqueurs": doesMarqueursExist,
+                "exigences": doesExigencesExist,
+                "responsabilites": doesResponsabilitesExist,
+                "competences_dc": doesCompetencesDcExist,
+                "competences_se": doesCompetencesSeExist,
+                "competences_sf": doesCompetencesSfExist,
+            }
+            let url = buildURL("evaluation/evaluate", urlParams);
+
+
+
+            window.open(extractDomain(window.location.href) + url);
+            // console.log(extractDomain(currentUrl) + url);
+
+
+        })
+
+
+
+    });
+
 
 
 // END INITIALIZATION
 
 // GET THE ASSESSMENT JSON
-getFicheEvaluationsByAssessment(idParam).then((fiches) => {
-
-    if (fiches.hasOwnProperty("status")) {
-        if (fiches.status === 500) {
-            showModal("error", "Échec", fiches.error, "", {
-                "text": "Revenir à l'acceuil",
-                "color": "danger",
-                "id": "dqz1"
-            }, function () {
-
-                //  REDIRECT TO THE ASSESSMENT PAGE
-                redirectTo("assessment/list", 1000);
-            });
-        }
-    }
-    fichesArrJson = fiches;
-
-    // FILTER LIST OF FICHE EVALUATION BASED ON THE CONNECTED DRH
-    let user = (localStorage.getItem("user") != "admin") ? JSON.parse(localStorage.getItem("user")) : ("admin");
-
-
-    // UPDATE BREADCRUMB
-    updateBreadcrumb(user);
-
-    if (user.type === "drh") {
-
-        // REMOVE SUSPEND AND TERMINATE BTNS
-        removeElements(["#btn-assessment-terminate", "#btn-assessment-sus"]);
-
-        fichesArrJson = filterCollorateursByBpr(fiches, user.data.codePrefix, user.data.codeSuffix);
-
-    }
-
-    // GET ASSESSMENTJSON FROM FICHE EVALUATION
-    assessmentJson = fiches[0].associatedAssessment;
-
-    // COUNT HOLDS A JSON THAT CONTAINS : total, blank, inProgress, completed 
-    let count = iterateOverEvaluations(fichesArrJson);
-    console.log(count);
-
-    // DISPLAY THE RESULTS
-    displayBlankEvaluations(count.blank, count.total);
-    displayInProgressEvaluations(count.inProgress, count.total);
-    displayCompletedEvaluations(count.completed, count.total);
-    displayTotalFiches(count.total);
-
-    // CHECK ASSESSMENT STATUS
-    if (assessmentJson.status === "SUSPENDED") {
-
-        // CHANGE THE CONTENT OF SUSPEND BTN
-        $("#btn-assessment-sus").addClass("btn-info").removeClass("btn-warning").html('<i class="fe fe-play me-2"></i>Reprendre l\'assessment');
-
-    } else if (assessmentJson.status === "ENDED") {
-
-        // DISABLES BTNS
-        $("#btn-assessment-sus").addClass("disabled")
-        $("#btn-assessment-terminate").addClass("disabled")
-        $("#btn-assessment-inform").addClass("disabled")
-
-    }
-
-
-    // DISPLAY THE LIST OF FICHES
-    let dataSet = [];
-    let col = [];
-
-    dataSet = getFichesDataFromJson(fichesArrJson);
-    col = getFichesColumnFromJson(fichesArrJson[0], authorizedCol);
-
-
-    // INITIALIZE DATATABLE
-
-
-    // COSTUMIZE THE FILE NAME 
-    let fileTitle = assessmentJson.name + "_At_" + new Date().toISOString().split("T")[0];
-    if (user.type === "drh") {
-        fileTitle = user.data.tag + "_" + fileTitle;
-    } else {
-        fileTitle = "BCP" + "_" + fileTitle;
-    }
-
-
-    ficheDatatable = $("#tb4").DataTable({
-        data: dataSet,
-        columns: col,
-        columnDefs: [
-            { "width": "6%", "targets": 3 },
-            { "className": "success-light-cell", "targets": 10 },
-            { "className": "default-light-cell ", "targets": [11, 12, 13, 14, 15,16] }
-
-        ],
-        autoWidth: false,
-        ordering: false,
-        dom: 'Bfrtip',
-        buttons: [
-
-            {
-                extend: 'excelHtml5',
-                title: fileTitle,
-                text: "Télécharger les données sous Excel",
-                exportOptions: {
-                    columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
-                },
-                autoFilter: true,
-                sheetName: assessmentJson.name
-            }
-        ]
-    })
-
-    // ADD EVENT LISTENER ON VIEW BTN
-    $(".view-btn").click(function (e) {
-
-        let aElement;
-        if (e.target.tagName === "SPAN") {
-            aElement = e.target.parentElement;
-        } else {
-            aElement = e.target;
-        }
-
-        let ficheEvaluationId = $(aElement).parents("td").siblings().slice(0, 1).text();
-        console.log(ficheEvaluationId);
-
-        let ficheFromArr = getFicheInfoFromArr(ficheEvaluationId).fiche;
-
-
-        // CHECK IF THE FICHE IS ALREADY EVALUATED BY THE SAM MANAGER
+// getFicheEvaluationsByAssessment(idParam).then((fiches) => {
 
 
 
-
-        // GET THE ASSOCIATED FIHCE D EVALUATION
-        let fiche = ficheFromArr;
-        console.log(fiche);
-
-        //SAVE FICHE OBJECT ON LOCAL SESSION
-        localStorage.setItem("ficheEvaluation", JSON.stringify(fiche));
-
-        // REDIRECT TO THE FICHE PAGE : /evaluation/evaluate?.....
-
-        let emploiName = encodeURIComponent(fiche.emploi.intitule);
-        let emploiLevel = fiche.emploi.level;
-
-        let doesResponsabilitesExist = false;
-        let doesMarqueursExist = false;
-        let doesExigencesExist = false;
-        let doesCompetencesDcExist = false;
-        let doesCompetencesSeExist = false;
-        let doesCompetencesSfExist = false;
-
-
-        //GET THE CATEGORY ASSESSMENT_CONTENT PROPERTY
-        fiche.ficheContent.map((e, i) => {
-            switch (e) {
-                case "responsabilites":
-                    doesResponsabilitesExist = true;
-                    break;
-
-                case "exigences":
-                    doesExigencesExist = true;
-                    break;
-
-                case "marqueurs":
-                    doesMarqueursExist = true;
-                    break;
-
-                case "competences-dc":
-                    doesCompetencesDcExist = true;
-                    break;
-
-                case "competences-sf":
-                    doesCompetencesSfExist = true;
-                    break;
-
-                case "competences-se":
-                    doesCompetencesSeExist = true;
-                    break;
-
-
-            }
-        })
-
-        // BUILD URL 
-        let urlParams = {
-            "eName": emploiName,
-            "level": emploiLevel,
-            "marqueurs": doesMarqueursExist,
-            "exigences": doesExigencesExist,
-            "responsabilites": doesResponsabilitesExist,
-            "competences_dc": doesCompetencesDcExist,
-            "competences_se": doesCompetencesSeExist,
-            "competences_sf": doesCompetencesSfExist,
-        }
-        let url = buildURL("evaluation/evaluate", urlParams);
-
-
-
-        window.open(extractDomain(window.location.href) + url);
-        // console.log(extractDomain(currentUrl) + url);
-
-
-    })
-
-
-})
+// })
 
 async function getFicheEvaluationsByAssessment(idParam) {
     let url = "http://localhost:8080/preassessment/api/v1/ficheEvaluation/assessment/" + idParam;
@@ -273,11 +293,11 @@ function iterateOverEvaluations(arrJson) {
     let numberOfCompleted = 0;
 
     arrJson.map((fiche, index) => {
-        if (fiche.status === "CREATED") {
+        if (fiche.status === "NE0") {
             numberOfBlank++;
-        } else if (fiche.status.includes("ÉVALUÉ") || fiche.status.includes("TERMINÉ-0")) {
+        } else if (fiche.status.includes("E0") || fiche.status.includes("NE1")) {
             numberOfInProgress++;
-        } else if (fiche.status.includes("TERMINÉ-1")) {
+        } else if (fiche.status.includes("E1")) {
             numberOfCompleted++;
         }
     });
@@ -297,7 +317,7 @@ function getFichesColumnFromJson(json, authorizedCol) {
 
 
     // ADD CUSTOM COLUMNS
-
+    console.log(json);
 
     authorizedCol.map((col, index) => {
         let value;
@@ -315,13 +335,13 @@ function getFichesColumnFromJson(json, authorizedCol) {
                     value = "code affectation";
                     break;
                 case "emploi":
-                    value = "emploi ciblé"
+                    value = "emploi ciblé";
                     break;
                 case "evaluateurOne":
-                    value = "evaluateurOne"
+                    value = "evaluateurOne";
                     break;
                 case "evaluateurTwo":
-                    value = "evaluateurTwo"
+                    value = "evaluateurTwo";
                     break;
                 case "Score":
                     value = "score";
@@ -345,7 +365,7 @@ function getFichesColumnFromJson(json, authorizedCol) {
                     value = "% S.F";
                     break;
                 case "status":
-                    value = "status"
+                    value = "status";
                     break;
             }
 
@@ -402,7 +422,7 @@ function getFichesDataFromJson(arrJson) {
         console.log(i);
         let arr = [];
 
-        arr.push(e.id);
+        arr.push(e.ficheEvaluationId);
         arr.push(e.collaborateur.matricule);
         arr.push(e.collaborateur.firstName + " " + e.collaborateur.lastName);
         arr.push(e.collaborateur.affectationCode);
@@ -424,13 +444,13 @@ function getFichesDataFromJson(arrJson) {
 
 
         // Status attribute has special style
-        if (e.status === "CREATED") {
+        if (e.status === "NE0") {
             arr.push(`
             <div class="mt-sm-1 d-block">
                 <span class="tag tag-radius tag-round tag-outline-danger">Non évalué</span>
             </div>
                 `)
-        } else if (e.status.includes("ÉVALUÉ-0")) {
+        } else if (e.status.includes("E0")) {
             arr.push(`
             <div class="mt-sm-1 d-block">
                 <span class="tag tag-radius tag-round tag-outline-warning">Évalué</span>
@@ -439,13 +459,13 @@ function getFichesDataFromJson(arrJson) {
                 <span class="tag tag-radius tag-round tag-outline-warning">En cours</span>
             </div>
                 `)
-        } else if (e.status.includes("ÉVALUÉ-1")) {
+        } else if (e.status.includes("NE1")) {
             arr.push(`
             <div class="mt-sm-1 d-block">
                 <span class="tag tag-radius tag-round tag-outline-success">Évalué par N+1</span>
             </div>
                 `)
-        } else if (e.status.includes("TERMINÉ-0")) {
+        } else if (e.status.includes("E1")) {
             arr.push(`
             <div class="mt-sm-1 d-block">
                 <span class="tag tag-radius tag-round tag-outline-warning">Validé</span>
@@ -859,11 +879,12 @@ function deleteLoaderToBtn(btnId) {
 function filterCollorateursByBpr(list, prefix, suffix) {
 
     let finalArr = [];
-    // console.log(prefix, suffix);
+    console.log(prefix, suffix);
 
     finalArr = list.filter((fiche, index) => {
 
-        let affectationCode = fiche.collaborateur.affectationCode;
+        let affectationCode = fiche.collaborateur.affectationCode + "";
+        console.log(affectationCode);
 
         // console.log("Matricule : " + mat);
 
@@ -872,13 +893,13 @@ function filterCollorateursByBpr(list, prefix, suffix) {
             for (var i = 0; i < prefix.length; i++) {
                 let code = prefix[i] + "";
 
-                console.log("Code : " + code );
+                console.log("Code : " + code);
 
                 // ITERATE OVER CODE
                 let counter = 0;
                 for (var j = 0; j < code.length; j++) {
 
-                    console.log(affectationCode[j],code[j], affectationCode[j] == code[j])
+                    console.log(affectationCode[j], code[j], affectationCode[j] == code[j])
 
                     if (affectationCode[j] == code[j] && j < affectationCode.length) {
                         counter++;
@@ -930,4 +951,53 @@ function updateBreadcrumb(user) {
 
     }
 
+}
+
+
+async function intializeDB() {
+    return getAllDataFromDB(idb_config)
+        .then((result) => {
+            let assessmentData = result.files[0];
+            console.log(assessmentData);
+            return assessmentData;
+        })
+}
+
+async function getAllDataFromDB(dbName) {
+    return new Promise((resolve, reject) => {
+        const request = indexedDB.open(dbName);
+        const result = {};
+
+        request.onerror = (event) => {
+            console.error(`Error while retrieving all data from ${dbName} database: ${event.target.error}`);
+            reject(null);
+        };
+
+        request.onsuccess = (event) => {
+            const db = event.target.result;
+            const tx = db.transaction(db.objectStoreNames, 'readonly');
+            tx.onerror = (event) => {
+                console.error(`Error while retrieving all data from ${dbName} database: ${event.target.error}`);
+                reject(null);
+            };
+
+            tx.oncomplete = (event) => {
+                console.log(`Retrieved all data from ${dbName} database:`, result);
+                resolve(result);
+            };
+
+            Array.from(db.objectStoreNames).forEach((storeName) => {
+                const store = tx.objectStore(storeName);
+                const storeRequest = store.getAll();
+                storeRequest.onsuccess = (event) => {
+                    const storeResult = event.target.result;
+                    result[storeName] = storeResult;
+                };
+                storeRequest.onerror = (event) => {
+                    console.error(`Error while retrieving all data from ${storeName} store: ${event.target.error}`);
+                    reject(null);
+                };
+            });
+        };
+    });
 }
