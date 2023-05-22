@@ -23,6 +23,437 @@
             "level": 2
         }
     ],
+    "fichesEmploi": [
+        {
+            "intitule": "agent commercial",
+            "niveaux": [
+                {
+                    "intitule": "agent commercial",
+                    "filiere": "Opérations et gestion de la relation clientèle",
+                    "sousFiliere": "Développement Commercial",
+                    "dateMaj": "2022-02-06",
+                    "vocation": "Accueillir les clients sur place et veiller à ce qu’une réponse soit apportée à leurs demandes par lui-même ou en sollicitant un autre interlocuteur habilité et compétent pour leur répondre – Assurer directement le traitement des opérations bancaires simples",
+                    "responsabilites": [
+                        {
+                            "categorie": "Clients / Services",
+                            "valeur": [
+                                "Garantir la qualité de l’accueil des clients qui se déplacent en agence et contribuer à l’amélioration continue de l’Expérience Client ",
+                                " Garantir la fiabilité des réponses apportées et des informations diffusées ",
+                                " Garantir une parfaite compréhension des demandes et une orientation rapide vers l’interlocuteur interne disponible, apte à y répondre ",
+                                " Garantir le traitement fiable et diligent des opérations bancaires qu’il prend en charge (retraits, versements, change, mouvements sur comptes …) ",
+                                " Contribuer à l’amélioration du taux d’usage des services bancaires (automates, banque en ligne, …) en aidant en agence les clients à les prendre en main."
+                            ]
+                        },
+                        {
+                            "categorie": "Finances / Coûts",
+                            "valeur": [
+                                "Contribuer à la maîtrise du coût d’exploitation en prenant en charge l’essentiel des demandes des clients qui se déplacent sur Site. "
+                            ]
+                        },
+                        {
+                            "categorie": "Moyens / Méthodes",
+                            "valeur": [
+                                "Garantir une parfaite maîtrise de l’ensemble des outils mis à sa disposition pour accéder aux données clients et pour traiter les opérations bancaires. "
+                            ]
+                        },
+                        {
+                            "categorie": "Équipe / Coopérations",
+                            "valeur": [
+                                "Contribuer à l’efficacité des coopérations quotidiennes au sein de l’équipe et veiller à l’approfondissement continu de ses compétences (techniques et relationnelles) ",
+                                " Veiller au respect des valeurs du Groupe, les faire vivre et les promouvoir au sein de la Banque."
+                            ]
+                        }
+                    ],
+                    "level": 1,
+                    "exigences": [
+                        "Réactivité afin d’écourter les délais d’attente",
+                        " Combiner des activités d’accueil, d’information et de traitement",
+                        " Faire une présentation synthétique des principaux produits et services"
+                    ],
+                    "marqueurs": [
+                        "Limiter les délais d’attente en orientant vers les automates et les autres canaux de distribution e-banking",
+                        " Savoir transmettre de façon claire et intelligible les demandes des clients"
+                    ],
+                    "competencesRequis": [
+                        {
+                            "name": "Réglementation bancaire",
+                            "type": "Domaines de connaissance",
+                            "niveauRequis": "E"
+                        },
+                        {
+                            "name": "Organisation & Règlementation interne ",
+                            "type": "Domaines de connaissance",
+                            "niveauRequis": "E"
+                        },
+                        {
+                            "name": "Connaissance des produits et services aux particuliers dont Offres de crédits",
+                            "type": "Domaines de connaissance",
+                            "niveauRequis": "E"
+                        },
+                        {
+                            "name": "Acceuillir un client ",
+                            "type": "Savoir-faire",
+                            "niveauRequis": "M"
+                        },
+                        {
+                            "name": "Maîtriser les outils de suivi de la relation client ",
+                            "type": "Savoir-faire",
+                            "niveauRequis": "E"
+                        },
+                        {
+                            "name": "Maitriser les opérations bancaires courantes de guichet et des circuits de traitement",
+                            "type": "Savoir-faire",
+                            "niveauRequis": "A"
+                        },
+                        {
+                            "name": "Maitriser les opérations d'arrêté de journée et de caisse",
+                            "type": "Savoir-faire",
+                            "niveauRequis": "M"
+                        },
+                        {
+                            "name": "Orientation client",
+                            "type": "Savoir-être",
+                            "niveauRequis": "E"
+                        },
+                        {
+                            "name": "Aisance relationnelle",
+                            "type": "Savoir-être",
+                            "niveauRequis": "E"
+                        },
+                        {
+                            "name": "Ethique et déontologie",
+                            "type": "Savoir-être",
+                            "niveauRequis": "E"
+                        },
+                        {
+                            "name": "Communication efficace",
+                            "type": "Savoir-être",
+                            "niveauRequis": "E"
+                        },
+                        {
+                            "name": "Rigueur et organisation",
+                            "type": "Savoir-être",
+                            "niveauRequis": "E"
+                        },
+                        {
+                            "name": "Capacité à travailler  en équipe - Sens du collectif",
+                            "type": "Savoir-être",
+                            "niveauRequis": "E"
+                        },
+                        {
+                            "name": "Culture de la performance",
+                            "type": "Savoir-être",
+                            "niveauRequis": "E"
+                        },
+                        {
+                            "name": "Proximité Client",
+                            "type": "Savoir-être",
+                            "niveauRequis": "E"
+                        }
+                    ]
+                },
+                {
+                    "intitule": "agent commercial",
+                    "filiere": "Opérations et gestion de la relation clientèle",
+                    "sousFiliere": "Développement Commercial",
+                    "dateMaj": "2022-02-06",
+                    "vocation": "Accueillir les clients sur place et veiller à ce qu’une réponse soit apportée à leurs demandes par lui-même ou en sollicitant un autre interlocuteur habilité et compétent pour leur répondre – Assurer directement le traitement des opérations bancaires simples",
+                    "responsabilites": [
+                        {
+                            "categorie": "Clients / Services",
+                            "valeur": [
+                                "Garantir la qualité de l’accueil des clients qui se déplacent en agence et contribuer à l’amélioration continue de l’Expérience Client ",
+                                " Garantir la fiabilité des réponses apportées et des informations diffusées ",
+                                " Garantir une parfaite compréhension des demandes et une orientation rapide vers l’interlocuteur interne disponible, apte à y répondre ",
+                                " Garantir le traitement fiable et diligent des opérations bancaires qu’il prend en charge (retraits, versements, change, mouvements sur comptes …) ",
+                                " Contribuer à l’amélioration du taux d’usage des services bancaires (automates, banque en ligne, …) en aidant en agence les clients à les prendre en main."
+                            ]
+                        },
+                        {
+                            "categorie": "Finances / Coûts",
+                            "valeur": [
+                                "Contribuer à la maîtrise du coût d’exploitation en prenant en charge l’essentiel des demandes des clients qui se déplacent sur Site. "
+                            ]
+                        },
+                        {
+                            "categorie": "Moyens / Méthodes",
+                            "valeur": [
+                                "Garantir une parfaite maîtrise de l’ensemble des outils mis à sa disposition pour accéder aux données clients et pour traiter les opérations bancaires. "
+                            ]
+                        },
+                        {
+                            "categorie": "Équipe / Coopérations",
+                            "valeur": [
+                                "Contribuer à l’efficacité des coopérations quotidiennes au sein de l’équipe et veiller à l’approfondissement continu de ses compétences (techniques et relationnelles) ",
+                                " Veiller au respect des valeurs du Groupe, les faire vivre et les promouvoir au sein de la Banque."
+                            ]
+                        }
+                    ],
+                    "level": 2,
+                    "exigences": [
+                        "Réactivité afin d’écourter les délais d’attente",
+                        " Combiner des activités d’accueil, d’information et de traitement",
+                        " Faire une présentation synthétique des principaux produits et services",
+                        "Apporter des réponses personnalisées",
+                        " Adapter sa communication au profil de chaque client",
+                        " Filtrer les demandes clients et décharger au maximum les conseillers",
+                        " Capter très rapidement la nature et la complexité des demandes clients"
+                    ],
+                    "marqueurs": [
+                        "Limiter les délais d’attente en orientant vers les automates et les autres canaux de distribution e-banking",
+                        " Savoir transmettre de façon claire et intelligible les demandes des clients",
+                        "Savoir prendre en charge la clientèle de façon optimale (réclamations et insatisfactions)",
+                        " Manipuler des valeurs (chèques certifiés, ordre de virement, change manuel …)",
+                        " Guider le client vers une « consommation optimale » sur la banque du quotidien, en étant force de proposition",
+                        " Orienter le client vers de nouveaux produits en fonction de ses opérations",
+                        " Connaître le catalogue des offres de produits et services"
+                    ],
+                    "competencesRequis": [
+                        {
+                            "name": "Réglementation bancaire",
+                            "type": "Domaines de connaissance",
+                            "niveauRequis": "E"
+                        },
+                        {
+                            "name": "Organisation & Règlementation interne ",
+                            "type": "Domaines de connaissance",
+                            "niveauRequis": "E"
+                        },
+                        {
+                            "name": "Connaissance des produits et services aux particuliers dont Offres de crédits",
+                            "type": "Domaines de connaissance",
+                            "niveauRequis": "E"
+                        },
+                        {
+                            "name": "Acceuillir un client ",
+                            "type": "Savoir-faire",
+                            "niveauRequis": "A"
+                        },
+                        {
+                            "name": "Maîtriser les outils de suivi de la relation client ",
+                            "type": "Savoir-faire",
+                            "niveauRequis": "E"
+                        },
+                        {
+                            "name": "Maitriser les opérations bancaires courantes de guichet et des circuits de traitement",
+                            "type": "Savoir-faire",
+                            "niveauRequis": "X"
+                        },
+                        {
+                            "name": "Maitriser les opérations d'arrêté de journée et de caisse",
+                            "type": "Savoir-faire",
+                            "niveauRequis": "M"
+                        },
+                        {
+                            "name": "Orientation client",
+                            "type": "Savoir-être",
+                            "niveauRequis": "E"
+                        },
+                        {
+                            "name": "Aisance relationnelle",
+                            "type": "Savoir-être",
+                            "niveauRequis": "E"
+                        },
+                        {
+                            "name": "Ethique et déontologie",
+                            "type": "Savoir-être",
+                            "niveauRequis": "E"
+                        },
+                        {
+                            "name": "Communication efficace",
+                            "type": "Savoir-être",
+                            "niveauRequis": "E"
+                        },
+                        {
+                            "name": "Rigueur et organisation",
+                            "type": "Savoir-être",
+                            "niveauRequis": "E"
+                        },
+                        {
+                            "name": "Capacité à travailler  en équipe - Sens du collectif",
+                            "type": "Savoir-être",
+                            "niveauRequis": "E"
+                        },
+                        {
+                            "name": "Culture de la performance",
+                            "type": "Savoir-être",
+                            "niveauRequis": "E"
+                        },
+                        {
+                            "name": "Proximité Client",
+                            "type": "Savoir-être",
+                            "niveauRequis": "M"
+                        },
+                        {
+                            "name": "Promouvoir les outils digitaux",
+                            "type": "Savoir-faire",
+                            "niveauRequis": "E"
+                        },
+                        {
+                            "name": "Fidéliser les clients",
+                            "type": "Savoir-faire",
+                            "niveauRequis": "E"
+                        },
+                        {
+                            "name": "Résistance au stress",
+                            "type": "Savoir-être",
+                            "niveauRequis": "E"
+                        }
+                    ]
+                },
+                {
+                    "intitule": "agent commercial",
+                    "filiere": "Opérations et gestion de la relation clientèle",
+                    "sousFiliere": "Développement Commercial",
+                    "dateMaj": "2022-02-06",
+                    "vocation": "Accueillir les clients sur place et veiller à ce qu’une réponse soit apportée à leurs demandes par lui-même ou en sollicitant un autre interlocuteur habilité et compétent pour leur répondre – Assurer directement le traitement des opérations bancaires simples",
+                    "responsabilites": [
+                        {
+                            "categorie": "Clients / Services",
+                            "valeur": [
+                                "Garantir la qualité de l’accueil des clients qui se déplacent en agence et contribuer à l’amélioration continue de l’Expérience Client ",
+                                " Garantir la fiabilité des réponses apportées et des informations diffusées ",
+                                " Garantir une parfaite compréhension des demandes et une orientation rapide vers l’interlocuteur interne disponible, apte à y répondre ",
+                                " Garantir le traitement fiable et diligent des opérations bancaires qu’il prend en charge (retraits, versements, change, mouvements sur comptes …) ",
+                                " Contribuer à l’amélioration du taux d’usage des services bancaires (automates, banque en ligne, …) en aidant en agence les clients à les prendre en main."
+                            ]
+                        },
+                        {
+                            "categorie": "Finances / Coûts",
+                            "valeur": [
+                                "Contribuer à la maîtrise du coût d’exploitation en prenant en charge l’essentiel des demandes des clients qui se déplacent sur Site. "
+                            ]
+                        },
+                        {
+                            "categorie": "Moyens / Méthodes",
+                            "valeur": [
+                                "Garantir une parfaite maîtrise de l’ensemble des outils mis à sa disposition pour accéder aux données clients et pour traiter les opérations bancaires. "
+                            ]
+                        },
+                        {
+                            "categorie": "Équipe / Coopérations",
+                            "valeur": [
+                                "Contribuer à l’efficacité des coopérations quotidiennes au sein de l’équipe et veiller à l’approfondissement continu de ses compétences (techniques et relationnelles) ",
+                                " Veiller au respect des valeurs du Groupe, les faire vivre et les promouvoir au sein de la Banque."
+                            ]
+                        }
+                    ],
+                    "level": 3,
+                    "exigences": [
+                        "Réactivité afin d’écourter les délais d’attente",
+                        " Combiner des activités d’accueil, d’information et de traitement",
+                        " Faire une présentation synthétique des principaux produits et services",
+                        "Apporter des réponses personnalisées",
+                        " Adapter sa communication au profil de chaque client",
+                        " Filtrer les demandes clients et décharger au maximum les conseillers",
+                        " Capter très rapidement la nature et la complexité des demandes clients",
+                        "Prendre en charge les réclamations Clients et en assurer le suivi"
+                    ],
+                    "marqueurs": [
+                        "Limiter les délais d’attente en orientant vers les automates et les autres canaux de distribution e-banking",
+                        " Savoir transmettre de façon claire et intelligible les demandes des clients",
+                        "Savoir prendre en charge la clientèle de façon optimale (réclamations et insatisfactions)",
+                        " Manipuler des valeurs (chèques certifiés, ordre de virement, change manuel …)",
+                        " Guider le client vers une « consommation optimale » sur la banque du quotidien, en étant force de proposition",
+                        " Orienter le client vers de nouveaux produits en fonction de ses opérations",
+                        " Connaître le catalogue des offres de produits et services"
+                    ],
+                    "competencesRequis": [
+                        {
+                            "name": "Réglementation bancaire",
+                            "type": "Domaines de connaissance",
+                            "niveauRequis": "E"
+                        },
+                        {
+                            "name": "Organisation & Règlementation interne ",
+                            "type": "Domaines de connaissance",
+                            "niveauRequis": "E"
+                        },
+                        {
+                            "name": "Connaissance des produits et services aux particuliers dont Offres de crédits",
+                            "type": "Domaines de connaissance",
+                            "niveauRequis": "M"
+                        },
+                        {
+                            "name": "Acceuillir un client ",
+                            "type": "Savoir-faire",
+                            "niveauRequis": "X"
+                        },
+                        {
+                            "name": "Maîtriser les outils de suivi de la relation client ",
+                            "type": "Savoir-faire",
+                            "niveauRequis": "E"
+                        },
+                        {
+                            "name": "Maitriser les opérations bancaires courantes de guichet et des circuits de traitement",
+                            "type": "Savoir-faire",
+                            "niveauRequis": "X"
+                        },
+                        {
+                            "name": "Maitriser les opérations d'arrêté de journée et de caisse",
+                            "type": "Savoir-faire",
+                            "niveauRequis": "A"
+                        },
+                        {
+                            "name": "Orientation client",
+                            "type": "Savoir-être",
+                            "niveauRequis": "M"
+                        },
+                        {
+                            "name": "Aisance relationnelle",
+                            "type": "Savoir-être",
+                            "niveauRequis": "M"
+                        },
+                        {
+                            "name": "Ethique et déontologie",
+                            "type": "Savoir-être",
+                            "niveauRequis": "E"
+                        },
+                        {
+                            "name": "Communication efficace",
+                            "type": "Savoir-être",
+                            "niveauRequis": "M"
+                        },
+                        {
+                            "name": "Rigueur et organisation",
+                            "type": "Savoir-être",
+                            "niveauRequis": "E"
+                        },
+                        {
+                            "name": "Capacité à travailler  en équipe - Sens du collectif",
+                            "type": "Savoir-être",
+                            "niveauRequis": "E"
+                        },
+                        {
+                            "name": "Culture de la performance",
+                            "type": "Savoir-être",
+                            "niveauRequis": "E"
+                        },
+                        {
+                            "name": "Proximité Client",
+                            "type": "Savoir-être",
+                            "niveauRequis": "M"
+                        },
+                        {
+                            "name": "Promouvoir les outils digitaux",
+                            "type": "Savoir-faire",
+                            "niveauRequis": "E"
+                        },
+                        {
+                            "name": "Fidéliser les clients",
+                            "type": "Savoir-faire",
+                            "niveauRequis": "E"
+                        },
+                        {
+                            "name": "Résistance au stress",
+                            "type": "Savoir-être",
+                            "niveauRequis": "E"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
     "assessmentCategories": [
         {
             "categorie": {
@@ -407,7 +838,6 @@
             "workEmail": null,
             "affectationCode": null,
             "hashedPwd": "xx"
-            
         },
         {
             "firstName": "FF",
@@ -441,14 +871,14 @@
             "sousPoints": "",
             "status": "NE0",
             "surPoints": "",
-            "re_manager1" : null,
-            "re_manager2" : null,
-            "sectionCompDc" : 0,
-            "sectionCompSe" : 0,
-            "sectionCompSf" : 0,
-            "sectionExi" : 0,
-            "sectionMarq" : 0,
-            "sectionRes" : 0,
+            "re_manager1": null,
+            "re_manager2": null,
+            "sectionCompDc": 0,
+            "sectionCompSe": 0,
+            "sectionCompSf": 0,
+            "sectionExi": 0,
+            "sectionMarq": 0,
+            "sectionRes": 0,
             "createdAt": "2023-05-04T08:24:17.284Z",
             "evaluatedAt": "2023-05-04T11:24:17.285Z",
             "dateEvaluation": "2023-05-04T00:00:00.000Z",
@@ -519,14 +949,14 @@
             "score": "",
             "sousPoints": "",
             "surPoints": "",
-            "re_manager1" : null,
-            "re_manager2" : null,
-            "sectionCompDc" : 0,
-            "sectionCompSe" : 0,
-            "sectionCompSf" : 0,
-            "sectionExi" : 0,
-            "sectionMarq" : 0,
-            "sectionRes" : 0,
+            "re_manager1": null,
+            "re_manager2": null,
+            "sectionCompDc": 0,
+            "sectionCompSe": 0,
+            "sectionCompSf": 0,
+            "sectionExi": 0,
+            "sectionMarq": 0,
+            "sectionRes": 0,
             "status": "E0",
             "createdAt": "2023-05-04T08:24:17.284Z",
             "evaluatedAt": "2023-05-04T12:24:17.285Z",
@@ -595,14 +1025,14 @@
             "score": "",
             "sousPoints": "",
             "surPoints": "",
-            "re_manager1" : null,
-            "re_manager2" : null,
-            "sectionCompDc" : 0,
-            "sectionCompSe" : 0,
-            "sectionCompSf" : 0,
-            "sectionExi" : 0,
-            "sectionMarq" : 0,
-            "sectionRes" : 0,
+            "re_manager1": null,
+            "re_manager2": null,
+            "sectionCompDc": 0,
+            "sectionCompSe": 0,
+            "sectionCompSf": 0,
+            "sectionExi": 0,
+            "sectionMarq": 0,
+            "sectionRes": 0,
             "status": "NE1",
             "createdAt": "2023-05-04T08:24:17.285Z",
             "evaluatedAt": "2023-05-04T13:24:17.285Z",

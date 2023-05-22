@@ -217,11 +217,12 @@ intializeDB()
                 "competences_se": doesCompetencesSeExist,
                 "competences_sf": doesCompetencesSfExist,
             }
-            let url = buildURL("evaluation/evaluate", urlParams);
+            let url = buildURL("./fiche-evaluation.html", urlParams);
 
 
-
-            window.open(extractDomain(window.location.href) + url);
+            // window.location.href = url
+            console.log(url);
+            // window.open(extractDomain(window.location.href) + url);
             // console.log(extractDomain(currentUrl) + url);
 
 
@@ -505,7 +506,7 @@ function getFicheInfoFromArr(ficheId) {
     for (var i = 0; i < fichesArrJson.length; i++) {
         let ficheEva = fichesArrJson[i];
 
-        if (ficheId == ficheEva.id) {
+        if (ficheId == ficheEva.ficheEvaluationId) {
             return {
                 "index": i,
                 "fiche": ficheEva
