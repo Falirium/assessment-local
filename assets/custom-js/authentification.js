@@ -163,7 +163,7 @@ $("#cnx-btn-manager").click(function () {
         // SET AUTHORIZATION
         let auth = {
             "regex": [
-                '\\/(evaluation)\\/(evaluate|list)\\?*',
+                '(list-fiches|fiche-evaluation)\\\.html',
 
             ],
             "sections": {
@@ -262,7 +262,7 @@ $("#cnx-btn-manager").click(function () {
 
 
         // // REDIRECT TO HOMEPAGE
-        window.location.href = './list-assessments.html';
+        window.location.href = './list-fiches.html';
 
 
 

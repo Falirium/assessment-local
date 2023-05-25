@@ -33,7 +33,7 @@ intializeDB()
                 }, function () {
 
                     //  REDIRECT TO THE ASSESSMENT PAGE
-                    redirectTo("assessment/list", 1000);
+                    redirectTo("./assesment-result.html", 1000);
                 });
             }
         }
@@ -53,8 +53,8 @@ intializeDB()
 
             fichesArrJson = filterCollorateursByBpr(fiches, user.data.codePrefix, user.data.codeSuffix);
 
-            
-            
+
+
 
         }
 
@@ -221,7 +221,8 @@ intializeDB()
 
 
             // window.location.href = url
-            console.log(url);
+            window.open(url, "_blank");
+            // console.log(url);
             // window.open(extractDomain(window.location.href) + url);
             // console.log(extractDomain(currentUrl) + url);
 
@@ -445,43 +446,56 @@ function getFichesDataFromJson(arrJson) {
 
 
         // Status attribute has special style
+
+        console.log("HERE STATUS", authorized);
+        // Status attribute has special style
         if (e.status === "NE0") {
             arr.push(`
-            <div class="mt-sm-1 d-block">
-                <span class="tag tag-radius tag-round tag-outline-danger">Non évalué</span>
-            </div>
-                `)
+                        <div class="mt-sm-1 d-block">
+                            <span class="tag tag-radius tag-round tag-outline-danger">Non évalué</span>
+                        </div>
+                            `)
+        } else if (e.status.includes("NE01")) {
+            arr.push(`
+                        <div class="mt-sm-1 d-block">
+                            
+                            <span class="tag tag-radius tag-round tag-outline-warning">Évalué</span>
+                            
+                        </div>
+                        <div class="mt-sm-1 d-block">
+                            
+                            <span class="tag tag-radius tag-round tag-outline-warning">En cours</span>
+                        </div>
+                            `)
         } else if (e.status.includes("E0")) {
             arr.push(`
-            <div class="mt-sm-1 d-block">
-                <span class="tag tag-radius tag-round tag-outline-warning">Évalué</span>
-            </div>
-            <div class="mt-sm-1 d-block">
-                <span class="tag tag-radius tag-round tag-outline-warning">En cours</span>
-            </div>
-                `)
+                        <div class="mt-sm-1 d-block">
+                            
+                             <span class="tag tag-radius tag-round tag-outline-success">Évalué par N+1</span>
+                        </div>
+                            `)
         } else if (e.status.includes("NE1")) {
             arr.push(`
-            <div class="mt-sm-1 d-block">
-                <span class="tag tag-radius tag-round tag-outline-success">Évalué par N+1</span>
-            </div>
-                `)
+                        <div class="mt-sm-1 d-block">
+                            
+                            <span class="tag tag-radius tag-round tag-outline-warning">Évalué par N+2</span>
+                         </div>
+                         <div class="mt-sm-1 d-block">
+                            
+                            <span class="tag tag-radius tag-round tag-outline-warning">En cours</span>
+                         </div>
+                        `)
         } else if (e.status.includes("E1")) {
             arr.push(`
-            <div class="mt-sm-1 d-block">
-                <span class="tag tag-radius tag-round tag-outline-warning">Validé</span>
-             </div>
-             <div class="mt-sm-1 d-block">
-                <span class="tag tag-radius tag-round tag-outline-warning">En cours</span>
-             </div>
-            `)
-        } else if (e.status.includes("TERMINÉ-1")) {
-            arr.push(`
-            <div class="mt-sm-1 d-block">
-                <span class="tag tag-radius tag-round tag-outline-success">Évalué par N+2</span>
-             </div>
-            `)
+                        <div class="mt-sm-1 d-block">
+                            
+                            <span class="tag tag-radius tag-round tag-outline-success">Validé par N+2</span>
+                         </div>
+                        `)
         }
+        console.log("fin STATUS");
+
+
 
 
         // ACTION COL
@@ -568,7 +582,7 @@ $("#btn-assessment-sus").click(function (e) {
                     }, function () {
 
                         //  REDIRECT TO THE ASSESSMENT PAGE
-                        redirectTo("assessment/list", 1000);
+                        redirectTo("./assesment-result.html", 1000);
                     });
 
                 } else {
@@ -582,7 +596,7 @@ $("#btn-assessment-sus").click(function (e) {
 
 
                         //  REDIRECT TO THE ASSESSMENT PAGE
-                        redirectTo("assessment/list", 1000);
+                        redirectTo("./assesment-result.html", 1000);
                     });
                 }
                 // })
@@ -636,7 +650,7 @@ $("#btn-assessment-sus").click(function (e) {
                     }, function () {
 
                         //  REDIRECT TO THE ASSESSMENT PAGE
-                        redirectTo("assessment/list", 1000);
+                        redirectTo("./assesment-result.html", 1000);
                     });
 
                 } else {
@@ -650,7 +664,7 @@ $("#btn-assessment-sus").click(function (e) {
 
 
                         //  REDIRECT TO THE ASSESSMENT PAGE
-                        redirectTo("assessment/list", 1000);
+                        redirectTo("./assesment-result.html", 1000);
                     });
                 }
                 // })
@@ -713,7 +727,7 @@ $("#btn-assessment-terminate").click(function (e) {
                 }, function () {
 
                     //  REDIRECT TO THE ASSESSMENT PAGE
-                    redirectTo("assessment/list", 1000);
+                    redirectTo("./assesment-result.html", 1000);
                 });
 
             } else {
@@ -727,7 +741,7 @@ $("#btn-assessment-terminate").click(function (e) {
 
 
                     //  REDIRECT TO THE ASSESSMENT PAGE
-                    redirectTo("assessment/list", 1000);
+                    redirectTo("./assesment-result.html", 1000);
                 });
             }
         })
@@ -857,7 +871,7 @@ function redirectTo(url, timeInMilliseconds) {
     setTimeout(function () {
         let currentUrl = window.location.href;
 
-        window.location.href = extractDomain(currentUrl) + url;
+        window.location.href = url;
     },
         timeInMilliseconds);
 

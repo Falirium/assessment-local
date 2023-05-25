@@ -29,182 +29,282 @@ let ficheDatatable;
 
 let listFiches;
 
-// GET LIST OF FICHES
-let fichesJson = getListOfFichesByMatricule(managerMatricule).then((data) => {
+let assessment_ID = "";
+const idb_config = "assessments_config";
+const idb_result = "assessments_results";
+let users = [];
+let assessmentJson;
+
+// INITIALIZATION
+intializeDB()
+    .then((data) => {
+        assessment_ID = data.assessmentId;
+        let fiches = data.fichesEvaluations;
+        fichesEmplois = data.fichesEmploi;
+
+        assessmentJson = data;
+
+        fichesJson = data.fichesEvaluations;
 
 
-    listFiches = data;
+        listFiches = fichesJson;
+        console.log(listFiches);
 
-    // INITIALIZE DATATABLE
-    let fiteredAuthorizedCol;
+        // INITIALIZE DATATABLE
+        let fiteredAuthorizedCol;
 
-    if (manager.type === '1') {
-        fiteredAuthorizedCol = authorizedCol.filter((col, index) => "evaluateurOne" != col);
+        if (manager.type === '1') {
+            fiteredAuthorizedCol = authorizedCol.filter((col, index) => "evaluateurOne" != col);
+        } else {
+            fiteredAuthorizedCol = authorizedCol.filter((col, index) => "evaluateurTwo" != col);
+        }
+
+        let dataSet = getFichesDataFromJson(listFiches, fiteredAuthorizedCol);
+        let col = getFichesColumnFromJson(listFiches[0], fiteredAuthorizedCol);
+
+        ficheDatatable = $("#tb1").DataTable({
+            data: dataSet,
+            columns: col,
+            columnDefs: [
+                { "width": "6%", "targets": 2 }
+            ],
+            autoWidth: false,
+            ordering: false
+        })
+
+        // ADD EVENTLISTENERS TO VIEW BTN
+        $(".view-btn").click(function (e) {
+
+            // let aElement;
+            // if (e.target.tagName === "SPAN") {
+            //     aElement = e.target.parentElement;
+            // } else {
+            //     aElement = e.target;
+            // }
+
+            // let btns = $(".view-btn").get();
+            // // let indexOfFiche = btns.indexOf(aElement);
+            // let indexOfFiche = $(aElement).parents(".g-1").attr("id");
+
+            // // console.log(manager.type === 2 && listFiches[indexOfFiche].status === "CREATED");
+
+
+            let aElement;
+            if (e.target.tagName === "SPAN") {
+                aElement = e.target.parentElement;
+            } else {
+                aElement = e.target;
+            }
+
+            let ficheEvaluationId = $(aElement).parents("td").siblings().slice(0, 1).text();
+
+            let ficheFromArr = getFicheInfoFromArr(ficheEvaluationId).fiche;
+            console.log(ficheEvaluationId, ficheFromArr)
+
+
+            // CHECK IF THE FICHE IS ALREADY EVALUATED BY THE SAME MANAGER
+
+            if ((manager.type === '1' && (ficheFromArr.status === "NE0" || ficheFromArr.status === "NE01")) || (manager.type === '2' && (ficheFromArr.status === "NE1" || ficheFromArr.status === "E0"))) {
+
+                console.log("access authorized");
+
+                // GET THE ASSOCIATED FIHCE D EVALUATION
+                let fiche = ficheFromArr;
+                console.log(fiche);
+
+                //SAVE FICHE OBJECT ON LOCAL SESSION
+                localStorage.setItem("ficheEvaluation", JSON.stringify(fiche));
+
+                // REDIRECT TO THE FICHE PAGE : /evaluation/evaluate?.....
+
+                let emploiName = encodeURIComponent(fiche.emploi.intitule);
+                let emploiLevel = fiche.emploi.level;
+
+                let doesResponsabilitesExist = false;
+                let doesMarqueursExist = false;
+                let doesExigencesExist = false;
+                let doesCompetencesDcExist = false;
+                let doesCompetencesSeExist = false;
+                let doesCompetencesSfExist = false;
+
+
+                //GET THE CATEGORY ASSESSMENT_CONTENT PROPERTY
+                fiche.ficheContent.map((e, i) => {
+                    switch (e) {
+                        case "responsabilites":
+                            doesResponsabilitesExist = true;
+                            break;
+
+                        case "exigences":
+                            doesExigencesExist = true;
+                            break;
+
+                        case "marqueurs":
+                            doesMarqueursExist = true;
+                            break;
+
+                        case "competences-dc":
+                            doesCompetencesDcExist = true;
+                            break;
+
+                        case "competences-sf":
+                            doesCompetencesSfExist = true;
+                            break;
+
+                        case "competences-se":
+                            doesCompetencesSeExist = true;
+                            break;
+
+
+                    }
+                })
+
+                // BUILD URL 
+                let urlParams = {
+                    "eName": emploiName,
+                    "level": emploiLevel,
+                    "marqueurs": doesMarqueursExist,
+                    "exigences": doesExigencesExist,
+                    "responsabilites": doesResponsabilitesExist,
+                    "competences_dc": doesCompetencesDcExist,
+                    "competences_se": doesCompetencesSeExist,
+                    "competences_sf": doesCompetencesSfExist,
+                }
+                let url = buildURL("./fiche-evaluation.html", urlParams);
+
+                // window.location.href = extractDomain(currentUrl) + url;
+                window.open(url, "_blank");
+                // console.log(extractDomain(currentUrl) + url);
+
+            } else {
+                console.log("access denied");
+
+                if (manager.type === '1') {
+                    let errorBody;
+
+                    if (ficheFromArr.status === "E0") {
+
+                        errorBody = `Désolé, vous ne pouvez pas accéder ou modifier les fiches d'évaluations que vous avez envoyés à votre manager`;
+
+                    } else if (ficheFromArr.status.includes("E1")) {
+
+                        errorBody = `Désolé, vous ne pouvez pas accéder aux les fiches d'évaluations qui ont été évalués par votre manager.`
+                    }
+
+                    console.log("from N+1");
+                    showModal("error", "Accès Refusé", errorBody, "");
+
+                } else if (manager.type === '2') {
+
+                    let errorBody;
+
+                    if (ficheFromArr.status === "NE0" || ficheFromArr.status === "CREATED") {
+
+                        errorBody = `Désolé, vous ne pouvez pas accéder aux fiches d'évaluations qui n'ont pas été validées par le manager N+1.`;
+
+                    } else if (ficheFromArr.status === "E1") {
+
+                        errorBody = `Désolé, vous ne pouvez pas accéder ou modifier les fiches d'évaluations que vous avez envoyés aux consultants DRH.`;
+                    }
+
+                    console.log("from N+2");
+                    showModal("error", "Accès Refusé", errorBody, "");
+
+                }
+            }
+
+
+
+
+
+        })
+
+    });
+
+// SEND THE RESULT OF THIS
+$("#btn-fiche-send").click({
+    finalValidation: true
+}, function (e) {
+
+    // VERIFY STATUS OF FICHES EVALUATIONS
+    console.log(verifyFichesEvaluation(listFiches));
+    if (verifyFichesEvaluation(listFiches)) {
+
+
+        // STEP 1 : CREATE A JSON FILE HOLDING THE ASSESSMENT INFO 
+
+        // STEP 2 : CREATE EMAIL : RECEIPIENTS, CC, OBJECT, BODY, ATTACHMENT
+        openOutlook(['farbusiness92@gmail.com'], ['mfarfaoua@groupebcp.com'], assessmentJson,"TEST EMAIL BODY");
+
+        // STEP 3 : VERIFY IF THE EMAIL HAS BEEN SENT
+
+        // STEP 4 : SAVE THIS ASSESSMENT DATA IN ASSESSMENT-RESULTS
+
+        // STEP 5 : SHOW SUCCESS MODAL
+        showModal("success", "Succès", "Merci d'avoir complété cette campagne d'assessment. Vos évaluations ont été soumise et envoyées avec succès", "", {
+            "text": "Revenir à l'accueil",
+            "color": "success",
+            "id": "dje1"
+        }, function () {
+            // REDIRECT TO EVALUATION LIST PAGE
+            setTimeout(function () {
+                // currentUrl = window.location.href;
+                // window.location.href = extractDomain(currentUrl) + "evaluation/list";
+
+                window.location.href = "../index.html";
+            }, 1000)
+        })
     } else {
-        fiteredAuthorizedCol = authorizedCol.filter((col, index) => "evaluateurTwo" != col);
+        // SHOW ERROR
+        showModal("error", "Erreur", "Vous ne pouvez pas envoyer de fiches d'évaluation car vous ne les avez pas encore validés. Veuillez compléter les fiches non validés", "");
     }
-
-    let dataSet = getFichesDataFromJson(data, fiteredAuthorizedCol);
-    let col = getFichesColumnFromJson(data[0], fiteredAuthorizedCol);
-
-    ficheDatatable = $("#tb1").DataTable({
-        data: dataSet,
-        columns: col,
-        columnDefs: [
-            { "width": "6%", "targets": 2 }
-        ],
-        autoWidth: false,
-        ordering: false
-    })
-
-    // ADD EVENTLISTENERS TO VIEW BTN
-    $(".view-btn").click(function (e) {
-
-        // let aElement;
-        // if (e.target.tagName === "SPAN") {
-        //     aElement = e.target.parentElement;
-        // } else {
-        //     aElement = e.target;
-        // }
-
-        // let btns = $(".view-btn").get();
-        // // let indexOfFiche = btns.indexOf(aElement);
-        // let indexOfFiche = $(aElement).parents(".g-1").attr("id");
-
-        // // console.log(manager.type === 2 && listFiches[indexOfFiche].status === "CREATED");
-
-
-        let aElement;
-        if (e.target.tagName === "SPAN") {
-            aElement = e.target.parentElement;
-        } else {
-            aElement = e.target;
-        }
-
-        let ficheEvaluationId = $(aElement).parents("td").siblings().slice(0, 1).text();
-
-        let ficheFromArr = getFicheInfoFromArr(ficheEvaluationId).fiche;
-        console.log(ficheEvaluationId, ficheFromArr)
-
-
-        // CHECK IF THE FICHE IS ALREADY EVALUATED BY THE SAME MANAGER
-
-        if ((manager.type === '1' && (ficheFromArr.status === "ÉVALUÉ-0" || ficheFromArr.status === "CREATED")) || (manager.type === '2' && (ficheFromArr.status === "ÉVALUÉ-1" || ficheFromArr.status === "TERMINÉ-0"))) {
-
-            console.log("access authorized");
-
-            // GET THE ASSOCIATED FIHCE D EVALUATION
-            let fiche = ficheFromArr;
-            console.log(fiche);
-
-            //SAVE FICHE OBJECT ON LOCAL SESSION
-            localStorage.setItem("ficheEvaluation", JSON.stringify(fiche));
-
-            // REDIRECT TO THE FICHE PAGE : /evaluation/evaluate?.....
-
-            let emploiName = encodeURIComponent(fiche.emploi.intitule);
-            let emploiLevel = fiche.emploi.level;
-
-            let doesResponsabilitesExist = false;
-            let doesMarqueursExist = false;
-            let doesExigencesExist = false;
-            let doesCompetencesDcExist = false;
-            let doesCompetencesSeExist = false;
-            let doesCompetencesSfExist = false;
-
-
-            //GET THE CATEGORY ASSESSMENT_CONTENT PROPERTY
-            fiche.ficheContent.map((e, i) => {
-                switch (e) {
-                    case "responsabilites":
-                        doesResponsabilitesExist = true;
-                        break;
-
-                    case "exigences":
-                        doesExigencesExist = true;
-                        break;
-
-                    case "marqueurs":
-                        doesMarqueursExist = true;
-                        break;
-
-                    case "competences-dc":
-                        doesCompetencesDcExist = true;
-                        break;
-
-                    case "competences-sf":
-                        doesCompetencesSfExist = true;
-                        break;
-
-                    case "competences-se":
-                        doesCompetencesSeExist = true;
-                        break;
-
-
-                }
-            })
-
-            // BUILD URL 
-            let urlParams = {
-                "eName": emploiName,
-                "level": emploiLevel,
-                "marqueurs": doesMarqueursExist,
-                "exigences": doesExigencesExist,
-                "responsabilites": doesResponsabilitesExist,
-                "competences_dc": doesCompetencesDcExist,
-                "competences_se": doesCompetencesSeExist,
-                "competences_sf": doesCompetencesSfExist,
-            }
-            let url = buildURL("evaluation/evaluate", urlParams);
-
-            window.location.href = extractDomain(currentUrl) + url;
-            // console.log(extractDomain(currentUrl) + url);
-
-        } else {
-            console.log("access denied");
-
-            if (manager.type === '1') {
-                let errorBody;
-
-                if (ficheFromArr.status === "ÉVALUÉ-1") {
-
-                    errorBody = `Désolé, vous ne pouvez pas accéder ou modifier les fiches d'évaluations que vous avez envoyés à votre manager`;
-
-                } else if (ficheFromArr.status.includes("TERMINÉ")) {
-
-                    errorBody = `Désolé, vous ne pouvez pas accéder aux les fiches d'évaluations qui ont été évalués par votre manager.`
-                }
-
-                console.log("from N+1");
-                showModal("error", "Accès Refusé", errorBody, "");
-
-            } else if (manager.type === '2') {
-
-                let errorBody;
-
-                if (ficheFromArr.status === "ÉVALUÉ-0" || ficheFromArr.status === "CREATED") {
-
-                    errorBody = `Désolé, vous ne pouvez pas accéder aux fiches d'évaluations qui n'ont pas été validées par le manager N+1.`;
-
-                } else if (ficheFromArr.status === "TERMINÉ-1") {
-
-                    errorBody = `Désolé, vous ne pouvez pas accéder ou modifier les fiches d'évaluations que vous avez envoyés aux consultants DRH.`;
-                }
-
-                console.log("from N+2");
-                showModal("error", "Accès Refusé", errorBody, "");
-
-            }
-        }
-
-
-
-
-
-    })
-
 })
 
+
+function generateEmailContent(emailBody, jsonDataURI) {
+    return `
+    <html>
+        <body>
+          <p>${emailBody}</p>
+          <a href="${jsonDataURI}" download="data.txt">Download JSON file</a>
+        </body>
+      </html>
+    `
+}
+
+function openOutlook(recipients, CC, jsonObject, emailBody) {
+    const recipientString = recipients.join(",");
+    const ccString = CC.join(",");
+    const subject = "Email subject"; // Replace with your desired subject
+
+    // Create a data URI for the JSON object
+    const jsonDataURI = "data:text/plain;charset=utf-8," + encodeURIComponent(JSON.stringify(jsonObject));
+
+    // Create the email body with the download link
+    const emailContent = generateEmailContent(emailBody, jsonDataURI);
+
+    // Construct the mailto link
+    const mailtoLink = `mailto:${encodeURIComponent(recipientString)}?cc=${encodeURIComponent(ccString)}&subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(emailContent)}`;
+
+    // Open the default email client
+    window.location.href = mailtoLink;
+}
+
+function verifyFichesEvaluation(arr) {
+
+    for (var i = 0; i < arr.length; i++) {
+        let fiche = arr[i];
+
+
+        if ((manager.type === '1' && ((fiche.status === "NE0") || (fiche.status === "NE01")))  ||  (manager.type === '2' && ((fiche.status === "NE1") || (fiche.status === "E0")))) {
+            console.log(i);
+            return false;
+        }
+
+    }
+
+    return true;
+}
 function buildURL(prefix, params) {
 
     let url = prefix + "?";
@@ -228,9 +328,57 @@ async function getListOfFichesByMatricule(matricule) {
         })
 }
 
+async function intializeDB() {
+    return getAllDataFromDB(idb_config)
+        .then((result) => {
+            let assessmentData = result.files[0];
+            console.log(assessmentData);
+            return assessmentData;
+        })
+}
+
+async function getAllDataFromDB(dbName) {
+    return new Promise((resolve, reject) => {
+        const request = indexedDB.open(dbName);
+        const result = {};
+
+        request.onerror = (event) => {
+            console.error(`Error while retrieving all data from ${dbName} database: ${event.target.error}`);
+            reject(null);
+        };
+
+        request.onsuccess = (event) => {
+            const db = event.target.result;
+            const tx = db.transaction(db.objectStoreNames, 'readonly');
+            tx.onerror = (event) => {
+                console.error(`Error while retrieving all data from ${dbName} database: ${event.target.error}`);
+                reject(null);
+            };
+
+            tx.oncomplete = (event) => {
+                console.log(`Retrieved all data from ${dbName} database:`, result);
+                resolve(result);
+            };
+
+            Array.from(db.objectStoreNames).forEach((storeName) => {
+                const store = tx.objectStore(storeName);
+                const storeRequest = store.getAll();
+                storeRequest.onsuccess = (event) => {
+                    const storeResult = event.target.result;
+                    result[storeName] = storeResult;
+                };
+                storeRequest.onerror = (event) => {
+                    console.error(`Error while retrieving all data from ${storeName} store: ${event.target.error}`);
+                    reject(null);
+                };
+            });
+        };
+    });
+}
+
 function getFichesColumnFromJson(json, authorizedCol) {
     let colArr = [];
-
+    console.log(json);
 
 
     // ADD CUSTOM COLUMNS
@@ -327,7 +475,7 @@ function getFichesDataFromJson(arrJson, authorizedCol) {
 
             switch (authorized) {
                 case "id":
-                    arr.push(e.id);
+                    arr.push(e.ficheEvaluationId);
                     break;
                 case "collaborateur":
                     arr.push(e.collaborateur.matricule);
@@ -344,24 +492,24 @@ function getFichesDataFromJson(arrJson, authorizedCol) {
                     arr.push(e.emploi.level);
                     break;
                 case "associatedAssessment":
-                    console.log(e.associatedAssessment.status);
-                    switch (e.associatedAssessment.status) {
+                    console.log(assessmentJson.status);
+                    switch (assessmentJson.status) {
                         case "LANCHED":
                             arr.push(
                                 `
-                                <button type="button" class="btn btn-outline-primary position-relative me-5 mb-2"> ${e.associatedAssessment.name}
+                                <button type="button" class="btn btn-outline-primary position-relative me-5 mb-2"> ${assessmentJson.name}
                                     <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-success">active
                                         <span class="visually-hidden">unread messages</span>
                                     </span>
                                 </button>
                                 `
                             );
-                            
+
                             break;
                         case "FINISHED":
                             arr.push(
                                 `
-                                <button type="button" class="btn btn-outline-primary position-relative me-5 mb-2"> ${e.associatedAssessment.name}
+                                <button type="button" class="btn btn-outline-primary position-relative me-5 mb-2"> ${assessmentJson.name}
                                     <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">terminé
                                         <span class="visually-hidden">unread messages</span>
                                     </span>
@@ -373,7 +521,7 @@ function getFichesDataFromJson(arrJson, authorizedCol) {
                         case "SUSPENDED":
                             arr.push(
                                 `
-                                <button type="button" class="btn btn-outline-primary position-relative me-5 mb-2"> ${e.associatedAssessment.name}
+                                <button type="button" class="btn btn-outline-primary position-relative me-5 mb-2"> ${assessmentJson.name}
                                     <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-warning">suspendu
                                         <span class="visually-hidden">unread messages</span>
                                     </span>
@@ -390,13 +538,13 @@ function getFichesDataFromJson(arrJson, authorizedCol) {
                 case "status":
                     console.log("HERE STATUS", authorized);
                     // Status attribute has special style
-                    if (e.status === "CREATED") {
+                    if (e.status === "NE0") {
                         arr.push(`
                         <div class="mt-sm-1 d-block">
                             <span class="tag tag-radius tag-round tag-outline-danger">Non évalué</span>
                         </div>
                             `)
-                    } else if (e.status.includes("ÉVALUÉ-0")) {
+                    } else if (e.status.includes("NE01")) {
                         arr.push(`
                         <div class="mt-sm-1 d-block">
                             
@@ -408,25 +556,25 @@ function getFichesDataFromJson(arrJson, authorizedCol) {
                             <span class="tag tag-radius tag-round tag-outline-warning">En cours</span>
                         </div>
                             `)
-                    } else if (e.status.includes("ÉVALUÉ-1")) {
+                    } else if (e.status.includes("E0")) {
                         arr.push(`
                         <div class="mt-sm-1 d-block">
                             
                              <span class="tag tag-radius tag-round tag-outline-success">Évalué par N+1</span>
                         </div>
                             `)
-                    } else if (e.status.includes("TERMINÉ-0")) {
+                    } else if (e.status.includes("NE1")) {
                         arr.push(`
                         <div class="mt-sm-1 d-block">
                             
-                            <span class="tag tag-radius tag-round tag-outline-warning">Validé</span>
+                            <span class="tag tag-radius tag-round tag-outline-warning">Évalué par N+2</span>
                          </div>
                          <div class="mt-sm-1 d-block">
                             
                             <span class="tag tag-radius tag-round tag-outline-warning">En cours</span>
                          </div>
                         `)
-                    } else if (e.status.includes("TERMINÉ-1")) {
+                    } else if (e.status.includes("E1")) {
                         arr.push(`
                         <div class="mt-sm-1 d-block">
                             
@@ -463,7 +611,7 @@ function showModal(type, header, content, action, btnJson, eventHandler) {
 
     let modalId, modalHeaderId, modalContentId, color;
 
-  
+
     switch (type) {
         case "success":
             modalId = "success";
@@ -563,7 +711,7 @@ function getFicheInfoFromArr(ficheId) {
         let ficheEva = listFiches[i];
         console.log(ficheId, ficheEva.id)
 
-        if (ficheId == ficheEva.id) {
+        if (ficheId == ficheEva.ficheEvaluationId) {
             return {
                 "index": i,
                 "fiche": ficheEva

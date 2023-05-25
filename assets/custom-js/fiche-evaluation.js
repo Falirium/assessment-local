@@ -2,175 +2,233 @@
 let ficheEvaluation;
 let fichePreviewJson; // HOLDS THE VALUE THAT IS FETCHED FROM THE SERVER
 let manager;
+let fichesEmplois;
 
-// CHECK IF FICHEEVALUATION IS AVAILABLE
-if (localStorage.getItem("ficheEvaluation") === null) {
-
-    // TODO:REDIRECT TO PAGE LIST PAGE
-    window.location.href(currentUrl(window.location.href) + "evaluation/list")
-
-
-} else {
-
-    // GET FICHE & MANAGER
-    ficheEvaluation = JSON.parse(localStorage.getItem("ficheEvaluation"));
-
-    // GET  FICHE-EVALUATION OBJECT FROM DATABASE
-    (async () => {
-        ficheEvaluation = await getFicheEvaluation(ficheEvaluation.id);
-    })();
-
-    if (localStorage.getItem("user") === "admin") {
-        manager = localStorage.getItem("user");
-    } else {
-        manager = JSON.parse(localStorage.getItem("user"));
-    }
-
-    // SET FICHE EVALUATION INFOS
-    $("#emploi-cible-text").text(ficheEvaluation.emploi.intitule);
-    $("#date-eva-text").text(ficheEvaluation.emploi.dateEvaluation);
-    if (manager === "admin") {
-        $("#mat-eva-text").text(ficheEvaluation.evaluateurOne.matricule);
-    } else if (manager.type === "1") {
-        $("#mat-eva-text").text(ficheEvaluation.evaluateurOne.matricule);
-    } else if (manager.type === "2") {
-        $("#mat-eva-text").text(ficheEvaluation.evaluateurTwo.matricule);
-    }
-    $("#mat-collaborateur-text").text(ficheEvaluation.collaborateur.matricule);
-    $("#date-eva-text").text(ficheEvaluation.dateEvaluation.split("T")[0]);
-}
+let assessment_ID = "";
+const idb_config = "assessments_config";
+const idb_result = "assessments_results";
+let users = [];
+let assessmentJson;
 
 
-// SCORE VARIABLES
-let totalPoints = 0;
-let score = 0;
-let sur_points = 0;
-let sous_points = 0;
-let percentagePerSection = {
-    "section_res": 0,
-    "section_exi": 0,
-    "section_marq": 0,
-    "section_dc": 0,
-    "section_sf": 0,
-    "section_se": 0
-}
+// VARIABLES
+let totalPoints;
+let score;
+let sur_points;
+let sous_points;
+let percentagePerSection;
 
-let elementsNumbers = 0;
+let elementsNumbers;
 
-let lastClickedIndexYes = -1;
-let lastClickedIndexNo = -1;
-
-// GET PARAMS FROM URL
-const params = new URLSearchParams(window.location.search);
-let urlParams = "?";
-for (const param of params) {
-    urlParams = urlParams + param[0] + "=" + param[1] + "&";
-    // console.log(param);
-}
-console.log(urlParams);
+let lastClickedIndexYes;
+let lastClickedIndexNo;
 
 // CHECK FOR AVAILABLE SECTIONS
-let radioBtnCompteur = 0;
-let compBtnCompteur = 0;
-let compSfBtnCompteur = 0;
-let compSeBtnCompteur = 0;
+let radioBtnCompteur;
+let compBtnCompteur;
+let compSfBtnCompteur;
+let compSeBtnCompteur;
 
-// CHECK IF FICHE IS ALREADY FILLED
-if (ficheEvaluation.re_manager1 != null || ficheEvaluation.re_manager2 != null) {
+// INITIALIZATION
+intializeDB()
+    .then((data) => {
+        assessment_ID = data.assessmentId;
+        let fiches = data.fichesEvaluations;
+        fichesEmplois = data.fichesEmploi;
 
-    // THIS VARIABLE HOLDS THE LAST VERSION OF ANSWERS : FOR BOTH MANAGER 1 AND MANAGER2
-    let ficheAnswers;
+        assessmentJson = data;
+        // console.log(assessmentJson, fiches);
 
+        // CHECK IF FICHEEVALUATION IS AVAILABLE
+        if (localStorage.getItem("ficheEvaluation") === null) {
 
-    if (manager === "admin" || manager.type === 'drh') {
-        if (ficheEvaluation.re_manager1 != null && ficheEvaluation.re_manager2 != null) {
-
-            ficheAnswers = JSON.parse(ficheEvaluation.re_manager2);
-
-            // SET THE NAME OF MANAGER 2 AS EVALUATEUR
-            $("#mat-eva-text").text(ficheEvaluation.evaluateurTwo.matricule);
-
-        } else if (ficheEvaluation.re_manager1 != null) {
-
-            ficheAnswers = JSON.parse(ficheEvaluation.re_manager1);
-
-            // SET THE NAME OF MANAGER 1 AS EVALUATEUR
-            $("#mat-eva-text").text(ficheEvaluation.evaluateurOne.matricule);
+            // TODO:REDIRECT TO PAGE LIST PAGE
+            window.location.href(currentUrl(window.location.href) + "evaluation/list")
 
 
-        } else if (ficheEvaluation.re_manager2 != null) {
+        } else {
 
-            ficheAnswers = JSON.parse(ficheEvaluation.re_manager2);
+            // GET FICHE OBJECT FROM LOCALHOST
+            ficheEvaluation = JSON.parse(localStorage.getItem("ficheEvaluation"));
 
-            // SET THE NAME OF MANAGER 2 AS EVALUATEUR
-            $("#mat-eva-text").text(ficheEvaluation.evaluateurTwo.matricule);
+
+            if (localStorage.getItem("user") === "admin") {
+                manager = localStorage.getItem("user");
+            } else {
+                manager = JSON.parse(localStorage.getItem("user"));
+            }
+
+            // SET FICHE EVALUATION INFOS
+            $("#emploi-cible-text").text(ficheEvaluation.emploi.intitule);
+            $("#date-eva-text").text(ficheEvaluation.dateEvaluation);
+            if (manager === "admin") {
+                $("#mat-eva-text").text(ficheEvaluation.evaluateurOne.matricule);
+            } else if (manager.type === "1") {
+                $("#mat-eva-text").text(ficheEvaluation.evaluateurOne.matricule);
+            } else if (manager.type === "2") {
+                $("#mat-eva-text").text(ficheEvaluation.evaluateurTwo.matricule);
+            }
+            $("#mat-collaborateur-text").text(ficheEvaluation.collaborateur.matricule);
+            $("#date-eva-text").text(ficheEvaluation.dateEvaluation.split("T")[0]);
+        }
+
+
+
+        // SCORE VARIABLES
+        totalPoints = 0;
+        score = 0;
+        sur_points = 0;
+        sous_points = 0;
+        percentagePerSection = {
+            "section_res": 0,
+            "section_exi": 0,
+            "section_marq": 0,
+            "section_dc": 0,
+            "section_sf": 0,
+            "section_se": 0
+        }
+
+        elementsNumbers = 0;
+
+        lastClickedIndexYes = -1;
+        lastClickedIndexNo = -1;
+
+        // GET PARAMS FROM URL
+        const params = new URLSearchParams(window.location.search);
+        let urlParams = "?";
+        for (const param of params) {
+            urlParams = urlParams + param[0] + "=" + param[1] + "&";
+            // console.log(param);
+        }
+        console.log(urlParams);
+
+        // CHECK FOR AVAILABLE SECTIONS
+        radioBtnCompteur = 0;
+        compBtnCompteur = 0;
+        compSfBtnCompteur = 0;
+        compSeBtnCompteur = 0;
+
+        // CHECK IF FICHE IS ALREADY FILLED
+        if (ficheEvaluation.re_manager1 != null || ficheEvaluation.re_manager2 != null) {
+
+            // THIS VARIABLE HOLDS THE LAST VERSION OF ANSWERS : FOR BOTH MANAGER 1 AND MANAGER2
+            let ficheAnswers;
+
+
+            if (manager === "admin" || manager.type === 'drh') {
+                if (ficheEvaluation.re_manager1 != null && ficheEvaluation.re_manager2 != null) {
+
+                    ficheAnswers = JSON.parse(ficheEvaluation.re_manager2);
+
+                    // SET THE NAME OF MANAGER 2 AS EVALUATEUR
+                    $("#mat-eva-text").text(ficheEvaluation.evaluateurTwo.matricule);
+
+                } else if (ficheEvaluation.re_manager1 != null) {
+
+                    ficheAnswers = JSON.parse(ficheEvaluation.re_manager1);
+
+                    // SET THE NAME OF MANAGER 1 AS EVALUATEUR
+                    $("#mat-eva-text").text(ficheEvaluation.evaluateurOne.matricule);
+
+
+                } else if (ficheEvaluation.re_manager2 != null) {
+
+                    ficheAnswers = JSON.parse(ficheEvaluation.re_manager2);
+
+                    // SET THE NAME OF MANAGER 2 AS EVALUATEUR
+                    $("#mat-eva-text").text(ficheEvaluation.evaluateurTwo.matricule);
+
+                }
+
+            } else {
+
+                if (ficheEvaluation.re_manager1 != null && manager.type === "1" && ficheEvaluation.re_manager2 == null) {
+
+                    ficheAnswers = JSON.parse(ficheEvaluation.re_manager1);
+
+                } else if (ficheEvaluation.re_manager1 != null && manager.type === "2" && ficheEvaluation.re_manager2 == null) {
+
+                    ficheAnswers = JSON.parse(ficheEvaluation.re_manager1);
+
+                } else if (ficheEvaluation.re_manager1 != null && manager.type === "2" && ficheEvaluation.re_manager2 != null) {
+
+                    ficheAnswers = JSON.parse(ficheEvaluation.re_manager2);
+                }
+            }
+
+
+
+            console.log(ficheAnswers);
+
+            // PARSE THE THE FICHE 
+
+            let ficheEmploiJson = getFicheEmploiPreview(urlParams);
+
+            if (ficheEmploiJson != null) {
+                populateResTable(ficheEmploiJson);
+                fichePreviewJson = ficheEmploiJson;
+
+                // FILL IT WITH RESPONSE OF MANAGER 1
+                parseManagerResult(ficheAnswers);
+
+
+                // UPDATE THE SCORES & DISPLAY THEM
+                score = ficheEvaluation.score;
+                sur_points = ficheEvaluation.surPoints;
+                sous_points = ficheEvaluation.sousPoints;
+                totalPoints = (score / 100) * elementsNumbers;
+
+                $("#score").text(score.toString() + "%");
+                displaySousPoints();
+                displaySurPoints();
+
+                // CASE OF ADMIN DISABLE MODIFICATION
+                if (manager === 'admin' || manager.type == 'drh') {
+                    disableModificationForAdminAndDrh();
+                }
+            }
+
+
+
+
+
+
+
+        } else {
+
+            // POPULATE FIHCE EVALUATION
+            let ficheEmploiJson = getFicheEmploiPreview(urlParams);
+            if (ficheEmploiJson != null) {
+                populateResTable(ficheEmploiJson);
+                fichePreviewJson = ficheEmploiJson;
+
+                // CASE OF ADMIN DISABLE MODIFICATION
+                if (manager === 'admin' || manager.type == 'drh') {
+                    disableModificationForAdminAndDrh();
+                }
+            }
+            // getFicheEmploiPreview(urlParams).then((json) => {
+            //     populateResTable(json);
+            //     fichePreviewJson = json;
+
+            //     // CASE OF ADMIN DISABLE MODIFICATION
+            //     if (manager === 'admin' || manager.type == 'drh') {
+            //         disableModificationForAdminAndDrh();
+            //     }
+            // });
 
         }
 
-    } else {
-
-        if (ficheEvaluation.re_manager1 != null && manager.type === "1" && ficheEvaluation.re_manager2 == null) {
-
-            ficheAnswers = JSON.parse(ficheEvaluation.re_manager1);
-
-        } else if (ficheEvaluation.re_manager1 != null && manager.type === "2" && ficheEvaluation.re_manager2 == null) {
-
-            ficheAnswers = JSON.parse(ficheEvaluation.re_manager1);
-
-        } else if (ficheEvaluation.re_manager1 != null && manager.type === "2" && ficheEvaluation.re_manager2 != null) {
-
-            ficheAnswers = JSON.parse(ficheEvaluation.re_manager2);
-        }
-    }
 
 
 
 
-    // PARSE THE THE FICHE 
-    getFicheEmploiPreview(urlParams).then((json) => {
-        populateResTable(json);
-        fichePreviewJson = json;
-
-        // FILL IT WITH RESPONSE OF MANAGER 1
-        parseManagerResult(ficheAnswers);
-
-
-        // UPDATE THE SCORES & DISPLAY THEM
-        score = ficheEvaluation.score;
-        sur_points = ficheEvaluation.surPoints;
-        sous_points = ficheEvaluation.sousPoints;
-        totalPoints = (score / 100) * elementsNumbers;
-
-        $("#score").text(score.toString() + "%");
-        displaySousPoints();
-        displaySurPoints();
-
-        // CASE OF ADMIN DISABLE MODIFICATION
-        if (manager === 'admin' || manager.type == 'drh') {
-            disableModificationForAdminAndDrh();
-        }
     });
 
+// END INITIALIZATION
 
 
 
-
-
-
-} else {
-
-    // POPULATE FIHCE EVALUATION
-    getFicheEmploiPreview(urlParams).then((json) => {
-        populateResTable(json);
-        fichePreviewJson = json;
-
-        // CASE OF ADMIN DISABLE MODIFICATION
-        if (manager === 'admin' || manager.type == 'drh') {
-            disableModificationForAdminAndDrh();
-        }
-    });
-
-}
 
 
 
@@ -408,9 +466,9 @@ function processSavingFicheEvaluation(e) {
     if (manager.type === "1") {
 
         if (e.data.finalValidation) {
-            ficheEvaluation.status = "ÉVALUÉ-1";
+            ficheEvaluation.status = "E0";
         } else {
-            ficheEvaluation.status = "ÉVALUÉ-0";
+            ficheEvaluation.status = "NE01";
         }
 
 
@@ -425,10 +483,10 @@ function processSavingFicheEvaluation(e) {
     } else if (manager.type === "2") {
 
         if (e.data.finalValidation) {
-            ficheEvaluation.status = "TERMINÉ-1";
+            ficheEvaluation.status = "E1";
 
         } else {
-            ficheEvaluation.status = "TERMINÉ-0";
+            ficheEvaluation.status = "NE1";
 
         }
 
@@ -441,7 +499,7 @@ function processSavingFicheEvaluation(e) {
     }
 
     // CHECK FOR ASSESSMENT STATUS
-    if (ficheEvaluation.associatedAssessment.status == "SUSPENDED") {
+    if (assessmentJson.status == "SUSPENDED") {
 
         // DELETE LOADER FROM BTN
         deleteLoaderToBtn("#" + e.target.id);
@@ -459,7 +517,7 @@ function processSavingFicheEvaluation(e) {
             }, 1000);
         });
 
-    } else if (ficheEvaluation.associatedAssessment.status == "ENDED") {
+    } else if (assessmentJson.status == "ENDED") {
 
         // DELETE LOADER FROM BTN
         deleteLoaderToBtn("#" + e.target.id);
@@ -478,7 +536,8 @@ function processSavingFicheEvaluation(e) {
         })
     } else {
         // SAVE THE RESULT TO THE DB
-        updateFicheEvaluation(ficheEvaluation.id, ficheEvaluation).then((result) => {
+        console.log(ficheEvaluation);
+        updateFicheEvaluation(ficheEvaluation.ficheEvaluationId, ficheEvaluation).then((result) => {
             console.log(result);
 
             // DELETE LOADER FROM BTN
@@ -505,8 +564,10 @@ function processSavingFicheEvaluation(e) {
             }, function () {
                 // REDIRECT TO EVALUATION LIST PAGE
                 setTimeout(function () {
-                    currentUrl = window.location.href;
-                    window.location.href = extractDomain(currentUrl) + "evaluation/list";
+                    // currentUrl = window.location.href;
+                    // window.location.href = extractDomain(currentUrl) + "evaluation/list";
+
+                    window.location.href = "./list-fiches.html";
                 }, 1000)
             })
 
@@ -980,20 +1041,43 @@ function takeCopy(json) {
 async function updateFicheEvaluation(id, jsonFiche) {
     let url = "http://localhost:8080/preassessment/api/v1/ficheEvaluation/update/" + id;
 
-    return fetch(url, {
-        method: 'PUT',
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(jsonFiche)
+    // return fetch(url, {
+    //     method: 'PUT',
+    //     headers: {
+    //         "Content-Type": "application/json"
+    //     },
+    //     body: JSON.stringify(jsonFiche)
 
-    }).then(
-        response => response.json()
-    ).then(
-        success => success
-    ).catch(
-        error => console.log(error)
-    )
+    // }).then(
+    //     response => response.json()
+    // ).then(
+    //     success => success
+    // ).catch(
+    //     error => console.log(error)
+    // )
+
+    //STEP 1 : DELETE THE INDEX DB DATA AND REPLACE IT WITH THIS ONE
+    updateFicheInsideArray(id, jsonFiche);
+
+    return clearAndReplaceStoreData(idb_config,'files',[assessmentJson]);
+}
+
+function updateFicheInsideArray(id, jsonFile) {
+    let ficheArr = assessmentJson.fichesEvaluations;
+
+    for (var i = 0; i < assessmentJson.fichesEvaluations.length; i++) {
+        let fiche = ficheArr[i];
+
+        if (fiche.ficheEvaluationId == id) {
+            // UPDATE FICHE
+            assessmentJson.fichesEvaluations[i] = jsonFile;
+
+            // 
+
+            console.log("UPDATED");
+        }
+    }
+
 }
 
 function showModal(type, header, content, action, btnJson, eventHandler) {
@@ -3435,7 +3519,7 @@ function populateResTable(json) {
         // UPDATE LASTCLICKEDBTN
         lastClickedIndexYes = index
 
-        console.log(lastClickedIndexNo, lastClickedIndexYes);
+        // console.log(lastClickedIndexNo, lastClickedIndexYes);
 
     })
 
@@ -3480,6 +3564,7 @@ function populateResTable(json) {
 
 // CALCULATE SCORE AND DISPLAY IT ON THE ELEMENT
 function calculateScore() {
+    console.log(totalPoints, elementsNumbers);
     score = Number((((totalPoints / elementsNumbers)) * 100).toFixed(1));
 
     $("#score").text(score.toString() + "%");
@@ -3493,20 +3578,26 @@ function displaySurPoints() {
     $("#sur-pts").text("" + sur_points);
 }
 
-async function getFicheEmploiPreview(params) {
+function getFicheEmploiPreview(params) {
     let url = "http://localhost:8080/preassessment/api/v1/ficheEvaluation/preview" + params;
 
-    return fetch(url, {
-        method: 'GET'
-    }).then((response) => {
-        return response.json();
-    }).then((success) => {
-        //console.log(success);
+    // return fetch(url, {
+    //     method: 'GET'
+    // }).then((response) => {
+    //     return response.json();
+    // }).then((success) => {
+    //     //console.log(success);
 
-        //GET NUMBER OF INPUTS TO CALCULATE SCORE
-        elementsNumbers = countsInputs(success);
-        return success;
-    }).catch(error => console.log(error))
+    //     //GET NUMBER OF INPUTS TO CALCULATE SCORE
+    //     elementsNumbers = countsInputs(success);
+    //     return success;
+    // }).catch(error => console.log(error))
+    let fichePreview = buildFicheEvaluationPreviewFor(params.split("?")[1]);
+
+    // GET NUMBER OF INPUTS TO CALCULATE SCORE
+    elementsNumbers = countsInputs(fichePreview);
+
+    return fichePreview;
 }
 
 function addClickEventListener(className) {
@@ -3919,3 +4010,260 @@ function calculateCompletionOfAllSections() {
 }
 
 
+function buildFicheEvaluationPreviewFor(params) {
+    const fe = {};
+
+    let jsonParams = parseUrlParameters(params);
+    console.log(jsonParams);
+
+    // INITIATE ename=agent commercial&level=1&marqueurs=true&exigences=true&responsabilites=true&competences_dc=true&competences_se=true&competences_sf=true&
+    let emploiName = jsonParams.eName;
+    let level = jsonParams.level;
+    let marqueurs = jsonParams.marqueurs;
+    let exigences = jsonParams.exigences;
+    let responsabilites = jsonParams.responsabilites;
+    let competences_dc = jsonParams.competences_dc;
+    let competences_se = jsonParams.competences_se;
+    let competences_sf = jsonParams.competences_sf;
+
+    const niveau = getNiveauByNameAndByLevel(
+        emploiName.toLowerCase(),
+        level
+    );
+
+    // BASES INFORMATIONS
+    fe.intitule = niveau.intitule;
+    fe.filiere = niveau.filiere;
+    fe.sousFiliere = niveau.sousFiliere;
+    fe.level = niveau.level;
+    fe.vocation = niveau.vocation;
+    fe.dateMaj = niveau.dateMaj;
+
+    // MARQUEURS
+    fe.marqueurs = marqueurs ? niveau.marqueurs : null;
+
+    // EXIGENCES
+    fe.exigences = exigences ? niveau.exigences : null;
+
+    // RESPONSABILITES
+    fe.responsabilites = responsabilites ? niveau.responsabilites : null;
+
+    const niveauCompetencesReq = niveau.competencesRequis;
+
+    // COMPETENCES
+    const dc = [];
+    const se = [];
+    const sf = [];
+
+    for (const competence of niveauCompetencesReq) {
+        const fullCompetenceRequis = {};
+
+        // GET THE FULL COMPETENCE METADATA -> GET DEFINITION OF NIVEAUX
+        const fullCompetence = competence;
+
+        // CASE 1: DOMAINNES DE CONNAISSANCE
+        if (
+            competence.type === "Domaines de connaissance" &&
+            competences_dc
+        ) {
+            fullCompetenceRequis.name = competence.name;
+            fullCompetenceRequis.requiredNiveau = competence.niveauRequis;
+            fullCompetenceRequis.niveaux = fullCompetence.niveaux;
+
+            // ADD THIS FULLCOMPETENCEREQUIS TO THE LIST
+            dc.push(fullCompetenceRequis);
+        }
+
+        // CASE 2: SAVOIR FAIRE
+        if (competence.type === "Savoir-faire" && competences_sf) {
+            fullCompetenceRequis.name = competence.name;
+            fullCompetenceRequis.requiredNiveau = competence.niveauRequis;
+            fullCompetenceRequis.niveaux = fullCompetence.niveaux;
+
+            // ADD THIS FULLCOMPETENCEREQUIS TO THE LIST
+            sf.push(fullCompetenceRequis);
+        }
+
+        // CASE 3: SAVOIR ETRE
+        if (competence.type === "Savoir-etre" && competences_se) {
+            fullCompetenceRequis.name = competence.name;
+            fullCompetenceRequis.requiredNiveau = competence.niveauRequis;
+            fullCompetenceRequis.niveaux = fullCompetence.niveaux;
+
+            // ADD THIS FULLCOMPETENCEREQUIS TO THE LIST
+            se.push(fullCompetenceRequis);
+        }
+    }
+
+    // ADD THE LIST TO THE RETURNED INSTANCE
+    fe.competences_dc = dc;
+    fe.competences_sf = sf;
+    fe.competences_se = se;
+
+    return fe;
+}
+
+
+function getNiveauByNameAndByLevel(name, level) {
+    // GET THE FICHE EMPLOI 
+
+    console.log(name, level);
+    for (var i = 0; i < fichesEmplois.length; i++) {
+        let ficheEmploi = fichesEmplois[i];
+
+        if (ficheEmploi.intitule == name) {
+            let index = level - 1;
+            return ficheEmploi.niveaux[index];
+        }
+
+    }
+    return null;
+
+}
+
+
+async function intializeDB() {
+    return getAllDataFromDB(idb_config)
+        .then((result) => {
+            let assessmentData = result.files[0];
+            console.log(assessmentData);
+            return assessmentData;
+        })
+}
+
+async function getAllDataFromDB(dbName) {
+    return new Promise((resolve, reject) => {
+        const request = indexedDB.open(dbName);
+        const result = {};
+
+        request.onerror = (event) => {
+            console.error(`Error while retrieving all data from ${dbName} database: ${event.target.error}`);
+            reject(null);
+        };
+
+        request.onsuccess = (event) => {
+            const db = event.target.result;
+            const tx = db.transaction(db.objectStoreNames, 'readonly');
+            tx.onerror = (event) => {
+                console.error(`Error while retrieving all data from ${dbName} database: ${event.target.error}`);
+                reject(null);
+            };
+
+            tx.oncomplete = (event) => {
+                console.log(`Retrieved all data from ${dbName} database:`, result);
+                resolve(result);
+            };
+
+            Array.from(db.objectStoreNames).forEach((storeName) => {
+                const store = tx.objectStore(storeName);
+                const storeRequest = store.getAll();
+                storeRequest.onsuccess = (event) => {
+                    const storeResult = event.target.result;
+                    result[storeName] = storeResult;
+                };
+                storeRequest.onerror = (event) => {
+                    console.error(`Error while retrieving all data from ${storeName} store: ${event.target.error}`);
+                    reject(null);
+                };
+            });
+        };
+    });
+}
+
+function parseUrlParameters(urlParameters) {
+    const params = {};
+    const paramPairs = urlParameters.split("&");
+
+    for (let pair of paramPairs) {
+        const [key, value] = pair.split("=");
+        params[key] = decodeURIComponent(value);
+    }
+
+    return params;
+}
+
+function getCompetenceByName(name) {
+
+}
+
+
+async function clearStore() {
+    const dbName = idb_config;
+    const storeName = 'files';
+
+    indexedDB.open(dbName).onsuccess = (event) => {
+        const db = event.target.result;
+        const transaction = db.transaction(storeName, 'readwrite');
+        const store = transaction.objectStore(storeName);
+        const clearRequest = store.clear();
+
+        clearRequest.onsuccess = () => {
+            console.log(`Cleared data from '${storeName}' store in '${dbName}' database.`);
+        };
+
+        clearRequest.onerror = (event) => {
+            console.error(`Error clearing data from '${storeName}' store: ${event.target.error}`);
+        };
+    };
+}
+
+async function clearAndReplaceStoreData(dbName, storeName, newData) {
+    console.log(newData);
+    clearStore().then(() => {
+        addToStoreWithId(dbName,storeName,newData[0],0);
+    })
+}
+
+function addToStoreWithId(dbName, storeName, value, id) {
+    return new Promise((resolve, reject) => {
+        const request = indexedDB.open(dbName);
+
+        request.onerror = (event) => {
+            reject(event.target.error);
+        };
+
+        request.onsuccess = (event) => {
+            const db = event.target.result;
+            const transaction = db.transaction(storeName, 'readwrite');
+            const store = transaction.objectStore(storeName);
+
+            const addRequest = store.put({ ...value, id });
+
+            addRequest.onsuccess = () => {
+                resolve();
+            };
+
+            addRequest.onerror = (event) => {
+                reject(event.target.error);
+            };
+
+            transaction.oncomplete = () => {
+                db.close();
+            };
+        };
+
+        request.onupgradeneeded = (event) => {
+            const db = event.target.result;
+            db.createObjectStore(storeName, { keyPath: 'id' });
+        };
+    });
+}
+
+async function deleteFromStore(dbName, storeName, nameValue) {
+    try {
+        const keys = await getAllKeys(storeName);
+
+        for (const key of keys) {
+            const value = await get(key, storeName);
+
+            if (value && value.name === nameValue) {
+                await del(key, storeName);
+                console.log(`Deleted ${key} from ${storeName} store in ${dbName} database`);
+            }
+        }
+
+        console.log(`Deletion complete`);
+    } catch (err) {
+        console.error(`Error while deleting from ${storeName} store in ${dbName} database: ${err}`);
+    }
+}

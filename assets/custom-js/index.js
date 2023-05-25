@@ -211,6 +211,7 @@ function deleteFileFromArr(targetedFile) {
 }
 
 function deleteFromStoreById(dbName, storeName, id) {
+    
     return new Promise((resolve, reject) => {
         const request = indexedDB.open(dbName);
 
@@ -267,6 +268,7 @@ function mergeFiles(arr) {
 
     //
     let mergedList = arr[0].content;
+    console.log(arr, mergedList);
 
     arr.map((file, index) => {
         // console.log(file);
@@ -294,7 +296,7 @@ function mergeFiles(arr) {
                     var corspFicheDate = new Date(corspFiche.evaluatedAt);
 
                     if (dateFiche < corspFicheDate) {
-                        updateFiche(mergedList, corspFiche, fiche);
+                        updateFiche(arr, corspFiche, fiche);
                     } else {
 
                     }
@@ -306,17 +308,17 @@ function mergeFiles(arr) {
                         case "NE0":
                             if (fiche.status === "NE1" || fiche.status === "E0" || fiche.status === "E1") {
 
-                                updateFiche(mergedList, corspFiche, fiche);
+                                updateFiche(arr, corspFiche, fiche);
                             }
                             break;
                         case "E0":
                             if (fiche.status === "NE1" || fiche.status === "E1") {
-                                updateFiche(mergedList, corspFiche, fiche);
+                                updateFiche(arr, corspFiche, fiche);
                             }
                             break;
                         case "NE1":
                             if (fiche.status === "E1") {
-                                updateFiche(mergedList, corspFiche, fiche);
+                                updateFiche(arr, corspFiche, fiche);
                             }
                             break;
                         case "E1":
@@ -335,7 +337,7 @@ function mergeFiles(arr) {
 }
 
 function updateFiche(arr, oldOne, newOne) {
-    return arr.map((e, i) => {
+    arr.map((e, i) => {
         if (e.assessmentId == oldOne.assessmentId) {
             return newOne;
         }

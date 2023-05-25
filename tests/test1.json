@@ -3,8 +3,7 @@
     "name": "IMAD 2024",
     "targetedDirection": [
         "bp_tanger_tetouan",
-        "bp_rabat_kenitra",
-        "bp_ouajda"
+        "bp_rabat_kenitra"
     ],
     "status": "LANCHED",
     "startedAt": "2023-05-04",
@@ -78,77 +77,362 @@
                         {
                             "name": "Réglementation bancaire",
                             "type": "Domaines de connaissance",
-                            "niveauRequis": "E"
+                            "niveauRequis": "E",
+                            "niveaux" : [
+                                {
+                                    "level" : "E",
+                                    "definition" : "Def E"
+                                },
+                                {
+                                    "level" : "M",
+                                    "definition" : "Def M"
+                                },
+                                {
+                                    "level" : "A",
+                                    "definition" : "Def A"
+                                },
+                                {
+                                    "level" : "X",
+                                    "definition" : "Def X"
+                                }
+
+                            ]
                         },
                         {
                             "name": "Organisation & Règlementation interne ",
                             "type": "Domaines de connaissance",
-                            "niveauRequis": "E"
+                            "niveauRequis": "E",
+                            "niveaux" : [
+                                {
+                                    "level" : "E",
+                                    "definition" : "Def E"
+                                },
+                                {
+                                    "level" : "M",
+                                    "definition" : "Def M"
+                                },
+                                {
+                                    "level" : "A",
+                                    "definition" : "Def A"
+                                },
+                                {
+                                    "level" : "X",
+                                    "definition" : "Def X"
+                                }
+
+                            ]
                         },
                         {
                             "name": "Connaissance des produits et services aux particuliers dont Offres de crédits",
                             "type": "Domaines de connaissance",
-                            "niveauRequis": "E"
+                            "niveauRequis": "E",
+                            "niveaux" : [
+                                {
+                                    "level" : "E",
+                                    "definition" : "Def E"
+                                },
+                                {
+                                    "level" : "M",
+                                    "definition" : "Def M"
+                                },
+                                {
+                                    "level" : "A",
+                                    "definition" : "Def A"
+                                },
+                                {
+                                    "level" : "X",
+                                    "definition" : "Def X"
+                                }
+
+                            ]
                         },
                         {
                             "name": "Acceuillir un client ",
                             "type": "Savoir-faire",
-                            "niveauRequis": "M"
+                            "niveauRequis": "M",
+                            "niveaux" : [
+                                {
+                                    "level" : "E",
+                                    "definition" : "Def E"
+                                },
+                                {
+                                    "level" : "M",
+                                    "definition" : "Def M"
+                                },
+                                {
+                                    "level" : "A",
+                                    "definition" : "Def A"
+                                },
+                                {
+                                    "level" : "X",
+                                    "definition" : "Def X"
+                                }
+
+                            ]
                         },
                         {
                             "name": "Maîtriser les outils de suivi de la relation client ",
                             "type": "Savoir-faire",
-                            "niveauRequis": "E"
+                            "niveauRequis": "E",
+                            "niveaux" : [
+                                {
+                                    "level" : "E",
+                                    "definition" : "Def E"
+                                },
+                                {
+                                    "level" : "M",
+                                    "definition" : "Def M"
+                                },
+                                {
+                                    "level" : "A",
+                                    "definition" : "Def A"
+                                },
+                                {
+                                    "level" : "X",
+                                    "definition" : "Def X"
+                                }
+
+                            ]
                         },
                         {
                             "name": "Maitriser les opérations bancaires courantes de guichet et des circuits de traitement",
                             "type": "Savoir-faire",
-                            "niveauRequis": "A"
+                            "niveauRequis": "A",
+                            "niveaux" : [
+                                {
+                                    "level" : "E",
+                                    "definition" : "Def E"
+                                },
+                                {
+                                    "level" : "M",
+                                    "definition" : "Def M"
+                                },
+                                {
+                                    "level" : "A",
+                                    "definition" : "Def A"
+                                },
+                                {
+                                    "level" : "X",
+                                    "definition" : "Def X"
+                                }
+
+                            ]
                         },
                         {
                             "name": "Maitriser les opérations d'arrêté de journée et de caisse",
                             "type": "Savoir-faire",
-                            "niveauRequis": "M"
+                            "niveauRequis": "M",
+                            "niveaux" : [
+                                {
+                                    "level" : "E",
+                                    "definition" : "Def E"
+                                },
+                                {
+                                    "level" : "M",
+                                    "definition" : "Def M"
+                                },
+                                {
+                                    "level" : "A",
+                                    "definition" : "Def A"
+                                },
+                                {
+                                    "level" : "X",
+                                    "definition" : "Def X"
+                                }
+
+                            ]
                         },
                         {
                             "name": "Orientation client",
                             "type": "Savoir-être",
-                            "niveauRequis": "E"
+                            "niveauRequis": "E",
+                            "niveaux" : [
+                                {
+                                    "level" : "E",
+                                    "definition" : "Def E"
+                                },
+                                {
+                                    "level" : "M",
+                                    "definition" : "Def M"
+                                },
+                                {
+                                    "level" : "A",
+                                    "definition" : "Def A"
+                                },
+                                {
+                                    "level" : "X",
+                                    "definition" : "Def X"
+                                }
+
+                            ]
                         },
                         {
                             "name": "Aisance relationnelle",
                             "type": "Savoir-être",
-                            "niveauRequis": "E"
+                            "niveauRequis": "E",
+                            "niveaux" : [
+                                {
+                                    "level" : "E",
+                                    "definition" : "Def E"
+                                },
+                                {
+                                    "level" : "M",
+                                    "definition" : "Def M"
+                                },
+                                {
+                                    "level" : "A",
+                                    "definition" : "Def A"
+                                },
+                                {
+                                    "level" : "X",
+                                    "definition" : "Def X"
+                                }
+
+                            ]
                         },
                         {
                             "name": "Ethique et déontologie",
                             "type": "Savoir-être",
-                            "niveauRequis": "E"
+                            "niveauRequis": "E",
+                            "niveaux" : [
+                                {
+                                    "level" : "E",
+                                    "definition" : "Def E"
+                                },
+                                {
+                                    "level" : "M",
+                                    "definition" : "Def M"
+                                },
+                                {
+                                    "level" : "A",
+                                    "definition" : "Def A"
+                                },
+                                {
+                                    "level" : "X",
+                                    "definition" : "Def X"
+                                }
+
+                            ]
                         },
                         {
                             "name": "Communication efficace",
                             "type": "Savoir-être",
-                            "niveauRequis": "E"
+                            "niveauRequis": "E",
+                            "niveaux" : [
+                                {
+                                    "level" : "E",
+                                    "definition" : "Def E"
+                                },
+                                {
+                                    "level" : "M",
+                                    "definition" : "Def M"
+                                },
+                                {
+                                    "level" : "A",
+                                    "definition" : "Def A"
+                                },
+                                {
+                                    "level" : "X",
+                                    "definition" : "Def X"
+                                }
+
+                            ]
                         },
                         {
                             "name": "Rigueur et organisation",
                             "type": "Savoir-être",
-                            "niveauRequis": "E"
+                            "niveauRequis": "E",
+                            "niveaux" : [
+                                {
+                                    "level" : "E",
+                                    "definition" : "Def E"
+                                },
+                                {
+                                    "level" : "M",
+                                    "definition" : "Def M"
+                                },
+                                {
+                                    "level" : "A",
+                                    "definition" : "Def A"
+                                },
+                                {
+                                    "level" : "X",
+                                    "definition" : "Def X"
+                                }
+
+                            ]
                         },
                         {
                             "name": "Capacité à travailler  en équipe - Sens du collectif",
                             "type": "Savoir-être",
-                            "niveauRequis": "E"
+                            "niveauRequis": "E",
+                            "niveaux" : [
+                                {
+                                    "level" : "E",
+                                    "definition" : "Def E"
+                                },
+                                {
+                                    "level" : "M",
+                                    "definition" : "Def M"
+                                },
+                                {
+                                    "level" : "A",
+                                    "definition" : "Def A"
+                                },
+                                {
+                                    "level" : "X",
+                                    "definition" : "Def X"
+                                }
+
+                            ]
                         },
                         {
                             "name": "Culture de la performance",
                             "type": "Savoir-être",
-                            "niveauRequis": "E"
+                            "niveauRequis": "E",
+                            "niveaux" : [
+                                {
+                                    "level" : "E",
+                                    "definition" : "Def E"
+                                },
+                                {
+                                    "level" : "M",
+                                    "definition" : "Def M"
+                                },
+                                {
+                                    "level" : "A",
+                                    "definition" : "Def A"
+                                },
+                                {
+                                    "level" : "X",
+                                    "definition" : "Def X"
+                                }
+
+                            ]
                         },
                         {
                             "name": "Proximité Client",
                             "type": "Savoir-être",
-                            "niveauRequis": "E"
+                            "niveauRequis": "E",
+                            "niveaux" : [
+                                {
+                                    "level" : "E",
+                                    "definition" : "Def E"
+                                },
+                                {
+                                    "level" : "M",
+                                    "definition" : "Def M"
+                                },
+                                {
+                                    "level" : "A",
+                                    "definition" : "Def A"
+                                },
+                                {
+                                    "level" : "X",
+                                    "definition" : "Def X"
+                                }
+
+                            ]
                         }
                     ]
                 },
@@ -212,92 +496,434 @@
                         {
                             "name": "Réglementation bancaire",
                             "type": "Domaines de connaissance",
-                            "niveauRequis": "E"
+                            "niveauRequis": "E",
+                            "niveaux" : [
+                                {
+                                    "level" : "E",
+                                    "definition" : "Def E"
+                                },
+                                {
+                                    "level" : "M",
+                                    "definition" : "Def M"
+                                },
+                                {
+                                    "level" : "A",
+                                    "definition" : "Def A"
+                                },
+                                {
+                                    "level" : "X",
+                                    "definition" : "Def X"
+                                }
+
+                            ]
                         },
                         {
                             "name": "Organisation & Règlementation interne ",
                             "type": "Domaines de connaissance",
-                            "niveauRequis": "E"
+                            "niveauRequis": "E",
+                            "niveaux" : [
+                                {
+                                    "level" : "E",
+                                    "definition" : "Def E"
+                                },
+                                {
+                                    "level" : "M",
+                                    "definition" : "Def M"
+                                },
+                                {
+                                    "level" : "A",
+                                    "definition" : "Def A"
+                                },
+                                {
+                                    "level" : "X",
+                                    "definition" : "Def X"
+                                }
+
+                            ]
                         },
                         {
                             "name": "Connaissance des produits et services aux particuliers dont Offres de crédits",
                             "type": "Domaines de connaissance",
-                            "niveauRequis": "E"
+                            "niveauRequis": "E",
+                            "niveaux" : [
+                                {
+                                    "level" : "E",
+                                    "definition" : "Def E"
+                                },
+                                {
+                                    "level" : "M",
+                                    "definition" : "Def M"
+                                },
+                                {
+                                    "level" : "A",
+                                    "definition" : "Def A"
+                                },
+                                {
+                                    "level" : "X",
+                                    "definition" : "Def X"
+                                }
+
+                            ]
                         },
                         {
                             "name": "Acceuillir un client ",
                             "type": "Savoir-faire",
-                            "niveauRequis": "A"
+                            "niveauRequis": "A",
+                            "niveaux" : [
+                                {
+                                    "level" : "E",
+                                    "definition" : "Def E"
+                                },
+                                {
+                                    "level" : "M",
+                                    "definition" : "Def M"
+                                },
+                                {
+                                    "level" : "A",
+                                    "definition" : "Def A"
+                                },
+                                {
+                                    "level" : "X",
+                                    "definition" : "Def X"
+                                }
+
+                            ]
                         },
                         {
                             "name": "Maîtriser les outils de suivi de la relation client ",
                             "type": "Savoir-faire",
-                            "niveauRequis": "E"
+                            "niveauRequis": "E",
+                            "niveaux" : [
+                                {
+                                    "level" : "E",
+                                    "definition" : "Def E"
+                                },
+                                {
+                                    "level" : "M",
+                                    "definition" : "Def M"
+                                },
+                                {
+                                    "level" : "A",
+                                    "definition" : "Def A"
+                                },
+                                {
+                                    "level" : "X",
+                                    "definition" : "Def X"
+                                }
+
+                            ]
                         },
                         {
                             "name": "Maitriser les opérations bancaires courantes de guichet et des circuits de traitement",
                             "type": "Savoir-faire",
-                            "niveauRequis": "X"
+                            "niveauRequis": "X",
+                            "niveaux" : [
+                                {
+                                    "level" : "E",
+                                    "definition" : "Def E"
+                                },
+                                {
+                                    "level" : "M",
+                                    "definition" : "Def M"
+                                },
+                                {
+                                    "level" : "A",
+                                    "definition" : "Def A"
+                                },
+                                {
+                                    "level" : "X",
+                                    "definition" : "Def X"
+                                }
+
+                            ]
                         },
                         {
                             "name": "Maitriser les opérations d'arrêté de journée et de caisse",
                             "type": "Savoir-faire",
-                            "niveauRequis": "M"
+                            "niveauRequis": "M",
+                            "niveaux" : [
+                                {
+                                    "level" : "E",
+                                    "definition" : "Def E"
+                                },
+                                {
+                                    "level" : "M",
+                                    "definition" : "Def M"
+                                },
+                                {
+                                    "level" : "A",
+                                    "definition" : "Def A"
+                                },
+                                {
+                                    "level" : "X",
+                                    "definition" : "Def X"
+                                }
+
+                            ]
                         },
                         {
                             "name": "Orientation client",
                             "type": "Savoir-être",
-                            "niveauRequis": "E"
+                            "niveauRequis": "E",
+                            "niveaux" : [
+                                {
+                                    "level" : "E",
+                                    "definition" : "Def E"
+                                },
+                                {
+                                    "level" : "M",
+                                    "definition" : "Def M"
+                                },
+                                {
+                                    "level" : "A",
+                                    "definition" : "Def A"
+                                },
+                                {
+                                    "level" : "X",
+                                    "definition" : "Def X"
+                                }
+
+                            ]
                         },
                         {
                             "name": "Aisance relationnelle",
                             "type": "Savoir-être",
-                            "niveauRequis": "E"
+                            "niveauRequis": "E",
+                            "niveaux" : [
+                                {
+                                    "level" : "E",
+                                    "definition" : "Def E"
+                                },
+                                {
+                                    "level" : "M",
+                                    "definition" : "Def M"
+                                },
+                                {
+                                    "level" : "A",
+                                    "definition" : "Def A"
+                                },
+                                {
+                                    "level" : "X",
+                                    "definition" : "Def X"
+                                }
+
+                            ]
                         },
                         {
                             "name": "Ethique et déontologie",
                             "type": "Savoir-être",
-                            "niveauRequis": "E"
+                            "niveauRequis": "E",
+                            "niveaux" : [
+                                {
+                                    "level" : "E",
+                                    "definition" : "Def E"
+                                },
+                                {
+                                    "level" : "M",
+                                    "definition" : "Def M"
+                                },
+                                {
+                                    "level" : "A",
+                                    "definition" : "Def A"
+                                },
+                                {
+                                    "level" : "X",
+                                    "definition" : "Def X"
+                                }
+
+                            ]
                         },
                         {
                             "name": "Communication efficace",
                             "type": "Savoir-être",
-                            "niveauRequis": "E"
+                            "niveauRequis": "E",
+                            "niveaux" : [
+                                {
+                                    "level" : "E",
+                                    "definition" : "Def E"
+                                },
+                                {
+                                    "level" : "M",
+                                    "definition" : "Def M"
+                                },
+                                {
+                                    "level" : "A",
+                                    "definition" : "Def A"
+                                },
+                                {
+                                    "level" : "X",
+                                    "definition" : "Def X"
+                                }
+
+                            ]
                         },
                         {
                             "name": "Rigueur et organisation",
                             "type": "Savoir-être",
-                            "niveauRequis": "E"
+                            "niveauRequis": "E",
+                            "niveaux" : [
+                                {
+                                    "level" : "E",
+                                    "definition" : "Def E"
+                                },
+                                {
+                                    "level" : "M",
+                                    "definition" : "Def M"
+                                },
+                                {
+                                    "level" : "A",
+                                    "definition" : "Def A"
+                                },
+                                {
+                                    "level" : "X",
+                                    "definition" : "Def X"
+                                }
+
+                            ]
                         },
                         {
                             "name": "Capacité à travailler  en équipe - Sens du collectif",
                             "type": "Savoir-être",
-                            "niveauRequis": "E"
+                            "niveauRequis": "E",
+                            "niveaux" : [
+                                {
+                                    "level" : "E",
+                                    "definition" : "Def E"
+                                },
+                                {
+                                    "level" : "M",
+                                    "definition" : "Def M"
+                                },
+                                {
+                                    "level" : "A",
+                                    "definition" : "Def A"
+                                },
+                                {
+                                    "level" : "X",
+                                    "definition" : "Def X"
+                                }
+
+                            ]
                         },
                         {
                             "name": "Culture de la performance",
                             "type": "Savoir-être",
-                            "niveauRequis": "E"
+                            "niveauRequis": "E",
+                            "niveaux" : [
+                                {
+                                    "level" : "E",
+                                    "definition" : "Def E"
+                                },
+                                {
+                                    "level" : "M",
+                                    "definition" : "Def M"
+                                },
+                                {
+                                    "level" : "A",
+                                    "definition" : "Def A"
+                                },
+                                {
+                                    "level" : "X",
+                                    "definition" : "Def X"
+                                }
+
+                            ]
                         },
                         {
                             "name": "Proximité Client",
                             "type": "Savoir-être",
-                            "niveauRequis": "M"
+                            "niveauRequis": "M",
+                            "niveaux" : [
+                                {
+                                    "level" : "E",
+                                    "definition" : "Def E"
+                                },
+                                {
+                                    "level" : "M",
+                                    "definition" : "Def M"
+                                },
+                                {
+                                    "level" : "A",
+                                    "definition" : "Def A"
+                                },
+                                {
+                                    "level" : "X",
+                                    "definition" : "Def X"
+                                }
+
+                            ]
                         },
                         {
                             "name": "Promouvoir les outils digitaux",
                             "type": "Savoir-faire",
-                            "niveauRequis": "E"
+                            "niveauRequis": "E",
+                            "niveaux" : [
+                                {
+                                    "level" : "E",
+                                    "definition" : "Def E"
+                                },
+                                {
+                                    "level" : "M",
+                                    "definition" : "Def M"
+                                },
+                                {
+                                    "level" : "A",
+                                    "definition" : "Def A"
+                                },
+                                {
+                                    "level" : "X",
+                                    "definition" : "Def X"
+                                }
+
+                            ]
                         },
                         {
                             "name": "Fidéliser les clients",
                             "type": "Savoir-faire",
-                            "niveauRequis": "E"
+                            "niveauRequis": "E",
+                            "niveaux" : [
+                                {
+                                    "level" : "E",
+                                    "definition" : "Def E"
+                                },
+                                {
+                                    "level" : "M",
+                                    "definition" : "Def M"
+                                },
+                                {
+                                    "level" : "A",
+                                    "definition" : "Def A"
+                                },
+                                {
+                                    "level" : "X",
+                                    "definition" : "Def X"
+                                }
+
+                            ]
                         },
                         {
                             "name": "Résistance au stress",
                             "type": "Savoir-être",
-                            "niveauRequis": "E"
+                            "niveauRequis": "E",
+                            "niveaux" : [
+                                {
+                                    "level" : "E",
+                                    "definition" : "Def E"
+                                },
+                                {
+                                    "level" : "M",
+                                    "definition" : "Def M"
+                                },
+                                {
+                                    "level" : "A",
+                                    "definition" : "Def A"
+                                },
+                                {
+                                    "level" : "X",
+                                    "definition" : "Def X"
+                                }
+
+                            ]
                         }
                     ]
                 },
@@ -362,92 +988,434 @@
                         {
                             "name": "Réglementation bancaire",
                             "type": "Domaines de connaissance",
-                            "niveauRequis": "E"
+                            "niveauRequis": "E",
+                            "niveaux" : [
+                                {
+                                    "level" : "E",
+                                    "definition" : "Def E"
+                                },
+                                {
+                                    "level" : "M",
+                                    "definition" : "Def M"
+                                },
+                                {
+                                    "level" : "A",
+                                    "definition" : "Def A"
+                                },
+                                {
+                                    "level" : "X",
+                                    "definition" : "Def X"
+                                }
+
+                            ]
                         },
                         {
                             "name": "Organisation & Règlementation interne ",
                             "type": "Domaines de connaissance",
-                            "niveauRequis": "E"
+                            "niveauRequis": "E",
+                            "niveaux" : [
+                                {
+                                    "level" : "E",
+                                    "definition" : "Def E"
+                                },
+                                {
+                                    "level" : "M",
+                                    "definition" : "Def M"
+                                },
+                                {
+                                    "level" : "A",
+                                    "definition" : "Def A"
+                                },
+                                {
+                                    "level" : "X",
+                                    "definition" : "Def X"
+                                }
+
+                            ]
                         },
                         {
                             "name": "Connaissance des produits et services aux particuliers dont Offres de crédits",
                             "type": "Domaines de connaissance",
-                            "niveauRequis": "M"
+                            "niveauRequis": "M",
+                            "niveaux" : [
+                                {
+                                    "level" : "E",
+                                    "definition" : "Def E"
+                                },
+                                {
+                                    "level" : "M",
+                                    "definition" : "Def M"
+                                },
+                                {
+                                    "level" : "A",
+                                    "definition" : "Def A"
+                                },
+                                {
+                                    "level" : "X",
+                                    "definition" : "Def X"
+                                }
+
+                            ]
                         },
                         {
                             "name": "Acceuillir un client ",
                             "type": "Savoir-faire",
-                            "niveauRequis": "X"
+                            "niveauRequis": "X",
+                            "niveaux" : [
+                                {
+                                    "level" : "E",
+                                    "definition" : "Def E"
+                                },
+                                {
+                                    "level" : "M",
+                                    "definition" : "Def M"
+                                },
+                                {
+                                    "level" : "A",
+                                    "definition" : "Def A"
+                                },
+                                {
+                                    "level" : "X",
+                                    "definition" : "Def X"
+                                }
+
+                            ]
                         },
                         {
                             "name": "Maîtriser les outils de suivi de la relation client ",
                             "type": "Savoir-faire",
-                            "niveauRequis": "E"
+                            "niveauRequis": "E",
+                            "niveaux" : [
+                                {
+                                    "level" : "E",
+                                    "definition" : "Def E"
+                                },
+                                {
+                                    "level" : "M",
+                                    "definition" : "Def M"
+                                },
+                                {
+                                    "level" : "A",
+                                    "definition" : "Def A"
+                                },
+                                {
+                                    "level" : "X",
+                                    "definition" : "Def X"
+                                }
+
+                            ]
                         },
                         {
                             "name": "Maitriser les opérations bancaires courantes de guichet et des circuits de traitement",
                             "type": "Savoir-faire",
-                            "niveauRequis": "X"
+                            "niveauRequis": "X",
+                            "niveaux" : [
+                                {
+                                    "level" : "E",
+                                    "definition" : "Def E"
+                                },
+                                {
+                                    "level" : "M",
+                                    "definition" : "Def M"
+                                },
+                                {
+                                    "level" : "A",
+                                    "definition" : "Def A"
+                                },
+                                {
+                                    "level" : "X",
+                                    "definition" : "Def X"
+                                }
+
+                            ]
                         },
                         {
                             "name": "Maitriser les opérations d'arrêté de journée et de caisse",
                             "type": "Savoir-faire",
-                            "niveauRequis": "A"
+                            "niveauRequis": "A",
+                            "niveaux" : [
+                                {
+                                    "level" : "E",
+                                    "definition" : "Def E"
+                                },
+                                {
+                                    "level" : "M",
+                                    "definition" : "Def M"
+                                },
+                                {
+                                    "level" : "A",
+                                    "definition" : "Def A"
+                                },
+                                {
+                                    "level" : "X",
+                                    "definition" : "Def X"
+                                }
+
+                            ]
                         },
                         {
                             "name": "Orientation client",
                             "type": "Savoir-être",
-                            "niveauRequis": "M"
+                            "niveauRequis": "M",
+                            "niveaux" : [
+                                {
+                                    "level" : "E",
+                                    "definition" : "Def E"
+                                },
+                                {
+                                    "level" : "M",
+                                    "definition" : "Def M"
+                                },
+                                {
+                                    "level" : "A",
+                                    "definition" : "Def A"
+                                },
+                                {
+                                    "level" : "X",
+                                    "definition" : "Def X"
+                                }
+
+                            ]
                         },
                         {
                             "name": "Aisance relationnelle",
                             "type": "Savoir-être",
-                            "niveauRequis": "M"
+                            "niveauRequis": "M",
+                            "niveaux" : [
+                                {
+                                    "level" : "E",
+                                    "definition" : "Def E"
+                                },
+                                {
+                                    "level" : "M",
+                                    "definition" : "Def M"
+                                },
+                                {
+                                    "level" : "A",
+                                    "definition" : "Def A"
+                                },
+                                {
+                                    "level" : "X",
+                                    "definition" : "Def X"
+                                }
+
+                            ]
                         },
                         {
                             "name": "Ethique et déontologie",
                             "type": "Savoir-être",
-                            "niveauRequis": "E"
+                            "niveauRequis": "E",
+                            "niveaux" : [
+                                {
+                                    "level" : "E",
+                                    "definition" : "Def E"
+                                },
+                                {
+                                    "level" : "M",
+                                    "definition" : "Def M"
+                                },
+                                {
+                                    "level" : "A",
+                                    "definition" : "Def A"
+                                },
+                                {
+                                    "level" : "X",
+                                    "definition" : "Def X"
+                                }
+
+                            ]
                         },
                         {
                             "name": "Communication efficace",
                             "type": "Savoir-être",
-                            "niveauRequis": "M"
+                            "niveauRequis": "M",
+                            "niveaux" : [
+                                {
+                                    "level" : "E",
+                                    "definition" : "Def E"
+                                },
+                                {
+                                    "level" : "M",
+                                    "definition" : "Def M"
+                                },
+                                {
+                                    "level" : "A",
+                                    "definition" : "Def A"
+                                },
+                                {
+                                    "level" : "X",
+                                    "definition" : "Def X"
+                                }
+
+                            ]
                         },
                         {
                             "name": "Rigueur et organisation",
                             "type": "Savoir-être",
-                            "niveauRequis": "E"
+                            "niveauRequis": "E",
+                            "niveaux" : [
+                                {
+                                    "level" : "E",
+                                    "definition" : "Def E"
+                                },
+                                {
+                                    "level" : "M",
+                                    "definition" : "Def M"
+                                },
+                                {
+                                    "level" : "A",
+                                    "definition" : "Def A"
+                                },
+                                {
+                                    "level" : "X",
+                                    "definition" : "Def X"
+                                }
+
+                            ]
                         },
                         {
                             "name": "Capacité à travailler  en équipe - Sens du collectif",
                             "type": "Savoir-être",
-                            "niveauRequis": "E"
+                            "niveauRequis": "E",
+                            "niveaux" : [
+                                {
+                                    "level" : "E",
+                                    "definition" : "Def E"
+                                },
+                                {
+                                    "level" : "M",
+                                    "definition" : "Def M"
+                                },
+                                {
+                                    "level" : "A",
+                                    "definition" : "Def A"
+                                },
+                                {
+                                    "level" : "X",
+                                    "definition" : "Def X"
+                                }
+
+                            ]
                         },
                         {
                             "name": "Culture de la performance",
                             "type": "Savoir-être",
-                            "niveauRequis": "E"
+                            "niveauRequis": "E",
+                            "niveaux" : [
+                                {
+                                    "level" : "E",
+                                    "definition" : "Def E"
+                                },
+                                {
+                                    "level" : "M",
+                                    "definition" : "Def M"
+                                },
+                                {
+                                    "level" : "A",
+                                    "definition" : "Def A"
+                                },
+                                {
+                                    "level" : "X",
+                                    "definition" : "Def X"
+                                }
+
+                            ]
                         },
                         {
                             "name": "Proximité Client",
                             "type": "Savoir-être",
-                            "niveauRequis": "M"
+                            "niveauRequis": "M",
+                            "niveaux" : [
+                                {
+                                    "level" : "E",
+                                    "definition" : "Def E"
+                                },
+                                {
+                                    "level" : "M",
+                                    "definition" : "Def M"
+                                },
+                                {
+                                    "level" : "A",
+                                    "definition" : "Def A"
+                                },
+                                {
+                                    "level" : "X",
+                                    "definition" : "Def X"
+                                }
+
+                            ]
                         },
                         {
                             "name": "Promouvoir les outils digitaux",
                             "type": "Savoir-faire",
-                            "niveauRequis": "E"
+                            "niveauRequis": "E",
+                            "niveaux" : [
+                                {
+                                    "level" : "E",
+                                    "definition" : "Def E"
+                                },
+                                {
+                                    "level" : "M",
+                                    "definition" : "Def M"
+                                },
+                                {
+                                    "level" : "A",
+                                    "definition" : "Def A"
+                                },
+                                {
+                                    "level" : "X",
+                                    "definition" : "Def X"
+                                }
+
+                            ]
                         },
                         {
                             "name": "Fidéliser les clients",
                             "type": "Savoir-faire",
-                            "niveauRequis": "E"
+                            "niveauRequis": "E",
+                            "niveaux" : [
+                                {
+                                    "level" : "E",
+                                    "definition" : "Def E"
+                                },
+                                {
+                                    "level" : "M",
+                                    "definition" : "Def M"
+                                },
+                                {
+                                    "level" : "A",
+                                    "definition" : "Def A"
+                                },
+                                {
+                                    "level" : "X",
+                                    "definition" : "Def X"
+                                }
+
+                            ]
                         },
                         {
                             "name": "Résistance au stress",
                             "type": "Savoir-être",
-                            "niveauRequis": "E"
+                            "niveauRequis": "E",
+                            "niveaux" : [
+                                {
+                                    "level" : "E",
+                                    "definition" : "Def E"
+                                },
+                                {
+                                    "level" : "M",
+                                    "definition" : "Def M"
+                                },
+                                {
+                                    "level" : "A",
+                                    "definition" : "Def A"
+                                },
+                                {
+                                    "level" : "X",
+                                    "definition" : "Def X"
+                                }
+
+                            ]
                         }
                     ]
                 }
@@ -828,6 +1796,26 @@
             "codeSuffix": []
         },
         {
+            "firstName": "Ghita",
+            "lastName": "Fatih",
+            "matricule": "2222",
+            "topDirection": "bp_rabat_kenitra",
+            "direction": null,
+            "role": "drh",
+            "phoneNumber": "+212undefined",
+            "workEmail": null,
+            "affectationCode": null,
+            "hashedPwd": "xx",
+            "idDrh": 126,
+            "tag": "bp_rabat_kenitra",
+            "codePrefix": [
+                81,
+                82,
+                83
+            ],
+            "codeSuffix": []
+        },
+        {
             "firstName": "Ghannam",
             "lastName": "Sanae",
             "matricule": "12332",
@@ -838,6 +1826,7 @@
             "workEmail": null,
             "affectationCode": null,
             "hashedPwd": "xx"
+            
         },
         {
             "firstName": "FF",
@@ -854,7 +1843,7 @@
         {
             "firstName": "FF",
             "lastName": "jj",
-            "matricule": "88",
+            "matricule": "888",
             "topDirection": "bp_tanger_tetouan",
             "direction": null,
             "role": "manager-2",
@@ -866,6 +1855,7 @@
     ],
     "fichesEvaluations": [
         {
+            
             "ficheEvaluationId": "23",
             "score": "",
             "sousPoints": "",
@@ -957,7 +1947,7 @@
             "sectionExi": 0,
             "sectionMarq": 0,
             "sectionRes": 0,
-            "status": "E0",
+            "status": "NE0",
             "createdAt": "2023-05-04T08:24:17.284Z",
             "evaluatedAt": "2023-05-04T12:24:17.285Z",
             "dateEvaluation": "2023-05-04T00:00:00.000Z",
@@ -1033,7 +2023,7 @@
             "sectionExi": 0,
             "sectionMarq": 0,
             "sectionRes": 0,
-            "status": "NE1",
+            "status": "NE0",
             "createdAt": "2023-05-04T08:24:17.285Z",
             "evaluatedAt": "2023-05-04T13:24:17.285Z",
             "dateEvaluation": "2023-05-04T00:00:00.000Z",
