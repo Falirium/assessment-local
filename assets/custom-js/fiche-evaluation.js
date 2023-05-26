@@ -4249,21 +4249,54 @@ function addToStoreWithId(dbName, storeName, value, id) {
     });
 }
 
-async function deleteFromStore(dbName, storeName, nameValue) {
-    try {
-        const keys = await getAllKeys(storeName);
+function deleteFromStore(dbName, storeName, nameValue) {
+  return new Promise((resolve, reject) => {
+    const request = indexedDB.open(dbName);
 
-        for (const key of keys) {
-            const value = await get(key, storeName);
+    request.onerror = (event) => {
+      reject(`Error while opening ${dbName} database: ${event.target.error}`);
+    };
 
-            if (value && value.name === nameValue) {
-                await del(key, storeName);
-                console.log(`Deleted ${key} from ${storeName} store in ${dbName} database`);
-            }
+    request.onsuccess = (event) => {
+      const db = event.target.result;
+      const transaction = db.transaction(storeName, 'readwrite');
+      const store = transaction.objectStore(storeName);
+      const request = store.openCursor();
+
+      request.onerror = (event) => {
+        reject(`Error while opening cursor in ${storeName} store: ${event.target.error}`);
+      };
+
+      request.onsuccess = (event) => {
+        const cursor = event.target.result;
+
+        if (cursor) {
+          const value = cursor.value;
+
+          if (value && value.name === nameValue) {
+            const deleteRequest = cursor.delete();
+
+            deleteRequest.onerror = (event) => {
+              reject(`Error while deleting from ${storeName} store: ${event.target.error}`);
+            };
+
+            deleteRequest.onsuccess = (event) => {
+              console.log(`Deleted ${cursor.key} from ${storeName} store in ${dbName} database`);
+              cursor.continue();
+            };
+          } else {
+            cursor.continue();
+          }
+        } else {
+          console.log('Deletion complete');
+          resolve();
         }
+      };
+    };
 
-        console.log(`Deletion complete`);
-    } catch (err) {
-        console.error(`Error while deleting from ${storeName} store in ${dbName} database: ${err}`);
-    }
+    request.onupgradeneeded = (event) => {
+      const db = event.target.result;
+      db.createObjectStore(storeName);
+    };
+  });
 }
