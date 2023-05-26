@@ -169,6 +169,7 @@ intializeDB()
                 fichePreviewJson = ficheEmploiJson;
 
                 // FILL IT WITH RESPONSE OF MANAGER 1
+                console.log("TRUEEE");
                 parseManagerResult(ficheAnswers);
 
 
@@ -3593,6 +3594,7 @@ function getFicheEmploiPreview(params) {
     //     return success;
     // }).catch(error => console.log(error))
     let fichePreview = buildFicheEvaluationPreviewFor(params.split("?")[1]);
+    console.log(fichePreview);
 
     // GET NUMBER OF INPUTS TO CALCULATE SCORE
     elementsNumbers = countsInputs(fichePreview);
@@ -4019,12 +4021,12 @@ function buildFicheEvaluationPreviewFor(params) {
     // INITIATE ename=agent commercial&level=1&marqueurs=true&exigences=true&responsabilites=true&competences_dc=true&competences_se=true&competences_sf=true&
     let emploiName = jsonParams.eName;
     let level = jsonParams.level;
-    let marqueurs = jsonParams.marqueurs;
-    let exigences = jsonParams.exigences;
-    let responsabilites = jsonParams.responsabilites;
-    let competences_dc = jsonParams.competences_dc;
-    let competences_se = jsonParams.competences_se;
-    let competences_sf = jsonParams.competences_sf;
+    let marqueurs = jsonParams.marqueurs === 'true';
+    let exigences = jsonParams.exigences === 'true';
+    let responsabilites = jsonParams.responsabilites === 'true';
+    let competences_dc = jsonParams.competences_dc === 'true';
+    let competences_se = jsonParams.competences_se === 'true';
+    let competences_sf = jsonParams.competences_sf === 'true';
 
     const niveau = getNiveauByNameAndByLevel(
         emploiName.toLowerCase(),
@@ -4041,6 +4043,7 @@ function buildFicheEvaluationPreviewFor(params) {
 
     // MARQUEURS
     fe.marqueurs = marqueurs ? niveau.marqueurs : null;
+    console.log( fe.marqueurs, marqueurs);
 
     // EXIGENCES
     fe.exigences = exigences ? niveau.exigences : null;
@@ -4085,7 +4088,7 @@ function buildFicheEvaluationPreviewFor(params) {
         }
 
         // CASE 3: SAVOIR ETRE
-        if (competence.type === "Savoir-etre" && competences_se) {
+        if (competence.type === "Savoir-être" && competences_se) {
             fullCompetenceRequis.name = competence.name;
             fullCompetenceRequis.requiredNiveau = competence.niveauRequis;
             fullCompetenceRequis.niveaux = fullCompetence.niveaux;
