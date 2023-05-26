@@ -57,7 +57,7 @@ if (localStorage.getItem("user") === null) {
     console.log(checkUrl(regexList, formatUrl(currentUrl)));
 
 
-    if (!checkUrl(regexList, formatUrl(currentUrl))) {
+    if (!checkUrl(regexList, currentUrl)) {
 
         // currentUrl = window.location.href;
         // window.location.href = extractDomain(currentUrl) + "evaluation/list";
