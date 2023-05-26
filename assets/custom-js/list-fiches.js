@@ -48,6 +48,9 @@ intializeDB()
 
 
         listFiches = fichesJson;
+
+        // FILTER THE LIST BY THE MANAGER
+        listFiches = filterByManager(manager.data.matricule)
         console.log(listFiches);
 
         // INITIALIZE DATATABLE
@@ -234,7 +237,7 @@ $("#btn-fiche-send").click({
         // STEP 1 : CREATE A JSON FILE HOLDING THE ASSESSMENT INFO 
 
         // STEP 2 : CREATE EMAIL : RECEIPIENTS, CC, OBJECT, BODY, ATTACHMENT
-        openOutlook(['farbusiness92@gmail.com'], ['mfarfaoua@groupebcp.com'], assessmentJson,"TEST EMAIL BODY");
+        openOutlook(['farbusiness92@gmail.com'], ['mfarfaoua@groupebcp.com'], assessmentJson, "TEST EMAIL BODY");
 
         // STEP 3 : VERIFY IF THE EMAIL HAS BEEN SENT
 
@@ -260,6 +263,21 @@ $("#btn-fiche-send").click({
     }
 })
 
+function filterByManager(matricule) {
+    return listFiches.filter((e, i) => {
+        if (manager.type === "1") {
+            if (matricule == e.evaluateurOne.matricule) {
+                return true;
+            }
+        } else if (manager.type === '2') {
+            if (matricule == e.evaluateurTwo.matricule) {
+                return true;
+            }
+        }
+
+        return false;
+    })
+}
 
 function generateEmailContent(emailBody, jsonDataURI) {
     return `
@@ -296,7 +314,7 @@ function verifyFichesEvaluation(arr) {
         let fiche = arr[i];
 
 
-        if ((manager.type === '1' && ((fiche.status === "NE0") || (fiche.status === "NE01")))  ||  (manager.type === '2' && ((fiche.status === "NE1") || (fiche.status === "E0")))) {
+        if ((manager.type === '1' && ((fiche.status === "NE0") || (fiche.status === "NE01"))) || (manager.type === '2' && ((fiche.status === "NE1") || (fiche.status === "E0")))) {
             console.log(i);
             return false;
         }

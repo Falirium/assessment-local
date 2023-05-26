@@ -447,7 +447,7 @@ function getFichesDataFromJson(arrJson) {
 
         // Status attribute has special style
 
-        console.log("HERE STATUS", authorized);
+        // console.log("HERE STATUS", authorized);
         // Status attribute has special style
         if (e.status === "NE0") {
             arr.push(`
