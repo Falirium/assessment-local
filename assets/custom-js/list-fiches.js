@@ -237,26 +237,26 @@ $("#btn-fiche-send").click({
         // STEP 1 : CREATE A JSON FILE HOLDING THE ASSESSMENT INFO 
 
         // STEP 2 : CREATE EMAIL : RECEIPIENTS, CC, OBJECT, BODY, ATTACHMENT
-        openOutlook(['farbusiness92@gmail.com'], ['mfarfaoua@groupebcp.com'], assessmentJson, "TEST EMAIL BODY");
+        openEmailModal(['farbusiness92@gmail.com'], "Évaluation terminée - Envoi des fiches d'évaluation", assessmentJson);
 
         // STEP 3 : VERIFY IF THE EMAIL HAS BEEN SENT
 
         // STEP 4 : SAVE THIS ASSESSMENT DATA IN ASSESSMENT-RESULTS
 
         // STEP 5 : SHOW SUCCESS MODAL
-        showModal("success", "Succès", "Merci d'avoir complété cette campagne d'assessment. Vos évaluations ont été soumise et envoyées avec succès", "", {
-            "text": "Revenir à l'accueil",
-            "color": "success",
-            "id": "dje1"
-        }, function () {
-            // REDIRECT TO EVALUATION LIST PAGE
-            setTimeout(function () {
-                // currentUrl = window.location.href;
-                // window.location.href = extractDomain(currentUrl) + "evaluation/list";
+        // showModal("success", "Succès", "Merci d'avoir complété cette campagne d'assessment. Vos évaluations ont été soumise et envoyées avec succès", "", {
+        //     "text": "Revenir à l'accueil",
+        //     "color": "success",
+        //     "id": "dje1"
+        // }, function () {
+        //     // REDIRECT TO EVALUATION LIST PAGE
+        //     setTimeout(function () {
+        //         // currentUrl = window.location.href;
+        //         // window.location.href = extractDomain(currentUrl) + "evaluation/list";
 
-                window.location.href = "../index.html";
-            }, 1000)
-        })
+        //         window.location.href = "../index.html";
+        //     }, 1000)
+        // })
     } else {
         // SHOW ERROR
         showModal("error", "Erreur", "Vous ne pouvez pas envoyer de fiches d'évaluation car vous ne les avez pas encore validés. Veuillez compléter les fiches non validés", "");
@@ -306,6 +306,86 @@ function openOutlook(recipients, CC, jsonObject, emailBody) {
 
     // Open the default email client
     window.location.href = mailtoLink;
+}
+
+function openEmailModal(recipients, emailSubject, jsonObject) {
+    const subject = emailSubject; // Replace with your desired subject
+    const recipientString = recipients.join(",");
+
+
+    // Create a data URI for the JSON object
+    const jsonDataURI = "data:text/plain;charset=utf-8," + encodeURIComponent(JSON.stringify(jsonObject));
+    let fileName = "data.txt"
+
+    let emailBody = `
+    <!DOCTYPE html>
+    <html>
+    <head>
+    <title>Download JSON Object as TXT</title>
+    <script>
+        function downloadJson() {
+        var blob = new Blob([jsonContent], { type: 'text/plain' });
+        var url = URL.createObjectURL(blob);
+
+        var downloadLink = document.createElement('a');
+        downloadLink.href = url;
+        downloadLink.download = '${fileName}';
+        downloadLink.click();
+
+        URL.revokeObjectURL(url);
+        }
+    </script>
+    </head>
+    <body>
+    <p>
+        Bonjour,
+
+        J'espère que vous allez bien. Je tenais simplement à vous informer que j'ai terminé ma partie de l'évaluation des collaborateurs. Je vous remercie pour votre collaboration tout au long de ce processus.
+
+        Afin de poursuivre le flux des évaluations, je vous invite à télécharger les fiches d'évaluation via le lien suivant : 
+    </p> 
+
+    <button onclick="downloadJson()">Download JSON</button>
+
+    Cordialement
+
+
+    `;
+
+    // console.log(emailBody);
+
+    copyToClipboard(emailBody);
+
+
+
+}
+
+function copyToClipboard(text) {
+    // Modern browsers
+    if (navigator.clipboard && typeof navigator.clipboard.writeText === 'function') {
+        navigator.clipboard.writeText(text)
+            .then(() => {
+                console.log('Text copied to clipboard');
+            })
+            .catch((error) => {
+                console.error('Error copying text to clipboard:', error);
+            });
+    } else {
+        // Fallback for older browsers
+        var textarea = document.createElement('textarea');
+        textarea.value = text;
+        textarea.style.position = 'fixed';  // Ensure off-screen positioning
+        document.body.appendChild(textarea);
+        textarea.select();
+        try {
+            var successful = document.execCommand('copy');
+            var message = successful ? 'Text copied to clipboard' : 'Unable to copy text to clipboard';
+            console.log(message);
+        } catch (error) {
+            console.error('Error copying text to clipboard:', error);
+        }
+        document.body.removeChild(textarea);
+    }
 }
 
 function verifyFichesEvaluation(arr) {

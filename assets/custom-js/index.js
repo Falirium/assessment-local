@@ -556,26 +556,15 @@ function replaceAsseementToContainer(containerId, json) {
           </div>
         </div>
 
+
         <div class="row mb-4">
-          <label class="col-md-3 form-label">Emplois concernées :</label>
+          <label class="col-md-3 form-label">Nombre de la population ciblée :</label>
           <div class="form-label col-md-9">
-            ${convertToBoxes(json.targetEmplois, "primary")}
+            ${json.collaborateurs.length}
           </div>
         </div>
 
-        <div class="row mb-4">
-          <label class="col-md-3 form-label">Date de lancement :</label>
-          <div class="form-label col-md-9">
-            ${json.startedAt}
-          </div>
-        </div>
-
-        <div class="row mb-4">
-          <label class="col-md-3 form-label">Date de fin :</label>
-          <div class="form-label col-md-9">
-            ${json.finishesAt}
-          </div>
-        </div>
+        
       </div>
     </div>
   `;
