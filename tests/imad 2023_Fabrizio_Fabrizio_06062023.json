@@ -1,0 +1,2209 @@
+{
+  "assessmentId": "12KKJJSJZOKQ",
+  "name": "imad 2023",
+  "targetedDirection": [
+    "bp_tanger_tetouan",
+    "bp_rabat_kenitra"
+  ],
+  "status": "LANCHED",
+  "startedAt": "2023-05-26",
+  "finishesAt": "2023-05-31",
+  "targetEmplois": [
+    {
+      "intitule": "agent commercial",
+      "level": 1
+    },
+    {
+      "intitule": "agent commercial",
+      "level": 3
+    },
+    {
+      "intitule": "agent commercial",
+      "level": 2
+    }
+  ],
+  "fichesEmploi": [
+    {
+      "intitule": "agent commercial",
+      "niveaux": [
+        {
+          "intitule": "agent commercial",
+          "filiere": "Opérations et gestion de la relation clientèle",
+          "sousFiliere": "Développement Commercial",
+          "dateMaj": "2022-02-06",
+          "vocation": "Accueillir les clients sur place et veiller à ce qu’une réponse soit apportée à leurs demandes par lui-même ou en sollicitant un autre interlocuteur habilité et compétent pour leur répondre – Assurer directement le traitement des opérations bancaires simples",
+          "responsabilites": [
+            {
+              "categorie": "Clients / Services",
+              "valeur": [
+                "Garantir la qualité de l’accueil des clients qui se déplacent en agence et contribuer à l’amélioration continue de l’Expérience Client ",
+                " Garantir la fiabilité des réponses apportées et des informations diffusées ",
+                " Garantir une parfaite compréhension des demandes et une orientation rapide vers l’interlocuteur interne disponible, apte à y répondre ",
+                " Garantir le traitement fiable et diligent des opérations bancaires qu’il prend en charge (retraits, versements, change, mouvements sur comptes …) ",
+                " Contribuer à l’amélioration du taux d’usage des services bancaires (automates, banque en ligne, …) en aidant en agence les clients à les prendre en main."
+              ]
+            },
+            {
+              "categorie": "Finances / Coûts",
+              "valeur": [
+                "Contribuer à la maîtrise du coût d’exploitation en prenant en charge l’essentiel des demandes des clients qui se déplacent sur Site. "
+              ]
+            },
+            {
+              "categorie": "Moyens / Méthodes",
+              "valeur": [
+                "Garantir une parfaite maîtrise de l’ensemble des outils mis à sa disposition pour accéder aux données clients et pour traiter les opérations bancaires. "
+              ]
+            },
+            {
+              "categorie": "Équipe / Coopérations",
+              "valeur": [
+                "Contribuer à l’efficacité des coopérations quotidiennes au sein de l’équipe et veiller à l’approfondissement continu de ses compétences (techniques et relationnelles) ",
+                " Veiller au respect des valeurs du Groupe, les faire vivre et les promouvoir au sein de la Banque."
+              ]
+            }
+          ],
+          "level": 1,
+          "exigences": [
+            "Réactivité afin d’écourter les délais d’attente",
+            " Combiner des activités d’accueil, d’information et de traitement",
+            " Faire une présentation synthétique des principaux produits et services"
+          ],
+          "marqueurs": [
+            "Limiter les délais d’attente en orientant vers les automates et les autres canaux de distribution e-banking",
+            " Savoir transmettre de façon claire et intelligible les demandes des clients"
+          ],
+          "competencesRequis": [
+            {
+              "name": "Réglementation bancaire",
+              "type": "Domaines de connaissance",
+              "niveauRequis": "E",
+              "niveaux": [
+                {
+                  "level": "E",
+                  "definition": "Def E"
+                },
+                {
+                  "level": "M",
+                  "definition": "Def M"
+                },
+                {
+                  "level": "A",
+                  "definition": "Def A"
+                },
+                {
+                  "level": "X",
+                  "definition": "Def X"
+                }
+              ]
+            },
+            {
+              "name": "Organisation & Règlementation interne ",
+              "type": "Domaines de connaissance",
+              "niveauRequis": "E",
+              "niveaux": [
+                {
+                  "level": "E",
+                  "definition": "Def E"
+                },
+                {
+                  "level": "M",
+                  "definition": "Def M"
+                },
+                {
+                  "level": "A",
+                  "definition": "Def A"
+                },
+                {
+                  "level": "X",
+                  "definition": "Def X"
+                }
+              ]
+            },
+            {
+              "name": "Connaissance des produits et services aux particuliers dont Offres de crédits",
+              "type": "Domaines de connaissance",
+              "niveauRequis": "E",
+              "niveaux": [
+                {
+                  "level": "E",
+                  "definition": "Def E"
+                },
+                {
+                  "level": "M",
+                  "definition": "Def M"
+                },
+                {
+                  "level": "A",
+                  "definition": "Def A"
+                },
+                {
+                  "level": "X",
+                  "definition": "Def X"
+                }
+              ]
+            },
+            {
+              "name": "Acceuillir un client ",
+              "type": "Savoir-faire",
+              "niveauRequis": "M",
+              "niveaux": [
+                {
+                  "level": "E",
+                  "definition": "Def E"
+                },
+                {
+                  "level": "M",
+                  "definition": "Def M"
+                },
+                {
+                  "level": "A",
+                  "definition": "Def A"
+                },
+                {
+                  "level": "X",
+                  "definition": "Def X"
+                }
+              ]
+            },
+            {
+              "name": "Maîtriser les outils de suivi de la relation client ",
+              "type": "Savoir-faire",
+              "niveauRequis": "E",
+              "niveaux": [
+                {
+                  "level": "E",
+                  "definition": "Def E"
+                },
+                {
+                  "level": "M",
+                  "definition": "Def M"
+                },
+                {
+                  "level": "A",
+                  "definition": "Def A"
+                },
+                {
+                  "level": "X",
+                  "definition": "Def X"
+                }
+              ]
+            },
+            {
+              "name": "Maitriser les opérations bancaires courantes de guichet et des circuits de traitement",
+              "type": "Savoir-faire",
+              "niveauRequis": "A",
+              "niveaux": [
+                {
+                  "level": "E",
+                  "definition": "Def E"
+                },
+                {
+                  "level": "M",
+                  "definition": "Def M"
+                },
+                {
+                  "level": "A",
+                  "definition": "Def A"
+                },
+                {
+                  "level": "X",
+                  "definition": "Def X"
+                }
+              ]
+            },
+            {
+              "name": "Maitriser les opérations d'arrêté de journée et de caisse",
+              "type": "Savoir-faire",
+              "niveauRequis": "M",
+              "niveaux": [
+                {
+                  "level": "E",
+                  "definition": "Def E"
+                },
+                {
+                  "level": "M",
+                  "definition": "Def M"
+                },
+                {
+                  "level": "A",
+                  "definition": "Def A"
+                },
+                {
+                  "level": "X",
+                  "definition": "Def X"
+                }
+              ]
+            },
+            {
+              "name": "Orientation client",
+              "type": "Savoir-être",
+              "niveauRequis": "E",
+              "niveaux": [
+                {
+                  "level": "E",
+                  "definition": "Def E"
+                },
+                {
+                  "level": "M",
+                  "definition": "Def M"
+                },
+                {
+                  "level": "A",
+                  "definition": "Def A"
+                },
+                {
+                  "level": "X",
+                  "definition": "Def X"
+                }
+              ]
+            },
+            {
+              "name": "Aisance relationnelle",
+              "type": "Savoir-être",
+              "niveauRequis": "E",
+              "niveaux": [
+                {
+                  "level": "E",
+                  "definition": "Def E"
+                },
+                {
+                  "level": "M",
+                  "definition": "Def M"
+                },
+                {
+                  "level": "A",
+                  "definition": "Def A"
+                },
+                {
+                  "level": "X",
+                  "definition": "Def X"
+                }
+              ]
+            },
+            {
+              "name": "Ethique et déontologie",
+              "type": "Savoir-être",
+              "niveauRequis": "E",
+              "niveaux": [
+                {
+                  "level": "E",
+                  "definition": "Def E"
+                },
+                {
+                  "level": "M",
+                  "definition": "Def M"
+                },
+                {
+                  "level": "A",
+                  "definition": "Def A"
+                },
+                {
+                  "level": "X",
+                  "definition": "Def X"
+                }
+              ]
+            },
+            {
+              "name": "Communication efficace",
+              "type": "Savoir-être",
+              "niveauRequis": "E",
+              "niveaux": [
+                {
+                  "level": "E",
+                  "definition": "Def E"
+                },
+                {
+                  "level": "M",
+                  "definition": "Def M"
+                },
+                {
+                  "level": "A",
+                  "definition": "Def A"
+                },
+                {
+                  "level": "X",
+                  "definition": "Def X"
+                }
+              ]
+            },
+            {
+              "name": "Rigueur et organisation",
+              "type": "Savoir-être",
+              "niveauRequis": "E",
+              "niveaux": [
+                {
+                  "level": "E",
+                  "definition": "Def E"
+                },
+                {
+                  "level": "M",
+                  "definition": "Def M"
+                },
+                {
+                  "level": "A",
+                  "definition": "Def A"
+                },
+                {
+                  "level": "X",
+                  "definition": "Def X"
+                }
+              ]
+            },
+            {
+              "name": "Capacité à travailler  en équipe - Sens du collectif",
+              "type": "Savoir-être",
+              "niveauRequis": "E",
+              "niveaux": [
+                {
+                  "level": "E",
+                  "definition": "Def E"
+                },
+                {
+                  "level": "M",
+                  "definition": "Def M"
+                },
+                {
+                  "level": "A",
+                  "definition": "Def A"
+                },
+                {
+                  "level": "X",
+                  "definition": "Def X"
+                }
+              ]
+            },
+            {
+              "name": "Culture de la performance",
+              "type": "Savoir-être",
+              "niveauRequis": "E",
+              "niveaux": [
+                {
+                  "level": "E",
+                  "definition": "Def E"
+                },
+                {
+                  "level": "M",
+                  "definition": "Def M"
+                },
+                {
+                  "level": "A",
+                  "definition": "Def A"
+                },
+                {
+                  "level": "X",
+                  "definition": "Def X"
+                }
+              ]
+            },
+            {
+              "name": "Proximité Client",
+              "type": "Savoir-être",
+              "niveauRequis": "E",
+              "niveaux": [
+                {
+                  "level": "E",
+                  "definition": "Def E"
+                },
+                {
+                  "level": "M",
+                  "definition": "Def M"
+                },
+                {
+                  "level": "A",
+                  "definition": "Def A"
+                },
+                {
+                  "level": "X",
+                  "definition": "Def X"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "intitule": "agent commercial",
+          "filiere": "Opérations et gestion de la relation clientèle",
+          "sousFiliere": "Développement Commercial",
+          "dateMaj": "2022-02-06",
+          "vocation": "Accueillir les clients sur place et veiller à ce qu’une réponse soit apportée à leurs demandes par lui-même ou en sollicitant un autre interlocuteur habilité et compétent pour leur répondre – Assurer directement le traitement des opérations bancaires simples",
+          "responsabilites": [
+            {
+              "categorie": "Clients / Services",
+              "valeur": [
+                "Garantir la qualité de l’accueil des clients qui se déplacent en agence et contribuer à l’amélioration continue de l’Expérience Client ",
+                " Garantir la fiabilité des réponses apportées et des informations diffusées ",
+                " Garantir une parfaite compréhension des demandes et une orientation rapide vers l’interlocuteur interne disponible, apte à y répondre ",
+                " Garantir le traitement fiable et diligent des opérations bancaires qu’il prend en charge (retraits, versements, change, mouvements sur comptes …) ",
+                " Contribuer à l’amélioration du taux d’usage des services bancaires (automates, banque en ligne, …) en aidant en agence les clients à les prendre en main."
+              ]
+            },
+            {
+              "categorie": "Finances / Coûts",
+              "valeur": [
+                "Contribuer à la maîtrise du coût d’exploitation en prenant en charge l’essentiel des demandes des clients qui se déplacent sur Site. "
+              ]
+            },
+            {
+              "categorie": "Moyens / Méthodes",
+              "valeur": [
+                "Garantir une parfaite maîtrise de l’ensemble des outils mis à sa disposition pour accéder aux données clients et pour traiter les opérations bancaires. "
+              ]
+            },
+            {
+              "categorie": "Équipe / Coopérations",
+              "valeur": [
+                "Contribuer à l’efficacité des coopérations quotidiennes au sein de l’équipe et veiller à l’approfondissement continu de ses compétences (techniques et relationnelles) ",
+                " Veiller au respect des valeurs du Groupe, les faire vivre et les promouvoir au sein de la Banque."
+              ]
+            }
+          ],
+          "level": 2,
+          "exigences": [
+            "Réactivité afin d’écourter les délais d’attente",
+            " Combiner des activités d’accueil, d’information et de traitement",
+            " Faire une présentation synthétique des principaux produits et services",
+            "Apporter des réponses personnalisées",
+            " Adapter sa communication au profil de chaque client",
+            " Filtrer les demandes clients et décharger au maximum les conseillers",
+            " Capter très rapidement la nature et la complexité des demandes clients"
+          ],
+          "marqueurs": [
+            "Limiter les délais d’attente en orientant vers les automates et les autres canaux de distribution e-banking",
+            " Savoir transmettre de façon claire et intelligible les demandes des clients",
+            "Savoir prendre en charge la clientèle de façon optimale (réclamations et insatisfactions)",
+            " Manipuler des valeurs (chèques certifiés, ordre de virement, change manuel …)",
+            " Guider le client vers une « consommation optimale » sur la banque du quotidien, en étant force de proposition",
+            " Orienter le client vers de nouveaux produits en fonction de ses opérations",
+            " Connaître le catalogue des offres de produits et services"
+          ],
+          "competencesRequis": [
+            {
+              "name": "Réglementation bancaire",
+              "type": "Domaines de connaissance",
+              "niveauRequis": "E",
+              "niveaux": [
+                {
+                  "level": "E",
+                  "definition": "Def E"
+                },
+                {
+                  "level": "M",
+                  "definition": "Def M"
+                },
+                {
+                  "level": "A",
+                  "definition": "Def A"
+                },
+                {
+                  "level": "X",
+                  "definition": "Def X"
+                }
+              ]
+            },
+            {
+              "name": "Organisation & Règlementation interne ",
+              "type": "Domaines de connaissance",
+              "niveauRequis": "E",
+              "niveaux": [
+                {
+                  "level": "E",
+                  "definition": "Def E"
+                },
+                {
+                  "level": "M",
+                  "definition": "Def M"
+                },
+                {
+                  "level": "A",
+                  "definition": "Def A"
+                },
+                {
+                  "level": "X",
+                  "definition": "Def X"
+                }
+              ]
+            },
+            {
+              "name": "Connaissance des produits et services aux particuliers dont Offres de crédits",
+              "type": "Domaines de connaissance",
+              "niveauRequis": "E",
+              "niveaux": [
+                {
+                  "level": "E",
+                  "definition": "Def E"
+                },
+                {
+                  "level": "M",
+                  "definition": "Def M"
+                },
+                {
+                  "level": "A",
+                  "definition": "Def A"
+                },
+                {
+                  "level": "X",
+                  "definition": "Def X"
+                }
+              ]
+            },
+            {
+              "name": "Acceuillir un client ",
+              "type": "Savoir-faire",
+              "niveauRequis": "A",
+              "niveaux": [
+                {
+                  "level": "E",
+                  "definition": "Def E"
+                },
+                {
+                  "level": "M",
+                  "definition": "Def M"
+                },
+                {
+                  "level": "A",
+                  "definition": "Def A"
+                },
+                {
+                  "level": "X",
+                  "definition": "Def X"
+                }
+              ]
+            },
+            {
+              "name": "Maîtriser les outils de suivi de la relation client ",
+              "type": "Savoir-faire",
+              "niveauRequis": "E",
+              "niveaux": [
+                {
+                  "level": "E",
+                  "definition": "Def E"
+                },
+                {
+                  "level": "M",
+                  "definition": "Def M"
+                },
+                {
+                  "level": "A",
+                  "definition": "Def A"
+                },
+                {
+                  "level": "X",
+                  "definition": "Def X"
+                }
+              ]
+            },
+            {
+              "name": "Maitriser les opérations bancaires courantes de guichet et des circuits de traitement",
+              "type": "Savoir-faire",
+              "niveauRequis": "X",
+              "niveaux": [
+                {
+                  "level": "E",
+                  "definition": "Def E"
+                },
+                {
+                  "level": "M",
+                  "definition": "Def M"
+                },
+                {
+                  "level": "A",
+                  "definition": "Def A"
+                },
+                {
+                  "level": "X",
+                  "definition": "Def X"
+                }
+              ]
+            },
+            {
+              "name": "Maitriser les opérations d'arrêté de journée et de caisse",
+              "type": "Savoir-faire",
+              "niveauRequis": "M",
+              "niveaux": [
+                {
+                  "level": "E",
+                  "definition": "Def E"
+                },
+                {
+                  "level": "M",
+                  "definition": "Def M"
+                },
+                {
+                  "level": "A",
+                  "definition": "Def A"
+                },
+                {
+                  "level": "X",
+                  "definition": "Def X"
+                }
+              ]
+            },
+            {
+              "name": "Orientation client",
+              "type": "Savoir-être",
+              "niveauRequis": "E",
+              "niveaux": [
+                {
+                  "level": "E",
+                  "definition": "Def E"
+                },
+                {
+                  "level": "M",
+                  "definition": "Def M"
+                },
+                {
+                  "level": "A",
+                  "definition": "Def A"
+                },
+                {
+                  "level": "X",
+                  "definition": "Def X"
+                }
+              ]
+            },
+            {
+              "name": "Aisance relationnelle",
+              "type": "Savoir-être",
+              "niveauRequis": "E",
+              "niveaux": [
+                {
+                  "level": "E",
+                  "definition": "Def E"
+                },
+                {
+                  "level": "M",
+                  "definition": "Def M"
+                },
+                {
+                  "level": "A",
+                  "definition": "Def A"
+                },
+                {
+                  "level": "X",
+                  "definition": "Def X"
+                }
+              ]
+            },
+            {
+              "name": "Ethique et déontologie",
+              "type": "Savoir-être",
+              "niveauRequis": "E",
+              "niveaux": [
+                {
+                  "level": "E",
+                  "definition": "Def E"
+                },
+                {
+                  "level": "M",
+                  "definition": "Def M"
+                },
+                {
+                  "level": "A",
+                  "definition": "Def A"
+                },
+                {
+                  "level": "X",
+                  "definition": "Def X"
+                }
+              ]
+            },
+            {
+              "name": "Communication efficace",
+              "type": "Savoir-être",
+              "niveauRequis": "E",
+              "niveaux": [
+                {
+                  "level": "E",
+                  "definition": "Def E"
+                },
+                {
+                  "level": "M",
+                  "definition": "Def M"
+                },
+                {
+                  "level": "A",
+                  "definition": "Def A"
+                },
+                {
+                  "level": "X",
+                  "definition": "Def X"
+                }
+              ]
+            },
+            {
+              "name": "Rigueur et organisation",
+              "type": "Savoir-être",
+              "niveauRequis": "E",
+              "niveaux": [
+                {
+                  "level": "E",
+                  "definition": "Def E"
+                },
+                {
+                  "level": "M",
+                  "definition": "Def M"
+                },
+                {
+                  "level": "A",
+                  "definition": "Def A"
+                },
+                {
+                  "level": "X",
+                  "definition": "Def X"
+                }
+              ]
+            },
+            {
+              "name": "Capacité à travailler  en équipe - Sens du collectif",
+              "type": "Savoir-être",
+              "niveauRequis": "E",
+              "niveaux": [
+                {
+                  "level": "E",
+                  "definition": "Def E"
+                },
+                {
+                  "level": "M",
+                  "definition": "Def M"
+                },
+                {
+                  "level": "A",
+                  "definition": "Def A"
+                },
+                {
+                  "level": "X",
+                  "definition": "Def X"
+                }
+              ]
+            },
+            {
+              "name": "Culture de la performance",
+              "type": "Savoir-être",
+              "niveauRequis": "E",
+              "niveaux": [
+                {
+                  "level": "E",
+                  "definition": "Def E"
+                },
+                {
+                  "level": "M",
+                  "definition": "Def M"
+                },
+                {
+                  "level": "A",
+                  "definition": "Def A"
+                },
+                {
+                  "level": "X",
+                  "definition": "Def X"
+                }
+              ]
+            },
+            {
+              "name": "Proximité Client",
+              "type": "Savoir-être",
+              "niveauRequis": "M",
+              "niveaux": [
+                {
+                  "level": "E",
+                  "definition": "Def E"
+                },
+                {
+                  "level": "M",
+                  "definition": "Def M"
+                },
+                {
+                  "level": "A",
+                  "definition": "Def A"
+                },
+                {
+                  "level": "X",
+                  "definition": "Def X"
+                }
+              ]
+            },
+            {
+              "name": "Promouvoir les outils digitaux",
+              "type": "Savoir-faire",
+              "niveauRequis": "E",
+              "niveaux": [
+                {
+                  "level": "E",
+                  "definition": "Def E"
+                },
+                {
+                  "level": "M",
+                  "definition": "Def M"
+                },
+                {
+                  "level": "A",
+                  "definition": "Def A"
+                },
+                {
+                  "level": "X",
+                  "definition": "Def X"
+                }
+              ]
+            },
+            {
+              "name": "Fidéliser les clients",
+              "type": "Savoir-faire",
+              "niveauRequis": "E",
+              "niveaux": [
+                {
+                  "level": "E",
+                  "definition": "Def E"
+                },
+                {
+                  "level": "M",
+                  "definition": "Def M"
+                },
+                {
+                  "level": "A",
+                  "definition": "Def A"
+                },
+                {
+                  "level": "X",
+                  "definition": "Def X"
+                }
+              ]
+            },
+            {
+              "name": "Résistance au stress",
+              "type": "Savoir-être",
+              "niveauRequis": "E",
+              "niveaux": [
+                {
+                  "level": "E",
+                  "definition": "Def E"
+                },
+                {
+                  "level": "M",
+                  "definition": "Def M"
+                },
+                {
+                  "level": "A",
+                  "definition": "Def A"
+                },
+                {
+                  "level": "X",
+                  "definition": "Def X"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "intitule": "agent commercial",
+          "filiere": "Opérations et gestion de la relation clientèle",
+          "sousFiliere": "Développement Commercial",
+          "dateMaj": "2022-02-06",
+          "vocation": "Accueillir les clients sur place et veiller à ce qu’une réponse soit apportée à leurs demandes par lui-même ou en sollicitant un autre interlocuteur habilité et compétent pour leur répondre – Assurer directement le traitement des opérations bancaires simples",
+          "responsabilites": [
+            {
+              "categorie": "Clients / Services",
+              "valeur": [
+                "Garantir la qualité de l’accueil des clients qui se déplacent en agence et contribuer à l’amélioration continue de l’Expérience Client ",
+                " Garantir la fiabilité des réponses apportées et des informations diffusées ",
+                " Garantir une parfaite compréhension des demandes et une orientation rapide vers l’interlocuteur interne disponible, apte à y répondre ",
+                " Garantir le traitement fiable et diligent des opérations bancaires qu’il prend en charge (retraits, versements, change, mouvements sur comptes …) ",
+                " Contribuer à l’amélioration du taux d’usage des services bancaires (automates, banque en ligne, …) en aidant en agence les clients à les prendre en main."
+              ]
+            },
+            {
+              "categorie": "Finances / Coûts",
+              "valeur": [
+                "Contribuer à la maîtrise du coût d’exploitation en prenant en charge l’essentiel des demandes des clients qui se déplacent sur Site. "
+              ]
+            },
+            {
+              "categorie": "Moyens / Méthodes",
+              "valeur": [
+                "Garantir une parfaite maîtrise de l’ensemble des outils mis à sa disposition pour accéder aux données clients et pour traiter les opérations bancaires. "
+              ]
+            },
+            {
+              "categorie": "Équipe / Coopérations",
+              "valeur": [
+                "Contribuer à l’efficacité des coopérations quotidiennes au sein de l’équipe et veiller à l’approfondissement continu de ses compétences (techniques et relationnelles) ",
+                " Veiller au respect des valeurs du Groupe, les faire vivre et les promouvoir au sein de la Banque."
+              ]
+            }
+          ],
+          "level": 3,
+          "exigences": [
+            "Réactivité afin d’écourter les délais d’attente",
+            " Combiner des activités d’accueil, d’information et de traitement",
+            " Faire une présentation synthétique des principaux produits et services",
+            "Apporter des réponses personnalisées",
+            " Adapter sa communication au profil de chaque client",
+            " Filtrer les demandes clients et décharger au maximum les conseillers",
+            " Capter très rapidement la nature et la complexité des demandes clients",
+            "Prendre en charge les réclamations Clients et en assurer le suivi"
+          ],
+          "marqueurs": [
+            "Limiter les délais d’attente en orientant vers les automates et les autres canaux de distribution e-banking",
+            " Savoir transmettre de façon claire et intelligible les demandes des clients",
+            "Savoir prendre en charge la clientèle de façon optimale (réclamations et insatisfactions)",
+            " Manipuler des valeurs (chèques certifiés, ordre de virement, change manuel …)",
+            " Guider le client vers une « consommation optimale » sur la banque du quotidien, en étant force de proposition",
+            " Orienter le client vers de nouveaux produits en fonction de ses opérations",
+            " Connaître le catalogue des offres de produits et services"
+          ],
+          "competencesRequis": [
+            {
+              "name": "Réglementation bancaire",
+              "type": "Domaines de connaissance",
+              "niveauRequis": "E",
+              "niveaux": [
+                {
+                  "level": "E",
+                  "definition": "Def E"
+                },
+                {
+                  "level": "M",
+                  "definition": "Def M"
+                },
+                {
+                  "level": "A",
+                  "definition": "Def A"
+                },
+                {
+                  "level": "X",
+                  "definition": "Def X"
+                }
+              ]
+            },
+            {
+              "name": "Organisation & Règlementation interne ",
+              "type": "Domaines de connaissance",
+              "niveauRequis": "E",
+              "niveaux": [
+                {
+                  "level": "E",
+                  "definition": "Def E"
+                },
+                {
+                  "level": "M",
+                  "definition": "Def M"
+                },
+                {
+                  "level": "A",
+                  "definition": "Def A"
+                },
+                {
+                  "level": "X",
+                  "definition": "Def X"
+                }
+              ]
+            },
+            {
+              "name": "Connaissance des produits et services aux particuliers dont Offres de crédits",
+              "type": "Domaines de connaissance",
+              "niveauRequis": "M",
+              "niveaux": [
+                {
+                  "level": "E",
+                  "definition": "Def E"
+                },
+                {
+                  "level": "M",
+                  "definition": "Def M"
+                },
+                {
+                  "level": "A",
+                  "definition": "Def A"
+                },
+                {
+                  "level": "X",
+                  "definition": "Def X"
+                }
+              ]
+            },
+            {
+              "name": "Acceuillir un client ",
+              "type": "Savoir-faire",
+              "niveauRequis": "X",
+              "niveaux": [
+                {
+                  "level": "E",
+                  "definition": "Def E"
+                },
+                {
+                  "level": "M",
+                  "definition": "Def M"
+                },
+                {
+                  "level": "A",
+                  "definition": "Def A"
+                },
+                {
+                  "level": "X",
+                  "definition": "Def X"
+                }
+              ]
+            },
+            {
+              "name": "Maîtriser les outils de suivi de la relation client ",
+              "type": "Savoir-faire",
+              "niveauRequis": "E",
+              "niveaux": [
+                {
+                  "level": "E",
+                  "definition": "Def E"
+                },
+                {
+                  "level": "M",
+                  "definition": "Def M"
+                },
+                {
+                  "level": "A",
+                  "definition": "Def A"
+                },
+                {
+                  "level": "X",
+                  "definition": "Def X"
+                }
+              ]
+            },
+            {
+              "name": "Maitriser les opérations bancaires courantes de guichet et des circuits de traitement",
+              "type": "Savoir-faire",
+              "niveauRequis": "X",
+              "niveaux": [
+                {
+                  "level": "E",
+                  "definition": "Def E"
+                },
+                {
+                  "level": "M",
+                  "definition": "Def M"
+                },
+                {
+                  "level": "A",
+                  "definition": "Def A"
+                },
+                {
+                  "level": "X",
+                  "definition": "Def X"
+                }
+              ]
+            },
+            {
+              "name": "Maitriser les opérations d'arrêté de journée et de caisse",
+              "type": "Savoir-faire",
+              "niveauRequis": "A",
+              "niveaux": [
+                {
+                  "level": "E",
+                  "definition": "Def E"
+                },
+                {
+                  "level": "M",
+                  "definition": "Def M"
+                },
+                {
+                  "level": "A",
+                  "definition": "Def A"
+                },
+                {
+                  "level": "X",
+                  "definition": "Def X"
+                }
+              ]
+            },
+            {
+              "name": "Orientation client",
+              "type": "Savoir-être",
+              "niveauRequis": "M",
+              "niveaux": [
+                {
+                  "level": "E",
+                  "definition": "Def E"
+                },
+                {
+                  "level": "M",
+                  "definition": "Def M"
+                },
+                {
+                  "level": "A",
+                  "definition": "Def A"
+                },
+                {
+                  "level": "X",
+                  "definition": "Def X"
+                }
+              ]
+            },
+            {
+              "name": "Aisance relationnelle",
+              "type": "Savoir-être",
+              "niveauRequis": "M",
+              "niveaux": [
+                {
+                  "level": "E",
+                  "definition": "Def E"
+                },
+                {
+                  "level": "M",
+                  "definition": "Def M"
+                },
+                {
+                  "level": "A",
+                  "definition": "Def A"
+                },
+                {
+                  "level": "X",
+                  "definition": "Def X"
+                }
+              ]
+            },
+            {
+              "name": "Ethique et déontologie",
+              "type": "Savoir-être",
+              "niveauRequis": "E",
+              "niveaux": [
+                {
+                  "level": "E",
+                  "definition": "Def E"
+                },
+                {
+                  "level": "M",
+                  "definition": "Def M"
+                },
+                {
+                  "level": "A",
+                  "definition": "Def A"
+                },
+                {
+                  "level": "X",
+                  "definition": "Def X"
+                }
+              ]
+            },
+            {
+              "name": "Communication efficace",
+              "type": "Savoir-être",
+              "niveauRequis": "M",
+              "niveaux": [
+                {
+                  "level": "E",
+                  "definition": "Def E"
+                },
+                {
+                  "level": "M",
+                  "definition": "Def M"
+                },
+                {
+                  "level": "A",
+                  "definition": "Def A"
+                },
+                {
+                  "level": "X",
+                  "definition": "Def X"
+                }
+              ]
+            },
+            {
+              "name": "Rigueur et organisation",
+              "type": "Savoir-être",
+              "niveauRequis": "E",
+              "niveaux": [
+                {
+                  "level": "E",
+                  "definition": "Def E"
+                },
+                {
+                  "level": "M",
+                  "definition": "Def M"
+                },
+                {
+                  "level": "A",
+                  "definition": "Def A"
+                },
+                {
+                  "level": "X",
+                  "definition": "Def X"
+                }
+              ]
+            },
+            {
+              "name": "Capacité à travailler  en équipe - Sens du collectif",
+              "type": "Savoir-être",
+              "niveauRequis": "E",
+              "niveaux": [
+                {
+                  "level": "E",
+                  "definition": "Def E"
+                },
+                {
+                  "level": "M",
+                  "definition": "Def M"
+                },
+                {
+                  "level": "A",
+                  "definition": "Def A"
+                },
+                {
+                  "level": "X",
+                  "definition": "Def X"
+                }
+              ]
+            },
+            {
+              "name": "Culture de la performance",
+              "type": "Savoir-être",
+              "niveauRequis": "E",
+              "niveaux": [
+                {
+                  "level": "E",
+                  "definition": "Def E"
+                },
+                {
+                  "level": "M",
+                  "definition": "Def M"
+                },
+                {
+                  "level": "A",
+                  "definition": "Def A"
+                },
+                {
+                  "level": "X",
+                  "definition": "Def X"
+                }
+              ]
+            },
+            {
+              "name": "Proximité Client",
+              "type": "Savoir-être",
+              "niveauRequis": "M",
+              "niveaux": [
+                {
+                  "level": "E",
+                  "definition": "Def E"
+                },
+                {
+                  "level": "M",
+                  "definition": "Def M"
+                },
+                {
+                  "level": "A",
+                  "definition": "Def A"
+                },
+                {
+                  "level": "X",
+                  "definition": "Def X"
+                }
+              ]
+            },
+            {
+              "name": "Promouvoir les outils digitaux",
+              "type": "Savoir-faire",
+              "niveauRequis": "E",
+              "niveaux": [
+                {
+                  "level": "E",
+                  "definition": "Def E"
+                },
+                {
+                  "level": "M",
+                  "definition": "Def M"
+                },
+                {
+                  "level": "A",
+                  "definition": "Def A"
+                },
+                {
+                  "level": "X",
+                  "definition": "Def X"
+                }
+              ]
+            },
+            {
+              "name": "Fidéliser les clients",
+              "type": "Savoir-faire",
+              "niveauRequis": "E",
+              "niveaux": [
+                {
+                  "level": "E",
+                  "definition": "Def E"
+                },
+                {
+                  "level": "M",
+                  "definition": "Def M"
+                },
+                {
+                  "level": "A",
+                  "definition": "Def A"
+                },
+                {
+                  "level": "X",
+                  "definition": "Def X"
+                }
+              ]
+            },
+            {
+              "name": "Résistance au stress",
+              "type": "Savoir-être",
+              "niveauRequis": "E",
+              "niveaux": [
+                {
+                  "level": "E",
+                  "definition": "Def E"
+                },
+                {
+                  "level": "M",
+                  "definition": "Def M"
+                },
+                {
+                  "level": "A",
+                  "definition": "Def A"
+                },
+                {
+                  "level": "X",
+                  "definition": "Def X"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "assessmentCategories": [
+    {
+      "categorie": {
+        "name": "cat 1"
+      },
+      "criterias": [
+        {
+          "name": "Ancienneté CPM (année)",
+          "min": "",
+          "max": "3"
+        }
+      ]
+    },
+    {
+      "categorie": {
+        "name": "cat 2"
+      },
+      "criterias": [
+        {
+          "name": "Ancienneté CPM (année)",
+          "min": "5",
+          "max": ""
+        }
+      ]
+    }
+  ],
+  "collaborateurs": [
+    {
+      "firstName": "ammor",
+      "lastName": "mohamed",
+      "matricule": 121663,
+      "role": "RESP. ADMIN.",
+      "direction": 6411111,
+      "topDirection": "",
+      "affectationCode": 6411111,
+      "managerOne": {
+        "firstName": "Fabrizio",
+        "lastName": "Romano",
+        "matricule": 111,
+        "role": "",
+        "direction": "",
+        "topDirection": "",
+        "manager": {
+          "firstName": "Benganzi",
+          "lastName": "Fatima",
+          "matricule": 444,
+          "role": "",
+          "direction": "",
+          "topDirection": ""
+        }
+      }
+    },
+    {
+      "firstName": "alaoui",
+      "lastName": "salwa",
+      "matricule": 121324,
+      "role": "RESP. ADMIN.",
+      "direction": 6522222,
+      "topDirection": "",
+      "affectationCode": 6522222,
+      "managerOne": {
+        "firstName": "Fabrizio",
+        "lastName": "Romano",
+        "matricule": 111,
+        "role": "",
+        "direction": "",
+        "topDirection": "",
+        "manager": {
+          "firstName": "Benganzi",
+          "lastName": "Fatima",
+          "matricule": 444,
+          "role": "",
+          "direction": "",
+          "topDirection": ""
+        }
+      }
+    },
+    {
+      "firstName": "aitmha",
+      "lastName": "ghita",
+      "matricule": 121698,
+      "role": "RESP. ADMIN.",
+      "direction": 6426272,
+      "topDirection": "",
+      "affectationCode": 6426272,
+      "managerOne": {
+        "firstName": "Chritian",
+        "lastName": "Dakar",
+        "matricule": 222,
+        "role": "",
+        "direction": "",
+        "topDirection": "",
+        "manager": {
+          "firstName": "Benganzi",
+          "lastName": "Fatima",
+          "matricule": 444,
+          "role": "",
+          "direction": "",
+          "topDirection": ""
+        }
+      }
+    },
+    {
+      "firstName": "zidani",
+      "lastName": "meryem",
+      "matricule": 121982,
+      "role": "RESP. ADMIN.",
+      "direction": 8126212,
+      "topDirection": "",
+      "affectationCode": 8126212,
+      "managerOne": {
+        "firstName": "Glaoui",
+        "lastName": "Amine",
+        "matricule": 333,
+        "role": "",
+        "direction": "",
+        "topDirection": "",
+        "manager": {
+          "firstName": "Ali",
+          "lastName": "Dialo",
+          "matricule": 555,
+          "role": "",
+          "direction": "",
+          "topDirection": ""
+        }
+      }
+    },
+    {
+      "firstName": "himich",
+      "lastName": "amine",
+      "matricule": 121330,
+      "role": "RESP. ADMIN.",
+      "direction": 8326213,
+      "topDirection": "",
+      "affectationCode": 8326213,
+      "managerOne": {
+        "firstName": "Glaoui",
+        "lastName": "Amine",
+        "matricule": 333,
+        "role": "",
+        "direction": "",
+        "topDirection": "",
+        "manager": {
+          "firstName": "Ali",
+          "lastName": "Dialo",
+          "matricule": 555,
+          "role": "",
+          "direction": "",
+          "topDirection": ""
+        }
+      }
+    },
+    {
+      "firstName": "karimi",
+      "lastName": "ahmed",
+      "matricule": 121112,
+      "role": "RESP. ADMIN.",
+      "direction": 8226214,
+      "topDirection": "",
+      "affectationCode": 8226214,
+      "managerOne": {
+        "firstName": "Glaoui",
+        "lastName": "Amine",
+        "matricule": 333,
+        "role": "",
+        "direction": "",
+        "topDirection": "",
+        "manager": {
+          "firstName": "Ali",
+          "lastName": "Dialo",
+          "matricule": 555,
+          "role": "",
+          "direction": "",
+          "topDirection": ""
+        }
+      }
+    }
+  ],
+  "managers1": [
+    {
+      "firstName": "Fabrizio",
+      "lastName": "Romano",
+      "matricule": 111,
+      "role": "",
+      "direction": "",
+      "topDirection": "",
+      "manager": {
+        "firstName": "Benganzi",
+        "lastName": "Fatima",
+        "matricule": 444,
+        "role": "",
+        "direction": "",
+        "topDirection": ""
+      },
+      "hashedPwd": "q4sge4mc92"
+    },
+    {
+      "firstName": "Chritian",
+      "lastName": "Dakar",
+      "matricule": 222,
+      "role": "",
+      "direction": "",
+      "topDirection": "",
+      "manager": {
+        "firstName": "Benganzi",
+        "lastName": "Fatima",
+        "matricule": 444,
+        "role": "",
+        "direction": "",
+        "topDirection": ""
+      },
+      "hashedPwd": "83xa0k4s78"
+    },
+    {
+      "firstName": "Glaoui",
+      "lastName": "Amine",
+      "matricule": 333,
+      "role": "",
+      "direction": "",
+      "topDirection": "",
+      "manager": {
+        "firstName": "Ali",
+        "lastName": "Dialo",
+        "matricule": 555,
+        "role": "",
+        "direction": "",
+        "topDirection": ""
+      },
+      "hashedPwd": "q9ktmi2ntn"
+    }
+  ],
+  "managers2": [
+    {
+      "firstName": "Benganzi",
+      "lastName": "Fatima",
+      "matricule": 444,
+      "role": "",
+      "direction": "",
+      "topDirection": "",
+      "hashedPwd": "tvey0z4z9v"
+    },
+    {
+      "firstName": "Ali",
+      "lastName": "Dialo",
+      "matricule": 555,
+      "role": "",
+      "direction": "",
+      "topDirection": "",
+      "hashedPwd": "yk7aenplva"
+    }
+  ],
+  "users": [
+    {
+      "firstName": "Carlos CC",
+      "lastName": "AMINE",
+      "matricule": "1111",
+      "topDirection": "bp_tanger_tetouan",
+      "direction": null,
+      "role": "drh",
+      "phoneNumber": "+212undefined",
+      "workEmail": null,
+      "affectationCode": null,
+      "hashedPwd": "xx",
+      "idDrh": 125,
+      "tag": "bp_tanger_tetouan",
+      "codePrefix": [
+        64,
+        65
+      ],
+      "codeSuffix": []
+    },
+    {
+      "firstName": "Ghita",
+      "lastName": "Fatih",
+      "matricule": "2222",
+      "topDirection": "bp_rabat_kenitra",
+      "direction": null,
+      "role": "drh",
+      "phoneNumber": "+212undefined",
+      "workEmail": null,
+      "affectationCode": null,
+      "hashedPwd": "xx",
+      "idDrh": 126,
+      "tag": "bp_rabat_kenitra",
+      "codePrefix": [
+        81,
+        82,
+        83
+      ],
+      "codeSuffix": []
+    },
+    {
+      "firstName": "Ghannam",
+      "lastName": "Sanae",
+      "matricule": "12332",
+      "topDirection": "bp_tanger_tetouan",
+      "direction": null,
+      "role": "admin",
+      "phoneNumber": "+212undefined",
+      "workEmail": null,
+      "affectationCode": null,
+      "hashedPwd": "xx"
+    },
+    {
+      "firstName": "Fabrizio",
+      "lastName": "Romano",
+      "matricule": "111",
+      "topDirection": "bp_tanger_tetouan",
+      "direction": null,
+      "role": "manager-1",
+      "phoneNumber": "+212undefined",
+      "workEmail": null,
+      "affectationCode": null,
+      "hashedPwd": "xx"
+    },
+    {
+      "firstName": "Chritian",
+      "lastName": "Dakar",
+      "matricule": "222",
+      "topDirection": "bp_tanger_tetouan",
+      "direction": null,
+      "role": "manager-1",
+      "phoneNumber": "+212undefined",
+      "workEmail": null,
+      "affectationCode": null,
+      "hashedPwd": "xx"
+    },
+    {
+      "firstName": "Glaoui",
+      "lastName": "Amine",
+      "matricule": "333",
+      "topDirection": "bp_tanger_tetouan",
+      "direction": null,
+      "role": "manager-1",
+      "phoneNumber": "+212undefined",
+      "workEmail": null,
+      "affectationCode": null,
+      "hashedPwd": "xx"
+    },
+    {
+      "firstName": "Benganzi",
+      "lastName": "Fatima",
+      "matricule": "444",
+      "topDirection": "bp_tanger_tetouan",
+      "direction": null,
+      "role": "manager-2",
+      "phoneNumber": "+212",
+      "workEmail": null,
+      "affectationCode": null,
+      "hashedPwd": "xx"
+    },
+    {
+      "firstName": "Ali",
+      "lastName": "Dialo",
+      "matricule": "555",
+      "topDirection": "bp_tanger_tetouan",
+      "direction": null,
+      "role": "manager-2",
+      "phoneNumber": "+212",
+      "workEmail": null,
+      "affectationCode": null,
+      "hashedPwd": "xx"
+    }
+  ],
+  "fichesEvaluations": [
+    {
+      "status": "E0",
+      "score": 86.7,
+      "ficheEvaluationId": "100",
+      "evaluatedAt": "2023-05-04T11:24:17.285Z",
+      "re_manager1": "{\"score\":86.7,\"sousPoints\":2,\"surPoints\":8,\"marqueurs\":[],\"exigences\":[],\"responsabilites\":[],\"competences\":{\"competences_dc\":[{\"value\":\" Réglementation bancaire\",\"requis\":\" E\",\"response\":\"E\"},{\"value\":\" Organisation &amp; Règlementation interne \",\"requis\":\" E\",\"response\":\"E\"},{\"value\":\" Connaissance des produits et services aux particuliers dont Offres de crédits\",\"requis\":\" E\",\"response\":\"E\"}],\"competences_se\":[{\"value\":\" Orientation client\",\"requis\":\" E\",\"response\":\"M\"},{\"value\":\" Aisance relationnelle\",\"requis\":\" E\",\"response\":\"E\"},{\"value\":\" Ethique et déontologie\",\"requis\":\" E\",\"response\":\"M\"},{\"value\":\" Communication efficace\",\"requis\":\" E\",\"response\":\"M\"},{\"value\":\" Rigueur et organisation\",\"requis\":\" E\",\"response\":\"A\"},{\"value\":\" Capacité à travailler  en équipe - Sens du collectif\",\"requis\":\" E\",\"response\":\"M\"},{\"value\":\" Culture de la performance\",\"requis\":\" E\",\"response\":\"M\"},{\"value\":\" Proximité Client\",\"requis\":\" E\",\"response\":\"E\"}],\"competences_sf\":[{\"value\":\" Acceuillir un client \",\"requis\":\" M\",\"response\":\"M\"},{\"value\":\" Maîtriser les outils de suivi de la relation client \",\"requis\":\" E\",\"response\":\"M\"},{\"value\":\" Maitriser les opérations bancaires courantes de guichet et des circuits de traitement\",\"requis\":\" A\",\"response\":\"M\"},{\"value\":\" Maitriser les opérations d'arrêté de journée et de caisse\",\"requis\":\" M\",\"response\":\"E\"}]}}",
+      "re_manager2": null,
+      "sectionCompDc": "100.0",
+      "sectionCompSe": "100.0",
+      "sectionCompSf": "50.0",
+      "sectionExi": "NaN",
+      "sectionMarq": "NaN",
+      "sectionRes": "NaN",
+      "sousPoints": 2,
+      "surPoints": 8,
+      "createdAt": "2023-05-26T12:37:38.756Z",
+      "dateEvaluation": "2023-05-26T00:00:00.000Z",
+      "evaluateurOne": {
+        "firstName": "Fabrizio",
+        "lastName": "Romano",
+        "matricule": 111,
+        "role": "",
+        "direction": "",
+        "topDirection": "",
+        "manager": {
+          "firstName": "Benganzi",
+          "lastName": "Fatima",
+          "matricule": 444,
+          "role": "",
+          "direction": "",
+          "topDirection": ""
+        }
+      },
+      "evaluateurTwo": {
+        "firstName": "Benganzi",
+        "lastName": "Fatima",
+        "matricule": 444,
+        "role": "",
+        "direction": "",
+        "topDirection": ""
+      },
+      "collaborateur": {
+        "firstName": "ammor",
+        "lastName": "mohamed",
+        "matricule": 121663,
+        "role": "RESP. ADMIN.",
+        "direction": 6411111,
+        "topDirection": "",
+        "affectationCode": 6411111,
+        "managerOne": {
+          "firstName": "Fabrizio",
+          "lastName": "Romano",
+          "matricule": 111,
+          "role": "",
+          "direction": "",
+          "topDirection": "",
+          "manager": {
+            "firstName": "Benganzi",
+            "lastName": "Fatima",
+            "matricule": 444,
+            "role": "",
+            "direction": "",
+            "topDirection": ""
+          }
+        }
+      },
+      "ficheContent": [
+        "competences-dc",
+        "competences-sf",
+        "competences-se"
+      ],
+      "emploi": {
+        "intitule": "agent commercial",
+        "level": "1"
+      }
+    },
+    {
+      "status": "E0",
+      "score": 71.4,
+      "ficheEvaluationId": "101",
+      "evaluatedAt": "2023-05-04T11:24:17.285Z",
+      "re_manager1": "{\"score\":71.4,\"sousPoints\":8,\"surPoints\":7,\"marqueurs\":[{\"value\":\"Limiter les délais d’attente en orientant vers les automates et les autres canaux de distribution e-banking\",\"response\":\"1\"},{\"value\":\" Savoir transmettre de façon claire et intelligible les demandes des clients\",\"response\":\"1\"},{\"value\":\"Savoir prendre en charge la clientèle de façon optimale (réclamations et insatisfactions)\",\"response\":\"1\"},{\"value\":\" Manipuler des valeurs (chèques certifiés, ordre de virement, change manuel …)\",\"response\":\"1\"},{\"value\":\" Guider le client vers une «&nbsp;consommation optimale&nbsp;» sur la banque du quotidien, en étant force de proposition\",\"response\":\"0\"},{\"value\":\" Orienter le client vers de nouveaux produits en fonction de ses opérations\",\"response\":\"0\"},{\"value\":\" Connaître le catalogue des offres de produits et services\",\"response\":\"0\"}],\"exigences\":[{\"value\":\"Réactivité afin d’écourter les délais d’attente\",\"response\":\"1\"},{\"value\":\" Combiner des activités d’accueil, d’information et de traitement\",\"response\":\"1\"},{\"value\":\" Faire une présentation synthétique des principaux produits et services\",\"response\":\"1\"},{\"value\":\"Apporter des réponses personnalisées\",\"response\":\"1\"},{\"value\":\" Adapter sa communication au profil de chaque client\",\"response\":\"1\"},{\"value\":\" Filtrer les demandes clients et décharger au maximum les conseillers\",\"response\":\"0\"},{\"value\":\" Capter très rapidement la nature et la complexité des demandes clients\",\"response\":\"1\"},{\"value\":\"Prendre en charge les réclamations Clients et en assurer le suivi\",\"response\":\"1\"}],\"responsabilites\":[{\"value\":\"Garantir la qualité de l’accueil des clients qui se déplacent en agence et contribuer à l’amélioration continue de l’Expérience Client \",\"response\":\"1\"},{\"value\":\" Garantir la fiabilité des réponses apportées et des informations diffusées \",\"response\":\"1\"},{\"value\":\" Garantir une parfaite compréhension des demandes et une orientation rapide vers l’interlocuteur interne disponible, apte à y répondre \",\"response\":\"1\"},{\"value\":\" Garantir le traitement fiable et diligent des opérations bancaires qu’il prend en charge (retraits, versements, change, mouvements sur comptes …) \",\"response\":\"0\"},{\"value\":\" Contribuer à l’amélioration du taux d’usage des services bancaires (automates, banque en ligne, …) en aidant en agence les clients à les prendre en main.\",\"response\":\"1\"},{\"value\":\"Contribuer à la maîtrise du coût d’exploitation en prenant en charge l’essentiel des demandes des clients qui se déplacent sur Site. \",\"response\":\"1\"},{\"value\":\"Garantir une parfaite maîtrise de l’ensemble des outils mis à sa disposition pour accéder aux données clients et pour traiter les opérations bancaires. \",\"response\":\"0\"},{\"value\":\"Contribuer à l’efficacité des coopérations quotidiennes au sein de l’équipe et veiller à l’approfondissement continu de ses compétences (techniques et relationnelles) \",\"response\":\"1\"},{\"value\":\" Veiller au respect des valeurs du Groupe, les faire vivre et les promouvoir au sein de la Banque.\",\"response\":\"1\"}],\"competences\":{\"competences_dc\":[{\"value\":\" Réglementation bancaire\",\"requis\":\" E\",\"response\":\"M\"},{\"value\":\" Organisation &amp; Règlementation interne \",\"requis\":\" E\",\"response\":\"M\"},{\"value\":\" Connaissance des produits et services aux particuliers dont Offres de crédits\",\"requis\":\" M\",\"response\":\"M\"}],\"competences_se\":[{\"value\":\" Orientation client\",\"requis\":\" M\",\"response\":\"E\"},{\"value\":\" Aisance relationnelle\",\"requis\":\" M\",\"response\":\"E\"},{\"value\":\" Ethique et déontologie\",\"requis\":\" E\",\"response\":\"E\"},{\"value\":\" Communication efficace\",\"requis\":\" M\",\"response\":\"E\"},{\"value\":\" Rigueur et organisation\",\"requis\":\" E\",\"response\":\"M\"},{\"value\":\" Capacité à travailler  en équipe - Sens du collectif\",\"requis\":\" E\",\"response\":\"M\"},{\"value\":\" Culture de la performance\",\"requis\":\" E\",\"response\":\"M\"},{\"value\":\" Proximité Client\",\"requis\":\" M\",\"response\":\"M\"},{\"value\":\" Résistance au stress\",\"requis\":\" E\",\"response\":\"M\"}],\"competences_sf\":[{\"value\":\" Acceuillir un client \",\"requis\":\" X\",\"response\":\"M\"},{\"value\":\" Maîtriser les outils de suivi de la relation client \",\"requis\":\" E\",\"response\":\"M\"},{\"value\":\" Maitriser les opérations bancaires courantes de guichet et des circuits de traitement\",\"requis\":\" X\",\"response\":\"M\"},{\"value\":\" Maitriser les opérations d'arrêté de journée et de caisse\",\"requis\":\" A\",\"response\":\"M\"},{\"value\":\" Promouvoir les outils digitaux\",\"requis\":\" E\",\"response\":\"E\"},{\"value\":\" Fidéliser les clients\",\"requis\":\" E\",\"response\":\"E\"}]}}",
+      "re_manager2": null,
+      "sectionCompDc": "100.0",
+      "sectionCompSe": "66.7",
+      "sectionCompSf": "50.0",
+      "sectionExi": "87.5",
+      "sectionMarq": "57.1",
+      "sectionRes": "77.8",
+      "sousPoints": 8,
+      "surPoints": 7,
+      "createdAt": "2023-05-26T12:37:38.756Z",
+      "dateEvaluation": "2023-05-26T00:00:00.000Z",
+      "evaluateurOne": {
+        "firstName": "Fabrizio",
+        "lastName": "Romano",
+        "matricule": 111,
+        "role": "",
+        "direction": "",
+        "topDirection": "",
+        "manager": {
+          "firstName": "Benganzi",
+          "lastName": "Fatima",
+          "matricule": 444,
+          "role": "",
+          "direction": "",
+          "topDirection": ""
+        }
+      },
+      "evaluateurTwo": {
+        "firstName": "Benganzi",
+        "lastName": "Fatima",
+        "matricule": 444,
+        "role": "",
+        "direction": "",
+        "topDirection": ""
+      },
+      "collaborateur": {
+        "firstName": "alaoui",
+        "lastName": "salwa",
+        "matricule": 121324,
+        "role": "RESP. ADMIN.",
+        "direction": 6522222,
+        "topDirection": "",
+        "affectationCode": 6522222,
+        "managerOne": {
+          "firstName": "Fabrizio",
+          "lastName": "Romano",
+          "matricule": 111,
+          "role": "",
+          "direction": "",
+          "topDirection": "",
+          "manager": {
+            "firstName": "Benganzi",
+            "lastName": "Fatima",
+            "matricule": 444,
+            "role": "",
+            "direction": "",
+            "topDirection": ""
+          }
+        }
+      },
+      "ficheContent": [
+        "responsabilites",
+        "exigences",
+        "marqueurs",
+        "competences-dc",
+        "competences-sf",
+        "competences-se"
+      ],
+      "emploi": {
+        "intitule": "agent commercial",
+        "level": "3"
+      }
+    },
+    {
+      "status": "NE0",
+      "score": "",
+      "ficheEvaluationId": "102",
+      "evaluatedAt": "2023-05-04T11:24:17.285Z",
+      "re_manager1": null,
+      "re_manager2": null,
+      "sectionCompDc": 0,
+      "sectionCompSe": 0,
+      "sectionCompSf": 0,
+      "sectionExi": 0,
+      "sectionMarq": 0,
+      "sectionRes": 0,
+      "sousPoints": "",
+      "surPoints": "",
+      "createdAt": "2023-05-26T12:37:38.758Z",
+      "dateEvaluation": "2023-05-26T00:00:00.000Z",
+      "evaluateurOne": {
+        "firstName": "Chritian",
+        "lastName": "Dakar",
+        "matricule": 222,
+        "role": "",
+        "direction": "",
+        "topDirection": "",
+        "manager": {
+          "firstName": "Benganzi",
+          "lastName": "Fatima",
+          "matricule": 444,
+          "role": "",
+          "direction": "",
+          "topDirection": ""
+        }
+      },
+      "evaluateurTwo": {
+        "firstName": "Benganzi",
+        "lastName": "Fatima",
+        "matricule": 444,
+        "role": "",
+        "direction": "",
+        "topDirection": ""
+      },
+      "collaborateur": {
+        "firstName": "aitmha",
+        "lastName": "ghita",
+        "matricule": 121698,
+        "role": "RESP. ADMIN.",
+        "direction": 6426272,
+        "topDirection": "",
+        "affectationCode": 6426272,
+        "managerOne": {
+          "firstName": "Chritian",
+          "lastName": "Dakar",
+          "matricule": 222,
+          "role": "",
+          "direction": "",
+          "topDirection": "",
+          "manager": {
+            "firstName": "Benganzi",
+            "lastName": "Fatima",
+            "matricule": 444,
+            "role": "",
+            "direction": "",
+            "topDirection": ""
+          }
+        }
+      },
+      "ficheContent": [
+        "competences-dc",
+        "competences-sf",
+        "competences-se"
+      ],
+      "emploi": {
+        "intitule": "agent commercial",
+        "level": "1"
+      }
+    },
+    {
+      "status": "NE0",
+      "score": "",
+      "ficheEvaluationId": "103",
+      "evaluatedAt": "2023-05-04T11:24:17.285Z",
+      "re_manager1": null,
+      "re_manager2": null,
+      "sectionCompDc": 0,
+      "sectionCompSe": 0,
+      "sectionCompSf": 0,
+      "sectionExi": 0,
+      "sectionMarq": 0,
+      "sectionRes": 0,
+      "sousPoints": "",
+      "surPoints": "",
+      "createdAt": "2023-05-26T12:37:38.758Z",
+      "dateEvaluation": "2023-05-26T00:00:00.000Z",
+      "evaluateurOne": {
+        "firstName": "Glaoui",
+        "lastName": "Amine",
+        "matricule": 333,
+        "role": "",
+        "direction": "",
+        "topDirection": "",
+        "manager": {
+          "firstName": "Ali",
+          "lastName": "Dialo",
+          "matricule": 555,
+          "role": "",
+          "direction": "",
+          "topDirection": ""
+        }
+      },
+      "evaluateurTwo": {
+        "firstName": "Ali",
+        "lastName": "Dialo",
+        "matricule": 555,
+        "role": "",
+        "direction": "",
+        "topDirection": ""
+      },
+      "collaborateur": {
+        "firstName": "zidani",
+        "lastName": "meryem",
+        "matricule": 121982,
+        "role": "RESP. ADMIN.",
+        "direction": 8126212,
+        "topDirection": "",
+        "affectationCode": 8126212,
+        "managerOne": {
+          "firstName": "Glaoui",
+          "lastName": "Amine",
+          "matricule": 333,
+          "role": "",
+          "direction": "",
+          "topDirection": "",
+          "manager": {
+            "firstName": "Ali",
+            "lastName": "Dialo",
+            "matricule": 555,
+            "role": "",
+            "direction": "",
+            "topDirection": ""
+          }
+        }
+      },
+      "ficheContent": [
+        "responsabilites",
+        "exigences",
+        "marqueurs",
+        "competences-dc",
+        "competences-sf",
+        "competences-se"
+      ],
+      "emploi": {
+        "intitule": "agent commercial",
+        "level": "2"
+      }
+    },
+    {
+      "status": "NE0",
+      "score": "",
+      "ficheEvaluationId": "104",
+      "evaluatedAt": "2023-05-04T11:24:17.285Z",
+      "re_manager1": null,
+      "re_manager2": null,
+      "sectionCompDc": 0,
+      "sectionCompSe": 0,
+      "sectionCompSf": 0,
+      "sectionExi": 0,
+      "sectionMarq": 0,
+      "sectionRes": 0,
+      "sousPoints": "",
+      "surPoints": "",
+      "createdAt": "2023-05-26T12:37:38.758Z",
+      "dateEvaluation": "2023-05-26T00:00:00.000Z",
+      "evaluateurOne": {
+        "firstName": "Glaoui",
+        "lastName": "Amine",
+        "matricule": 333,
+        "role": "",
+        "direction": "",
+        "topDirection": "",
+        "manager": {
+          "firstName": "Ali",
+          "lastName": "Dialo",
+          "matricule": 555,
+          "role": "",
+          "direction": "",
+          "topDirection": ""
+        }
+      },
+      "evaluateurTwo": {
+        "firstName": "Ali",
+        "lastName": "Dialo",
+        "matricule": 555,
+        "role": "",
+        "direction": "",
+        "topDirection": ""
+      },
+      "collaborateur": {
+        "firstName": "himich",
+        "lastName": "amine",
+        "matricule": 121330,
+        "role": "RESP. ADMIN.",
+        "direction": 8326213,
+        "topDirection": "",
+        "affectationCode": 8326213,
+        "managerOne": {
+          "firstName": "Glaoui",
+          "lastName": "Amine",
+          "matricule": 333,
+          "role": "",
+          "direction": "",
+          "topDirection": "",
+          "manager": {
+            "firstName": "Ali",
+            "lastName": "Dialo",
+            "matricule": 555,
+            "role": "",
+            "direction": "",
+            "topDirection": ""
+          }
+        }
+      },
+      "ficheContent": [
+        "responsabilites",
+        "exigences",
+        "marqueurs",
+        "competences-dc",
+        "competences-sf",
+        "competences-se"
+      ],
+      "emploi": {
+        "intitule": "agent commercial",
+        "level": "1"
+      }
+    },
+    {
+      "status": "NE0",
+      "score": "",
+      "ficheEvaluationId": "105",
+      "evaluatedAt": "2023-05-04T11:24:17.285Z",
+      "re_manager1": null,
+      "re_manager2": null,
+      "sectionCompDc": 0,
+      "sectionCompSe": 0,
+      "sectionCompSf": 0,
+      "sectionExi": 0,
+      "sectionMarq": 0,
+      "sectionRes": 0,
+      "sousPoints": "",
+      "surPoints": "",
+      "createdAt": "2023-05-26T12:37:38.758Z",
+      "dateEvaluation": "2023-05-26T00:00:00.000Z",
+      "evaluateurOne": {
+        "firstName": "Glaoui",
+        "lastName": "Amine",
+        "matricule": 333,
+        "role": "",
+        "direction": "",
+        "topDirection": "",
+        "manager": {
+          "firstName": "Ali",
+          "lastName": "Dialo",
+          "matricule": 555,
+          "role": "",
+          "direction": "",
+          "topDirection": ""
+        }
+      },
+      "evaluateurTwo": {
+        "firstName": "Ali",
+        "lastName": "Dialo",
+        "matricule": 555,
+        "role": "",
+        "direction": "",
+        "topDirection": ""
+      },
+      "collaborateur": {
+        "firstName": "karimi",
+        "lastName": "ahmed",
+        "matricule": 121112,
+        "role": "RESP. ADMIN.",
+        "direction": 8226214,
+        "topDirection": "",
+        "affectationCode": 8226214,
+        "managerOne": {
+          "firstName": "Glaoui",
+          "lastName": "Amine",
+          "matricule": 333,
+          "role": "",
+          "direction": "",
+          "topDirection": "",
+          "manager": {
+            "firstName": "Ali",
+            "lastName": "Dialo",
+            "matricule": 555,
+            "role": "",
+            "direction": "",
+            "topDirection": ""
+          }
+        }
+      },
+      "ficheContent": [
+        "responsabilites",
+        "exigences",
+        "marqueurs",
+        "competences-dc",
+        "competences-sf",
+        "competences-se"
+      ],
+      "emploi": {
+        "intitule": "agent commercial",
+        "level": "3"
+      }
+    }
+  ],
+  "id": 0
+}

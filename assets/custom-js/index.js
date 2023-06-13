@@ -91,18 +91,12 @@ const idb_result = "assessments_results";
 
                         } else {
 
+                            console.log("HIII");
 
                             addToStoreWithId(idb_config, "files", fileJson, fileId);
 
                             replaceAsseementToContainer("info-container", fileJson.content);
                         }
-
-
-
-
-
-
-
                     }
                     reader.readAsText(file);
                 } else {
@@ -211,7 +205,7 @@ function deleteFileFromArr(targetedFile) {
 }
 
 async function deleteFromStoreById(dbName, storeName, id) {
-    
+
     return new Promise((resolve, reject) => {
         const request = indexedDB.open(dbName);
 
@@ -268,24 +262,30 @@ function mergeFiles(arr) {
 
     //
     let mergedList = arr[0].content;
+    let fichesEvaluationConsolides = mergedList.fichesEvaluations;
     console.log(arr, mergedList);
 
     arr.map((file, index) => {
         // console.log(file);
         console.log("FILE N : " + index);
         var fichesEvaluations = file.content.fichesEvaluations;
-        fichesEvaluations.map((fiche, i) => {
-            if (index == 0) {
 
-                // SKIP THE FICHE REPERE
-            } else {
+        // SKIP THE FILE REPERE 
+        if (index != 0) {
+
+            fichesEvaluations.map((fiche, i) => {
+
 
                 // GET THE CORRESPONDING FICHE IN MERGE
                 // console.log(mergedList.fichesEvaluations);
-                let corspFiche = getFicheById(mergedList.fichesEvaluations, fiche.ficheEvaluationId);
+                console.log(fiche.collaborateur.firstName +"_" +fiche.collaborateur.lastName);
+               
+                let corspFiche = getFicheById(fichesEvaluationConsolides, fiche.ficheEvaluationId);
                 if (corspFiche == -1) {
                     console.warn("MAKAYNACH")
                 }
+
+                console.log(corspFiche.status + "--" + fiche.status);
 
                 // 2 CASES : SOIT LES DEUX ONT LE MEME STATUS ----> TAKE THE RECENT EVALUATION
                 //          OR TAKE BASED ON STATUS
@@ -296,7 +296,7 @@ function mergeFiles(arr) {
                     var corspFicheDate = new Date(corspFiche.evaluatedAt);
 
                     if (dateFiche < corspFicheDate) {
-                        updateFiche(arr, corspFiche, fiche);
+                        fichesEvaluationConsolides = updateFiche(fichesEvaluationConsolides, corspFiche, fiche);
                     } else {
 
                     }
@@ -304,21 +304,23 @@ function mergeFiles(arr) {
 
                 } else {
 
+                    console.log("NOT THE SAME");
+
                     switch (corspFiche.status) {
                         case "NE0":
                             if (fiche.status === "NE1" || fiche.status === "E0" || fiche.status === "E1") {
 
-                                updateFiche(arr, corspFiche, fiche);
+                                fichesEvaluationConsolides = updateFiche(fichesEvaluationConsolides, corspFiche, fiche);
                             }
                             break;
                         case "E0":
                             if (fiche.status === "NE1" || fiche.status === "E1") {
-                                updateFiche(arr, corspFiche, fiche);
+                                fichesEvaluationConsolides = updateFiche(fichesEvaluationConsolides, corspFiche, fiche);
                             }
                             break;
                         case "NE1":
                             if (fiche.status === "E1") {
-                                updateFiche(arr, corspFiche, fiche);
+                                fichesEvaluationConsolides = updateFiche(fichesEvaluationConsolides, corspFiche, fiche);
                             }
                             break;
                         case "E1":
@@ -327,26 +329,51 @@ function mergeFiles(arr) {
 
                     }
 
+                    console.log("---AFTER UPDATE----");
+                    console.log(getFicheById(fichesEvaluationConsolides, fiche.ficheEvaluationId))
+
                 }
 
-            }
-        })
+
+            })
+        }
+
     });
+    console.log(fichesEvaluationConsolides);
+    mergedList.fichesEvaluations = fichesEvaluationConsolides;
 
     return mergedList;
 }
 
 function updateFiche(arr, oldOne, newOne) {
-    arr.map((e, i) => {
-        if (e.assessmentId == oldOne.assessmentId) {
-            return newOne;
+    // console.log(arr, newOne);
+    let newArr = [];
+
+    let index = 0;
+    for (var i = 0; i < arr.length; i++) {
+        let fiche = arr[i];
+
+        if (fiche.ficheEvaluationId == oldOne.ficheEvaluationId) {
+            index = i;
+            arr[i] = newOne;
         }
-    })
+    }
+
+    newArr = arr;
+
+    // console.log(newArr[index]);
+   
+    return newArr;
+
+    
+
+    
 }
 
 function getFicheById(arr, id) {
 
-    console.log("I M LOOKING FOR : " + id + " INSIDE :" + arr);
+    // console.log("I M LOOKING FOR : " + id + " INSIDE :" + arr);
+    console.log(arr);
 
     for (let i = 0; i < arr.length; i++) {
         let fiche = arr[i];
@@ -394,55 +421,55 @@ function addToStoreWithId(dbName, storeName, value, id) {
 }
 
 async function deleteFromStore(dbName, storeName, nameValue) {
-  return new Promise((resolve, reject) => {
-    const request = indexedDB.open(dbName);
+    return new Promise((resolve, reject) => {
+        const request = indexedDB.open(dbName);
 
-    request.onerror = (event) => {
-      reject(`Error while opening ${dbName} database: ${event.target.error}`);
-    };
+        request.onerror = (event) => {
+            reject(`Error while opening ${dbName} database: ${event.target.error}`);
+        };
 
-    request.onsuccess = (event) => {
-      const db = event.target.result;
-      const transaction = db.transaction(storeName, 'readwrite');
-      const store = transaction.objectStore(storeName);
-      const request = store.openCursor();
+        request.onsuccess = (event) => {
+            const db = event.target.result;
+            const transaction = db.transaction(storeName, 'readwrite');
+            const store = transaction.objectStore(storeName);
+            const request = store.openCursor();
 
-      request.onerror = (event) => {
-        reject(`Error while opening cursor in ${storeName} store: ${event.target.error}`);
-      };
-
-      request.onsuccess = (event) => {
-        const cursor = event.target.result;
-
-        if (cursor) {
-          const value = cursor.value;
-
-          if (value && value.name === nameValue) {
-            const deleteRequest = cursor.delete();
-
-            deleteRequest.onerror = (event) => {
-              reject(`Error while deleting from ${storeName} store: ${event.target.error}`);
+            request.onerror = (event) => {
+                reject(`Error while opening cursor in ${storeName} store: ${event.target.error}`);
             };
 
-            deleteRequest.onsuccess = (event) => {
-              console.log(`Deleted ${cursor.key} from ${storeName} store in ${dbName} database`);
-              cursor.continue();
-            };
-          } else {
-            cursor.continue();
-          }
-        } else {
-          console.log('Deletion complete');
-          resolve();
-        }
-      };
-    };
+            request.onsuccess = (event) => {
+                const cursor = event.target.result;
 
-    request.onupgradeneeded = (event) => {
-      const db = event.target.result;
-      db.createObjectStore(storeName);
-    };
-  });
+                if (cursor) {
+                    const value = cursor.value;
+
+                    if (value && value.name === nameValue) {
+                        const deleteRequest = cursor.delete();
+
+                        deleteRequest.onerror = (event) => {
+                            reject(`Error while deleting from ${storeName} store: ${event.target.error}`);
+                        };
+
+                        deleteRequest.onsuccess = (event) => {
+                            console.log(`Deleted ${cursor.key} from ${storeName} store in ${dbName} database`);
+                            cursor.continue();
+                        };
+                    } else {
+                        cursor.continue();
+                    }
+                } else {
+                    console.log('Deletion complete');
+                    resolve();
+                }
+            };
+        };
+
+        request.onupgradeneeded = (event) => {
+            const db = event.target.result;
+            db.createObjectStore(storeName);
+        };
+    });
 }
 
 
@@ -704,6 +731,6 @@ function showModal(type, header, content, action, btnJson, eventHandler) {
 
 async function clearAndReplaceStoreData(dbName, storeName, newData) {
     handlePageRefresh().then(() => {
-        addToStoreWithId(dbName,storeName,newData[0],0);
+        addToStoreWithId(dbName, storeName, newData[0], 0);
     })
 }

@@ -46,6 +46,160 @@ intializeDB()
 
         fichesJson = data.fichesEvaluations;
 
+        // ADD A BTN "UPDATE" FOR MANAGER N+2
+        if (manager.type === '2') {
+            
+            $("#card-header-btn-section").append(`
+            <button id="btn-fiche-update" type="button" class="btn action-btn btn-icon me-4  btn-primary">
+                <i class="fe fe-refresh-cw"></i> Mise à jour 
+            </button>
+            `);
+            
+            // ADD EVENT LISTENER TO THE UPDATE BTN
+            $("#btn-fiche-update").click(function (e) {
+
+                // STEP 1 : OPEN MODAL CONTAINNING UPLOAD SECTION
+                showModal("confirm", "update", `
+                <div class="control-group form-group  row">
+                    <div class="col-lg-12 col-sm-12">
+                    <label class="form-label">Importer ICI</label>
+                    
+                    <div id="fine-uploader"></div>
+                    </div>
+                </div>
+                <div class="container-login100-form-btn">
+                    <a id="config-btn" class="login100-form-btn btn-primary">
+                        Mise à jour
+                    </a>
+                </div>
+                
+                `, "", {
+                    "text": "Fermer",
+                    "color": "success",
+                    "id": "dje1"
+                }, function () {
+                    // REDIRECT TO EVALUATION LIST PAGE
+                    setTimeout(function () {
+                        // currentUrl = window.location.href;
+                        // window.location.href = extractDomain(currentUrl) + "evaluation/list";
+    
+                        // window.location.href = "../index.html";
+                        // alert("email envoyé")
+                    }, 1000)
+                });
+    
+    
+                // INITIALIZE FILE UPLOADER
+                $('#fine-uploader').fineUploader({
+                    template: 'qq-template-gallery',
+                    autoUpload: false,
+                    thumbnails: {
+                        placeholders: {
+                            waitingPath: '../assets/plugins/fine-uploader/placeholders/waiting-generic.png',
+                            notAvailablePath: '../assets/plugins/fine-uploader/placeholders/not_available-generic.png'
+                        }
+                    },
+                    validation: {
+                        allowedExtensions: ['json'],
+                        itemInvalidErrorMessage: "Seuls les fichiers JSON sont autorisés"
+                    },
+    
+                    callbacks: {
+                        onSubmit: function (id, name) {
+                            var fileId = id;
+    
+                            var file = this.getFile(id);
+                            console.log(file.type);
+                            if (file) {
+                                var reader = new FileReader();
+                                reader.onload = function (e) {
+                                    var content = e.target.result;
+                                    console.log(JSON.parse(content));
+                                    var contentJson = JSON.parse(content);
+    
+                                    if (fileId == 0 || assessment_ID === "") {
+                                        assessment_ID = contentJson.assessmentId;
+                                    }
+                                    // Do whatever you want with the content here
+    
+                                    // push it to the array that holding all the files content
+                                    let fileJson = {
+                                        'fileName': file.name,
+                                        'content': contentJson
+                                    };
+                                    // filesJsonArr.push(fileJson);
+    
+                                    // CHECK FOR MORE ASSESSMENT IDS
+                                    if (assessment_ID != contentJson.assessmentId) {
+    
+                                        // SHOW ERROR MESSAGE
+                                        showModal("error", "Attention !", "Vous ne pouvez pas télécharger les fichiers de configuration de différentes campagnes d'évaluation ! Veillez à télécharger les mêmes fichiers de campagne d'évaluation.", "", {
+                                            "text": "Retour à l'accueil",
+                                            "color": "danger",
+                                            "id": "btn-save"
+                                        }, function () {
+                                            location.reload();
+                                        });
+    
+                                    } else {
+    
+    
+                                        // console.log("CHANGING THIS IN DB WITH THE FILE ID :" + fileId);
+                                        addToStoreWithId(idb_config, "files", fileJson, fileId + 1);
+    
+                                        // replaceAsseementToContainer("info-container", fileJson.content);
+                                    }
+                                }
+                                reader.readAsText(file);
+                            } else {
+                                alert("Please select a file to submit");
+                            }
+                        },
+                        onCancel: function (id, name) {
+                            // Handle canceled upload
+                            console.log("The file is concelled : " + id + " name:" + name);
+                            // //deleteFileFromArr(name);
+                            deleteFromStoreById(idb_config, "files", id + 1)
+                                .then((dbName, storeName, id) => {
+                                    console.log(`Value with ID ${id} deleted from ${storeName} store in ${dbName} database`);
+                                })
+                                .catch((dbName, storeName, id, error) => {
+                                    console.error(`Error deleting value with ID ${id} from ${storeName} store in ${dbName} database: ${error}`);
+                                });
+                        }
+                    }
+                });
+    
+    
+                $("#config-btn").one("click", function (e) {
+    
+                    // ADD LOADER TO BTN
+                    addLoaderToBtn("#config-btn");
+    
+                    // GET ALL THE VALUES OF ASSESSMENTS-CONFIG
+                    getAllDataFromDB(idb_config)
+                        .then((result) => {
+                            console.log(result);
+    
+                            var mergedFilesData = mergeFiles(result.files);
+                            console.log(mergedFilesData);
+    
+                            clearAndReplaceStoreData(idb_config, "files", [mergedFilesData]).then(() => {
+    
+                                // HEAD TO THE LOGIN PAGE
+                                location.reload();
+                            }).catch((e) => {
+    
+                            })
+                        })
+    
+                })
+    
+            })
+
+
+        }
+
 
         listFiches = fichesJson;
 
@@ -176,7 +330,8 @@ intializeDB()
                 let url = buildURL("./fiche-evaluation.html", urlParams);
 
                 // window.location.href = extractDomain(currentUrl) + url;
-                window.open(url, "_blank");
+                // window.open(url, "_blank");
+                window.location.href = url;
                 // console.log(extractDomain(currentUrl) + url);
 
             } else {
@@ -263,6 +418,261 @@ $("#btn-fiche-send").click({
     }
 })
 
+function mergeFiles(arr) {
+    // GET THE LIST OF COLLABORATEURS OF THAT ASSESSMENT 
+
+    //
+    let mergedList = arr[0];
+    let fichesEvaluationConsolides = mergedList.fichesEvaluations;
+    console.log(arr, mergedList);
+
+    arr.map((file, index) => {
+        // console.log(file);
+        console.log("FILE N : " + index);
+
+
+        // SKIP THE FILE REPERE 
+        if (index != 0) {
+
+            var fichesEvaluations = file.content.fichesEvaluations;
+
+            fichesEvaluations.map((fiche, i) => {
+
+
+                // GET THE CORRESPONDING FICHE IN MERGE
+                // console.log(mergedList.fichesEvaluations);
+                console.log(fiche.collaborateur.firstName + "_" + fiche.collaborateur.lastName);
+
+                let corspFiche = getFicheById(fichesEvaluationConsolides, fiche.ficheEvaluationId);
+                if (corspFiche == -1) {
+                    console.warn("MAKAYNACH")
+                }
+
+                console.log(corspFiche.status + "--" + fiche.status);
+
+                // 2 CASES : SOIT LES DEUX ONT LE MEME STATUS ----> TAKE THE RECENT EVALUATION
+                //          OR TAKE BASED ON STATUS
+                if (fiche.status === corspFiche.status) {
+
+                    // GET THE DATES
+                    var dateFiche = new Date(fiche.evaluatedAt);
+                    var corspFicheDate = new Date(corspFiche.evaluatedAt);
+
+                    if (dateFiche < corspFicheDate) {
+                        fichesEvaluationConsolides = updateFiche(fichesEvaluationConsolides, corspFiche, fiche);
+                    } else {
+
+                    }
+
+
+                } else {
+
+                    console.log("NOT THE SAME");
+
+                    switch (corspFiche.status) {
+                        case "NE0":
+                            if (fiche.status === "NE1" || fiche.status === "E0" || fiche.status === "E1") {
+
+                                fichesEvaluationConsolides = updateFiche(fichesEvaluationConsolides, corspFiche, fiche);
+                            }
+                            break;
+                        case "E0":
+                            if (fiche.status === "NE1" || fiche.status === "E1") {
+                                fichesEvaluationConsolides = updateFiche(fichesEvaluationConsolides, corspFiche, fiche);
+                            }
+                            break;
+                        case "NE1":
+                            if (fiche.status === "E1") {
+                                fichesEvaluationConsolides = updateFiche(fichesEvaluationConsolides, corspFiche, fiche);
+                            }
+                            break;
+                        case "E1":
+
+                            break;
+
+                    }
+
+                    console.log("---AFTER UPDATE----");
+                    console.log(getFicheById(fichesEvaluationConsolides, fiche.ficheEvaluationId))
+
+                }
+
+
+            })
+        }
+
+    });
+    console.log(fichesEvaluationConsolides);
+    mergedList.fichesEvaluations = fichesEvaluationConsolides;
+
+    return mergedList;
+}
+
+function addLoaderToBtn(btnId) {
+
+    // ADD LOADER HTML ELEMENT
+    $(btnId).prepend(`<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>`)
+}
+
+async function handlePageRefresh() {
+    const dbName = idb_config;
+    const storeName = 'files';
+
+    indexedDB.open(dbName).onsuccess = (event) => {
+        const db = event.target.result;
+        const transaction = db.transaction(storeName, 'readwrite');
+        const store = transaction.objectStore(storeName);
+        const clearRequest = store.clear();
+
+        clearRequest.onsuccess = () => {
+            console.log(`Cleared data from '${storeName}' store in '${dbName}' database.`);
+        };
+
+        clearRequest.onerror = (event) => {
+            console.error(`Error clearing data from '${storeName}' store: ${event.target.error}`);
+        };
+    };
+}
+
+async function clearAndReplaceStoreData(dbName, storeName, newData) {
+    handlePageRefresh().then(() => {
+        addToStoreWithId(dbName, storeName, newData[0], 0);
+    })
+}
+
+function getFicheById(arr, id) {
+
+    // console.log("I M LOOKING FOR : " + id + " INSIDE :" + arr);
+    console.log(arr);
+
+    for (let i = 0; i < arr.length; i++) {
+        let fiche = arr[i];
+
+        if (fiche.ficheEvaluationId === id) {
+            return fiche;
+        }
+    }
+    return -1;
+}
+
+function updateFiche(arr, oldOne, newOne) {
+    // console.log(arr, newOne);
+    let newArr = [];
+
+    let index = 0;
+    for (var i = 0; i < arr.length; i++) {
+        let fiche = arr[i];
+
+        if (fiche.ficheEvaluationId == oldOne.ficheEvaluationId) {
+            index = i;
+            arr[i] = newOne;
+        }
+    }
+
+    newArr = arr;
+
+    // console.log(newArr[index]);
+
+    return newArr;
+
+
+
+
+}
+
+async function deleteFromStoreById(dbName, storeName, id) {
+
+    return new Promise((resolve, reject) => {
+        const request = indexedDB.open(dbName);
+
+        request.onerror = (event) => {
+            reject(event.target.error);
+        };
+
+        request.onsuccess = (event) => {
+            const db = event.target.result;
+            const transaction = db.transaction(storeName, 'readwrite');
+            const store = transaction.objectStore(storeName);
+
+            const deleteRequest = store.delete(id);
+
+            deleteRequest.onsuccess = () => {
+                console.log(`DELETED : ${dbName}, ${storeName}, ${id}`);
+
+                // Check remaining record count
+                const countRequest = store.count();
+                countRequest.onsuccess = () => {
+                    const count = countRequest.result;
+                    console.log(`Remaining records in ${storeName}: ${count}`);
+                    if (count === 0) {
+                        // Execute something if there are no more records in the store
+                        // Replace the following line with your desired code
+                        console.log('No more records in the store. Executing something...');
+
+                        assessment_ID = "";
+                    }
+                };
+
+                resolve(dbName, storeName, id);
+            };
+
+            deleteRequest.onerror = (event) => {
+                reject(dbName, storeName, id, event.target.error);
+            };
+
+            transaction.oncomplete = () => {
+                db.close();
+            };
+        };
+
+        request.onupgradeneeded = (event) => {
+            const db = event.target.result;
+            db.createObjectStore(storeName, { keyPath: 'id' });
+        };
+    });
+}
+
+function addToStoreWithId(dbName, storeName, value, id) {
+    return new Promise((resolve, reject) => {
+        const request = indexedDB.open(dbName);
+
+        request.onerror = (event) => {
+            reject(event.target.error);
+        };
+
+        request.onsuccess = (event) => {
+            const db = event.target.result;
+            const transaction = db.transaction(storeName, 'readwrite');
+            const store = transaction.objectStore(storeName);
+
+            const addRequest = store.put({ ...value, id });
+
+            addRequest.onsuccess = () => {
+                resolve();
+            };
+
+            addRequest.onerror = (event) => {
+                reject(event.target.error);
+            };
+
+            transaction.oncomplete = () => {
+                db.close();
+            };
+        };
+
+        request.onupgradeneeded = (event) => {
+            const db = event.target.result;
+            db.createObjectStore(storeName, { keyPath: 'id' });
+        };
+    });
+}
+
+function concatenateWithUnderscore() {
+    var concatenatedString = Array.from(arguments).join('_');
+    return concatenatedString;
+}
+
+
 function filterByManager(matricule) {
     return listFiches.filter((e, i) => {
         if (manager.type === "1") {
@@ -290,6 +700,8 @@ function generateEmailContent(emailBody, jsonDataURI) {
     `
 }
 
+
+
 function openOutlook(recipients, CC, jsonObject, emailBody) {
     const recipientString = recipients.join(",");
     const ccString = CC.join(",");
@@ -308,57 +720,138 @@ function openOutlook(recipients, CC, jsonObject, emailBody) {
     window.location.href = mailtoLink;
 }
 
+function concatenateWithUnderscore() {
+    var concatenatedString = Array.from(arguments).join('_');
+    return concatenatedString;
+}
+
+function getFormattedDate() {
+    var today = new Date();
+
+    var day = String(today.getDate()).padStart(2, '0');
+    var month = String(today.getMonth() + 1).padStart(2, '0'); // January is 0
+    var year = today.getFullYear();
+
+    var formattedDate = day + month + year;
+    return formattedDate;
+}
+
+
 function openEmailModal(recipients, emailSubject, jsonObject) {
     const subject = emailSubject; // Replace with your desired subject
-    const recipientString = recipients.join(",");
+    const recipientString = recipients.join(";");
+    console.log(recipients);
 
 
     // Create a data URI for the JSON object
     const jsonDataURI = "data:text/plain;charset=utf-8," + encodeURIComponent(JSON.stringify(jsonObject));
-    let fileName = "data.txt"
+
+    let fileName = concatenateWithUnderscore(assessmentJson.name, manager.data.firstName, manager.data.lastName, getFormattedDate());
 
     let emailBody = `
-    <!DOCTYPE html>
-    <html>
-    <head>
-    <title>Download JSON Object as TXT</title>
-    <script>
-        function downloadJson() {
-        var blob = new Blob([jsonContent], { type: 'text/plain' });
-        var url = URL.createObjectURL(blob);
-
-        var downloadLink = document.createElement('a');
-        downloadLink.href = url;
-        downloadLink.download = '${fileName}';
-        downloadLink.click();
-
-        URL.revokeObjectURL(url);
-        }
-    </script>
-    </head>
-    <body>
-    <p>
         Bonjour,
 
         J'espère que vous allez bien. Je tenais simplement à vous informer que j'ai terminé ma partie de l'évaluation des collaborateurs. Je vous remercie pour votre collaboration tout au long de ce processus.
 
-        Afin de poursuivre le flux des évaluations, je vous invite à télécharger les fiches d'évaluation via le lien suivant : 
-    </p> 
-
-    <button onclick="downloadJson()">Download JSON</button>
-
+        Afin de poursuivre le flux des évaluations, je vous invite à télécharger le fichier TEXTE des fiches d'évaluation en piece jointe.
+        
     Cordialement
-
-
     `;
 
     // console.log(emailBody);
 
-    copyToClipboard(emailBody);
+    // copyToClipboard(emailBody);
+
+    //OPEN SHOW MODAL WITH EMAIL ELEMENTS
+    // showModal("success",)
+    showModal("confirm", "Envoi des résultats", `
+    <form>
+
+    <div class="form-group">
+        <div class="row align-items-center">
+            <label class="col-xl-2 form-label">To :</label>
+            <div class="col-xl-10 input-group mb-2">
+                <input type="text" class="form-control" value="${recipients[0]}" placeholder=".....@.....">
+                <span class="copy-btn input-group-text btn btn-primary">Copy</span>
+            </div>
+        </div>
+    </div>
+ 
+    <div class="form-group">
+        <div class="row align-items-center">
+            <label class="col-xl-2 form-label">Objet :</label>
+            
+            <div class="col-xl-10 input-group mb-2">
+                <input type="text" class="form-control" value="${emailSubject}"placeholder=".................">
+                <span class="copy-btn input-group-text btn btn-primary">Copy</span>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="row ">
+            <label class="col-xl-2 form-label">Message :</label>
+            <div class="col-xl-10">
+                <textarea rows="10" class="form-control">${emailBody}</textarea>
+                <span class="copy-btn btn btn-primary">Copy</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="row ">
+            <label class="col-xl-4 form-label">Telécharger le fichier des résultats :</label>
+            <div class="col-xl-8 d-flex justify-content-end">
+                <button id="download-file-btn" class="btn btn-primary mx-4 pd-x-25"> <i class="fe fe-download"></i> Télécharger</button>
+            </div>
+        </div>
+    </div>
+</form>
+    
+    `, "", {
+        "text": "Fermer",
+        "color": "success",
+        "id": "dje1"
+    }, function () {
+        // REDIRECT TO EVALUATION LIST PAGE
+        setTimeout(function () {
+            // currentUrl = window.location.href;
+            // window.location.href = extractDomain(currentUrl) + "evaluation/list";
+
+            // window.location.href = "../index.html";
+            // alert("email envoyé")
+        }, 1000)
+    })
+
+    // ADD EVENT LISTENERS TO THESE BTNS
+    $(".copy-btn").click(function (e) {
+
+        let btnElement = e.target;
+
+        copyToClipboard($(btnElement).prev().val());
+    })
+
+    $("#download-file-btn").click(function (e) {
+
+        downloadJsonAsFile(jsonObject, fileName);
+    })
 
 
 
 }
+
+function downloadJsonAsFile(jsonObj, fileName) {
+    var jsonContent = JSON.stringify(jsonObj, null, 2);
+    var blob = new Blob([jsonContent], { type: 'application/json' });
+    var url = URL.createObjectURL(blob);
+
+    var downloadLink = document.createElement('a');
+    downloadLink.href = url;
+    downloadLink.download = fileName + '.json';
+    downloadLink.click();
+
+    URL.revokeObjectURL(url);
+}
+
 
 function copyToClipboard(text) {
     // Modern browsers
@@ -386,6 +879,19 @@ function copyToClipboard(text) {
         }
         document.body.removeChild(textarea);
     }
+
+    // ADD A NOTIFICATION THAT THE TXT HAS BEEN COPIED
+    showNotification("<b>Succès :</b> Le text est copié", "success", "center");
+
+}
+
+function showNotification(msg, type, position) {
+
+    notif({
+        "msg": msg,
+        "type": type,
+        "position": position
+    });
 }
 
 function verifyFichesEvaluation(arr) {
