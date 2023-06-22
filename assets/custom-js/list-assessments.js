@@ -37,11 +37,11 @@ intializeDB()
         // TRANSFROM DATA TO PAGE VARIABLES FORMAT
 
         // ADD UPLOAD BTN 
-        $("#card-header-btn-section").append(`
-            <button id="btn-fiche-update" type="button" class="btn action-btn btn-icon me-4  btn-primary">
-                <i class="fe fe-refresh-cw"></i> Mise à jour 
-            </button>
-            `)
+        // $("#card-header-btn-section").append(`
+        //     <button id="btn-fiche-update" type="button" class="btn action-btn btn-icon me-4  btn-primary">
+        //         <i class="fe fe-refresh-cw"></i> Mise à jour 
+        //     </button>
+        //     `)
 
         // STEP 1 : TO LIST ASSESSMENT FORMAT
         listAssessments = transformToPageFormat(data);
@@ -692,7 +692,7 @@ function openEmailModal(recipients, emailSubject, jsonObject, user) {
     // Create a data URI for the JSON object
     const jsonDataURI = "data:text/plain;charset=utf-8," + encodeURIComponent(JSON.stringify(jsonObject));
 
-    let fileName = concatenateWithUnderscore(assessmentJson.name, user.data.firstName, user.data.lastName, getFormattedDate());
+    let fileName = concatenateWithUnderscore(assessmentJson.name, user.data.tag ,user.data.firstName, user.data.lastName, getFormattedDate());
 
     let emailBody = `
         Bonjour,

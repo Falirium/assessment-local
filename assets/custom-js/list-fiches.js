@@ -1164,7 +1164,7 @@ function getFichesDataFromJson(arrJson, authorizedCol) {
                         arr.push(`
                         <div class="mt-sm-1 d-block">
                             
-                             <span class="tag tag-radius tag-round tag-outline-success">Évalué par N+1</span>
+                             <span class="tag tag-radius tag-round tag-outline-primary">Évalué par N+1</span>
                         </div>
                             `)
                     } else if (e.status.includes("NE1")) {

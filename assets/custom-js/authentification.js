@@ -156,6 +156,7 @@ $("#cnx-btn-manager").click(function () {
 
     // console.log(authObj);
     let resultAuth = validateMatricule(authObj);
+    console.log(resultAuth);
 
     let roleAuth = resultAuth.user.role;
     if (resultAuth.status && roleAuth.includes("manager")) {

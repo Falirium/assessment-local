@@ -1,0 +1,189 @@
+{
+    "id": 66,
+    "intitule": "Agent Commercial",
+    "niveaux": [
+        {
+            "intitule": "Agent Commercial",
+            "filiere": "Opérations et gestion de la relation clientèle",
+            "sousFiliere": "Développement Commercial",
+            "dateMaj": "2023-06-22T00:00:00.000+00:00",
+            "vocation": "Accueillir les clients sur place et veiller à ce qu’une réponse soit apportée à leurs demandes par lui-même ou en sollicitant un autre interlocuteur habilité et compétent pour leur répondre – Assurer directement le traitement des opérations bancaires simples",
+            "responsabilites": [
+                {
+                    "categorie": "Clients / Services",
+                    "valeur": [
+                        "Garantir la qualité de l’accueil des clients qui se déplacent en agence et contribuer à l’amélioration continue de l’Expérience Client ",
+                        " Garantir la fiabilité des réponses apportées et des informations diffusées "
+                    ]
+                },
+                {
+                    "categorie": "Finances / Coûts",
+                    "valeur": [
+                        "Contribuer à la maîtrise du coût d’exploitation en prenant en charge l’essentiel des demandes des clients qui se déplacent sur Site."
+                    ]
+                },
+                {
+                    "categorie": "Moyens / Méthodes",
+                    "valeur": [
+                        "Garantir une parfaite maîtrise de l’ensemble des outils mis à sa disposition pour accéder aux données clients et pour traiter les opérations bancaires."
+                    ]
+                },
+                {
+                    "categorie": "Équipe / Coopérations",
+                    "valeur": [
+                        "Contribuer à l’efficacité des coopérations quotidiennes au sein de l’équipe et veiller à l’approfondissement continu de ses compétences (techniques et relationnelles) "
+                    ]
+                }
+            ],
+            "level": 1,
+            "exigences": [
+                "Réactivité afin d’écourter les délais d’attente",
+                " Combiner des activités d’accueil, d’information et de traitement"
+            ],
+            "marqueurs": [
+                "Limiter les délais d’attente en orientant vers les automates et les autres canaux de distribution e-banking"
+            ],
+            "competencesRequis": [
+                {
+                    "id": 64,
+                    "type": "Domaines de connaissance",
+                    "name": "Réglementation bancaire",
+                    "pisteObservation": null,
+                    "niveauRequis": "E"
+                }
+            ]
+        },
+        {
+            "intitule": "Agent Commercial",
+            "filiere": "Opérations et gestion de la relation clientèle",
+            "sousFiliere": "Développement Commercial",
+            "dateMaj": "2023-06-22T00:00:00.000+00:00",
+            "vocation": "Accueillir les clients sur place et veiller à ce qu’une réponse soit apportée à leurs demandes par lui-même ou en sollicitant un autre interlocuteur habilité et compétent pour leur répondre – Assurer directement le traitement des opérations bancaires simples",
+            "responsabilites": [
+                {
+                    "categorie": "Clients / Services",
+                    "valeur": [
+                        "Garantir la qualité de l’accueil des clients qui se déplacent en agence et contribuer à l’amélioration continue de l’Expérience Client ",
+                        " Garantir la fiabilité des réponses apportées et des informations diffusées "
+                    ]
+                },
+                {
+                    "categorie": "Finances / Coûts",
+                    "valeur": [
+                        "Contribuer à la maîtrise du coût d’exploitation en prenant en charge l’essentiel des demandes des clients qui se déplacent sur Site."
+                    ]
+                },
+                {
+                    "categorie": "Moyens / Méthodes",
+                    "valeur": [
+                        "Garantir une parfaite maîtrise de l’ensemble des outils mis à sa disposition pour accéder aux données clients et pour traiter les opérations bancaires."
+                    ]
+                },
+                {
+                    "categorie": "Équipe / Coopérations",
+                    "valeur": [
+                        "Contribuer à l’efficacité des coopérations quotidiennes au sein de l’équipe et veiller à l’approfondissement continu de ses compétences (techniques et relationnelles) "
+                    ]
+                }
+            ],
+            "level": 2,
+            "exigences": [
+                "Réactivité afin d’écourter les délais d’attente",
+                " Combiner des activités d’accueil, d’information et de traitement"
+            ],
+            "marqueurs": [
+                "Limiter les délais d’attente en orientant vers les automates et les autres canaux de distribution e-banking"
+            ],
+            "competencesRequis": [
+                {
+                    "id": 64,
+                    "type": "Domaines de connaissance",
+                    "name": "Réglementation bancaire",
+                    "pisteObservation": null,
+                    "niveauRequis": "E"
+                },
+                {
+                    "name": "Garanties bancaires",
+                    "type": "Savoir-faire",
+                    "niveauRequis": "M"
+                },
+                {
+                    "name": "Droit des sociétés",
+                    "type": "Savoir-faire",
+                    "niveauRequis": "M"
+                }
+            ]
+        },
+        {
+            "intitule": "Agent Commercial",
+            "filiere": "Opérations et gestion de la relation clientèle",
+            "sousFiliere": "Développement Commercial",
+            "dateMaj": "2023-06-22T00:00:00.000+00:00",
+            "vocation": "Accueillir les clients sur place et veiller à ce qu’une réponse soit apportée à leurs demandes par lui-même ou en sollicitant un autre interlocuteur habilité et compétent pour leur répondre – Assurer directement le traitement des opérations bancaires simples",
+            "responsabilites": [
+                {
+                    "categorie": "Clients / Services",
+                    "valeur": [
+                        "Garantir la qualité de l’accueil des clients qui se déplacent en agence et contribuer à l’amélioration continue de l’Expérience Client ",
+                        " Garantir la fiabilité des réponses apportées et des informations diffusées "
+                    ]
+                },
+                {
+                    "categorie": "Finances / Coûts",
+                    "valeur": [
+                        "Contribuer à la maîtrise du coût d’exploitation en prenant en charge l’essentiel des demandes des clients qui se déplacent sur Site."
+                    ]
+                },
+                {
+                    "categorie": "Moyens / Méthodes",
+                    "valeur": [
+                        "Garantir une parfaite maîtrise de l’ensemble des outils mis à sa disposition pour accéder aux données clients et pour traiter les opérations bancaires."
+                    ]
+                },
+                {
+                    "categorie": "Équipe / Coopérations",
+                    "valeur": [
+                        "Contribuer à l’efficacité des coopérations quotidiennes au sein de l’équipe et veiller à l’approfondissement continu de ses compétences (techniques et relationnelles) "
+                    ]
+                }
+            ],
+            "level": 3,
+            "exigences": [
+                "Réactivité afin d’écourter les délais d’attente",
+                " Combiner des activités d’accueil, d’information et de traitement"
+            ],
+            "marqueurs": [
+                "Limiter les délais d’attente en orientant vers les automates et les autres canaux de distribution e-banking"
+            ],
+            "competencesRequis": [
+                {
+                    "id": 64,
+                    "type": "Domaines de connaissance",
+                    "name": "Réglementation bancaire",
+                    "pisteObservation": null,
+                    "niveauRequis": "E"
+                },
+                {
+                    "name": "Garanties bancaires",
+                    "type": "Savoir-faire",
+                    "niveauRequis": "M"
+                },
+                {
+                    "name": "Droit des sociétés",
+                    "type": "Savoir-faire",
+                    "niveauRequis": "M"
+                },
+                {
+                    "name": "Maitriser les opérations bancaires courantes de guichet et des circuits de traitement",
+                    "type": "Savoir-être",
+                    "niveauRequis": "E"
+                },
+                {
+                    "name": "Fidéliser les clients",
+                    "type": "Savoir-être",
+                    "niveauRequis": "E"
+                }
+            ]
+        }
+    ]
+}
