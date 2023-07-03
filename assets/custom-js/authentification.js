@@ -37,21 +37,62 @@ $("#cnx-btn").click(function () {
         localStorage.setItem("user", "admin");
 
         // SET AUTHORIZATION : 
+        // let auth = {
+        //     "regex": [
+        //         '(\\/\\w*)(\\/\\w*)\\?*'
+        //     ],
+        //     "sections": {
+        //         "hide": [],
+        //         "show": []
+        //     }
+        // }
+
+        // localStorage.setItem("auth", JSON.stringify(auth));
+
         let auth = {
             "regex": [
-                '(\\/\\w*)(\\/\\w*)\\?*'
+                '(list-assessments|assesment-result|fiche-evaluation)\\\.html',
+
             ],
             "sections": {
-                "hide": [],
-                "show": []
-            }
-        }
+                "hide": [
 
-        localStorage.setItem("auth", JSON.stringify(auth));
+                    {
+                        "name": "emploi",
+                        "id": "#emploi"
+                    },
+                    {
+                        "name": "pv",
+                        "id": "#pv"
+                    },
+                    {
+                        "name": "drh",
+                        "id": "#drh"
+                    },
+                    {
+                        "name": "manager",
+                        "id": "#manager"
+                    },
+                    {
+                        "name": "add assessment",
+                        "id": "#btn-add-assessment"
+                    }
+                ],
+                "show": [
+                    {
+                        "type": "anchor",
+                        "name": "dashboard",
+                        "id": "#dashboard",
+                        "link": "/assessment/list"
+                    }
+                ]
+            }
+        };
 
         // REDIRECT TO HOMEPAGE
         let currentUrl = window.location.href;
         // window.location.replace(extractDomain(currentUrl) + "assessment/list");
+        window.location.href = './list-assessments.html';
         console.log("SUCCESS CONNECTION ADMIN")
 
     }

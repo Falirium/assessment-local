@@ -304,29 +304,7 @@
                                 }
                             ]
                         },
-                        {
-                            "name": "Communication efficace",
-                            "type": "Savoir-être",
-                            "niveauRequis": "E",
-                            "niveaux": [
-                                {
-                                    "level": "E",
-                                    "definition": "Def E"
-                                },
-                                {
-                                    "level": "M",
-                                    "definition": "Def M"
-                                },
-                                {
-                                    "level": "A",
-                                    "definition": "Def A"
-                                },
-                                {
-                                    "level": "X",
-                                    "definition": "Def X"
-                                }
-                            ]
-                        },
+                        
                         {
                             "name": "Rigueur et organisation",
                             "type": "Savoir-être",
@@ -350,29 +328,7 @@
                                 }
                             ]
                         },
-                        {
-                            "name": "Capacité à travailler  en équipe - Sens du collectif",
-                            "type": "Savoir-être",
-                            "niveauRequis": "E",
-                            "niveaux": [
-                                {
-                                    "level": "E",
-                                    "definition": "Def E"
-                                },
-                                {
-                                    "level": "M",
-                                    "definition": "Def M"
-                                },
-                                {
-                                    "level": "A",
-                                    "definition": "Def A"
-                                },
-                                {
-                                    "level": "X",
-                                    "definition": "Def X"
-                                }
-                            ]
-                        },
+                        
                         {
                             "name": "Culture de la performance",
                             "type": "Savoir-être",
@@ -395,30 +351,8 @@
                                     "definition": "Def X"
                                 }
                             ]
-                        },
-                        {
-                            "name": "Proximité Client",
-                            "type": "Savoir-être",
-                            "niveauRequis": "E",
-                            "niveaux": [
-                                {
-                                    "level": "E",
-                                    "definition": "Def E"
-                                },
-                                {
-                                    "level": "M",
-                                    "definition": "Def M"
-                                },
-                                {
-                                    "level": "A",
-                                    "definition": "Def A"
-                                },
-                                {
-                                    "level": "X",
-                                    "definition": "Def X"
-                                }
-                            ]
                         }
+                        
                     ]
                 },
                 {
@@ -708,29 +642,7 @@
                                 }
                             ]
                         },
-                        {
-                            "name": "Communication efficace",
-                            "type": "Savoir-être",
-                            "niveauRequis": "E",
-                            "niveaux": [
-                                {
-                                    "level": "E",
-                                    "definition": "Def E"
-                                },
-                                {
-                                    "level": "M",
-                                    "definition": "Def M"
-                                },
-                                {
-                                    "level": "A",
-                                    "definition": "Def A"
-                                },
-                                {
-                                    "level": "X",
-                                    "definition": "Def X"
-                                }
-                            ]
-                        },
+                        
                         {
                             "name": "Rigueur et organisation",
                             "type": "Savoir-être",
@@ -754,29 +666,7 @@
                                 }
                             ]
                         },
-                        {
-                            "name": "Capacité à travailler  en équipe - Sens du collectif",
-                            "type": "Savoir-être",
-                            "niveauRequis": "E",
-                            "niveaux": [
-                                {
-                                    "level": "E",
-                                    "definition": "Def E"
-                                },
-                                {
-                                    "level": "M",
-                                    "definition": "Def M"
-                                },
-                                {
-                                    "level": "A",
-                                    "definition": "Def A"
-                                },
-                                {
-                                    "level": "X",
-                                    "definition": "Def X"
-                                }
-                            ]
-                        },
+                       
                         {
                             "name": "Culture de la performance",
                             "type": "Savoir-être",
@@ -800,29 +690,7 @@
                                 }
                             ]
                         },
-                        {
-                            "name": "Proximité Client",
-                            "type": "Savoir-être",
-                            "niveauRequis": "M",
-                            "niveaux": [
-                                {
-                                    "level": "E",
-                                    "definition": "Def E"
-                                },
-                                {
-                                    "level": "M",
-                                    "definition": "Def M"
-                                },
-                                {
-                                    "level": "A",
-                                    "definition": "Def A"
-                                },
-                                {
-                                    "level": "X",
-                                    "definition": "Def X"
-                                }
-                            ]
-                        },
+                        
                         {
                             "name": "Promouvoir les outils digitaux",
                             "type": "Savoir-faire",
@@ -1182,29 +1050,7 @@
                                 }
                             ]
                         },
-                        {
-                            "name": "Communication efficace",
-                            "type": "Savoir-être",
-                            "niveauRequis": "M",
-                            "niveaux": [
-                                {
-                                    "level": "E",
-                                    "definition": "Def E"
-                                },
-                                {
-                                    "level": "M",
-                                    "definition": "Def M"
-                                },
-                                {
-                                    "level": "A",
-                                    "definition": "Def A"
-                                },
-                                {
-                                    "level": "X",
-                                    "definition": "Def X"
-                                }
-                            ]
-                        },
+                       
                         {
                             "name": "Rigueur et organisation",
                             "type": "Savoir-être",
@@ -1228,29 +1074,7 @@
                                 }
                             ]
                         },
-                        {
-                            "name": "Capacité à travailler  en équipe - Sens du collectif",
-                            "type": "Savoir-être",
-                            "niveauRequis": "E",
-                            "niveaux": [
-                                {
-                                    "level": "E",
-                                    "definition": "Def E"
-                                },
-                                {
-                                    "level": "M",
-                                    "definition": "Def M"
-                                },
-                                {
-                                    "level": "A",
-                                    "definition": "Def A"
-                                },
-                                {
-                                    "level": "X",
-                                    "definition": "Def X"
-                                }
-                            ]
-                        },
+                        
                         {
                             "name": "Culture de la performance",
                             "type": "Savoir-être",
@@ -1274,29 +1098,7 @@
                                 }
                             ]
                         },
-                        {
-                            "name": "Proximité Client",
-                            "type": "Savoir-être",
-                            "niveauRequis": "M",
-                            "niveaux": [
-                                {
-                                    "level": "E",
-                                    "definition": "Def E"
-                                },
-                                {
-                                    "level": "M",
-                                    "definition": "Def M"
-                                },
-                                {
-                                    "level": "A",
-                                    "definition": "Def A"
-                                },
-                                {
-                                    "level": "X",
-                                    "definition": "Def X"
-                                }
-                            ]
-                        },
+                        
                         {
                             "name": "Promouvoir les outils digitaux",
                             "type": "Savoir-faire",

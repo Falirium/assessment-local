@@ -55,8 +55,18 @@ intializeDB()
         // UPDATE BREADCRUMB
         updateBreadcrumb(user);
 
-        // GET LIST DES FICHES FROM INDEXDB FILTERED BY CONNECTED BPR
-        listFiches = filterCollorateursByBpr(data.fichesEvaluations, user.data.codePrefix, user.data.codeSuffix);
+        if (user === "admin") {
+
+            listFiches = data.fichesEvaluations;
+
+        } else {
+
+            // GET LIST DES FICHES FROM INDEXDB FILTERED BY CONNECTED BPR
+            listFiches = filterCollorateursByBpr(data.fichesEvaluations, user.data.codePrefix, user.data.codeSuffix);
+
+        }
+
+
 
 
         // CONFIGURE DATATABLE
@@ -692,7 +702,7 @@ function openEmailModal(recipients, emailSubject, jsonObject, user) {
     // Create a data URI for the JSON object
     const jsonDataURI = "data:text/plain;charset=utf-8," + encodeURIComponent(JSON.stringify(jsonObject));
 
-    let fileName = concatenateWithUnderscore(assessmentJson.name, user.data.tag ,user.data.firstName, user.data.lastName, getFormattedDate());
+    let fileName = concatenateWithUnderscore(assessmentJson.name, user.data.tag, user.data.firstName, user.data.lastName, getFormattedDate());
 
     let emailBody = `
         Bonjour,

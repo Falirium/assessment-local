@@ -46,10 +46,12 @@ intializeDB()
         // UPDATE BREADCRUMB
         updateBreadcrumb(user);
 
+        // REMOVE SUSPEND AND TERMINATE BTNS
+        removeElements(["#btn-assessment-terminate", "#btn-assessment-sus"]);
+
         if (user.type === "drh") {
 
-            // REMOVE SUSPEND AND TERMINATE BTNS
-            removeElements(["#btn-assessment-terminate", "#btn-assessment-sus"]);
+            
 
             fichesArrJson = filterCollorateursByBpr(fiches, user.data.codePrefix, user.data.codeSuffix);
 
