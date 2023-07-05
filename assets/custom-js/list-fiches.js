@@ -48,13 +48,13 @@ intializeDB()
 
         // ADD A BTN "UPDATE" FOR MANAGER N+2
         if (manager.type === '2') {
-            
+
             $("#card-header-btn-section").append(`
             <button id="btn-fiche-update" type="button" class="btn action-btn btn-icon me-4  btn-primary">
                 <i class="fe fe-refresh-cw"></i> Mise à jour 
             </button>
             `);
-            
+
             // ADD EVENT LISTENER TO THE UPDATE BTN
             $("#btn-fiche-update").click(function (e) {
 
@@ -82,13 +82,13 @@ intializeDB()
                     setTimeout(function () {
                         // currentUrl = window.location.href;
                         // window.location.href = extractDomain(currentUrl) + "evaluation/list";
-    
+
                         // window.location.href = "../index.html";
                         // alert("email envoyé")
                     }, 1000)
                 });
-    
-    
+
+
                 // INITIALIZE FILE UPLOADER
                 $('#fine-uploader').fineUploader({
                     template: 'qq-template-gallery',
@@ -103,11 +103,11 @@ intializeDB()
                         allowedExtensions: ['json'],
                         itemInvalidErrorMessage: "Seuls les fichiers JSON sont autorisés"
                     },
-    
+
                     callbacks: {
                         onSubmit: function (id, name) {
                             var fileId = id;
-    
+
                             var file = this.getFile(id);
                             console.log(file.type);
                             if (file) {
@@ -116,22 +116,22 @@ intializeDB()
                                     var content = e.target.result;
                                     console.log(JSON.parse(content));
                                     var contentJson = JSON.parse(content);
-    
+
                                     if (fileId == 0 || assessment_ID === "") {
                                         assessment_ID = contentJson.assessmentId;
                                     }
                                     // Do whatever you want with the content here
-    
+
                                     // push it to the array that holding all the files content
                                     let fileJson = {
                                         'fileName': file.name,
                                         'content': contentJson
                                     };
                                     // filesJsonArr.push(fileJson);
-    
+
                                     // CHECK FOR MORE ASSESSMENT IDS
                                     if (assessment_ID != contentJson.assessmentId) {
-    
+
                                         // SHOW ERROR MESSAGE
                                         showModal("error", "Attention !", "Vous ne pouvez pas télécharger les fichiers de configuration de différentes campagnes d'évaluation ! Veillez à télécharger les mêmes fichiers de campagne d'évaluation.", "", {
                                             "text": "Retour à l'accueil",
@@ -140,13 +140,13 @@ intializeDB()
                                         }, function () {
                                             location.reload();
                                         });
-    
+
                                     } else {
-    
-    
+
+
                                         // console.log("CHANGING THIS IN DB WITH THE FILE ID :" + fileId);
                                         addToStoreWithId(idb_config, "files", fileJson, fileId + 1);
-    
+
                                         // replaceAsseementToContainer("info-container", fileJson.content);
                                     }
                                 }
@@ -169,32 +169,32 @@ intializeDB()
                         }
                     }
                 });
-    
-    
+
+
                 $("#config-btn").one("click", function (e) {
-    
+
                     // ADD LOADER TO BTN
                     addLoaderToBtn("#config-btn");
-    
+
                     // GET ALL THE VALUES OF ASSESSMENTS-CONFIG
                     getAllDataFromDB(idb_config)
                         .then((result) => {
                             console.log(result);
-    
+
                             var mergedFilesData = mergeFiles(result.files);
                             console.log(mergedFilesData);
-    
+
                             clearAndReplaceStoreData(idb_config, "files", [mergedFilesData]).then(() => {
-    
+
                                 // HEAD TO THE LOGIN PAGE
                                 location.reload();
                             }).catch((e) => {
-    
+
                             })
                         })
-    
+
                 })
-    
+
             })
 
 
@@ -748,15 +748,21 @@ function openEmailModal(recipients, emailSubject, jsonObject) {
 
     let fileName = concatenateWithUnderscore(assessmentJson.name, manager.data.firstName, manager.data.lastName, getFormattedDate());
 
-    let emailBody = `
-        Bonjour,
+    let modalBody;
 
-        J'espère que vous allez bien. Je tenais simplement à vous informer que j'ai terminé ma partie de l'évaluation des collaborateurs. Je vous remercie pour votre collaboration tout au long de ce processus.
+    if (manager.type === '2') {
 
-        Afin de poursuivre le flux des évaluations, je vous invite à télécharger le fichier TEXTE des fiches d'évaluation en piece jointe.
-        
-    Cordialement
+        modalBody = `
+    S'il vous plaît, vous devez <strong>télécharger le fichier JSON en cliquant sur le bouton de téléchargement situé en bas</strong>, et le conserver dans un dossier spécifique comme mentionné dans le guide des bonnes pratiques. Ensuite, vous devez <strong>l'envoyer à la DRH. </strong>
     `;
+    } else {
+
+        modalBody = `
+    S'il vous plaît, vous devez <strong>télécharger le fichier JSON en cliquant sur le bouton de téléchargement situé en bas,</strong> et le conserver dans un dossier spécifique comme mentionné dans le guide des bonnes pratiques. Ensuite, vous devez <strong>l'envoyer à votre supérieure hiérarchique.</strong>
+    `;
+    }
+
+
 
     // console.log(emailBody);
 
@@ -769,33 +775,14 @@ function openEmailModal(recipients, emailSubject, jsonObject) {
 
     <div class="form-group">
         <div class="row align-items-center">
-            <label class="col-xl-2 form-label">To :</label>
-            <div class="col-xl-10 input-group mb-2">
-                <input type="text" class="form-control" value="${recipients[0]}" placeholder=".....@.....">
-                <span class="copy-btn input-group-text btn btn-primary">Copy</span>
-            </div>
+            <label class="col-xl-12 form-label">
+                ${modalBody}
+            </label>
+           
         </div>
     </div>
  
-    <div class="form-group">
-        <div class="row align-items-center">
-            <label class="col-xl-2 form-label">Objet :</label>
-            
-            <div class="col-xl-10 input-group mb-2">
-                <input type="text" class="form-control" value="${emailSubject}"placeholder=".................">
-                <span class="copy-btn input-group-text btn btn-primary">Copy</span>
-            </div>
-        </div>
-    </div>
-    <div class="form-group">
-        <div class="row ">
-            <label class="col-xl-2 form-label">Message :</label>
-            <div class="col-xl-10">
-                <textarea rows="10" class="form-control">${emailBody}</textarea>
-                <span class="copy-btn btn btn-primary">Copy</span>
-            </div>
-        </div>
-    </div>
+   
 
     <div class="form-group">
         <div class="row ">

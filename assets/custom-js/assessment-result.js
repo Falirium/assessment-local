@@ -439,14 +439,9 @@ function openEmailModal(recipients, emailSubject, jsonObject, user) {
 
     let fileName = concatenateWithUnderscore(assessmentJson.name, user.data.tag ,user.data.firstName, user.data.lastName, getFormattedDate());
 
-    let emailBody = `
-        Bonjour,
-
-        J'espère que vous allez bien. Je tenais simplement à vous informer que j'ai terminé ma partie de l'évaluation des collaborateurs. Je vous remercie pour votre collaboration tout au long de ce processus.
-
-        Afin de poursuivre le flux des évaluations, je vous invite à télécharger le fichier TEXTE des fiches d'évaluation en piece jointe.
-        
-    Cordialement
+    let modalBody = `
+    S'il vous plaît, vous devez <strong>télécharger le fichier JSON en cliquant sur le bouton de téléchargement situé en bas</strong>, et le conserver dans un dossier spécifique comme mentionné dans le guide des bonnes pratiques. Ensuite, vous devez <strong>l'envoyer à la BCP </strong>
+       
     `;
 
     // console.log(emailBody);
@@ -460,33 +455,12 @@ function openEmailModal(recipients, emailSubject, jsonObject, user) {
 
     <div class="form-group">
         <div class="row align-items-center">
-            <label class="col-xl-2 form-label">To :</label>
-            <div class="col-xl-10 input-group mb-2">
-                <input type="text" class="form-control" value="${recipientString}" placeholder=".....@.....">
-                <span class="copy-btn input-group-text btn btn-primary">Copy</span>
-            </div>
+            <label class="col-xl-12 form-label">${modalBody}</label>
+        
         </div>
     </div>
  
-    <div class="form-group">
-        <div class="row align-items-center">
-            <label class="col-xl-2 form-label">Objet :</label>
-            
-            <div class="col-xl-10 input-group mb-2">
-                <input type="text" class="form-control" value="${emailSubject}"placeholder=".................">
-                <span class="copy-btn input-group-text btn btn-primary">Copy</span>
-            </div>
-        </div>
-    </div>
-    <div class="form-group">
-        <div class="row ">
-            <label class="col-xl-2 form-label">Message :</label>
-            <div class="col-xl-10">
-                <textarea rows="10" class="form-control">${emailBody}</textarea>
-                <span class="copy-btn btn btn-primary">Copy</span>
-            </div>
-        </div>
-    </div>
+
 
     <div class="form-group">
         <div class="row ">
