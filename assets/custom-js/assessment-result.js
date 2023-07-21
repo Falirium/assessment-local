@@ -6,7 +6,7 @@ console.log(idParam);
 
 // THIS VARIABLE DEFINED THE SHOWN COLUMN ON THE TABLE
 
-let authorizedCol = ["id", "collaborateur", "code affectation", "evaluateurOne", "evaluateurTwo", "emploi", "niveau", "Score", "% Res", "% Exi", "% Marq", "% D.C", "% S.E", "% S.F", "status"];
+let authorizedCol = ["id", "collaborateur", "code affectation", "evaluateurOne", "evaluateurTwo", "emploi", "niveau", "Score N+1", "Score N+2", "% Res", "% Exi", "% Marq", "% D.C", "% S.E", "% S.F", "status"];
 
 let assessment_ID = "";
 const idb_config = "assessments_config";
@@ -51,12 +51,7 @@ intializeDB()
 
         if (user.type === "drh") {
 
-            
-
             fichesArrJson = filterCollorateursByBpr(fiches, user.data.codePrefix, user.data.codeSuffix);
-
-
-
 
         }
 
@@ -114,8 +109,9 @@ intializeDB()
             columns: col,
             columnDefs: [
                 { "width": "6%", "targets": 3 },
-                { "className": "success-light-cell", "targets": 10 },
-                { "className": "default-light-cell ", "targets": [11, 12, 13, 14, 15, 16] }
+                { "className": "success-light-cell", "targets": 11 },
+                { "className": "danger-light-cell", "targets": 10 },
+                { "className": "default-light-cell ", "targets": [12, 13, 14, 15, 16, 17] }
 
             ],
             autoWidth: false,
@@ -437,7 +433,7 @@ function openEmailModal(recipients, emailSubject, jsonObject, user) {
     // Create a data URI for the JSON object
     const jsonDataURI = "data:text/plain;charset=utf-8," + encodeURIComponent(JSON.stringify(jsonObject));
 
-    let fileName = concatenateWithUnderscore(assessmentJson.name, user.data.tag ,user.data.firstName, user.data.lastName, getFormattedDate());
+    let fileName = concatenateWithUnderscore(assessmentJson.name, user.data.tag, user.data.firstName, user.data.lastName, getFormattedDate());
 
     let modalBody = `
     S'il vous plaît, vous devez <strong>télécharger le fichier JSON en cliquant sur le bouton de téléchargement situé en bas</strong>, et le conserver dans un dossier spécifique comme mentionné dans le guide des bonnes pratiques. Ensuite, vous devez <strong>l'envoyer à la BCP </strong>
@@ -919,8 +915,11 @@ function getFichesColumnFromJson(json, authorizedCol) {
                 case "evaluateurTwo":
                     value = "evaluateurTwo";
                     break;
-                case "Score":
-                    value = "score";
+                case "Score N+1":
+                    value = "score N+2";
+                    break;
+                case "Score N+2":
+                    value = "score N+1";
                     break;
                 case "section_res":
                     value = "% Res";
@@ -996,6 +995,9 @@ function getFichesDataFromJson(arrJson) {
     let finalArr = [];
     arrJson.map((e, i) => {
         console.log(i);
+        // EXTRACT THE N+1 SCORE
+        let m1 = JSON.parse(e.re_manager1);
+        console.log(m1);
         let arr = [];
 
         arr.push(e.ficheEvaluationId);
@@ -1008,7 +1010,20 @@ function getFichesDataFromJson(arrJson) {
         arr.push(e.evaluateurTwo.firstName + " " + e.evaluateurTwo.lastName);
         arr.push(e.emploi.intitule);
         arr.push(e.emploi.level);
-        arr.push(e.score);
+
+        if (m1 === null) {
+            arr.push(0);
+        } else {
+            arr.push(m1.score);
+        }
+
+        if (e.score === "") {
+            arr.push(0);
+
+        } else {
+            arr.push(e.score);
+
+        }
 
         // ADD % DES SECTIONS
         arr.push(e.sectionRes);
