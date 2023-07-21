@@ -103,188 +103,188 @@ $("#cnx-btn").click(function () {
         "pwd": password
     }
 
-    
+
 
     let resultAuth = validateMatricule(authObj);
     console.log(validateMatricule(authObj));
-    let roleAuth = resultAuth.user.role;
+    if (resultAuth.status == false) {
 
-    if (resultAuth.status && roleAuth === "drh") {
+        showModal("error", "Échec", "L'authentification a échoué, car la matrice et/ou les données sont incorrectes. Veuillez réessayer avec des informations d'identification valides.", "");
 
-        // SET AUTHORIZATION
-        let auth = {
-            "regex": [
-                '(list-assessments|assesment-result|fiche-evaluation)\\\.html',
+    } else {
+        let roleAuth = resultAuth.user.role;
+        if (resultAuth.status && roleAuth === "drh") {
 
-            ],
-            "sections": {
-                "hide": [
+            // SET AUTHORIZATION
+            let auth = {
+                "regex": [
+                    '(list-assessments|assesment-result|fiche-evaluation)\\\.html',
 
-                    {
-                        "name": "emploi",
-                        "id": "#emploi"
-                    },
-                    {
-                        "name": "pv",
-                        "id": "#pv"
-                    },
-                    {
-                        "name": "drh",
-                        "id": "#drh"
-                    },
-                    {
-                        "name": "manager",
-                        "id": "#manager"
-                    },
-                    {
-                        "name": "add assessment",
-                        "id": "#btn-add-assessment"
-                    }
                 ],
-                "show": [
-                    {
-                        "type": "anchor",
-                        "name": "dashboard",
-                        "id": "#dashboard",
-                        "link": "/assessment/list"
-                    }
-                ]
-            }
-        };
-        localStorage.setItem("auth", JSON.stringify(auth));
+                "sections": {
+                    "hide": [
 
-        let userData = {
-
-        }
-
-        // SET USER INFO
-        let user = {
-            "type": "drh",
-            "data": resultAuth.user
-        };
-        localStorage.setItem("user", JSON.stringify(user));
-
-
-        // REDIRECT TO HOMEPAGE
-        window.location.href = './list-assessments.html';
-        console.log("SUCCESS CONNECTION BPR");
-    } else if (resultAuth.status && roleAuth.includes("manager")) {
-        
-        // SET AUTHORIZATION
-        let auth = {
-            "regex": [
-                '(list-fiches|fiche-evaluation)\\\.html',
-
-            ],
-            "sections": {
-                "hide": [
-                    {
-                        "name": "assessment",
-                        "id": "#assessment"
-
-                    },
-                    {
-                        "name": "emploi",
-                        "id": "#emploi"
-                    },
-                    {
-                        "name": "pv",
-                        "id": "#pv"
-                    }
-                ],
-                "show": [
-                    {
-                        "type": "anchor",
-                        "name": "dashboard",
-                        "id": "#dashboard",
-                        "link": "/evaluation/list"
-                    }
-                ]
-            }
-        }
-        console.log(auth);
-
-
-        let manager = resultAuth.user;
-
-        let managerType = resultAuth.user.role;
-
-        if (getSecondPart(managerType, '-') === "1") {
-
-            // manager = authRes.managerOneUser;
-            showModal("success", "Welcome :" + manager.matricule, "Vous avez été connecté avec succès");
-
-            // SAVE MANAGER MATRICULE
-            let user = {
-                "type": "1",
-                "data": manager
-
-            }
-
-            localStorage.setItem("user", JSON.stringify(user));
-
-            console.log("SUCCESS CONNECTION MANAGER N+1")
-
-
-            // CHANGE BREADCRUMB TEXT TO MANAGER N+1
-            auth.sections.show.push(
-                {
-                    "type": "text",
-                    "name": "breadcrumb",
-                    "id": "#breadcrumb-text",
-                    "text": "Manager N+1"
+                        {
+                            "name": "emploi",
+                            "id": "#emploi"
+                        },
+                        {
+                            "name": "pv",
+                            "id": "#pv"
+                        },
+                        {
+                            "name": "drh",
+                            "id": "#drh"
+                        },
+                        {
+                            "name": "manager",
+                            "id": "#manager"
+                        },
+                        {
+                            "name": "add assessment",
+                            "id": "#btn-add-assessment"
+                        }
+                    ],
+                    "show": [
+                        {
+                            "type": "anchor",
+                            "name": "dashboard",
+                            "id": "#dashboard",
+                            "link": "/assessment/list"
+                        }
+                    ]
                 }
-            );
-        } else if (getSecondPart(managerType, '-') === "2") {
+            };
+            localStorage.setItem("auth", JSON.stringify(auth));
 
-            // manager = authRes.managerTwoUser;
-            showModal("success", "Welcome :" + manager.matricule, "Vous avez été connecté avec succès");
-
-
-            // SAVE MANAGER MATRICULE
-            let user = {
-                "type": "2",
-                "data": manager
+            let userData = {
 
             }
 
+            // SET USER INFO
+            let user = {
+                "type": "drh",
+                "data": resultAuth.user
+            };
             localStorage.setItem("user", JSON.stringify(user));
+
+
+            // REDIRECT TO HOMEPAGE
+            window.location.href = './list-assessments.html';
+            console.log("SUCCESS CONNECTION BPR");
+        } else if (resultAuth.status && roleAuth.includes("manager")) {
+
+            // SET AUTHORIZATION
+            let auth = {
+                "regex": [
+                    '(list-fiches|fiche-evaluation)\\\.html',
+
+                ],
+                "sections": {
+                    "hide": [
+                        {
+                            "name": "assessment",
+                            "id": "#assessment"
+
+                        },
+                        {
+                            "name": "emploi",
+                            "id": "#emploi"
+                        },
+                        {
+                            "name": "pv",
+                            "id": "#pv"
+                        }
+                    ],
+                    "show": [
+                        {
+                            "type": "anchor",
+                            "name": "dashboard",
+                            "id": "#dashboard",
+                            "link": "/evaluation/list"
+                        }
+                    ]
+                }
+            }
+            console.log(auth);
+
+
+            let manager = resultAuth.user;
+
+            let managerType = resultAuth.user.role;
+
+            if (getSecondPart(managerType, '-') === "1") {
+
+                // manager = authRes.managerOneUser;
+                showModal("success", "Welcome :" + manager.matricule, "Vous avez été connecté avec succès");
+
+                // SAVE MANAGER MATRICULE
+                let user = {
+                    "type": "1",
+                    "data": manager
+
+                }
+
+                localStorage.setItem("user", JSON.stringify(user));
+
+                console.log("SUCCESS CONNECTION MANAGER N+1")
+
+
+                // CHANGE BREADCRUMB TEXT TO MANAGER N+1
+                auth.sections.show.push(
+                    {
+                        "type": "text",
+                        "name": "breadcrumb",
+                        "id": "#breadcrumb-text",
+                        "text": "Manager N+1"
+                    }
+                );
+            } else if (getSecondPart(managerType, '-') === "2") {
+
+                // manager = authRes.managerTwoUser;
+                showModal("success", "Welcome :" + manager.matricule, "Vous avez été connecté avec succès");
+
+
+                // SAVE MANAGER MATRICULE
+                let user = {
+                    "type": "2",
+                    "data": manager
+
+                }
+
+                localStorage.setItem("user", JSON.stringify(user));
+
+                // // REDIRECT TO HOMEPAGE
+                let currentUrl = window.location.href;
+                // window.location.replace(extractDomain(currentUrl) + "evaluation/list");
+                console.log("SUCCESS CONNECTION MANAGER N+2")
+
+
+                // CHANGE BREADCRUMB TEXT TO MANAGER N+1
+                auth.sections.show.push(
+                    {
+                        "type": "text",
+                        "name": "breadcrumb",
+                        "id": "#breadcrumb-text",
+                        "text": "Manager N+2"
+                    }
+                );
+            }
+
+            localStorage.setItem("auth", JSON.stringify(auth));
+            // console.log(localStorage.getItem("user"));
+
 
             // // REDIRECT TO HOMEPAGE
-            let currentUrl = window.location.href;
-            // window.location.replace(extractDomain(currentUrl) + "evaluation/list");
-            console.log("SUCCESS CONNECTION MANAGER N+2")
-
-
-            // CHANGE BREADCRUMB TEXT TO MANAGER N+1
-            auth.sections.show.push(
-                {
-                    "type": "text",
-                    "name": "breadcrumb",
-                    "id": "#breadcrumb-text",
-                    "text": "Manager N+2"
-                }
-            );
+            window.location.href = './list-fiches.html';
         }
-
-        localStorage.setItem("auth", JSON.stringify(auth));
-        // console.log(localStorage.getItem("user"));
-
-
-        // // REDIRECT TO HOMEPAGE
-        window.location.href = './list-fiches.html';
-    } else {
-
-        // SHOW ERROR MODAL
-        showModal("error", "Échec", "L'authentification a échoué, car la matrice et/ou les données sont incorrectes. Veuillez réessayer avec des informations d'identification valides.", "");
     }
+
+
+
 
 })
 
-
-function athenticateUser(obj) {
-
-}
 
 // AUTHENTIFICATION BPR
 $("#cnx-btn-bpr").click(function () {
@@ -669,7 +669,7 @@ async function validateMatriculeManagerOne(matricule) {
 }
 
 function validateMatricule(json) {
-
+    console.log("herrre in function");
     for (let i = 0; i < users.length; i++) {
         const user = users[i];
         console.log(user, json);

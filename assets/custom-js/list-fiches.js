@@ -263,71 +263,7 @@ intializeDB()
 
             if ((manager.type === '1' && (ficheFromArr.status === "NE0" || ficheFromArr.status === "NE01")) || (manager.type === '2' && (ficheFromArr.status === "NE1" || ficheFromArr.status === "E0"))) {
 
-                console.log("access authorized");
-
-                // GET THE ASSOCIATED FIHCE D EVALUATION
-                let fiche = ficheFromArr;
-                console.log(fiche);
-
-                //SAVE FICHE OBJECT ON LOCAL SESSION
-                localStorage.setItem("ficheEvaluation", JSON.stringify(fiche));
-
-                // REDIRECT TO THE FICHE PAGE : /evaluation/evaluate?.....
-
-                let emploiName = encodeURIComponent(fiche.emploi.intitule);
-                let emploiLevel = fiche.emploi.level;
-
-                let doesResponsabilitesExist = false;
-                let doesMarqueursExist = false;
-                let doesExigencesExist = false;
-                let doesCompetencesDcExist = false;
-                let doesCompetencesSeExist = false;
-                let doesCompetencesSfExist = false;
-
-
-                //GET THE CATEGORY ASSESSMENT_CONTENT PROPERTY
-                fiche.ficheContent.map((e, i) => {
-                    switch (e) {
-                        case "responsabilites":
-                            doesResponsabilitesExist = true;
-                            break;
-
-                        case "exigences":
-                            doesExigencesExist = true;
-                            break;
-
-                        case "marqueurs":
-                            doesMarqueursExist = true;
-                            break;
-
-                        case "competences-dc":
-                            doesCompetencesDcExist = true;
-                            break;
-
-                        case "competences-sf":
-                            doesCompetencesSfExist = true;
-                            break;
-
-                        case "competences-se":
-                            doesCompetencesSeExist = true;
-                            break;
-
-
-                    }
-                })
-
-                // BUILD URL 
-                let urlParams = {
-                    "eName": emploiName,
-                    "level": emploiLevel,
-                    "marqueurs": doesMarqueursExist,
-                    "exigences": doesExigencesExist,
-                    "responsabilites": doesResponsabilitesExist,
-                    "competences_dc": doesCompetencesDcExist,
-                    "competences_se": doesCompetencesSeExist,
-                    "competences_sf": doesCompetencesSfExist,
-                }
-                let url = buildURL("./fiche-evaluation.html", urlParams);
+                let url = generateFicheEValuationUrl(ficheFromArr);
 
                 // window.location.href = extractDomain(currentUrl) + url;
                 // window.open(url, "_blank");
@@ -342,11 +278,13 @@ intializeDB()
 
                     if (ficheFromArr.status === "E0") {
 
-                        errorBody = `Désolé, vous ne pouvez pas accéder ou modifier les fiches d'évaluations que vous avez envoyés à votre manager`;
+                        // errorBody = `Désolé, vous ne pouvez pas accéder ou modifier les fiches d'évaluations que vous avez envoyés à votre manager`;
+                        let url = generateFicheEValuationUrl(ficheFromArr);
+                        window.location.href = url;
 
                     } else if (ficheFromArr.status.includes("E1")) {
 
-                        errorBody = `Désolé, vous ne pouvez pas accéder aux les fiches d'évaluations qui ont été évalués par votre manager.`
+                        errorBody = `Désolé, vous ne pouvez pas accéder aux  fiches d'évaluations qui ont été évalués par votre manager.`
                     }
 
                     console.log("from N+1");
@@ -362,7 +300,12 @@ intializeDB()
 
                     } else if (ficheFromArr.status === "E1") {
 
-                        errorBody = `Désolé, vous ne pouvez pas accéder ou modifier les fiches d'évaluations que vous avez envoyés aux consultants DRH.`;
+                        // errorBody = `Désolé, vous ne pouvez pas accéder ou modifier les fiches d'évaluations que vous avez envoyés aux consultants DRH.`;
+                        let url = generateFicheEValuationUrl(ficheFromArr);
+                        window.location.href = url;
+
+
+
                     }
 
                     console.log("from N+2");
@@ -378,6 +321,74 @@ intializeDB()
         })
 
     });
+
+function generateFicheEValuationUrl(ficheEva) {
+    console.log("access authorized");
+
+    // GET THE ASSOCIATED FIHCE D EVALUATION
+    let fiche = ficheEva;
+    console.log(fiche);
+
+    //SAVE FICHE OBJECT ON LOCAL SESSION
+    localStorage.setItem("ficheEvaluation", JSON.stringify(fiche));
+
+    // REDIRECT TO THE FICHE PAGE : /evaluation/evaluate?.....
+
+    let emploiName = encodeURIComponent(fiche.emploi.intitule);
+    let emploiLevel = fiche.emploi.level;
+
+    let doesResponsabilitesExist = false;
+    let doesMarqueursExist = false;
+    let doesExigencesExist = false;
+    let doesCompetencesDcExist = false;
+    let doesCompetencesSeExist = false;
+    let doesCompetencesSfExist = false;
+
+
+    //GET THE CATEGORY ASSESSMENT_CONTENT PROPERTY
+    fiche.ficheContent.map((e, i) => {
+        switch (e) {
+            case "responsabilites":
+                doesResponsabilitesExist = true;
+                break;
+
+            case "exigences":
+                doesExigencesExist = true;
+                break;
+
+            case "marqueurs":
+                doesMarqueursExist = true;
+                break;
+
+            case "competences-dc":
+                doesCompetencesDcExist = true;
+                break;
+
+            case "competences-sf":
+                doesCompetencesSfExist = true;
+                break;
+
+            case "competences-se":
+                doesCompetencesSeExist = true;
+                break;
+
+
+        }
+    })
+
+    // BUILD URL 
+    let urlParams = {
+        "eName": emploiName,
+        "level": emploiLevel,
+        "marqueurs": doesMarqueursExist,
+        "exigences": doesExigencesExist,
+        "responsabilites": doesResponsabilitesExist,
+        "competences_dc": doesCompetencesDcExist,
+        "competences_se": doesCompetencesSeExist,
+        "competences_sf": doesCompetencesSfExist,
+    }
+    return buildURL("./fiche-evaluation.html", urlParams);
+}
 
 // SEND THE RESULT OF THIS
 $("#btn-fiche-send").click({

@@ -183,8 +183,9 @@ intializeDB()
                 displaySousPoints();
                 displaySurPoints();
 
-                // CASE OF ADMIN DISABLE MODIFICATION
-                if (manager === 'admin' || manager.type == 'drh') {
+                // CASE OF ADMIN BCP | DRH | MANAGER WHO WANTS TO SEE HIS SCORE  ---->  DISABLE MODIFICATION
+                console.log((manager === 'admin' || manager.type == 'drh' || manager.type === '2' || manager.type === '1'));
+                if (manager === 'admin' || manager.type == 'drh' || manager.type === '2' || manager.type === '1') {
                     disableModificationForAdminAndDrh();
                 }
             }
@@ -196,15 +197,16 @@ intializeDB()
 
 
         } else {
-
+            console.log("heeere");
             // POPULATE FIHCE EVALUATION
             let ficheEmploiJson = getFicheEmploiPreview(urlParams);
             if (ficheEmploiJson != null) {
                 populateResTable(ficheEmploiJson);
                 fichePreviewJson = ficheEmploiJson;
 
-                // CASE OF ADMIN DISABLE MODIFICATION
-                if (manager === 'admin' || manager.type == 'drh') {
+                // CASE OF ADMIN BCP | DRH | MANAGER WHO WANTS TO SEE HIS SCORE  ---->  DISABLE MODIFICATION
+                console.log((manager === 'admin' || manager.type == 'drh' || manager.type === '2' || manager.type === '1'));
+                if (manager === 'admin' || manager.type == 'drh' || manager.type === '2' || manager.type === '1') {
                     disableModificationForAdminAndDrh();
                 }
             }
