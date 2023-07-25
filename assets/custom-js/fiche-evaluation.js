@@ -185,7 +185,7 @@ intializeDB()
 
                 // CASE OF ADMIN BCP | DRH | MANAGER WHO WANTS TO SEE HIS SCORE  ---->  DISABLE MODIFICATION
                 console.log((manager === 'admin' || manager.type == 'drh' || manager.type === '2' || manager.type === '1'));
-                if (manager === 'admin' || manager.type == 'drh' || (manager.type === '2' && score != 0) || (manager.type === '1' && score != 0)) {
+                if (manager === 'admin' || manager.type == 'drh' || (manager.type === '2' && ficheEvaluation.status == "E1") || (manager.type === '1' && ficheEvaluation.status == "E0")) {
                     disableModificationForAdminAndDrh();
                 }
             }
@@ -206,7 +206,7 @@ intializeDB()
 
                 // CASE OF ADMIN BCP | DRH | MANAGER WHO WANTS TO SEE HIS SCORE  ---->  DISABLE MODIFICATION
                 console.log((manager === 'admin' || manager.type == 'drh' || manager.type === '2' || manager.type === '1'));
-                if (manager === 'admin' || manager.type == 'drh' || (manager.type === '2' && score != 0) || (manager.type === '1' && score != 0)) {
+                if (manager === 'admin' || manager.type == 'drh' || (manager.type === '2' && ficheEvaluation.status == "E1") || (manager.type === '1' && ficheEvaluation.status != "E0")) {
                     disableModificationForAdminAndDrh();
                 }
             }
