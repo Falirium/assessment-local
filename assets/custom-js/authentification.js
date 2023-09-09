@@ -602,6 +602,33 @@ const extractDomain = (url) => {
     return elems[0] + "//" + elems[2] + "/";
 }
 
+// ADD EVENT LISTENERS 
+$("#forget-pwd").click(function () {
+    showModal("info", "Mot-de-passe oublié !", `
+    <p>Pour récupérer votre mot de passe, envoyez un e-mail aux consultants du Capital Humain BCP :</p>
+<ul>
+  <li>&#8226; <a target="_blank" href="mailto:MFARFAOUA@groupebcp.com">FARFAOUA Mohamed-Amine</a></li>
+  <li>&#8226; <a target="_blank" href="mailto:JNCHO@groupebcp.com">N'cho Seka Jean Carlos</a></li>
+  <li>&#8226; <a target="_blank" href="mailto:SGHANNAM@groupebcp.com">Ghannam Sanae</a></li>
+</ul>
+<br>
+<p>Dans l'objet de l'e-mail, indiquez : <strong>Mot de passe oublié</strong> et ajoutez en pièce jointe <strong>le fichier JSON</strong> que vous recevez par e-mail.</p>
+
+    
+    `)
+})
+
+$("#contact-us").click(function () {
+    showModal("info", "Contacter-nous", `
+    <p>Si vous avez besoin d'assistance ou de résoudre un problème technique, envoyez un e-mail aux consultants du Capital Humain BCP suivants :</p>
+    <ul>
+  <li>&#8226; <a target="_blank" href="mailto:MFARFAOUA@groupebcp.com">FARFAOUA Mohamed-Amine</a></li>
+  <li>&#8226; <a target="_blank" href="mailto:JNCHO@groupebcp.com">N'cho Seka Jean Carlos</a></li>
+  <li>&#8226; <a target="_blank" href="mailto:SGHANNAM@groupebcp.com">Ghannam Sanae</a></li>
+</ul> <br>
+    `)
+})
+
 async function authenticate(mat) {
 
 
@@ -815,10 +842,9 @@ function validateMatriculeConsultant(matricule, pwd) {
 }
 
 
-function showModal(type, header, content, action) {
+function showModal(type, header, content, action, btnJson, eventHandler) {
 
-    let modalId, modalHeaderId, modalContentId;
-
+    let modalId, modalHeaderId, modalContentId, color;
 
 
     switch (type) {
@@ -826,24 +852,28 @@ function showModal(type, header, content, action) {
             modalId = "success";
             modalHeaderId = "#modal-success-header";
             modalContentId = "#modal-success-content";
+            color = "success";
             break;
 
         case "warning":
             modalId = "warning";
             modalHeaderId = "#modal-warning-header";
             modalContentId = "#modal-warning-content";
+            color = "warning";
             break;
 
         case "info":
             modalId = "info";
             modalHeaderId = "#modal-info-header";
             modalContentId = "#modal-info-content";
+            color = "info";
             break;
 
         case "error":
             modalId = "modaldemo5";
             modalHeaderId = "#modal-error-header";
             modalContentId = "#modal-error-content";
+            color = "danger";
             $("#confirm-yes-btn").attr("data-action", action);
             break;
 
@@ -851,22 +881,51 @@ function showModal(type, header, content, action) {
             modalId = "confirm";
             modalHeaderId = "#modal-confirm-header";
             modalContentId = "#modal-confirm-content";
+            color = "primary";
             $("#confirm-yes-btn").attr("data-action", action);
             break;
+
+        case "loading":
+            modalId = "loading";
+
+            color = "primary";
+            break;
+    }
+
+    // DELETE ALL BTNS
+    $(modalHeaderId).parent().find("button").remove();
+
+
+    if (btnJson != null && modalId != "lodaing") {
+        // CREATE BTNS
+        $(modalHeaderId).parent()
+            .append(`<button id="${btnJson.id}" class="btn btn-${btnJson.color} mx-4 pd-x-25"
+            data-bs-dismiss="modal">${btnJson.text}</button>`);
+
+        if (btnJson.hasOwnProperty('hasFermerBtn')) {
+            $(modalHeaderId).parent().append(`<button aria-label="Close" class="btn mx-4 btn-primary pd-x-25"
+            data-bs-dismiss="modal">Fermer</button>`);
+        }
+
+        // ADD EVENT LISTENER TO THE BTN
+        $("#" + btnJson.id).click(function (e) { eventHandler(e) });
+    } else if (modalId != "lodaing") {
+        $(modalHeaderId).parent().append(`<button aria-label="Close" class="btn mx-4 btn-${color} pd-x-25"
+        data-bs-dismiss="modal">Fermer</button>`);
     }
 
 
     var myModal = new bootstrap.Modal(document.getElementById(modalId));
+    $(modalId).attr("data-bs-backdrop", "static");
 
-    // SET HEADER
     $(modalHeaderId).text(header);
+    $(modalContentId).html(content);
 
-    // SET CONTENT
-    $(modalContentId).html(content)
 
     myModal.show();
 
 }
+
 
 async function intializeDB() {
     return getAllDataFromDB(idb_config)
