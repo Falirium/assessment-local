@@ -60,7 +60,10 @@ intializeDB()
 
             // SET FICHE EVALUATION INFOS
             $("#emploi-cible-text").text(ficheEvaluation.emploi.intitule);
-            $("#date-eva-text").text(ficheEvaluation.dateEvaluation);
+            // $("#date-eva-text").text(ficheEvaluation.dateEvaluation);
+            $("#date-eva-text").text(getFormattedDate());
+            // console.log(getFormattedDate());
+
             if (manager === "admin") {
                 $("#mat-eva-text").text(ficheEvaluation.evaluateurOne.matricule);
             } else if (manager.type === "1") {
@@ -69,7 +72,7 @@ intializeDB()
                 $("#mat-eva-text").text(ficheEvaluation.evaluateurTwo.matricule);
             }
             $("#mat-collaborateur-text").text(ficheEvaluation.collaborateur.matricule);
-            $("#date-eva-text").text(ficheEvaluation.dateEvaluation.split("T")[0]);
+            $("#date-eva-text").text(getFormattedDate());
         }
 
 
@@ -250,6 +253,14 @@ $("#btn-fiche-send").click({
     finalValidation: true
 }, saveFicheEvaluationHandler)
 
+function getFormattedDate() {
+    const today = new Date();
+    const year = today.getFullYear();
+    const month = (today.getMonth() + 1).toString().padStart(2, '0'); // Months are zero-indexed
+    const day = today.getDate().toString().padStart(2, '0');
+  
+    return `${year}-${month}-${day}`;
+  }
 
 function disableModificationForAdminAndDrh() {
 

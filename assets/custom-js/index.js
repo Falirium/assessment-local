@@ -570,7 +570,7 @@ function replaceAsseementToContainer(containerId, json) {
       </div>
       <div class="card-body">
         <div class="row mb-4">
-          <label class="col-md-3 form-label">Campagne ID :</label>
+          <label class="col-md-3 form-label">Intitulé de campagne :</label>
           <div class="form-label col-md-9">
             ${json.assessmentId}
           </div>
