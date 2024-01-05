@@ -122,7 +122,7 @@ intializeDB()
                 {
                     extend: 'excelHtml5',
                     title: fileTitle,
-                    text: "Télécharger les données sous Excel",
+                    text: "Exporter Évaluations",
                     exportOptions: {
                         columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
                     },
@@ -451,7 +451,7 @@ function openEmailModal(recipients, emailSubject, jsonObject, user) {
 
     <div class="form-group">
         <div class="row align-items-center">
-            <label class="col-xl-12 form-label">${modalBody}</label>
+            <label class="col-xl-12 form-label"></label>
         
         </div>
     </div>
@@ -460,9 +460,9 @@ function openEmailModal(recipients, emailSubject, jsonObject, user) {
 
     <div class="form-group">
         <div class="row ">
-            <label class="col-xl-4 form-label">Telécharger le fichier des résultats :</label>
-            <div class="col-xl-8 d-flex justify-content-end">
-                <button id="download-file-btn" class="btn btn-primary mx-4 pd-x-25"> <i class="fe fe-download"></i> Télécharger</button>
+            <label class="col-xl-7 form-label">Telécharger le fichier des résultats :</label>
+            <div class="col-xl-5 d-flex justify-content-start">
+                <button id="download-file-btn" class="btn w-39 btn-primary mx-4 pd-x-25"> <i class="fe fe-download"></i> Télécharger</button>
             </div>
         </div>
     </div>

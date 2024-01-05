@@ -51,6 +51,11 @@ intializeDB()
             // GET FICHE OBJECT FROM LOCALHOST
             ficheEvaluation = JSON.parse(localStorage.getItem("ficheEvaluation"));
 
+            var today = new Date();
+            var dd = String(today.getDate()).padStart(2, '0');
+            var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+            var yyyy = today.getFullYear();
+
 
             if (localStorage.getItem("user") === "admin") {
                 manager = localStorage.getItem("user");
@@ -69,7 +74,9 @@ intializeDB()
                 $("#mat-eva-text").text(ficheEvaluation.evaluateurTwo.matricule);
             }
             $("#mat-collaborateur-text").text(ficheEvaluation.collaborateur.matricule);
-            $("#date-eva-text").text(ficheEvaluation.dateEvaluation.split("T")[0]);
+            // $("#date-eva-text").text(ficheEvaluation.dateEvaluation.split("T")[0]);
+            $("#date-eva-text").text(dd + '-' + mm + '-' + yyyy);
+
         }
 
 
@@ -1063,7 +1070,7 @@ async function updateFicheEvaluation(id, jsonFiche) {
     //STEP 1 : DELETE THE INDEX DB DATA AND REPLACE IT WITH THIS ONE
     updateFicheInsideArray(id, jsonFiche);
 
-    return clearAndReplaceStoreData(idb_config,'files',[assessmentJson]);
+    return clearAndReplaceStoreData(idb_config, 'files', [assessmentJson]);
 }
 
 function updateFicheInsideArray(id, jsonFile) {
@@ -4046,7 +4053,7 @@ function buildFicheEvaluationPreviewFor(params) {
 
     // MARQUEURS
     fe.marqueurs = marqueurs ? niveau.marqueurs : null;
-    console.log( fe.marqueurs, marqueurs);
+    console.log(fe.marqueurs, marqueurs);
 
     // EXIGENCES
     fe.exigences = exigences ? niveau.exigences : null;
@@ -4216,7 +4223,7 @@ async function clearStore() {
 async function clearAndReplaceStoreData(dbName, storeName, newData) {
     console.log(newData);
     clearStore().then(() => {
-        addToStoreWithId(dbName,storeName,newData[0],0);
+        addToStoreWithId(dbName, storeName, newData[0], 0);
     })
 }
 
@@ -4256,53 +4263,53 @@ function addToStoreWithId(dbName, storeName, value, id) {
 }
 
 function deleteFromStore(dbName, storeName, nameValue) {
-  return new Promise((resolve, reject) => {
-    const request = indexedDB.open(dbName);
+    return new Promise((resolve, reject) => {
+        const request = indexedDB.open(dbName);
 
-    request.onerror = (event) => {
-      reject(`Error while opening ${dbName} database: ${event.target.error}`);
-    };
+        request.onerror = (event) => {
+            reject(`Error while opening ${dbName} database: ${event.target.error}`);
+        };
 
-    request.onsuccess = (event) => {
-      const db = event.target.result;
-      const transaction = db.transaction(storeName, 'readwrite');
-      const store = transaction.objectStore(storeName);
-      const request = store.openCursor();
+        request.onsuccess = (event) => {
+            const db = event.target.result;
+            const transaction = db.transaction(storeName, 'readwrite');
+            const store = transaction.objectStore(storeName);
+            const request = store.openCursor();
 
-      request.onerror = (event) => {
-        reject(`Error while opening cursor in ${storeName} store: ${event.target.error}`);
-      };
-
-      request.onsuccess = (event) => {
-        const cursor = event.target.result;
-
-        if (cursor) {
-          const value = cursor.value;
-
-          if (value && value.name === nameValue) {
-            const deleteRequest = cursor.delete();
-
-            deleteRequest.onerror = (event) => {
-              reject(`Error while deleting from ${storeName} store: ${event.target.error}`);
+            request.onerror = (event) => {
+                reject(`Error while opening cursor in ${storeName} store: ${event.target.error}`);
             };
 
-            deleteRequest.onsuccess = (event) => {
-              console.log(`Deleted ${cursor.key} from ${storeName} store in ${dbName} database`);
-              cursor.continue();
-            };
-          } else {
-            cursor.continue();
-          }
-        } else {
-          console.log('Deletion complete');
-          resolve();
-        }
-      };
-    };
+            request.onsuccess = (event) => {
+                const cursor = event.target.result;
 
-    request.onupgradeneeded = (event) => {
-      const db = event.target.result;
-      db.createObjectStore(storeName);
-    };
-  });
+                if (cursor) {
+                    const value = cursor.value;
+
+                    if (value && value.name === nameValue) {
+                        const deleteRequest = cursor.delete();
+
+                        deleteRequest.onerror = (event) => {
+                            reject(`Error while deleting from ${storeName} store: ${event.target.error}`);
+                        };
+
+                        deleteRequest.onsuccess = (event) => {
+                            console.log(`Deleted ${cursor.key} from ${storeName} store in ${dbName} database`);
+                            cursor.continue();
+                        };
+                    } else {
+                        cursor.continue();
+                    }
+                } else {
+                    console.log('Deletion complete');
+                    resolve();
+                }
+            };
+        };
+
+        request.onupgradeneeded = (event) => {
+            const db = event.target.result;
+            db.createObjectStore(storeName);
+        };
+    });
 }

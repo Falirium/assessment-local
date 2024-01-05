@@ -51,7 +51,7 @@ intializeDB()
 
             $("#card-header-btn-section").append(`
             <button id="btn-fiche-update" type="button" class="btn action-btn btn-icon me-4  btn-primary">
-                <i class="fe fe-refresh-cw"></i> Mise à jour 
+                <i class="fe fe-refresh-cw"></i> Actualisation
             </button>
             `);
 
@@ -59,7 +59,7 @@ intializeDB()
             $("#btn-fiche-update").click(function (e) {
 
                 // STEP 1 : OPEN MODAL CONTAINNING UPLOAD SECTION
-                showModal("confirm", "update", `
+                showModal("confirm", "Actualisation", `
                 <div class="control-group form-group  row">
                     <div class="col-lg-12 col-sm-12">
                     <label class="form-label">Importer ICI</label>
@@ -218,6 +218,7 @@ intializeDB()
 
         let dataSet = getFichesDataFromJson(listFiches, fiteredAuthorizedCol);
         let col = getFichesColumnFromJson(listFiches[0], fiteredAuthorizedCol);
+        console.log( listFiches[0]);
 
         ficheDatatable = $("#tb1").DataTable({
             data: dataSet,
@@ -787,7 +788,7 @@ function openEmailModal(recipients, emailSubject, jsonObject) {
     <div class="form-group">
         <div class="row align-items-center">
             <label class="col-xl-12 form-label">
-                ${modalBody}
+                
             </label>
            
         </div>
@@ -798,8 +799,8 @@ function openEmailModal(recipients, emailSubject, jsonObject) {
     <div class="form-group">
         <div class="row ">
             <label class="col-xl-4 form-label">Telécharger le fichier des résultats :</label>
-            <div class="col-xl-8 d-flex justify-content-end">
-                <button id="download-file-btn" class="btn btn-primary mx-4 pd-x-25"> <i class="fe fe-download"></i> Télécharger</button>
+            <div class="col-xl-8 d-flex justify-content-start">
+                <button id="download-file-btn" class="btn w-45 btn-primary mx-4 pd-x-25"> <i class="fe fe-download"></i> Télécharger</button>
             </div>
         </div>
     </div>
@@ -988,7 +989,7 @@ function getFichesColumnFromJson(json, authorizedCol) {
 
     authorizedCol.map((col, index) => {
         let value;
-        // console.log(col);
+        console.log(col);
         console.log(json.hasOwnProperty(col));
         if (json.hasOwnProperty(col)) {
             switch (col) {
@@ -1027,7 +1028,7 @@ function getFichesColumnFromJson(json, authorizedCol) {
                 }, {
                     "title": "Manager N+1"
                 });
-            } else {
+            }  else {
                 colArr.push({
                     "title": value
                 });

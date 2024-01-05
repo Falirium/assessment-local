@@ -12,8 +12,12 @@ if (localStorage.getItem("user") === null) {
 
 } else {
 
+    // 
+    
+    //
+
     // SET DEFAULT HOMEPAGE
-    let user = (localStorage.getItem("user") === "admin") ? ("admin") : ( JSON.parse(localStorage.getItem("user")) ) ;
+    let user = (localStorage.getItem("user") === "admin") ? ("admin") : (JSON.parse(localStorage.getItem("user")));
     if (user.type === "drh") {
         defaultHomePage = "./list-assessments.html";
     } else if (user.type === "1" || user.type === "2") {
@@ -36,6 +40,9 @@ if (localStorage.getItem("user") === null) {
         })
     }
 
+    /// EXTRA STEP : CHANGE THE HREF VALUE OF DASHBOARD ANCHOR ELEMENT
+    // updateUserDashboardLink(user);
+
 
     // STEP 3 : CHANGE SOME PARTS
     showSections.map((element) => {
@@ -49,7 +56,7 @@ if (localStorage.getItem("user") === null) {
                 break;
 
         }
-        
+
     })
 
     // STEP 4 : CHECK THE TARGET URL IS AUTHORIZED
@@ -81,6 +88,27 @@ if (localStorage.getItem("user") === null) {
 
 }
 
+function updateUserDashboardLink(userObject) {
+    var type = userObject.type;
+
+    // Determine the correct href based on the user type
+    var newHref;
+    console.log(type);
+    if (type === "1" || type === "2") {
+        newHref = "list-fiches.html";
+    } else if (type === "drh") {
+        newHref = "list-assessment.html";
+    } else {
+        // Optional: Default href if type doesn't match expected values
+        newHref = "default-file.html";
+    }
+
+    // Update the href attribute of the element with id 'to_dashboard'
+    $('#to_dashboard').attr('href', newHref);
+    console.log("WORK DONE")
+}
+
+
 function extractDomain(url) {
     const elems = url.split("/");
     return elems[0] + "//" + elems[2] + "/";
@@ -105,7 +133,7 @@ function showModalV1(type, header, content, action, btnJson, eventHandler) {
 
     let modalId, modalHeaderId, modalContentId, color;
 
-   
+
 
 
     switch (type) {

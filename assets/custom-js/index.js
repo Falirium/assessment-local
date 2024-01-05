@@ -569,12 +569,12 @@ function replaceAsseementToContainer(containerId, json) {
         <h4 class="card-title">Campagne d'assessment :</h4>
       </div>
       <div class="card-body">
-        <div class="row mb-4">
-          <label class="col-md-3 form-label">Campagne ID :</label>
+        <!--<div class="row mb-4">
+          <label class="col-md-3 form-label">L'intitulé de la campagne :</label>
           <div class="form-label col-md-9">
             ${json.assessmentId}
           </div>
-        </div>
+        </div> -->
 
         <div class="row mb-4">
           <label class="col-md-3 form-label">BPRs :</label>

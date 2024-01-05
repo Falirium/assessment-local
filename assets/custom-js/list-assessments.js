@@ -629,12 +629,12 @@ function concatenateWithUnderscore() {
 function filterCollorateursByBpr(list, prefix, suffix) {
 
     let finalArr = [];
-    console.log(prefix, suffix);
+    // console.log(prefix, suffix);
 
     finalArr = list.filter((fiche, index) => {
 
         let affectationCode = fiche.collaborateur.affectationCode + "";
-        console.log(affectationCode);
+        // console.log(affectationCode);
 
         // console.log("Matricule : " + mat);
 
@@ -643,13 +643,13 @@ function filterCollorateursByBpr(list, prefix, suffix) {
             for (var i = 0; i < prefix.length; i++) {
                 let code = prefix[i] + "";
 
-                console.log("Code : " + code);
+                // console.log("Code : " + code);
 
                 // ITERATE OVER CODE
                 let counter = 0;
                 for (var j = 0; j < code.length; j++) {
 
-                    console.log(affectationCode[j], code[j], affectationCode[j] == code[j])
+                    // console.log(affectationCode[j], code[j], affectationCode[j] == code[j])
 
                     if (affectationCode[j] == code[j] && j < affectationCode.length) {
                         counter++;
@@ -677,7 +677,7 @@ function filterCollorateursByBpr(list, prefix, suffix) {
         }
     });
 
-    console.log(finalArr);
+    // console.log(finalArr);
 
     return finalArr;
 
@@ -696,7 +696,7 @@ function buildURL(prefix, params) {
 function openEmailModal(recipients, emailSubject, jsonObject, user) {
     const subject = emailSubject; // Replace with your desired subject
     const recipientString = recipients.join(";");
-    console.log(recipientString);
+    // console.log(recipientString);
 
 
     // Create a data URI for the JSON object
@@ -756,8 +756,8 @@ function openEmailModal(recipients, emailSubject, jsonObject, user) {
     <div class="form-group">
         <div class="row ">
             <label class="col-xl-4 form-label">Telécharger le fichier des résultats :</label>
-            <div class="col-xl-8 d-flex justify-content-end">
-                <button id="download-file-btn" class="btn btn-primary mx-4 pd-x-25"> <i class="fe fe-download"></i> Télécharger</button>
+            <div class="col-xl-8 d-flex justify-content-start">
+                <button id="download-file-btn" class="btn w-39 btn-primary mx-4 pd-x-25"> <i class="fe fe-download"></i> Télécharger</button>
             </div>
         </div>
     </div>
@@ -897,7 +897,7 @@ function getAssessmentColumnFromJson(json, authorizedCol) {
 
     authorizedCol.map((col, index) => {
         let value;
-        console.log(col);
+        // console.log(col);
         console.log(json.hasOwnProperty(col));
         if (json.hasOwnProperty(col)) {
             switch (col) {
@@ -918,7 +918,7 @@ function getAssessmentColumnFromJson(json, authorizedCol) {
                     break;
             }
 
-            console.log(value);
+            // console.log(value);
 
 
 
