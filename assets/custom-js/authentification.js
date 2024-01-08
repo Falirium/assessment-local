@@ -236,7 +236,7 @@ $("#cnx-btn").click(function () {
                         "type": "text",
                         "name": "breadcrumb",
                         "id": "#breadcrumb-text",
-                        "text": "Manager N+1"
+                        "text": "Espace Manager N+1"
                     }
                 );
             } else if (getSecondPart(managerType, '-') === "2") {
@@ -266,7 +266,7 @@ $("#cnx-btn").click(function () {
                         "type": "text",
                         "name": "breadcrumb",
                         "id": "#breadcrumb-text",
-                        "text": "Manager N+2"
+                        "text": "Espqce Manager N+2"
                     }
                 );
             }
@@ -450,7 +450,7 @@ $("#cnx-btn-manager").click(function () {
                     "type": "text",
                     "name": "breadcrumb",
                     "id": "#breadcrumb-text",
-                    "text": "Manager N+1"
+                    "text": "Espace Manager N+1"
                 }
             );
         } else if (getSecondPart(managerType, '-') === "2") {
@@ -480,7 +480,7 @@ $("#cnx-btn-manager").click(function () {
                     "type": "text",
                     "name": "breadcrumb",
                     "id": "#breadcrumb-text",
-                    "text": "Manager N+2"
+                    "text": "Espace Manager N+2"
                 }
             );
         }
@@ -605,12 +605,8 @@ const extractDomain = (url) => {
 // ADD EVENT LISTENERS 
 $("#forget-pwd").click(function () {
     showModal("info", "Mot-de-passe oublié !", `
-    <p>Pour récupérer votre mot de passe, envoyez un e-mail aux consultants du Capital Humain BCP :</p>
-<ul>
-  <li>&#8226; <a target="_blank" href="mailto:MFARFAOUA@groupebcp.com">FARFAOUA Mohamed-Amine</a></li>
-  <li>&#8226; <a target="_blank" href="mailto:JNCHO@groupebcp.com">N'cho Seka Jean Carlos</a></li>
-  <li>&#8226; <a target="_blank" href="mailto:SGHANNAM@groupebcp.com">Ghannam Sanae</a></li>
-</ul>
+    <p>Pour récupérer votre mot de passe, n'hésitez pas à contacter la Direction des Ressources Humaines de votre Banque Populaire Régionale.</p>
+
 <br>
 <p>Dans l'objet de l'e-mail, indiquez : <strong>Mot de passe oublié</strong> et ajoutez en pièce jointe <strong>le fichier JSON</strong> que vous recevez par e-mail.</p>
 
@@ -620,12 +616,8 @@ $("#forget-pwd").click(function () {
 
 $("#contact-us").click(function () {
     showModal("info", "Contacter-nous", `
-    <p>Si vous avez besoin d'assistance ou de résoudre un problème technique, envoyez un e-mail aux consultants du Capital Humain BCP suivants :</p>
-    <ul>
-  <li>&#8226; <a target="_blank" href="mailto:MFARFAOUA@groupebcp.com">FARFAOUA Mohamed-Amine</a></li>
-  <li>&#8226; <a target="_blank" href="mailto:JNCHO@groupebcp.com">N'cho Seka Jean Carlos</a></li>
-  <li>&#8226; <a target="_blank" href="mailto:SGHANNAM@groupebcp.com">Ghannam Sanae</a></li>
-</ul> <br>
+    <p>Si vous avez besoin d'assistance ou si vous avez des questions supplémentaires, n'hésitez pas à contacter la Direction des Ressources Humaines de votre Banque Populaire Régionale.</p>
+    <br>
     `)
 })
 

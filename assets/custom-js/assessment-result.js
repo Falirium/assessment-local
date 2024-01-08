@@ -907,7 +907,7 @@ function getFichesColumnFromJson(json, authorizedCol) {
                     value = "code affectation";
                     break;
                 case "emploi":
-                    value = "emploi ciblé";
+                    value = "EMPLOI CIBLE";
                     break;
                 case "evaluateurOne":
                     value = "evaluateurOne";
@@ -940,7 +940,7 @@ function getFichesColumnFromJson(json, authorizedCol) {
                     value = "% S.F";
                     break;
                 case "status":
-                    value = "status";
+                    value = "statut";
                     break;
             }
 
@@ -948,19 +948,19 @@ function getFichesColumnFromJson(json, authorizedCol) {
 
             if (value === "collaborateur") {
                 colArr.push({
-                    "title": "Matriculle"
+                    "title": "Matricule"
                 }, {
                     "title": "Collaborateur"
                 });
             } else if (value === "evaluateurOne") {
                 colArr.push({
-                    "title": "Matriculle - N+1"
+                    "title": "Matricule - N+1"
                 }, {
                     "title": "Manager N+1"
                 });
             } else if (value === "evaluateurTwo") {
                 colArr.push({
-                    "title": "Matriculle - N+2"
+                    "title": "Matricule - N+2"
                 }, {
                     "title": "Manager N+2"
                 });
@@ -1548,10 +1548,10 @@ function removeElements(arrIds) {
 
 function updateBreadcrumb(user) {
     if (user.type === "drh") {
-        $("#breadcrumb-text").text("Consultant DRH");
+        $("#breadcrumb-text").text("Espace DRH");
 
     } else if (user === "admin") {
-        $("#breadcrumb-text").text("Consultant BCP");
+        $("#breadcrumb-text").text("Espace BCP");
 
     }
 

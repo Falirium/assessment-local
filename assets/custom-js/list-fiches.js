@@ -1000,7 +1000,7 @@ function getFichesColumnFromJson(json, authorizedCol) {
                     value = "id";
                     break;
                 case "emploi":
-                    value = "emploi ciblé"
+                    value = "EMPLOI CIBLE"
                     break;
                 case "evaluateurOne":
                     value = "evaluateurOne"
@@ -1010,7 +1010,7 @@ function getFichesColumnFromJson(json, authorizedCol) {
                     value = "assessment";
                     break;
                 case "status":
-                    value = "status"
+                    value = "statut"
                     break;
             }
 
@@ -1018,13 +1018,13 @@ function getFichesColumnFromJson(json, authorizedCol) {
 
             if (value === "collaborateur") {
                 colArr.push({
-                    "title": "Matriculle"
+                    "title": "Matricule"
                 }, {
                     "title": "Collaborateur"
                 });
             } else if (value === "evaluateurOne") {
                 colArr.push({
-                    "title": "Mat. Manager N+1"
+                    "title": "Matricule N+1"
                 }, {
                     "title": "Manager N+1"
                 });
@@ -1038,10 +1038,22 @@ function getFichesColumnFromJson(json, authorizedCol) {
 
 
         } else {
-            value = col; // CASE OF NIVEAU DE SENIORITE
-            colArr.push({
-                "title": value
-            });
+            switch (col) {
+                case "associatedAssessment":
+                    value = "assessment";
+                    colArr.push({
+                        "title": value
+                    });
+                    break;
+                default :
+                    colArr.push({
+                        "title": col
+                    });
+            }
+            
+
+            // value = col; // CASE OF NIVEAU DE SENIORITE
+            
         }
 
 

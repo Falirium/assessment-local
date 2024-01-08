@@ -914,7 +914,7 @@ function getAssessmentColumnFromJson(json, authorizedCol) {
                     value = "date de fin";
                     break;
                 case "status":
-                    value = "status"
+                    value = "statut"
                     break;
             }
 
@@ -928,10 +928,22 @@ function getAssessmentColumnFromJson(json, authorizedCol) {
 
 
         } else {
-            value = col; // CASE OF NIVEAU DE SENIORITE
-            colArr.push({
-                "title": value
-            });
+            switch (col) {
+                case "associatedAssessment":
+                    value = "assessment";
+                    colArr.push({
+                        "title": value
+                    });
+                    break;
+                default :
+                    colArr.push({
+                        "title": col
+                    });
+            }
+            // value = col; // CASE OF NIVEAU DE SENIORITE
+            // colArr.push({
+            //     "title": value
+            // });
         }
 
 
@@ -1241,10 +1253,10 @@ function filterAssessmentsByBpr(arr, bpr) {
 
 function updateBreadcrumb(user) {
     if (user.type === "drh") {
-        $("#breadcrumb-text").text("Consultant DRH");
+        $("#breadcrumb-text").text("Espace DRH");
 
     } else if (user === "admin") {
-        $("#breadcrumb-text").text("Consultant BCP");
+        $("#breadcrumb-text").text("Espace BCP");
 
     }
 
