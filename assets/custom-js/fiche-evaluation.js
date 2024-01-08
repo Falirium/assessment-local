@@ -516,7 +516,7 @@ function processSavingFicheEvaluation(e) {
         deleteLoaderToBtn("#" + e.target.id);
 
         // SHOW ERROR MESSAGE
-        showModal("error", "Erreur", "Malheureusement, vous ne pouvez pas sauvegarder le résultat de cette fiche d'évaluation. Parce que les administrateurs ont suspendu cette évaluation. Veuillez les contacter directement pour résoudre ce problème.", "", {
+        showModal("error", "Erreur", "La sauvegarde a échoué : cette évaluation est actuellement suspendue par les administrateurs. Veuillez les contacter pour plus d'assistance.", "", {
             "text": "Revenir à l'accueil",
             "color": "danger",
             "id": "dje1"
@@ -534,7 +534,7 @@ function processSavingFicheEvaluation(e) {
         deleteLoaderToBtn("#" + e.target.id);
 
         // SHOW ERROR MESSAGE
-        showModal("error", "Erreur", "Malheureusement, vous ne pouvez pas sauvegarder le résultat de cette assessment, car cette évaluation a été terminée. ", "", {
+        showModal("error", "Erreur", "Échec de sauvegarde : cette évaluation a déjà été clôturée et ne peut plus être modifiée.", "", {
             "text": "Revenir à l'accueil",
             "color": "danger",
             "id": "dje1"
@@ -562,11 +562,13 @@ function processSavingFicheEvaluation(e) {
             let modalBody;
             if (ficheEvaluation.status.includes("1")) {
                 modalHeader = "Succès";
-                modalBody = "La fiche a été envoyée avec succès. Cliquer sur le boutton pour se rediriger automatiquement vers les autres fiches pour continuer l'évaluation.";
+                modalBody = "Votre brouillon a été sauvegardé avec succès. Vous pouvez maintenant poursuivre avec d'autres évaluations.";
+                
             } else {
 
                 modalHeader = "Succès";
-                modalBody = "La fiche a été enregistré avec succès. Cliquer sur le boutton pour se rediriger automatiquement vers les autres fiches pour continuer l'évaluation.";
+                modalBody = "Envoi réussi ! Cliquez en bas pour passer aux autres fiches et continuer vos évaluations.";
+
             }
             showModal("success", modalHeader, modalBody, "", {
                 "text": "Revenir à l'accueil",

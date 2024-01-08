@@ -133,7 +133,7 @@ intializeDB()
                                     if (assessment_ID != contentJson.assessmentId) {
 
                                         // SHOW ERROR MESSAGE
-                                        showModal("error", "Attention !", "Vous ne pouvez pas télécharger les fichiers de configuration de différentes campagnes d'évaluation ! Veillez à télécharger les mêmes fichiers de campagne d'évaluation.", "", {
+                                        showModal("error", "Attention !", "Téléchargement non autorisé : assurez-vous de sélectionner les fichiers correspondant à la même campagne d'évaluation pour le téléchargement.Vous ne pouvez pas télécharger les fichiers de configuration de différentes campagnes d'évaluation ! Veillez à télécharger les mêmes fichiers de campagne d'évaluation.", "", {
                                             "text": "Retour à l'accueil",
                                             "color": "danger",
                                             "id": "btn-save"
@@ -285,7 +285,7 @@ intializeDB()
 
                     } else if (ficheFromArr.status.includes("E1")) {
 
-                        errorBody = `Désolé, vous ne pouvez pas accéder aux  fiches d'évaluations qui ont été évalués par votre manager.`
+                        errorBody = `Accès refusé : les fiches d'évaluations traitées par votre manager ne sont pas accessibles.`
                     }
 
                     console.log("from N+1");
@@ -297,7 +297,7 @@ intializeDB()
 
                     if (ficheFromArr.status === "NE0" || ficheFromArr.status === "CREATED") {
 
-                        errorBody = `Désolé, vous ne pouvez pas accéder aux fiches d'évaluations qui n'ont pas été validées par le manager N+1.`;
+                        errorBody = `Accès refusé : seules les fiches d'évaluations validées par le manager N+1 sont accessibles.`;
 
                     } else if (ficheFromArr.status === "E1") {
 
@@ -426,7 +426,7 @@ $("#btn-fiche-send").click({
         // })
     } else {
         // SHOW ERROR
-        showModal("error", "Erreur", "Vous ne pouvez pas envoyer de fiches d'évaluation car vous ne les avez pas encore validés. Veuillez compléter les fiches non validés", "");
+        showModal("error", "Erreur", "Envoi impossible : des fiches d'évaluation restent non validées. Merci de les compléter avant d'envoyer.", "");
     }
 })
 

@@ -122,7 +122,7 @@ intializeDB()
                 {
                     extend: 'excelHtml5',
                     title: fileTitle,
-                    text: "Exporter Évaluations",
+                    text: "Télécharger le Bilan",
                     exportOptions: {
                         columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
                     },
@@ -426,7 +426,7 @@ function getFormattedDate() {
 
 function openEmailModal(recipients, emailSubject, jsonObject, user) {
     const subject = emailSubject; // Replace with your desired subject
-    const recipientString = recipients.join(";");
+    const recipientString = recipients.join(";"); 
     console.log(recipientString);
 
 
@@ -995,8 +995,9 @@ function getFichesDataFromJson(arrJson) {
     let finalArr = [];
     arrJson.map((e, i) => {
         console.log(i);
-        // EXTRACT THE N+1 SCORE
+        // EXTRACT THE N+1 AND N+2 SCORES
         let m1 = JSON.parse(e.re_manager1);
+        let m2 = JSON.parse(e.re_manager2);
         console.log(m1);
         let arr = [];
 
@@ -1017,13 +1018,19 @@ function getFichesDataFromJson(arrJson) {
             arr.push(m1.score);
         }
 
-        if (e.score === "") {
+        if (m2 === null) {
             arr.push(0);
-
         } else {
-            arr.push(e.score);
-
+            arr.push(m2.score);
         }
+
+        // if (e.score === "") {
+        //     arr.push(0);
+
+        // } else {
+        //     arr.push(e.score);
+
+        // }
 
         // ADD % DES SECTIONS
         arr.push(e.sectionRes);
